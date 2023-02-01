@@ -1,0 +1,5 @@
+com\codeweb\pojos\person.class
+com\codeweb\configs\DispatcherServletInitializer.class
+com\codeweb\configs\HibernateConfig.class
+com\codeweb\configs\WebApplicationContextConfig.class
+com\codeweb\controllers\HomeController.class
