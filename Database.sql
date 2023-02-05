@@ -13,10 +13,7 @@ CREATE TABLE Candidates
 	Candidate_id nvarchar(6) NOT NULL PRIMARY KEY,
 	FullName nvarchar(max) NULL,
 	Email nvarchar(max) NULL,
-	Gender bit NULL,
-	DOB date NULL,
 	Phone nvarchar(max) NULL,
-	Address nvarchar(max) NULL,
 	Avatar nvarchar(max) NULL,
 	Role nvarchar(20) NULL,
 	Job_Name nvarchar(max) NULL,
@@ -69,7 +66,7 @@ CREATE TABLE Job_positions
 	Job_id nvarchar(6) NOT NULL PRIMARY KEY,
 	JobName nvarchar(max) NULL,
 	Skill nvarchar(max) NULL,
-	DepartmentId nvarchar(6) NOT NULL,
+	Department_id nvarchar(6) NOT NULL,
 )
 GO
 
@@ -78,12 +75,10 @@ CREATE TABLE Job_postings
 	Post_id nvarchar(6) NOT NULL PRIMARY KEY,
 	Descriptions nvarchar(max) NULL,
 	Type_of_work bit NULL,
-	Skill_requirement nvarchar(max) NULL,
 	Experience_requirement int NULL,
 	Locations nvarchar(max) NULL,
 	Welfare nvarchar(max) NULL,
 	Salary int NULL,
-	Interview_process nvarchar(max) NULL,
 	Posting_time date NOT NULL,
 	Expired_time date NOT NULL,
 	Approved_status bit NULL,
@@ -134,7 +129,7 @@ CREATE TABLE Rounds
 	Post_id nvarchar(6) NOT NULL,
 )
 
-DROP TABLE Reports
+CREATE TABLE Reports
 (
 	Report_id nvarchar(6) NOT NULL PRIMARY KEY,
 	Created_time date NOT NULL,
@@ -174,14 +169,14 @@ INSERT Interviewers(Interviewer_id, FullName, Email, Gender, DOB, Address, Phone
 
 
 --Insert Candidate(3-4)
-INSERT Candidates(Candidate_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
-	VALUES(N'CA0001', N'Luong Nhu H', N'LuongH@gmail.com', 1, N'2002-7-12', N'Q.3', NULL, N'hhh/sds/aas', N'candidate', N'Marketing', NULL, NULL, 0)
-INSERT Candidates(Candidate_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
-	VALUES(N'CA0002', N'Tran Van C', N'TranC@gmail.com', 0, N'1992-12-24', N'Q.5', NULL, N'ada/adas/asd', N'candidate', N'Front-end Developer', NULL, NULL, 0)
-INSERT Candidates(Candidate_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
-	VALUES(N'CA0003', N'Nguyen Thi D', N'NguyenD@gmail.com', 1, N'1989-8-8', N'Q.9', NULL, N'sak/xcz/dkk', N'candidate', N'Bridge Software Engineer', NULL, NULL, 0)
-INSERT Candidates(Candidate_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
-	VALUES(N'CA0004', N'Truong Van A', N'TruongA@gmail.com', 0, N'1999-3-31', N'Q.7', NULL, N'pwe/als/kkk', N'candidate', N'Full-stack Developer', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Email, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
+	VALUES(N'CA0001', N'Luong Nhu H', N'LuongH@gmail.com', NULL, N'hhh/sds/aas', N'candidate', N'Marketing', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Email, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
+	VALUES(N'CA0002', N'Tran Van C', N'TranC@gmail.com', NULL, N'ada/adas/asd', N'candidate', N'Front-end Developer', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Email, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
+	VALUES(N'CA0003', N'Nguyen Thi D', N'NguyenD@gmail.com', NULL, N'sak/xcz/dkk', N'candidate', N'Bridge Software Engineer', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Email, Phone, Avatar, Role, Job_Name, Experience, Skill, Blocked_status) 
+	VALUES(N'CA0004', N'Truong Van A', N'TruongA@gmail.com', NULL, N'pwe/als/kkk', N'candidate', N'Full-stack Developer', NULL, NULL, 0)
 
 
 --Insert HR manager/HR employee
@@ -204,24 +199,24 @@ INSERT Departments(Department_id, DepartmentName, Email)
 	VALUES(N'KT', N'Ke Toan', N'Ketoan@gmail.com')
 
 --Insert Job_positions
-INSERT Job_positions(Job_id, JobName, Skill, DepartmentId)
+INSERT Job_positions(Job_id, JobName, Skill, Department_id)
 	VALUES(N'J0001', N'Back-end Developer', N'Back-end, ReactJS', N'MA')
-INSERT Job_positions(Job_id, JobName, Skill, DepartmentId)
+INSERT Job_positions(Job_id, JobName, Skill, Department_id)
 	VALUES(N'J0002', N'Front-end Developer', N'Front-end, NodeJS', N'HC')
-INSERT Job_positions(Job_id, JobName, Skill, DepartmentId)
+INSERT Job_positions(Job_id, JobName, Skill, Department_id)
 	VALUES(N'J0003', N'System Analyst', N'Back-end, SQL, .NET', N'KT')
-INSERT Job_positions(Job_id, JobName, Skill, DepartmentId)
+INSERT Job_positions(Job_id, JobName, Skill, Department_id)
 	VALUES(N'J0004', N'Tester', N'Back-end, C#, .NET', N'NS')
 
 --Insert Job_postings (4-5)
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, SKill_requirement,Locations, Welfare, Salary, Interview_process, Posting_time, Expired_time, Approved_status, Job_id)
-	VALUES(N'P0001', N'Luong cao', '1',N'Back-end, ReactJS',N'Q.4',N'1 nam nghi 12 ngay','1200',N'Standing', N'2022-12-24', N'2023-1-15','0','J0001' )
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, SKill_requirement,Locations, Welfare, Salary, Interview_process, Posting_time, Expired_time, Approved_status, Job_id)
-	VALUES(N'P0002', N'Dai ngo tot', '0',N'Front-end, NodeJS',N'Q.3',N'Luong thuong sau 1 nam','1500',N'Standing', N'2022-9-16', N'2023-7-15','1','J0002' )
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, SKill_requirement,Locations, Welfare, Salary, Interview_process, Posting_time, Expired_time, Approved_status, Job_id)
-	VALUES(N'P0003', N'sadadjakxzc', '1',N'Back-end, C#, C++',N'Q.2',N'Moi truong lam viec tot','2000',N'Standing', N'2023-2-4', N'2023-3-31','1','J0003' )
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, SKill_requirement,Locations, Welfare, Salary, Interview_process, Posting_time, Expired_time, Approved_status, Job_id)
-	VALUES(N'P0004', N'adassqqexczx', '0',N'Back-end, Softskill',N'Q.9',N'Dong nghiep nhiet tinh','3000',N'Standing', N'2021-12-22', N'2022-3-24','0','J0004' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Job_id)
+	VALUES(N'P0001', N'Luong cao', '1', N'Q.4', N'1 nam nghi 12 ngay','1200', N'2022-12-24', N'2023-1-15','0','J0001' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Job_id)
+	VALUES(N'P0002', N'Dai ngo tot', '0', N'Q.3',N'Luong thuong sau 1 nam','1500', N'2022-9-16', N'2023-7-15','1','J0002' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Job_id)
+	VALUES(N'P0003', N'sadadjakxzc', '1', N'Q.2',N'Moi truong lam viec tot','2000', N'2023-2-4', N'2023-3-31','1','J0003' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Job_id)
+	VALUES(N'P0004', N'adassqqexczx', '0', N'Q.9',N'Dong nghiep nhiet tinh','3000', N'2021-12-22', N'2022-3-24','0','J0004' )
 
 --Insert Job_Applications
 INSERT Job_Applications(
@@ -295,7 +290,7 @@ ALTER TABLE Job_postings ADD CONSTRAINT [FK_posting_position] FOREIGN KEY(Job_id
 REFERENCES  Job_positions(Job_id)
 GO
 
-ALTER TABLE Job_positions ADD CONSTRAINT [FK_Job_Department] FOREIGN KEY(DepartmentId)
+ALTER TABLE Job_positions ADD CONSTRAINT [FK_Job_Department] FOREIGN KEY(Department_id)
 REFERENCES  Departments(Department_id)
 GO
 
