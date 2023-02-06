@@ -1,4 +1,4 @@
-style.css
+/* CSS for footer */
 body{
 	line-height: 1.5;
 	font-family: 'Poppins', sans-serif;
@@ -79,7 +79,7 @@ ul{
 	background-color: #ffffff;
 }
 
-/*responsive*/
+/*responsive for Footer*/
 @media(max-width: 767px){
   .footer-col{
     width: 50%;
