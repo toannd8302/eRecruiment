@@ -1,0 +1,39 @@
+/* CSS for Footer */
+.footer {
+    max-width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+}
+
+.footer ul {
+    list-style: none;
+
+}
+
+.footer ul a {
+    text-decoration: none;
+    color: aqua;
+}
+
+.footer ul a:hover {
+    color: crimson;
+}
+
+.footer h4 {
+    color: white;
+}
+
+.footer .Help {
+    padding-bottom: 17px;
+}
+
+.footer .Social {
+    margin-top: 20px;
+}
+
+.footer .Social a {
+    font-size: 20px;
+}
