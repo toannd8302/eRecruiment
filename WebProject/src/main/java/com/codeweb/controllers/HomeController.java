@@ -7,6 +7,7 @@ package com.codeweb.controllers;
 
 import com.codeweb.pojos.candidate;
 import com.codeweb.service.CandidateService;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;

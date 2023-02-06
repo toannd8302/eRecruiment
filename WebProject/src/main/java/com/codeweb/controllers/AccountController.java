@@ -7,6 +7,7 @@ package com.codeweb.controllers;
 
 import com.codeweb.service.CandidateService;
 import java.io.IOException;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
