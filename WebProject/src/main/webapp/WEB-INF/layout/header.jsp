@@ -9,6 +9,9 @@
     Author     : KHOA
 --%>
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <meta charset="UTF-8">
@@ -27,17 +30,30 @@
             <a href="#">Monke Company</a>
         </div>
         <nav>
-            <ul>
+            <ul >
                 <li><a href="#"><i class="fa-sharp fa-solid fa-house"></i>Home</a></li>
                 <li><a href="#"><i class="fa-sharp fa-solid fa-magnifying-glass"></i>Find a Job</a></li>
                 <li><a href="#"><i class="fa-sharp fa-solid fa-address-card"></i>About</a></li>
-                <li><a href="#"><i class="fa-sharp fa-solid fa-phone"></i>Contact</a>
-                </li>
+                <li><a href="#"><i class="fa-sharp fa-solid fa-phone"></i>Contact</a></li>
             </ul>
         </nav>
         <div class="account">
-            <button><a href="#"><i class="fa-sharp fa-solid fa-registered"></i>Register</a></button>
-            <button><a href="#"><i class="fa-sharp fa-solid fa-right-to-bracket"></i>Log In</a></button>
+            <div class="login">
+                <c:if test="${user == null}">
+                    <button><a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code
+                               &client_id=14093495895-chh4kno5un2kj4l9p5e2qh2a89h7tp3s.apps.googleusercontent.com&approval_prompt=force">Login Google</a></button>
+                    </c:if>
+            </div>
+            <div class="logout">
+                <c:if test="${user != null}">
+                    <c:url value="/LogoutController" var="action"/>
+                    <form:form method="get" action="${action}">
+                        <img class="img-fluid" src="<c:url value="${user.getPicture()}" />" alt="${user.getName()}"/>
+                        <input type="submit" value="Logout" name="" />
+                    </form:form>
+                </c:if>
+            </div>
         </div>
     </div>
 </div>
+<!--<input type="submit" value="Logout" class="btn btn-danger"/>-->

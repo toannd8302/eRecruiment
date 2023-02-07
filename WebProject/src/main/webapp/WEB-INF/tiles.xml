@@ -21,4 +21,5 @@ and open the template in the editor.
         <put-attribute name="title" value="HomePage"/>
         <put-attribute name="content" value="/WEB-INF/jsp/homePage.jsp" />
     </definition>
+
 </tiles-definitions>
