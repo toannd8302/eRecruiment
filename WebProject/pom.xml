@@ -59,7 +59,11 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>6.1.0.jre8</version>
         </dependency>
-        
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.8</version>
+        </dependency>
         <!--TILES TEMPLATE-->
         <!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
         <dependency>

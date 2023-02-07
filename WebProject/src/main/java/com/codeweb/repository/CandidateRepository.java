@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.codeweb.repository;
+package com.codeweb.repository; // tao cac interface dung de xua li nghiep vu
 
 import com.codeweb.pojos.candidate;
 import java.util.List;

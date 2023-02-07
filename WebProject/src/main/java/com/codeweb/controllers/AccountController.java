@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.codeweb.controllers;
-
 import com.codeweb.service.CandidateService;
 import java.io.IOException;
 import org.springframework.stereotype.Controller;

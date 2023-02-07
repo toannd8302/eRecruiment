@@ -4,6 +4,9 @@
     Author     : KHOA
 --%>
 
+<%@page import="com.codeweb.pojos.Jobposting"%>
+<%@page import="com.codeweb.pojos.Skill"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -26,5 +29,35 @@
                 <input type="submit" value="Logout" class="btn btn-danger"/>
             </form:form>
         </c:if>
+        <h1>Xin chao</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <%
+                    List<Skill> skills = (List<Skill>) request.getAttribute("skills");
+                    for (Skill s : skills) {
+                %>
+                <tr>
+                    <td><%= s.getSkillId()%></td>
+                    <td><%= s.getSKillName()%></td>
+                </tr>
+
+                <%
+                    }
+                %>
+
+            </tbody>
+        </table>
+
+
+
+
     </body>
 </html>
