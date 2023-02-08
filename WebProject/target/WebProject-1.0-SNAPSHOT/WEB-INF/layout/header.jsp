@@ -39,17 +39,17 @@
         </nav>
         <div class="account">
             <div class="login">
-                <c:if test="${user == null}">
+                <c:if test="${sessionScope.user == null}">
                     <button><a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code
                                &client_id=14093495895-chh4kno5un2kj4l9p5e2qh2a89h7tp3s.apps.googleusercontent.com&approval_prompt=force">Login Google</a></button>
                     </c:if>
             </div>
             <div class="logout">
-                <c:if test="${user != null}">
+                <c:if test="${sessionScope.user != null}">
                     <c:url value="/LogoutController" var="action"/>
                     <form:form method="get" action="${action}">
                         <img class="img-fluid" src="<c:url value="${user.getPicture()}" />" alt="${user.getName()}"/>
-                        <input type="submit" value="Logout" name="" />
+                        <input type="submit" value="Logout" />
                     </form:form>
                 </c:if>
             </div>

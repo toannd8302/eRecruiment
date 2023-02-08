@@ -7,6 +7,7 @@ package com.codeweb.controllers;
 
 import com.codeweb.pojos.candidate;
 import com.codeweb.service.CandidateService;
+import com.codeweb.service.JobPostingService;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -27,8 +28,12 @@ public class HomeController {
     @Autowired
     private CandidateService candidateService;
     
+    @Autowired
+    private JobPostingService jobPostingService;
+    
     @RequestMapping("/")
     public String index(Model model){
+        model.addAttribute("list", this.jobPostingService.getAllPost());
         return "homePage";
     }
     

@@ -25,6 +25,11 @@
 </div>
 </div>
 
+<c:forEach var="item" items="${list}">
+    <p>${item.rounds}</p>
+</c:forEach>
+
+
 
 <%--<c:if test="${user == null}">
     <a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code

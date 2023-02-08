@@ -5,6 +5,7 @@
  */
 package com.codeweb.controllers;
 
+import com.codeweb.pojos.candidate;
 import com.codeweb.service.CandidateService;
 import java.io.IOException;
 import javax.servlet.http.HttpSession;
@@ -28,13 +29,17 @@ public class AccountController {
             
     @RequestMapping("/LoginController")
     public String login(Model model,
-            @RequestParam(value = "code") String code) throws IOException {
-        model.addAttribute("user", this.candidateService.getCandidateByCode(code));
+            @RequestParam(value = "code") String code,
+            HttpSession session) throws IOException {
+        candidate candidate = this.candidateService.getCandidateByCode(code);
+        session.setAttribute("user", candidate);
         return "homePage";
     }
     
     @RequestMapping(path = "/LogoutController", method = RequestMethod.GET)
-    public String logout(Model model){
+    public String logout(Model model, HttpSession session){
+        if(session!=null)
+            session.invalidate();
         return "redirect:/";
     }
     
