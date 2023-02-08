@@ -7,29 +7,92 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<%--GET CURRENT DAY--%>
+<jsp:useBean id="now" class="java.util.Date" scope="request"/>
+<fmt:formatDate pattern="yyyy-MM-dd" value="${now}" var="nowDate"/>
+<%----%>
+
+
 
 <link href="<c:url value="/css/content.css" />" rel="stylesheet"/>
 
 <div class="banner">
-<div class="body">
-    <div id="banner">
-        <div class="search-box">
-            <div class="search-form">
-                <input type="text" placeholder="What kind of job do you want to find?" size="80">
-            </div>
-            <div class="search-button">
-                <button type="button">Search</button>
+    <div class="body">
+        <div id="banner">
+            <div class="search-box">
+                <div class="search-form">
+                    <input type="text" placeholder="What kind of job do you want to find?" size="80">
+                </div>
+                <div class="search-button">
+                    <button type="button">Search</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+
 
 <c:forEach var="item" items="${list}">
-    <p>${item.rounds}</p>
+    <li>
+        <ul>Job Name: ${item.jobPosition.jobName}</ul>
+
+        <ul>Description: ${item.descriptions}</ul>
+
+        <ul><c:if test="${item.typeOfWork == true}">
+                Type Of Work: At Office
+            </c:if> 
+            <c:if test="${item.typeOfWork == false}">
+                Type Of Work: Hybrid
+            </c:if> 
+        </ul>
+
+        <ul>Requirement: ${item.exprienceRequirement} Year</ul>
+
+        <ul>Loaction: ${item.locations} Year</ul>
+
+        <ul>Salary: ${item.salary} Year</ul>
+
+        <ul>Welfare: ${item.welfare}</ul>
+
+        Round: 
+        <ul>
+            <c:forEach var="round" items="${item.getRounds()}">
+                ${round.roundNumber} - ${round.content}
+            </c:forEach>
+        </ul>
+        
+        Skill:
+        <ul>
+            <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
+                ${skill.skillName}
+            </c:forEach>
+        </ul>
+        
+    </li>
 </c:forEach>
 
 
+
+
+
+
+
+
+
+<%--
+<c:forEach var="round" items="${item.getRounds().stream().collect(Collectors.toList())}">
+            ${round.roundNumber}
+        </c:forEach>
+--%>     
+
+<%--
+    <fmt:formatDate pattern="yyyy-MM-dd" value="${(nowDate.time - item.getPostingTime().time) / (1000*60*60*24)}" var="dateDifference"/>
+        ${dateDifference}
+--%>
 
 <%--<c:if test="${user == null}">
     <a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code

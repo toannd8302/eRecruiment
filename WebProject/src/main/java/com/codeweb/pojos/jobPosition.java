@@ -12,6 +12,7 @@ package com.codeweb.pojos;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -39,7 +40,7 @@ public class jobPosition {
     @JoinColumn(name = "Department_id")
     private department department;
     
-    @ManyToMany(mappedBy = "jobPositions")
+    @ManyToMany(mappedBy = "jobPositions", fetch = FetchType.EAGER)
     private Set<skill>skills;
 
     public String getJobId() {

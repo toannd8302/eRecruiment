@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -61,7 +62,7 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
-    @OneToMany (mappedBy = "jobPoting")
+    @OneToMany (mappedBy = "jobPoting", fetch = FetchType.EAGER)
     private Set<round> rounds;
 
     public String getPostId() {
