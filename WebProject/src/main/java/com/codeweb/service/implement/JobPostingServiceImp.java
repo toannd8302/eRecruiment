@@ -22,8 +22,8 @@ public class JobPostingServiceImp implements JobPostingService{
     private JobPostingRepository jobPostingRepository;
 
     @Override
-    public List<jobPosting> getAllPost() {
-        return this.jobPostingRepository.getAllPost();
+    public List<jobPosting> getPostByKeyword(String kw) {
+        return this.jobPostingRepository.getPostByKeyword(kw);
     }
     
 }

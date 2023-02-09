@@ -10,69 +10,68 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<%--GET CURRENT DAY--%>
-<jsp:useBean id="now" class="java.util.Date" scope="request"/>
-<fmt:formatDate pattern="yyyy-MM-dd" value="${now}" var="nowDate"/>
-<%----%>
-
 
 
 <link href="<c:url value="/css/content.css" />" rel="stylesheet"/>
 
-<div class="banner">
-    <div class="body">
-        <div id="banner">
-            <div class="search-box">
-                <div class="search-form">
-                    <input type="text" placeholder="What kind of job do you want to find?" size="80">
-                </div>
-                <div class="search-button">
-                    <button type="button">Search</button>
+
+<form action="">
+    <div class="banner">
+        <div class="body">
+            <div id="banner">
+                <div class="search-box">
+                    <div class="search-form">
+                        <input type="text" name="keyword" placeholder="Keyword skill, job name" size="80">
+                    </div>
+                    <div class="search-button">
+                        <button type="submit">Search</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 
 
 <c:forEach var="item" items="${list}">
-    <li>
-        <ul>Job Name: ${item.jobPosition.jobName}</ul>
+    <a href="<c:url value="/post-detail/${item.postId}"/>">
+        <li>
+            <ul>Job Name: ${item.jobPosition.jobName}</ul>
 
-        <ul>Description: ${item.descriptions}</ul>
+            <ul>Description: ${item.descriptions}</ul>
 
-        <ul><c:if test="${item.typeOfWork == true}">
-                Type Of Work: At Office
-            </c:if> 
-            <c:if test="${item.typeOfWork == false}">
-                Type Of Work: Hybrid
-            </c:if> 
-        </ul>
+            <ul><c:if test="${item.typeOfWork == true}">
+                    Type Of Work: At Office
+                </c:if> 
+                <c:if test="${item.typeOfWork == false}">
+                    Type Of Work: Hybrid
+                </c:if> 
+            </ul>
 
-        <ul>Requirement: ${item.exprienceRequirement} Year</ul>
+            <ul>Requirement: ${item.exprienceRequirement} Year</ul>
 
-        <ul>Loaction: ${item.locations} Year</ul>
+            <ul>Loaction: ${item.locations} Year</ul>
 
-        <ul>Salary: ${item.salary} Year</ul>
+            <ul>Salary: ${item.salary} Year</ul>
 
-        <ul>Welfare: ${item.welfare}</ul>
+            <ul>Welfare: ${item.welfare}</ul>
 
-        Round: 
-        <ul>
-            <c:forEach var="round" items="${item.getRounds()}">
-                ${round.roundNumber} - ${round.content}
-            </c:forEach>
-        </ul>
-        
-        Skill:
-        <ul>
-            <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
-                ${skill.skillName}
-            </c:forEach>
-        </ul>
-        
-    </li>
+            Round: 
+            <ul>
+                <c:forEach var="round" items="${item.getRounds()}">
+                    ${round.roundNumber} - ${round.content}
+                </c:forEach>
+            </ul>
+
+            Skill:
+            <ul>
+                <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
+                    ${skill.skillName}
+                </c:forEach>
+            </ul>
+        </li>
+    </a>
 </c:forEach>
 
 

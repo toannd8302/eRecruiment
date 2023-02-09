@@ -7,6 +7,7 @@ D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\s
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\configs\WebApplicationContextConfig.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\service\implement\CandidateServiceImp.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\configs\TilesConfig.java
+D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\controllers\JobPostingController.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\configs\DispatcherServletInitializer.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\controllers\AccountController.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\pojos\candidate.java

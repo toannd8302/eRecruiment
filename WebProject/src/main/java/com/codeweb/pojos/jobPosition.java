@@ -9,6 +9,7 @@ package com.codeweb.pojos;
  *
  * @author KHOA
  */
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ import javax.persistence.Table;
  * @author toan0
  */
 @Entity
- @Table(name = "Job_positions")
+@Table(name = "Job_positions")
 public class jobPosition {
     @Id
     @Column(name = "Job_id")
@@ -42,7 +43,7 @@ public class jobPosition {
     
     @ManyToMany(mappedBy = "jobPositions", fetch = FetchType.EAGER)
     private Set<skill>skills;
-
+    
     public String getJobId() {
         return jobId;
     }
@@ -82,7 +83,7 @@ public class jobPosition {
     public void setSkills(Set<skill> skills) {
         this.skills = skills;
     }
-
+    
     @Override
     public String toString() {
         return "jobPosition{" + "jobId=" + jobId + ", jobName=" + jobName + '}';

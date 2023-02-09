@@ -13,5 +13,5 @@ import java.util.List;
  * @author KHOA
  */
 public interface JobPostingService {
-    List<jobPosting> getAllPost();
+    List<jobPosting> getPostByKeyword(String kw);
 }
