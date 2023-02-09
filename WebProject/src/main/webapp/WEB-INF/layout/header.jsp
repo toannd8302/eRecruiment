@@ -19,9 +19,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <!-- CSS Here -->
+
 <link rel="stylesheet" href="css/mystyle.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+
+
+<!--<link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+<div id="header">
+    <nav>
+        <div id="logo">
+            <a href="#"><img src="img/MonkeTech_Logo_PNG.png" alt="Monke Tech"></a>
+        </div>
+        
+        <div>
+            <ul id="main-menu">
+                <li><a href="">All Jobs <i class="fa-solid fa-angle-down"></i></a>
+                    <div class="sub-menu">
+                        <ul>
+                            <li><a href="#">Job by Location</a></li>
+                            <li><a href="#">Job by Salary</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="">About</a> </li>
+                <li><a href="">Contact</a> </li>
+            </ul>
+        </div>
+        <div id="search">
+            <input type="text" placeholder=" Search jobs"><button><i
+                    class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </div>
+
+
+        <c:if test="${sessionScope.user == null}">
+            <div id="account">
+                <button><a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code
+                           &client_id=14093495895-chh4kno5un2kj4l9p5e2qh2a89h7tp3s.apps.googleusercontent.com&approval_prompt=force">Login</a></button>
+            </div> 
+        </c:if>
+
+        <c:if test="${sessionScope.user != null}">
+            <c:url value="/LogoutController" var="action"/>
+            <div id="login-account">
+                <img class="img-fluid" src="<c:url value="${user.getPicture()}" />" alt="${user.getName()}"/>
+                <div id="account-menu">
+                    <a href="#">My Account <i class="fa-solid fa-angle-down"></i></a>
+                    <div class="sub-menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="${action}">Logout</a></li>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
+    </nav>
+</div>-->
 
 
 <div class="container">
@@ -42,7 +101,7 @@
                 <c:if test="${sessionScope.user == null}">
                     <button><a href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code
                                &client_id=14093495895-chh4kno5un2kj4l9p5e2qh2a89h7tp3s.apps.googleusercontent.com&approval_prompt=force">Login Google</a></button>
-                    </c:if>
+                </c:if>
             </div>
             <div class="logout">
                 <c:if test="${sessionScope.user != null}">
@@ -56,4 +115,3 @@
         </div>
     </div>
 </div>
-<!--<input type="submit" value="Logout" class="btn btn-danger"/>-->

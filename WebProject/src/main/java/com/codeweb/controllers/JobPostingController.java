@@ -6,6 +6,7 @@
 package com.codeweb.controllers;
 
 import com.codeweb.service.JobPostingService;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,9 @@ public class JobPostingController {
     
     @GetMapping("/post-detail/{postID}")
     public String detailpage(Model model,
-            @PathVariable(value = "postID") String postID){
+            @PathVariable(value = "postID") String postID,
+            HttpSession session){
+        model.addAttribute("post",this.jobPostingService.getPostByID(postID));
         return "post-detail-page";
     }
 }

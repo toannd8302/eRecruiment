@@ -25,5 +25,19 @@ public class JobPostingServiceImp implements JobPostingService{
     public List<jobPosting> getPostByKeyword(String kw) {
         return this.jobPostingRepository.getPostByKeyword(kw);
     }
+
+    @Override
+    public jobPosting getPostByID(String id) {
+        List<jobPosting> list = this.getPost(id);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0);
+    }
+
+    @Override
+    public List<jobPosting> getPost(String id) {
+        return this.jobPostingRepository.getPostById(id);
+    }
     
 }

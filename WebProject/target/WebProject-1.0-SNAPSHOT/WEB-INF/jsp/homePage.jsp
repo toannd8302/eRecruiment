@@ -11,10 +11,6 @@
 
 
 
-
-<link href="<c:url value="/css/content.css" />" rel="stylesheet"/>
-
-
 <form action="">
     <div class="banner">
         <div class="body">
@@ -35,9 +31,11 @@
 
 
 <c:forEach var="item" items="${list}">
-    <a href="<c:url value="/post-detail/${item.postId}"/>">
+    
         <li>
-            <ul>Job Name: ${item.jobPosition.jobName}</ul>
+            <a href="<c:url value="/post-detail/${item.postId}"/>">
+                <ul>Job Name: ${item.jobPosition.jobName}</ul>
+            </a>
 
             <ul>Description: ${item.descriptions}</ul>
 
@@ -51,9 +49,9 @@
 
             <ul>Requirement: ${item.exprienceRequirement} Year</ul>
 
-            <ul>Loaction: ${item.locations} Year</ul>
+            <ul>Loaction: ${item.locations}</ul>
 
-            <ul>Salary: ${item.salary} Year</ul>
+            <ul>Salary: ${item.salary}</ul>
 
             <ul>Welfare: ${item.welfare}</ul>
 
@@ -71,7 +69,6 @@
                 </c:forEach>
             </ul>
         </li>
-    </a>
 </c:forEach>
 
 

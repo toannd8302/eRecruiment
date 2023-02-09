@@ -51,7 +51,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
                     String.format("%%%s%%", kw));
             Predicate p2 = builder.like(skill.get("skillName").as(String.class), 
                     String.format("%%%s%%", kw));
-            query = query.where(p1);
+            query = query.where(builder.or(p1,p2));
         }
         
         Query q = session.createQuery(query.distinct(true));
@@ -62,6 +62,25 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
 //                + " OR s.skillName LIKE :kw");
 //        q.setParameter("kw", new String("%" + kw + "%"));
 //        return q.getResultList();
+    }
+    
+    
+    
+    @Override
+    public List<jobPosting> getPostById(String id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
+        Root<jobPosting> root = query.from(jobPosting.class);
+        query = query.select(root);
+
+        if (!id.isEmpty() && id != null) {
+            Predicate p1 = builder.like(root.get("postId").as(String.class),
+                    String.format("%%%s%%", id));
+            query = query.where(p1);
+        }
+        Query q = session.createQuery(query);
+        return q.getResultList();
     }
 
 }

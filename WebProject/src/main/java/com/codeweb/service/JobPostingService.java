@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface JobPostingService {
     List<jobPosting> getPostByKeyword(String kw);
+    jobPosting getPostByID(String id);
+    List<jobPosting> getPost(String id);
 }
