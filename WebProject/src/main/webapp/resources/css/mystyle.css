@@ -1,0 +1,82 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    height: 80px;
+}
+
+.header nav li {
+    display: inline-block;
+    font-size: 15x;
+}
+
+.header nav a:hover {
+    color: crimson;
+    transition: all 0.4s ease 0s;
+    font-size: 20x;
+}
+
+.header nav a {
+    color: aqua;
+}
+
+.header nav li i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.header a {
+    text-decoration: none;
+}
+
+.header .logo a {
+    color: aqua;
+    font-size:25px;
+    font-weight: bold;
+}
+
+.header .account button {
+    border-radius: 5px;
+    background-color: black;
+
+}
+
+.header .account a {
+    color: aqua;
+    font-size: 20px;
+}
+
+.header .account a:hover {
+    color: crimson;
+    transition: all 0.4s ease 0s;
+}
+
+.header .account i {
+    margin-right: 10px;
+}
+
+.header .account .logout .img-fluid{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+.header .account .logout input{
+    background-color: black;
+    color: aqua;
+    font-size: 15px;
+    font-weight: bold;
+}
+.header .account .logout input:hover{
+    color: crimson;
+    transition: all 0.4s ease 0s;
+    font-size: 20px;
+    font-weight: bold;
+}
