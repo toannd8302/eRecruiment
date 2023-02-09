@@ -1,0 +1,156 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    height: 80px;
+    /* position: fixed; */
+}
+
+.header nav li {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.header nav a:hover {
+    color: crimson;
+    transition: all 0.4s ease 0s;
+}
+
+.header nav a {
+
+    color: aqua;
+}
+
+.header nav li i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header .logo a {
+    color: aqua;
+}
+
+.header .account button {
+    border-radius: 5px;
+    background-color: black;
+
+}
+
+.header .account a {
+    color: aqua;
+    font-size: 20px;
+}
+
+.header .account a:hover {
+    color: crimson;
+    transition: all 0.4s ease 0s;
+}
+
+.header .account i {
+    margin-right: 10px;
+}
+
+
+
+
+
+
+/* CSS for body */
+#banner {
+    /* margin-top: 90px; */
+    padding-top: 50%;
+    background: url(https://essaywritingexamples.com/wp-content/uploads/2019/08/dream-job-2904780_1280.jpg) top center / cover no-repeat;
+    /* position: relative; */
+
+}
+
+#banner .search-box {
+    position: absolute;
+    bottom: 50px;
+    color: red;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+    text-align: center;
+}
+
+#banner .search-form input {
+    padding: 10px 100px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#banner .search-button button {
+    padding: 12px 25px;
+    border-radius: 10px;
+}
+
+#banner .search-button button:hover {
+    background-color: brown;
+    color: white;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* CSS for Footer */
+.footer {
+    max-width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+}
+
+.footer ul {
+    list-style: none;
+
+}
+
+.footer ul a {
+    text-decoration: none;
+    color: aqua;
+}
+
+.footer ul a:hover {
+    color: crimson;
+}
+
+.footer h4 {
+    color: white;
+}
+
+.footer .Help {
+    padding-bottom: 17px;
+}
+
+.footer .Social {
+    margin-top: 20px;
+}
+
+.footer .Social a {
+    font-size: 20px;
+}

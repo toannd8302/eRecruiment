@@ -1,0 +1,307 @@
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: #343747;
+}
+
+#header {
+    background-color: #1a1c28;
+    height: 150px;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    height: 150px;
+    line-height: 150px;
+}
+
+
+/* CSS for Logo */
+
+#logo img {
+    width: 180px;
+    height: 150px;
+}
+
+
+/* CSS for main menu */
+nav #main-menu {
+    display: flex;
+    list-style: none;
+    font-size: 20px;
+    position: relative;
+}
+
+nav #main-menu li:hover {
+    border-bottom: 3px solid red;
+    background-color: #343747;
+}
+
+nav #main-menu li a {
+    text-decoration: none;
+    padding: 0px 20px;
+    /* margin-top: 30px; */
+    display: block;
+    color: white;
+    margin-right: 100px;
+}
+
+
+/* CSS for sub-menu*/
+#main-menu li>.sub-menu {
+    display: none;
+    position: absolute;
+}
+
+#main-menu .sub-menu ul {
+    list-style: none;
+    height: 100px;
+}
+
+#main-menu li:hover .sub-menu {
+    display: block;
+}
+
+#main-menu .sub-menu ul li {
+    background-color: #1a1c28;
+    height: 100px;
+}
+
+#main-menu .sub-menu ul li:hover {
+    background-color: #343747;
+}
+
+
+/* CSS for search box */
+#search {
+    margin-top: 50px;
+    display: flex;
+    height: 40px;
+
+}
+
+#search input {
+    border-radius: 5px;
+}
+
+#search button {
+    border-radius: 5px;
+    margin-left: 5px;
+    background-color: rgb(197, 32, 32);
+}
+
+#search button:hover {
+    background-color: rgb(216, 112, 112);
+}
+
+
+
+/* ////////////////////////////////// */
+/* CSS  for Login button*/
+
+/* #account{
+    margin-right: 10px;
+}
+#account a{
+    text-decoration: none;
+    color: black;
+}
+#account button{
+    padding: 9px 25px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+#account button:hover{
+    background-color: rgb(153, 153, 153);
+}
+#account button a:hover{
+    color: white;
+} */
+
+/* ///////////////////////////////////////// */
+/* CSS for login-account */
+#login-account {
+    display: flex;
+}
+
+#login-account img {
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 40px;
+
+}
+
+#login-account a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 30px;
+    margin-left: 20px;
+    padding-bottom: 30px;
+    color: white;
+}
+
+#account-menu>.sub-menu {
+    display: none;
+    /* position: absolute; */
+    list-style: none;
+    font-size: 20px;
+    margin-top: 0%;
+
+}
+
+#account-menu:hover .sub-menu {
+    display: block;
+
+}
+
+#account-menu .sub-menu li {
+    background-color: #1a1c28;
+    color: white;
+    padding: 10px;
+    height: 120px;
+}
+
+#account-menu .sub-menu li:hover {
+    border-bottom: 3px solid red;
+    background-color: #343747;
+}
+
+#account-menu .sub-menu ul {
+    height: 80px;
+}
+
+
+
+
+/* CSS for job-posting */
+#hot-job{
+    text-align: center;
+    color: orangered;
+    margin-top: 30px;
+    font-size: 20px;
+
+}
+
+#job-list {
+    /* border: solid 2px rgb(0, 0, 0); */
+    max-width: 600px;
+    font-size: 20px;
+    background-color: white;
+    margin-left: 30%;
+    margin-top: 3%;
+    border-radius: 5px;
+}
+#job-list ul{
+    list-style: none;
+    padding-left: 0;
+} 
+#job-list #job-list-head{
+    padding: 5px;
+    display: flex;
+    margin-top: 10px;
+}
+#job-list #job-list-head .job-title a{
+    text-decoration: none;
+    color: rgb(160, 26, 26);
+}
+#job-list #job-list-head img{
+    height: 80px;
+    width: 80px;
+    margin-right: 20px;
+}
+#job-list #job-list-body ul {
+    /* border-top: 2px solid red; */
+    display: flex;
+    list-style: none;
+    padding: 10px 25px;
+
+}
+
+#job-list #job-list-body ul li {
+    margin-right: 10px;
+    border: 2px solid rgb(15, 133, 180);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+
+#job-list #job-list-foot{
+    border-bottom: 30px solid #343747;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+#job-list #job-list-foot ul {
+    border-top: 2px solid red;
+    display: flex;
+    list-style: none;
+    margin-top: 5px;
+    padding: 10px;
+}
+#job-list #job-list-foot ul li{
+    margin-right: 10px;
+    border: 2px solid rgb(21, 204, 73);
+    border-radius: 15px;
+    padding: 10px;
+}
+#job-list #job-list-foot ul i{
+    color: black;
+}
+
+
+
+
+
+/* CSS for footer */
+.footer {
+    max-width: 100%;
+    background-color: #1a1c28;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    margin-top: 80px;
+}
+.footer h1{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.footer ul {
+    list-style: none;
+    font-size: 20px;
+}
+
+.footer ul a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer ul a:hover {
+    color: crimson;
+}
+
+.footer .Help {
+    padding-bottom: 17px;
+}
+
+.footer .Social {
+    margin-top: 20px;
+}
+
+.footer .Social a {
+    font-size: 20px;
+}
