@@ -229,7 +229,7 @@ INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Sal
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
 	'0', N'Q.3',N'Tet gift / birthday gift, Sports activities (badminton,foofball,billiards etc.,), Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15','1', N'Architect', N'oro/rqop/dsf','J0002' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
-	VALUES(N'P0003', N'Segmed’s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
+	VALUES(N'P0003', N'SegmedÂ’s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
 	'1', N'Q.2',N'Annual voluntary health insurance, Social insurance, Yearly company trip','2000', N'2023-2-4', N'2023-3-31','1', N'Junior', N'dkdkk/fmf/ddz','J0003' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0004', N'Analyzing and developing web applications and web services. Working with other developers to build applications with ReactJS/NextJS/AngularJS and Restful API. Work as part of a team to meet demanding project requirements. Write clean, modular, robust code to implement the desired requirements with little or no supervision. Work with the QA team to triage and fix bugs with rapid turnaround perform a technical.', 
@@ -421,5 +421,3 @@ GO
 ALTER TABLE Reasons DROP CONSTRAINT [FK_reason2]
 GO
 
-ALTER TABLE Job_Applications DROP CONSTRAINT [FK_application_posting1]
-GO
