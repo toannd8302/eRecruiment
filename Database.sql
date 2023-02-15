@@ -1,6 +1,9 @@
 USE master
 GO
 
+DROP DATABASE HRManagement
+GO
+
 CREATE DATABASE HRManagement
 GO
 
@@ -24,7 +27,7 @@ CREATE TABLE Candidates
 
 
 
-CREATE TABLE HR_Employees
+/*CREATE TABLE HR_Employees
 (
 	HREmployee_id nvarchar(6) NOT NULL PRIMARY KEY,
 	FullName nvarchar(max) NULL,
@@ -36,11 +39,12 @@ CREATE TABLE HR_Employees
 	Avatar nvarchar(max) NULL,
 	Role nvarchar(20) NULL,
 	Blocked_status bit NULL,
-)
+)*/
 
-CREATE TABLE Interviewers
+
+CREATE TABLE Employees
 (
-	Interviewer_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Employee_id nvarchar(6) NOT NULL PRIMARY KEY,
 	FullName nvarchar(max) NULL,
 	Email nvarchar(max) NULL,
 	Gender bit NULL,
@@ -52,6 +56,7 @@ CREATE TABLE Interviewers
 	Skill nvarchar(max) NULL,
 	Blocked_status bit NULL,
 )
+
 
 CREATE TABLE Departments
 (
@@ -112,13 +117,22 @@ CREATE TABLE Schedules
 )
 
 
-CREATE TABLE Reasons
+CREATE TABLE Interviewer_Reasons
 (
 	Reason_content nvarchar(max) NULL,
 	File_path nvarchar(max) NULL,
-	Schedule_id int NOT NULL,
-	Account_id nvarchar(6) NOT NULL,
-	CONSTRAINT PKReasons PRIMARY KEY (Schedule_id,Account_id),
+	Schedule_id nvarchar(20) NOT NULL,
+	Employee_id nvarchar(6) NOT NULL,
+	CONSTRAINT PKReasons PRIMARY KEY (Schedule_id,Employee_id),
+)
+
+CREATE TABLE Candidate_Reasons
+(
+	Reason_content nvarchar(max) NULL,
+	File_path nvarchar(max) NULL,
+	Schedule_id nvarchar(20) NOT NULL,
+	Candidate_id nvarchar(6) NOT NULL,
+	CONSTRAINT PKReasons2 PRIMARY KEY (Schedule_id,Candidate_id),
 )
 
 CREATE TABLE Skills
@@ -143,16 +157,9 @@ CREATE TABLE Reports
 	Created_time date NOT NULL,
 	Content nvarchar(max) NOT NULL,
 	Point int NOT NULL,
-	Interviewer_id  nvarchar(6) NOT NULL,
+	Employee_id  nvarchar(6) NOT NULL,
 	Application_id nvarchar(6) NOT NULL,
 	Schedule_id nvarchar(20) NOT NULL,
-)
-
-CREATE TABLE Schedule_Interviewer
-(
-	Schedule_id nvarchar(20) NOT NULL,
-	Interviewer_id nvarchar(6) NOT NULL,
-	CONSTRAINT PKSchedule_account PRIMARY KEY (Schedule_id,Interviewer_id),
 )
 
 
@@ -170,15 +177,15 @@ CREATE TABLE Job_application_Schedule
 	CONSTRAINT PKJob_application_Schedule PRIMARY KEY (Application_id,Schedule_id),
 )
 
-DROP TABLE Job_Applications_Rounds
 
 --Insert Interviewer
-INSERT Interviewers(Interviewer_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role,Skill, Blocked_status) 
-	VALUES(N'IN0001', N'Nguyen The A', N'NguyenA@gmail.com', 1, N'2000-10-2', N'Q.2', N'0302043234', N'aaaksk/asa/asa', N'interviewer', N'Back-End,Java,NodeJS', 0)
-INSERT Interviewers(Interviewer_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role,Skill, Blocked_status) 
-	VALUES(N'IN0002', N'Nguyen Van B', N'NguyenB@gmail.com', 0, N'1992-8-19', N'Q.9', N'0972834149', N'sadsad/123/zxc', N'interviewer', N'ReactJS,PHP', 0)
-INSERT Interviewers(Interviewer_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role,Skill, Blocked_status) 
-	VALUES(N'IN0003', N'Truong Van C', N'TruongC@gmail.com', 1, N'1995-2-12', N'Q.5', N'0983716535', N'csdad/wewea', N'interviewer', N'Front-end, .net, SQL', 0)
+INSERT Employees(Employee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role,Skill, Blocked_status) 
+	VALUES(N'EM0001', N'Nguyen The A', N'NguyenA@gmail.com', 1, N'2000-10-2', N'Q.2', N'0302043234', N'aaaksk/asa/asa', N'interviewer', N'Back-End,Java,NodeJS', 0)
+INSERT Employees(Employee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role,Skill, Blocked_status) 
+	VALUES(N'EM0002', N'Nguyen Van B', N'NguyenB@gmail.com', 0, N'1992-8-19', N'Q.9', N'0972834149', N'sadsad/123/zxc', N'interviewer', N'ReactJS,PHP', 0)
+INSERT Employees(Employee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role,Skill, Blocked_status) 
+	VALUES(N'EM0003', N'Truong Van C', N'TruongC@gmail.com', 1, N'1995-2-12', N'Q.5', N'0983716535', N'csdad/wewea', N'interviewer', N'Front-end, .net, SQL', 0)
+
 
 
 --Insert Candidate(3-4)
@@ -193,11 +200,11 @@ INSERT Candidates(Candidate_id, FullName, Email, Phone, Avatar, Role, Job_Name, 
 
 
 --Insert HR manager/HR employee
-INSERT HR_Employees(HREmployee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
-	VALUES(N'EM0001', N'Tran The A', N'TranA@gmail.com', 0, N'1998-1-2', N'Q.1', N'09038827488', N'aaaksk/asa/asa', N'HR manager', 0)
+INSERT Employees(Employee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
+	VALUES(N'EM0004', N'Tran The A', N'TranA@gmail.com', 0, N'1998-1-2', N'Q.1', N'09038827488', N'aaaksk/asa/asa', N'HR manager', 0)
 
-INSERT HR_Employees(HREmployee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status)
-	VALUES(N'EM0002', N'Nguyen Thi B', N'NguyenB@gmail.com', 1, N'1992-12-3', N'Q.5', N'0936827812', N'13123hdhshcx.jpg', N'HR Employee',0)
+INSERT Employees(Employee_id, FullName, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status)
+	VALUES(N'EM0005', N'Nguyen Thi B', N'NguyenB@gmail.com', 1, N'1992-12-3', N'Q.5', N'0936827812', N'13123hdhshcx.jpg', N'HR Employee',0)
 
 
 
@@ -229,7 +236,7 @@ INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Sal
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
 	'0', N'Q.3',N'Tet gift / birthday gift, Sports activities (badminton,foofball,billiards etc.,), Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15','1', N'Architect', N'oro/rqop/dsf','J0002' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
-	VALUES(N'P0003', N'SegmedÂ’s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
+	VALUES(N'P0003', N'Segmed’s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
 	'1', N'Q.2',N'Annual voluntary health insurance, Social insurance, Yearly company trip','2000', N'2023-2-4', N'2023-3-31','1', N'Junior', N'dkdkk/fmf/ddz','J0003' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0004', N'Analyzing and developing web applications and web services. Working with other developers to build applications with ReactJS/NextJS/AngularJS and Restful API. Work as part of a team to meet demanding project requirements. Write clean, modular, robust code to implement the desired requirements with little or no supervision. Work with the QA team to triage and fix bugs with rapid turnaround perform a technical.', 
@@ -258,9 +265,26 @@ INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_in
 INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status)
 	VALUES(N'S0004', '2023-9-7', '8:00', N'Q1', N'1', '1')
 
---Insert Reasons
-INSERT Reasons(
-	VALUES
+--Insert Interviewer_Reasons
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
+	VALUES(NULL,NULL, N'S0001', N'EM0001')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
+	VALUES(NULL, NULL, N'S0001', N'EM0002')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
+	VALUES(NULL,NULL, N'S0001', N'EM0003')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
+	VALUES(NULL, NULL, N'S0002', N'EM0001')
+
+----Insert Candidate_Reasons
+
+INSERT Candidate_Reasons(Reason_content, File_path, Schedule_id, Candidate_id)
+	VALUES(NULL,NULL, N'S0001', N'CA0001')
+INSERT Candidate_Reasons(Reason_content, File_path, Schedule_id, Candidate_id)
+	VALUES(NULL, NULL, N'S0002', N'CA0002')
+INSERT Candidate_Reasons(Reason_content, File_path, Schedule_id, Candidate_id)
+	VALUES(NULL,NULL, N'S0003', N'CA0003')
+INSERT Candidate_Reasons(Reason_content, File_path, Schedule_id, Candidate_id)
+	VALUES(NULL, NULL, N'S0002', N'CA0001')
 
 --Insert Skills
 INSERT Skills(Skill_id, SKillName)
@@ -281,34 +305,28 @@ INSERT Skills(Skill_id, SKillName)
 	VALUES(N'8', N'C++')
 
 --Insert Rounds
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0001', '1', N'Soft skill', N'P0001')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0002', '2', N'Hard skill', N'P0001')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0003', '2', N'Soft skill', N'P0002')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0004', '1', N'Hard skill', N'P0002')
+INSERT Rounds(Round_id, Round_number, Content, Post_id, Schedule_id)
+	VALUES(N'R0001', '1', N'Soft skill', N'P0001', N'S0001')
+INSERT Rounds(Round_id, Round_number, Content, Post_id, Schedule_id)
+	VALUES(N'R0002', '2', N'Hard skill', N'P0001', N'S0002')
+INSERT Rounds(Round_id, Round_number, Content, Post_id, Schedule_id)
+	VALUES(N'R0003', '2', N'Soft skill', N'P0002', N'S0004')
+INSERT Rounds(Round_id, Round_number, Content, Post_id, Schedule_id)
+	VALUES(N'R0004', '1', N'Hard skill', N'P0002', N'S0003')
+
+
 
 --Insert Reports
-INSERT Reports(Report_id, Created_time, Content, Point, Interviewer_id, Application_id, Schedule_id)
-	VALUES(N'R0001', '2023-3-26', N'Soft Skill Online Interview', '8', N'IN0001', N'A0001', N'S0001')
-INSERT Reports(Report_id, Created_time, Content, Point, Interviewer_id, Application_id, Schedule_id)
-	VALUES(N'R0002', '2023-7-18', N'Hard Skill Offline Interview', '8', N'IN0002', N'A0001', N'S0002')
-INSERT Reports(Report_id, Created_time, Content, Point, Interviewer_id, Application_id, Schedule_id)
-	VALUES(N'R0003', '2023-9-7', N'Soft Skill Offline Interview', '5', N'IN0003', N'A0002', N'S0004')
-INSERT Reports(Report_id, Created_time, Content, Point, Interviewer_id, Application_id, Schedule_id)
-	VALUES(N'R0004', '2023-12-25', N'Hard Skill Online Interview', '4', N'IN0001', N'A0002', N'S0003')
+INSERT Reports(Report_id, Created_time, Content, Point, Employee_id, Application_id, Schedule_id)
+	VALUES(N'RP0001', '2023-3-26', N'Soft Skill Online Interview', '8', N'EM0001', N'A0001', N'S0001')
+INSERT Reports(Report_id, Created_time, Content, Point, Employee_id, Application_id, Schedule_id)
+	VALUES(N'RP0002', '2023-7-18', N'Hard Skill Offline Interview', '8', N'EM0002', N'A0001', N'S0002')
+INSERT Reports(Report_id, Created_time, Content, Point, Employee_id, Application_id, Schedule_id)
+	VALUES(N'RP0003', '2023-9-7', N'Soft Skill Offline Interview', '5', N'EM0003', N'A0002', N'S0004')
+INSERT Reports(Report_id, Created_time, Content, Point, Employee_id, Application_id, Schedule_id)
+	VALUES(N'RP0004', '2023-12-25', N'Hard Skill Online Interview', '4', N'EM0001', N'A0002', N'S0003')
 
---Insert Schedule_Interviewer
-INSERT Schedule_Interviewer(Schedule_id, Interviewer_id)
-	VALUES('S0001','IN0001')
-INSERT Schedule_Interviewer(Schedule_id, Interviewer_id)
-	VALUES('S0002', 'IN0002')
-INSERT Schedule_Interviewer(Schedule_id, Interviewer_id)
-	VALUES('S0003', 'IN0003')
-INSERT Schedule_Interviewer(Schedule_id, Interviewer_id)
-	VALUES('S0004', 'IN0002')
+
 
 
 --Insert Job_Positions_Skills
@@ -347,13 +365,7 @@ ALTER TABLE Schedule_account ADD CONSTRAINT [FK_schedule_account2] FOREIGN KEY(A
 REFERENCES  Accounts(Account_id)
 GO
 
-ALTER TABLE Reasons ADD CONSTRAINT [FK_reason1] FOREIGN KEY(Schedule_id)
-REFERENCES  Schedules(Schedule_id)
-GO
 
-ALTER TABLE Reasons ADD CONSTRAINT [FK_reason2] FOREIGN KEY(Account_id)
-REFERENCES  Accounts(Account_id)
-GO
 
 ALTER TABLE Job_Applications ADD CONSTRAINT [FK_application_posting1] FOREIGN KEY(Candidate_id)
 REFERENCES  Candidates(Candidate_id)
@@ -386,25 +398,35 @@ GO
 ALTER TABLE Job_Positions_Skills ADD CONSTRAINT [FK_Position_Skill2] FOREIGN KEY(Skill_id)
 REFERENCES SKills(Skill_id)
 GO
-
+----
 ALTER TABLE Reports ADD CONSTRAINT [FK_Report_Schedule] FOREIGN KEY(Schedule_id)
 REFERENCES Schedules(Schedule_id)
 GO
-
-ALTER TABLE Reports ADD CONSTRAINT [FK_Report_Interviewer] FOREIGN KEY(Interviewer_id)
-REFERENCES Interviewers(Interviewer_id)
+-----
+ALTER TABLE Reports ADD CONSTRAINT [FK_Report_Interviewer] FOREIGN KEY(Employee_id)
+REFERENCES Employees(Employee_id)
 GO
 
 ALTER TABLE Reports ADD CONSTRAINT [FK_Report_Job_application] FOREIGN KEY(Application_id)
 REFERENCES Job_Applications(Application_id)
 GO
 
-ALTER TABLE Schedule_Interviewer ADD CONSTRAINT [FK_Schedule_Interviewer1] FOREIGN KEY(Schedule_id)
+-----
+ALTER TABLE Interviewer_Reasons ADD CONSTRAINT [FK_Interviewer_Reason1] FOREIGN KEY(Schedule_id)
 REFERENCES Schedules(Schedule_id)
 GO
 
-ALTER TABLE Schedule_Interviewer ADD CONSTRAINT [FK_Schedule_Interviewer2] FOREIGN KEY(Interviewer_id)
-REFERENCES Interviewers(Interviewer_id)
+-----
+ALTER TABLE Interviewer_Reasons ADD CONSTRAINT [FK_Interviewer_Reason2] FOREIGN KEY(Employee_id)
+REFERENCES Employees(Employee_id)
+GO
+
+ALTER TABLE Candidate_Reasons ADD CONSTRAINT [FK_Candidate_Reason1] FOREIGN KEY(Schedule_id)
+REFERENCES Schedules(Schedule_id)
+GO
+
+ALTER TABLE Candidate_Reasons ADD CONSTRAINT [FK_Candidate_Reason2] FOREIGN KEY(Candidate_id)
+REFERENCES Candidates(Candidate_id)
 GO
 
 ALTER TABLE Job_application_Schedule ADD CONSTRAINT [FK_Job_application_Schedule1] FOREIGN KEY(Application_id)
@@ -415,9 +437,5 @@ ALTER TABLE Job_application_Schedule ADD CONSTRAINT [FK_Job_application_Schedule
 REFERENCES Schedules(Schedule_id)
 GO
 
-ALTER TABLE Schedule_account DROP CONSTRAINT [FK_schedule_account2] 
-GO
 
-ALTER TABLE Reasons DROP CONSTRAINT [FK_reason2]
-GO
 
