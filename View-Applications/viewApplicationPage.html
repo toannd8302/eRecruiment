@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Detail</title>
+
+    <!-- CSS Here -->
+    <link rel="stylesheet" href="viewApplicationPage.css">
+
+
+    <!-- Bootstrap here -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Header here -->
+    <div id="header">
+        <nav>
+            <div id="logo">
+                <a href="#"><img src="img/MonkeTech_Logo_PNG.png" alt="Monke Tech"></a>
+
+            </div>
+            <div>
+                <ul id="main-menu">
+                    <li><a href="">All Jobs <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="sub-menu">
+                            <ul>
+                                <li><a href="#">Job by Location</a></li>
+                                <li><a href="#">Job by Salary</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="">About</a> </li>
+                    <li><a href="">Contact</a> </li>
+                </ul>
+            </div>
+            <div id="search">
+                <input type="text" placeholder=" Search jobs"><button><i
+                        class="fa-solid fa-magnifying-glass"></i>Search</button>
+            </div>
+
+
+            <!--If haven't loged-in  -->
+            <!-- <div id="account">
+                <button><a href="#">Login</a></button>
+            </div> -->
+
+
+            <!-- If have loged-in -->
+
+            <div id="login-account">
+                <img src="img/avatar.jfif" alt="avatar">
+                <div id="account-menu">
+                    <a href="#">My Account <i class="fa-solid fa-angle-down"></i></a>
+                    <div class="sub-menu">
+                        <ul>
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="#">View My Applications</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+
+    <!-- Body here -->
+    <div id="body">
+        <div id="job-applied-list">
+            <h1>Đơn ứng tuyển đã nộp</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Job Title</th>
+                        <th>Date Applied</th>
+                        <th>Interview Schedule</th>
+                        <th>Status</th>
+                        <th>Job Posting</th>
+                        <!-- <th>Actions</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <!-- <td>John Doe</td> -->
+                        <td>Software Engineer</td>
+                        <td>2023-02-10</td>
+                        <td></td>
+                        <td>
+                            <p>Waiting</p>
+                        </td>
+                        <td><a href="#">Job Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <!-- <td>John Doe</td> -->
+                        <td>ITBA</td>
+                        <td>2023-02-06</td>
+                        <td>2/3/2023</td>
+                        <td>
+                            <p>Accepted</p>
+                        </td>
+                        <td><a href="#">Job Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <!-- <td>John Doe</td> -->
+                        <td>Marketer</td>
+                        <td>2023-02-14</td>
+                        <td></td>
+                        <td>
+                            <p>Rejected</p>
+                        </td>
+                        <td><a href="#">Job Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <!-- <td>John Doe</td> -->
+                        <td>Calculator</td>
+                        <td>2023-02-13</td>
+                        <td></td>
+                        <td>
+                            <p>Waiting</p>
+                        </td>
+                        <td><a href="#">Job Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a class="active" href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer here -->
+    <div id="footer">
+        <div class="Company">
+            <h1>Monke Company</h1>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Our Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="Help">
+            <h1>Get Help</h1>
+            <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Q&A</a></li>
+            </ul>
+        </div>
+        <div class="Social">
+            <h1>Social</h1>
+            <ul>
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
