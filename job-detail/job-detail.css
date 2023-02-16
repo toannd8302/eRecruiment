@@ -156,16 +156,17 @@ nav #main-menu li a {
     font-weight: bold;
     margin-right: 30px;
     margin-left: 20px;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
     color: white;
 }
 
-#account-menu>.sub-menu {
+
+#account-menu>.sub-menu{
     display: none;
     /* position: absolute; */
     list-style: none;
-    font-size: 20px;
-    margin-top: 0%;
+    padding: 0%;
+    margin: 0%;
 
 }
 
@@ -179,8 +180,12 @@ nav #main-menu li a {
     color: white;
     padding: 10px;
     height: 120px;
+    /* align-items: center; */
 }
-
+#account-menu .sub-menu li a{
+    margin-bottom: 5rem;
+    display: inline;
+}
 #account-menu .sub-menu li:hover {
     border-bottom: 3px solid red;
     background-color: #343747;
@@ -189,6 +194,7 @@ nav #main-menu li a {
 #account-menu .sub-menu ul {
     height: 80px;
     list-style: none;
+    padding-left: 0%;
 }
 
 
