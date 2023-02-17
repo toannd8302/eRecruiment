@@ -6,9 +6,13 @@
 package com.codeweb.pojos;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,8 +21,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Candidates")
-public class candidate implements Serializable{
-    
+public class candidate implements Serializable {
+
     @Id
     @Column(name = "Candidate_id")
     private String id;
@@ -38,16 +42,33 @@ public class candidate implements Serializable{
     private String role;
     @Column(name = "Job_Name")
     private String jobName;
-    @Column(name = "Skill")
-    private String skill;
-    @Column(nullable=true, name = "Experience")
+    @Column(nullable = true, name = "Experience")
     private Integer experience;
     @Column(name = "Blocked_status")
     private boolean status;
 
-    
-    
-    
+    @ManyToMany(mappedBy = "candidates", fetch = FetchType.EAGER)
+    private Set<skill> skills;
+
+    @OneToMany(mappedBy = "candidate")
+    private Set<jobApplication> jobApplications;
+
+    public Set<skill> getSkills() {
+        return skills;
+    }
+
+    public Set<jobApplication> getJobApplications() {
+        return jobApplications;
+    }
+
+    public void setJobApplications(Set<jobApplication> jobApplications) {
+        this.jobApplications = jobApplications;
+    }
+
+    public void setSkills(Set<skill> skills) {
+        this.skills = skills;
+    }
+
     public String getGiven_name() {
         return given_name;
     }
@@ -63,7 +84,7 @@ public class candidate implements Serializable{
     public void setFamily_name(String family_name) {
         this.family_name = family_name;
     }
-    
+
     public String getId() {
         return id;
     }
@@ -120,17 +141,10 @@ public class candidate implements Serializable{
         this.jobName = jobName;
     }
 
-    public String getSkill() {
-        return skill;
-    }
-
-    public void setSkill(String skill) {
-        this.skill = skill;
-    }
-
     public int getExperience() {
-        if(experience == null)
+        if (experience == null) {
             return 0;
+        }
         return experience;
     }
 

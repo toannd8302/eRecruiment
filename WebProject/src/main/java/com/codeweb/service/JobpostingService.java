@@ -1,16 +1,19 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.codeweb.service;
 
-import com.codeweb.pojos.Jobposting;
+import com.codeweb.pojos.jobPosting;
 import java.util.List;
 
 /**
  *
- * @author toan0
+ * @author KHOA
  */
-public interface JobpostingService {
-    List<Jobposting>getJobposting();
+public interface JobPostingService {
+    List<jobPosting> getPostByKeyword(String kw);
+    jobPosting getPostByID(String id);
+    List<jobPosting> getPost(String id);
 }

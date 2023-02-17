@@ -1,9 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.codeweb.pojos;
 
+/**
+ *
+ * @author KHOA
+ */
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,57 +23,55 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Rounds")
-public class Round implements Serializable{
+public class round implements Serializable{
     @Id
     @Column(name = "Round_id")
-    private String Round_id;
+    private String roundID;
     
     @Column(name = "Round_number")
-    private String Round_number;
+    private String roundNumber;
     
-    @Column(name = "[Content]")
-    private String Content;
+    @Column(name = "Content")
+    private String content;
     
     @ManyToOne
     @JoinColumn(name = "Post_id")
-    private Jobposting PostId;
+    private jobPosting jobPoting;
 
-    public String getRound_id() {
-        return Round_id;
+    public String getRoundID() {
+        return roundID;
     }
 
-    public void setRound_id(String Round_id) {
-        this.Round_id = Round_id;
+    public void setRoundID(String roundID) {
+        this.roundID = roundID;
     }
 
-    public String getRound_number() {
-        return Round_number;
+    public String getRoundNumber() {
+        return roundNumber;
     }
 
-    public void setRound_number(String Round_number) {
-        this.Round_number = Round_number;
+    public void setRoundNumber(String roundNumber) {
+        this.roundNumber = roundNumber;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
-    public void setContent(String Content) {
-        this.Content = Content;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public Jobposting getPostId() {
-        return PostId;
+    public jobPosting getJobPoting() {
+        return jobPoting;
     }
 
-    public void setPostId(Jobposting PostId) {
-        this.PostId = PostId;
+    public void setJobPoting(jobPosting jobPoting) {
+        this.jobPoting = jobPoting;
     }
 
     @Override
     public String toString() {
-        return "Round{" + "Round_id=" + Round_id + ", Round_number=" + Round_number + ", Content=" + Content + '}';
+        return "round{" + "roundID=" + roundID + ", roundNumber=" + roundNumber + ", content=" + content + '}';
     }
-    
-    
 }

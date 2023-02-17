@@ -1,9 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.codeweb.pojos;
 
+/**
+ *
+ * @author KHOA
+ */
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
@@ -23,43 +28,67 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Skills")
-public class Skill implements Serializable{
+public class skill implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Skill_id")
-    private int SkillId;
-    private String SKillName;
+    private int skillId;
     
-    @ManyToMany(fetch = FetchType.LAZY)//mac dinh la LAZY
+    @Column(name = "SKillName")
+    private String skillName;
+    
+    @ManyToMany
     @JoinTable(
             name = "Job_Positions_Skills",
             joinColumns = { @JoinColumn(name = "Skill_id") },
             inverseJoinColumns = { @JoinColumn(name = "Job_id") }
     )
-    private Set<JobPosition> JobPositions;
+    private Set<jobPosition> jobPositions;
+    
+    @ManyToMany
+    @JoinTable(
+            name = "Candidate_Skills",
+            joinColumns = { @JoinColumn(name = "Skill_id") },
+            inverseJoinColumns = { @JoinColumn(name = "Candidate_id") }
+    )
+    private Set<candidate> candidates;
 
+    
+    public Set<candidate> getCandidates() {
+        return candidates;
+    }
+
+    public void setCandidates(Set<candidate> candidates) {
+        this.candidates = candidates;
+    }
+    
     public int getSkillId() {
-        return SkillId;
+        return skillId;
     }
 
-    public void setSkillId(int SkillId) {
-        this.SkillId = SkillId;
+    public void setSkillId(int skillId) {
+        this.skillId = skillId;
     }
 
-    public String getSKillName() {
-        return SKillName;
+    public String getSkillName() {
+        return skillName;
     }
 
-    public void setSKillName(String SKillName) {
-        this.SKillName = SKillName;
+    public void setSkillName(String skillName) {
+        this.skillName = skillName;
     }
 
-    public Set<JobPosition> getJobPositions() {
-        return JobPositions;
+    public Set<jobPosition> getJobPositions() {
+        return jobPositions;
     }
 
-    public void setJobPositions(Set<JobPosition> JobPositions) {
-        this.JobPositions = JobPositions;
+    public void setJobPositions(Set<jobPosition> jobPositions) {
+        this.jobPositions = jobPositions;
     }
+
+    @Override
+    public String toString() {
+        return "skill{" + "skillId=" + skillId + ", skillName=" + skillName + '}';
+    }
+    
     
 }

@@ -1,14 +1,20 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.codeweb.pojos;
 
+/**
+ *
+ * @author KHOA
+ */
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,28 +29,24 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "Job_postings")
-public class Jobposting implements Serializable { //Giup dong bo tren moi truong internet(Server)
+public class jobPosting implements Serializable { //Giup dong bo tren moi truong internet(Server)
 
     @Id
     @Column(name = "Post_id")
-    private String Postid;
-    
-    private String Descriptions;
-    
+    private String postId;
+    @Column(name = "Descriptions")
+    private String descriptions;
     @Column(name = "Type_of_work")
-    private boolean TypeOfWork;
-    
-    
-    @Column(name = "Experience_requirement")
-    private int ExprienceRequirement;
-    
-    private String Locations;
-    
-    private String Welfare;
-    
-    private int Salary;
-    
-  
+    private boolean typeOfWork;
+    @Column(nullable = true, name = "Experience_requirement")
+    private Integer exprienceRequirement;
+    @Column(name = "Locations")
+    private String locations;
+    @Column(name = "Welfare")
+    private String welfare;
+    @Column(nullable = true, name = "Salary")
+    private Integer salary;
+
     @Column(name = "Posting_time")
     @Temporal(TemporalType.DATE)
     private Date PostingTime;
@@ -52,76 +54,81 @@ public class Jobposting implements Serializable { //Giup dong bo tren moi truong
     @Column(name = "Expired_time")
     @Temporal(TemporalType.DATE)
     private Date ExpiredTime;
-    
+
     @Column(name = "Approved_status")
     private boolean ApprovedStatus;
-    
+
     @ManyToOne
     @JoinColumn(name = "Job_id")
-    private JobPosition JobId;
-    
-    @OneToMany (mappedBy = "PostId")
-    private Set<Round> rounds;
+    private jobPosition jobPosition;
 
-    public String getPostid() {
-        return Postid;
+    @OneToMany(mappedBy = "jobPoting", fetch = FetchType.EAGER)
+    private Set<round> rounds;
+
+    @OneToMany(mappedBy = "jobPosting")
+    private Set<jobApplication> jobApplications;
+
+    public String getPostId() {
+        return postId;
     }
 
-    public void setPostid(String Postid) {
-        this.Postid = Postid;
+    public void setPostId(String postId) {
+        this.postId = postId;
     }
 
     public String getDescriptions() {
-        return Descriptions;
+        return descriptions;
     }
 
-    public void setDescriptions(String Descriptions) {
-        this.Descriptions = Descriptions;
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions;
     }
 
     public boolean isTypeOfWork() {
-        return TypeOfWork;
+        return typeOfWork;
     }
 
-    public void setTypeOfWork(boolean TypeOfWork) {
-        this.TypeOfWork = TypeOfWork;
+    public void setTypeOfWork(boolean typeOfWork) {
+        this.typeOfWork = typeOfWork;
     }
-
-  
 
     public int getExprienceRequirement() {
-        return ExprienceRequirement;
+        if (exprienceRequirement == null) {
+            return 0;
+        }
+        return exprienceRequirement;
     }
 
-    public void setExprienceRequirement(int ExprienceRequirement) {
-        this.ExprienceRequirement = ExprienceRequirement;
+    public void setExprienceRequirement(int exprienceRequirement) {
+        this.exprienceRequirement = exprienceRequirement;
     }
 
     public String getLocations() {
-        return Locations;
+        return locations;
     }
 
-    public void setLocations(String Locations) {
-        this.Locations = Locations;
+    public void setLocations(String locations) {
+        this.locations = locations;
     }
 
     public String getWelfare() {
-        return Welfare;
+        return welfare;
     }
 
-    public void setWelfare(String Welfare) {
-        this.Welfare = Welfare;
+    public void setWelfare(String welfare) {
+        this.welfare = welfare;
     }
 
     public int getSalary() {
-        return Salary;
+        if (salary == null) {
+            return 0;
+        }
+        return salary;
     }
 
-    public void setSalary(int Salary) {
-        this.Salary = Salary;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
-
-  
 
     public Date getPostingTime() {
         return PostingTime;
@@ -147,26 +154,35 @@ public class Jobposting implements Serializable { //Giup dong bo tren moi truong
         this.ApprovedStatus = ApprovedStatus;
     }
 
-    public JobPosition getJobId() {
-        return JobId;
+    public jobPosition getJobPosition() {
+        return jobPosition;
     }
 
-    public void setJobId(JobPosition JobId) {
-        this.JobId = JobId;
+    public void setJobPosition(jobPosition jobPosition) {
+        this.jobPosition = jobPosition;
     }
 
-    public Set<Round> getRounds() {
+    public Set<round> getRounds() {
         return rounds;
     }
 
-    public void setRounds(Set<Round> rounds) {
+    public void setRounds(Set<round> rounds) {
         this.rounds = rounds;
+    }
+
+    public Set<jobApplication> getJobApplications() {
+        return jobApplications;
+    }
+
+    public void setJobApplications(Set<jobApplication> jobApplications) {
+        this.jobApplications = jobApplications;
     }
 
     @Override
     public String toString() {
-        return "Jobposting{" + "Postid=" + Postid + ", Descriptions=" + Descriptions + ", TypeOfWork=" + TypeOfWork + ", ExprienceRequirement=" + ExprienceRequirement + ", Locations=" + Locations + ", Welfare=" + Welfare + ", Salary=" + Salary + ", PostingTime=" + PostingTime + ", ExpiredTime=" + ExpiredTime + ", ApprovedStatus=" + ApprovedStatus + ", JobId=" + JobId  + '}';
+        return "jobPosting{" + "postId=" + postId + ", descriptions=" + descriptions + ", typeOfWork=" + typeOfWork + ", exprienceRequirement=" + exprienceRequirement + ", locations=" + locations + ", welfare=" + welfare + ", salary=" + salary + ", PostingTime=" + PostingTime + ", ExpiredTime=" + ExpiredTime + ", ApprovedStatus=" + ApprovedStatus + '}';
     }
-    
-    
+
 }
+
+

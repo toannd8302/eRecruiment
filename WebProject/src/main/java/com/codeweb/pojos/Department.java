@@ -1,9 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.codeweb.pojos;
 
+/**
+ *
+ * @author KHOA
+ */
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
@@ -19,15 +24,57 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Departments")
-public class Department implements Serializable{
+public class department implements Serializable{
     @Id
     @Column(name = "Department_id")
-    private String DepartmentId;
+    private String departmentId;
     
-    private String DepartmentName; 
+    @Column(name = "DepartmentName")
+    private String departmentName; 
     
-    private String Email;
+    @Column(name = "Email")
+    private String email;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "DepartmentId")
-    private Set<JobPosition>JobPositions;
+    @OneToMany(mappedBy = "department")
+    private Set<jobPosition>jobPositions;
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<jobPosition> getJobPositions() {
+        return jobPositions;
+    }
+
+    public void setJobPositions(Set<jobPosition> jobPositions) {
+        this.jobPositions = jobPositions;
+    }
+
+    @Override
+    public String toString() {
+        return "department{" + "departmentId=" + departmentId + ", departmentName=" + departmentName + ", email=" + email + '}';
+    }
+    
+    
 }
+
