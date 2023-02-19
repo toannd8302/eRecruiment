@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -34,16 +35,22 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Id
     @Column(name = "Post_id")
     private String postId;
+    
     @Column(name = "Descriptions")
     private String descriptions;
+    
     @Column(name = "Type_of_work")
     private boolean typeOfWork;
+    
     @Column(nullable=true, name = "Experience_requirement")
     private Integer exprienceRequirement;
+    
     @Column(name = "Locations")
     private String locations;
+    
     @Column(name = "Welfare")
     private String welfare;
+    
     @Column(nullable=true, name = "Salary")
     private Integer salary;
     
@@ -58,13 +65,29 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Column(name = "Approved_status")
     private boolean ApprovedStatus;
     
+    @Column(name = "Level")
+    private String level;
+    
     @ManyToOne
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
     @OneToMany (mappedBy = "jobPoting", fetch = FetchType.EAGER)
     private Set<round> rounds;
+    
+    @OneToMany(mappedBy = "jobPosting")
+    private Set<jobApplication> jobApplications;
 
+    
+    
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+    
     public String getPostId() {
         return postId;
     }
@@ -163,6 +186,14 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
 
     public void setRounds(Set<round> rounds) {
         this.rounds = rounds;
+    }
+
+    public Set<jobApplication> getJobApplications() {
+        return jobApplications;
+    }
+
+    public void setJobApplications(Set<jobApplication> jobApplications) {
+        this.jobApplications = jobApplications;
     }
 
     @Override

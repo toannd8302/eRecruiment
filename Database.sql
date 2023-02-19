@@ -4,10 +4,10 @@ GO
 DROP DATABASE HRManagement
 GO
 
-CREATE DATABASE HRManagement
+CREATE DATABASE helloooo
 GO
 
-USE HRManagement
+USE helloooo
 GO
 
 
@@ -18,7 +18,9 @@ CREATE TABLE Candidates
 	Given_Name nvarchar(max) NULL,
 	Family_Name nvarchar(max) NULL,
 	Email nvarchar(max) NULL,
+	DOB date NULL,
 	Phone nvarchar(max) NULL,
+	Address nvarchar(max) NULL,
 	Avatar nvarchar(max) NULL,
 	Role nvarchar(20) NULL,
 	Job_Name nvarchar(max) NULL,
@@ -45,7 +47,7 @@ CREATE TABLE Employees
 
 CREATE TABLE Departments
 (
-	Department_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Department_id nvarchar(36) NOT NULL PRIMARY KEY,
 	DepartmentName nvarchar(max) NULL,
 	Email nvarchar(max) NULL,
 )
@@ -53,15 +55,15 @@ GO
 
 CREATE TABLE Job_positions
 (
-	Job_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Job_id nvarchar(36) NOT NULL PRIMARY KEY,
 	JobName nvarchar(max) NULL,
-	Department_id nvarchar(6) NOT NULL,
+	Department_id nvarchar(36) NOT NULL,
 )
 GO
 
 CREATE TABLE Job_postings
 (
-	Post_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Post_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Descriptions nvarchar(max) NULL,
 	Type_of_work bit NULL,
 	Experience_requirement int NULL,
@@ -73,12 +75,12 @@ CREATE TABLE Job_postings
 	Approved_status bit NULL,
 	Level nvarchar(50) NULL,
 	Picture nvarchar(50) NULL,
-	Job_id nvarchar(6) NOT NULL,
+	Job_id nvarchar(36) NOT NULL,
 )
 
 Create TABLE Job_Applications
 (
-	Application_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Application_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Created_time date NOT NULL,
 	CV nvarchar(max) NOT NULL,
 	CV_status nvarchar(20) NULL,
@@ -86,13 +88,13 @@ Create TABLE Job_Applications
 	Application_status nvarchar(20) NULL,
 	Introduction nvarchar (max) NULL,
 	Candidate_id nvarchar(30) NOT NULL,
-	Post_id nvarchar(6) NOT NULL,
+	Post_id nvarchar(36) NOT NULL,
 )
 
 
 CREATE TABLE Schedules
 (
-	Schedule_id nvarchar(20) NOT NULL PRIMARY KEY,
+	Schedule_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Schedule_date date NOT NULL,
 	Schedule_time time NOT NULL,
 	Location nvarchar(max) NOT NULL,
@@ -105,7 +107,7 @@ CREATE TABLE Interviewer_Reasons
 (
 	Reason_content nvarchar(max) NULL,
 	File_path nvarchar(max) NULL,
-	Schedule_id nvarchar(20) NOT NULL,
+	Schedule_id nvarchar(36) NOT NULL,
 	Employee_id nvarchar(30) NOT NULL,
 	CONSTRAINT PKReasons PRIMARY KEY (Schedule_id,Employee_id),
 )
@@ -118,22 +120,22 @@ CREATE TABLE Skills
 
 CREATE TABLE Rounds
 (
-	Round_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Round_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Round_number int NULL,
 	Content nvarchar(max) NULL,
-	Post_id nvarchar(6) NOT NULL,
+	Post_id nvarchar(36) NOT NULL,
 )
 
 
 CREATE TABLE Reports
 (
-	Report_id nvarchar(6) NOT NULL PRIMARY KEY,
+	Report_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Created_time date NOT NULL,
 	Content nvarchar(max) NOT NULL,
 	Point float NOT NULL,
 	Employee_id  nvarchar(30) NOT NULL,
-	Application_id nvarchar(6) NOT NULL,
-	Schedule_id nvarchar(20) NOT NULL,
+	Application_id nvarchar(36) NOT NULL,
+	Schedule_id nvarchar(36) NOT NULL,
 )
 
 CREATE TABLE Candidate_Skills
@@ -152,7 +154,7 @@ CREATE TABLE Employee_Skills
 
 CREATE TABLE Job_Positions_Skills
 (
-	Job_id nvarchar(6) NOT NULL,
+	Job_id nvarchar(36) NOT NULL,
 	Skill_id int NOT NULL,
 	CONSTRAINT PKJob_Positions_Skills PRIMARY KEY (Job_id,Skill_id),
 )
@@ -161,21 +163,21 @@ CREATE TABLE Job_application_Schedule
 (
 	Reason_content nvarchar(max) NULL,
 	File_path nvarchar(max) NULL,
-	Application_id nvarchar(6) NOT NULL,
-	Schedule_id nvarchar(20) NOT NULL,
+	Application_id nvarchar(36) NOT NULL,
+	Schedule_id nvarchar(36) NOT NULL,
 	CONSTRAINT PKJob_application_Schedule PRIMARY KEY (Application_id,Schedule_id),
 )
 
 
 --Insert Candidate
-INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name,  Email, Phone, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0001', N'Luong Nhu H', N'Nhu H', N'Luong', N'LuongH@gmail.com', NULL, NULL, N'candidate', NULL, NULL, 0)
-INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, Phone, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0002', N'Tran Van C', N'Van C', N'Tran', N'TranC@gmail.com', NULL, NULL, N'candidate', NULL, NULL, 0)
-INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, Phone, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0003', N'Nguyen Thi D', N'Thi D', N'Nguyen', N'NguyenD@gmail.com', NULL, NULL, N'candidate', NULL, NULL, 0)
-INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, Phone, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0004', N'Truong Van A', N'Van A', N'Truong', N'TruongA@gmail.com', NULL, NULL, N'candidate', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name,  Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
+	   VALUES(N'CA0001', N'Luong Nhu H', N'Nhu H', N'Luong', N'LuongH@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
+	   VALUES(N'CA0002', N'Tran Van C', N'Van C', N'Tran', N'TranC@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
+	   VALUES(N'CA0003', N'Nguyen Thi D', N'Thi D', N'Nguyen', N'NguyenD@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
+	   VALUES(N'CA0004', N'Truong Van A', N'Van A', N'Truong', N'TruongA@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
 
 
 --Insert Interviewer
@@ -218,17 +220,17 @@ INSERT Job_positions(Job_id, JobName, Department_id)
 
 --Insert Job_postings (4-5)
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
-	VALUES(N'P0001', N'YRGLM Vietnam is a company established December 2013 in HCMC, owned by YRGLM Inc. in Japan. YRGLM Inc provide Marketing Platform Business with that have NO 1 Market share in Japan. With data and technology, we will support marketing activities by companies around the world and become a company that creates happiness for sellers and buyers.',
-	'1', N'Q.4', N'15 annual days leave, 13th bonus salary, Personal insurance for 2+ years staff, Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-24', N'2023-1-15','0',N'Mid', Null, 'J0001' )
+	VALUES(N'P0001', N'Participate in the software design phase;Analyze software functions as required by management or departments;Building and designing databases according to designs on SQL Server, programming Store procedures',
+	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-24', N'2023-1-15','0',N'Mid', Null, 'J0001' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
-	'0', N'Q.3',N'Tet gift / birthday gift, Sports activities (badminton,foofball,billiards etc.,), Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15','1', N'Architect', Null, 'J0002' )
+	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15','1', N'Architect', Null, 'J0002' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0003', N'Segmed�s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
-	'1', N'Q.2',N'Annual voluntary health insurance, Social insurance, Yearly company trip','2000', N'2023-2-4', N'2023-3-31','1', N'Junior', Null,'J0003' )
+	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-2-4', N'2023-3-31','1', N'Junior', Null,'J0003' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0004', N'Analyzing and developing web applications and web services. Working with other developers to build applications with ReactJS/NextJS/AngularJS and Restful API. Work as part of a team to meet demanding project requirements. Write clean, modular, robust code to implement the desired requirements with little or no supervision. Work with the QA team to triage and fix bugs with rapid turnaround perform a technical.', 
-	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months, All insurances according to Vietnamese Labor law','3000', N'2021-12-22', N'2022-3-24','0', N'Senior', Null,'J0004' )
+	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months;All insurances according to Vietnamese Labor law','3000', N'2021-12-22', N'2022-3-24','0', N'Senior', Null,'J0004' )
 
 
 

@@ -6,10 +6,19 @@
 package com.codeweb.pojos;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,31 +31,84 @@ public class candidate implements Serializable{
     @Id
     @Column(name = "Candidate_id")
     private String id;
+    
     @Column(name = "FullName")
     private String name;
+    
     @Column(name = "Given_Name")
     private String given_name;
+    
     @Column(name = "Family_Name")
     private String family_name;
+    
     @Column(name = "Email")
     private String email;
+    
+    @Column(name = "DOB")
+    @Temporal(TemporalType.DATE)
+    private Date dob;
+    
     @Column(name = "Phone")
     private String phone;
+    
+    @Column(name = "Address")
+    private String address;
+    
     @Column(name = "Avatar")
     private String picture;
+    
     @Column(name = "Role")
     private String role;
+    
     @Column(name = "Job_Name")
     private String jobName;
-    @Column(name = "Skill")
-    private String skill;
+    
     @Column(nullable=true, name = "Experience")
     private Integer experience;
+    
     @Column(name = "Blocked_status")
     private boolean status;
 
+    @ManyToMany(mappedBy = "candidates", fetch = FetchType.EAGER)
+    private Set<skill>skills;
+    
+    @OneToMany(mappedBy = "candidate")
+    private Set<jobApplication> jobApplications;
+
     
     
+    
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    public Set<skill> getSkills() {
+        return skills;
+    }
+
+    public Set<jobApplication> getJobApplications() {
+        return jobApplications;
+    }
+
+    public void setJobApplications(Set<jobApplication> jobApplications) {
+        this.jobApplications = jobApplications;
+    }
+    
+    public void setSkills(Set<skill> skills) {
+        this.skills = skills;
+    }
     
     public String getGiven_name() {
         return given_name;
@@ -120,14 +182,6 @@ public class candidate implements Serializable{
         this.jobName = jobName;
     }
 
-    public String getSkill() {
-        return skill;
-    }
-
-    public void setSkill(String skill) {
-        this.skill = skill;
-    }
-
     public int getExperience() {
         if(experience == null)
             return 0;
@@ -144,5 +198,10 @@ public class candidate implements Serializable{
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "candidate{" + "id=" + id + ", name=" + name + ", email=" + email + ", picture=" + picture + ", role=" + role + '}';
     }
 }

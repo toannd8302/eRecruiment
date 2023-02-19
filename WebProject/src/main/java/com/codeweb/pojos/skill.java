@@ -43,7 +43,24 @@ public class skill implements Serializable{
             inverseJoinColumns = { @JoinColumn(name = "Job_id") }
     )
     private Set<jobPosition> jobPositions;
+    
+    @ManyToMany
+    @JoinTable(
+            name = "Candidate_Skills",
+            joinColumns = { @JoinColumn(name = "Skill_id") },
+            inverseJoinColumns = { @JoinColumn(name = "Candidate_id") }
+    )
+    private Set<candidate> candidates;
 
+    
+    public Set<candidate> getCandidates() {
+        return candidates;
+    }
+
+    public void setCandidates(Set<candidate> candidates) {
+        this.candidates = candidates;
+    }
+    
     public int getSkillId() {
         return skillId;
     }
