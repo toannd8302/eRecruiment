@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\resources",
+    "\\src\\main\\webapp",
+    "\\src\\main\\webapp\\WEB-INF",
+    "\\src\\main\\webapp\\WEB-INF\\layout"
+  ],
+  "SelectedNode": "\\src\\main\\webapp\\WEB-INF\\tiles.xml",
+  "PreviewInSolutionExplorer": false
+}
