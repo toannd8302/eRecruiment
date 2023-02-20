@@ -25,5 +25,12 @@ and open the template in the editor.
         <put-attribute name="title" value="Post Detail"/>
         <put-attribute name="content" value="/WEB-INF/jsp/postDetail.jsp" />
     </definition>
-    
+    <definition name="apply-job" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/jobApplication.jsp" />
+    </definition>
+    <definition name="account-information" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/account.jsp" />
+    </definition>
 </tiles-definitions>

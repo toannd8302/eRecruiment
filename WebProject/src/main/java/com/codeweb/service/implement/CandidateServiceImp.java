@@ -84,4 +84,9 @@ public class CandidateServiceImp implements CandidateService {
         candidate user = new Gson().fromJson(response, candidate.class);
         return user;
     }
+
+    @Override
+    public candidate getCandidateById_2(String id) {
+        return this.candidateRepository.getCandidateById_2(id);
+    }
 }

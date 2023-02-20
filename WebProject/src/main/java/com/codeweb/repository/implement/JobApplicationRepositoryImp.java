@@ -1,19 +1,20 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.codeweb.repository.implement;
 
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.JobApplicationRepository;
+import com.codeweb.service.CandidateService;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.CriteriaUpdate;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import org.hibernate.Criteria;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -22,59 +23,47 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author toan0
+ * @author KHOA
+ */
+// Data Access Layer
+/*
+  - Chịu trách nhiệm cho việc truy cập và xử lý dữ liệu. 
+  - Trong tầng này, các đối tượng được tạo ra để kết nối đến cơ sở dữ liệu và thực hiện các thao 
+         tác CRUD (Create, Read, Update, Delete) trên các đối tượng dữ liệu       
  */
 @Repository
 @Transactional
 public class JobApplicationRepositoryImp implements JobApplicationRepository {
 
     @Autowired
-    LocalSessionFactoryBean sessionFactory;
+    private LocalSessionFactoryBean sessionFactory;
 
-    //Find ALL JOBAPPLICATION
+    @Autowired
+    private CandidateService candidateService;
+
     @Override
-    public List<jobApplication> viewAllJobApplication() {
-        Session session = sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<jobApplication> query = builder.createQuery(jobApplication.class);
-        Root root = query.from(jobApplication.class);
-        query = query.select(root);
-
-        Query q = session.createQuery(query);
-        return q.getResultList();
-    }
-
-    //Find by JobApplicationID
-    @Override
-    public List<jobApplication> findJobApplicationById(String id) {
-        Session session = sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<jobApplication> query = builder.createQuery(jobApplication.class);
-        Root root = query.from(jobApplication.class);
-
-        if (!id.isEmpty() && id != null) {
-            Predicate p = builder.like(root.get("applicationId").as(String.class), 
-                    String.format("%%%s%%", id));
-            query = query.where(p);
+    public boolean addOrUpdate(jobApplication jobApplication) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.save(jobApplication);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== ADD JOB APPLICATION ERROR ==" + e.getMessage());
+            e.printStackTrace();
         }
+        return false;
+    }
+
+    @Override
+    public List<jobApplication> jobApplicationList() {
+
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobApplication> query = builder.createQuery(jobApplication.class);
+        Root<jobApplication> root = query.from(jobApplication.class);
+
         Query q = session.createQuery(query);
         return q.getResultList();
     }
-    @Override
-    public int editJobApplication(String id){
-        Session session = sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaUpdate<jobApplication> update =  builder.createCriteriaUpdate(jobApplication.class);
-        Root<jobApplication> root = update.from(jobApplication.class);
-        
-        update.set(root.get("cv"), "CV");
-        
-        update.where(builder.equal(root.get("applicationId").as(String.class), 
-                String.format("%%%s%%", id)));
-        
-        int q = session.createQuery(update).executeUpdate();
-        return q;
-    }
-    
 
 }

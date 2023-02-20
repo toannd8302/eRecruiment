@@ -41,5 +41,4 @@ public class HomeController {
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
         return "homePage";
     }
-    
 }

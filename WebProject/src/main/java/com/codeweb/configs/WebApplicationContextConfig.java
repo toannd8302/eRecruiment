@@ -5,6 +5,8 @@
  */
 package com.codeweb.configs;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -43,6 +45,8 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
                 .addResourceLocations("/resources/css/");
         registry.addResourceHandler("/icons/**")
                 .addResourceLocations("/resources/icons/");
+        registry.addResourceHandler("/bootstrap/**")
+                .addResourceLocations("/resources/bootstrap/");
     }
 
     //cau hinh view resolver
@@ -63,5 +67,17 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
         resolver.setDefaultEncoding("UTF-8");
 
         return resolver;
+    }
+    
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "dd9f1tyca",
+                "api_key", "148271595886971",
+                "api_secret", "Y7Eb9gQZq7mstYAtb28G-GQFBl8",
+                "secure", true
+        ));
+
+        return c;
     }
 }

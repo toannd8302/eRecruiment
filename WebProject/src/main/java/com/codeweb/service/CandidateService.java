@@ -16,4 +16,5 @@ public interface CandidateService {
     candidate getCandidateByCode(String code);
     boolean addOrUpdate(candidate candidate);
     List<candidate> getAll();
+     candidate getCandidateById_2(String id);
 }

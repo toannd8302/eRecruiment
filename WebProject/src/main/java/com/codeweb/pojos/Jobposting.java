@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -34,19 +35,25 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Id
     @Column(name = "Post_id")
     private String postId;
+    
     @Column(name = "Descriptions")
     private String descriptions;
+    
     @Column(name = "Type_of_work")
     private boolean typeOfWork;
-    @Column(nullable = true, name = "Experience_requirement")
+    
+    @Column(nullable=true, name = "Experience_requirement")
     private Integer exprienceRequirement;
+    
     @Column(name = "Locations")
     private String locations;
+    
     @Column(name = "Welfare")
     private String welfare;
-    @Column(nullable = true, name = "Salary")
+    
+    @Column(nullable=true, name = "Salary")
     private Integer salary;
-
+    
     @Column(name = "Posting_time")
     @Temporal(TemporalType.DATE)
     private Date PostingTime;
@@ -54,20 +61,33 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Column(name = "Expired_time")
     @Temporal(TemporalType.DATE)
     private Date ExpiredTime;
-
+    
     @Column(name = "Approved_status")
     private boolean ApprovedStatus;
-
+    
+    @Column(name = "Level")
+    private String level;
+    
     @ManyToOne
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
-
-    @OneToMany(mappedBy = "jobPoting", fetch = FetchType.EAGER)
+    
+    @OneToMany (mappedBy = "jobPoting", fetch = FetchType.EAGER)
     private Set<round> rounds;
-
+    
     @OneToMany(mappedBy = "jobPosting")
     private Set<jobApplication> jobApplications;
 
+    
+    
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+    
     public String getPostId() {
         return postId;
     }
@@ -93,9 +113,8 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     }
 
     public int getExprienceRequirement() {
-        if (exprienceRequirement == null) {
+        if(exprienceRequirement == null)
             return 0;
-        }
         return exprienceRequirement;
     }
 
@@ -120,9 +139,8 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     }
 
     public int getSalary() {
-        if (salary == null) {
+        if(salary == null)
             return 0;
-        }
         return salary;
     }
 
@@ -183,6 +201,5 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
         return "jobPosting{" + "postId=" + postId + ", descriptions=" + descriptions + ", typeOfWork=" + typeOfWork + ", exprienceRequirement=" + exprienceRequirement + ", locations=" + locations + ", welfare=" + welfare + ", salary=" + salary + ", PostingTime=" + PostingTime + ", ExpiredTime=" + ExpiredTime + ", ApprovedStatus=" + ApprovedStatus + '}';
     }
 
+    
 }
-
-

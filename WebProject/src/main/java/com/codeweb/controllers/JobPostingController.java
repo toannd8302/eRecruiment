@@ -10,9 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -25,10 +27,12 @@ public class JobPostingController {
     private JobPostingService jobPostingService;
     
     @GetMapping("/post-detail/{postID}")
-    public String detailpage(Model model,
+    public ModelAndView detailpage(Model model,
             @PathVariable(value = "postID") String postID,
             HttpSession session){
-        model.addAttribute("post",this.jobPostingService.getPostByID(postID));
-        return "post-detail-page";
+        ModelAndView mdv = new  ModelAndView();
+        mdv.setViewName("post-detail-page");
+        mdv.addObject("jobPosting",this.jobPostingService.getPostByID(postID));
+        return mdv;
     }
 }

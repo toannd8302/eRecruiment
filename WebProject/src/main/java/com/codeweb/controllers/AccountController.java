@@ -16,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,6 +41,8 @@ public class AccountController {
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
     }
     
+
+   
     @RequestMapping("/LoginController")
     public String login(Model model,
             @RequestParam(value = "code") String code,
@@ -55,4 +59,8 @@ public class AccountController {
         return "redirect:/";
     }
     
+    @GetMapping("/account")
+    public String account(Model model, HttpSession session){
+        return "account-information";
+    }
 }
