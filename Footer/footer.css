@@ -1,39 +1,37 @@
-/* CSS for Footer */
-.footer {
-    max-width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 200px;
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.footer ul {
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* CSS for footer */
+#footer {
+    margin-top: 4rem;
+    background-color: #161718;
+}
+
+#footer .row {
+    margin-left: 20rem;
+}
+
+#footer ul {
     list-style: none;
+    font-size: 2rem;
+    padding: 0%;
 
 }
 
-.footer ul a {
-    text-decoration: none;
-    color: aqua;
-}
-
-.footer ul a:hover {
-    color: crimson;
-}
-
-.footer h4 {
+#footer h1 {
+    font-weight: bold;
     color: white;
+    margin-top: 2rem;
 }
 
-.footer .Help {
-    padding-bottom: 17px;
-}
-
-.footer .Social {
-    margin-top: 20px;
-}
-
-.footer .Social a {
-    font-size: 20px;
+#footer ul li a {
+    text-decoration: none;
+    color: crimson;
 }
