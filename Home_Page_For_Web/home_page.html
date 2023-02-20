@@ -5,176 +5,112 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="home_page.css">
+    <!-- Font here -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark-Multi-Column-icons.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Search-Form-.css">
-    <link rel="stylesheet" href="assets/css/Projects-Grid-Horizontal-images.css">
 
+    <!-- Bootstrap here -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <!-- Header here -->
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
-    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark d-flex justify-content-xxl-center" id="mainNav" style="display: flex;height: 127px;width: 100%px;">
-        <div class="container"><img width="100" height="80" style="padding-bottom: 0px;width: 180px;height: 140px;" src="https://raw.githubusercontent.com/Toannd832/eRecruiment/Thang/View-Applications/img/MonkeTech_Logo_PNG.png"><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse text-center justify-content-center justify-content-lg-center" id="navbarResponsive" style="margin-right: 385px;width: 1112.47px;">
-                <ul class="navbar-nav ms-auto text-uppercase" style="margin-left: 4.375px;margin-right: -201px;">
-                    <li class="nav-item"><a class="nav-link" href="#page-top">Home</a></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#introduce">About</a></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">jobs by title</a>
-                        <div class="dropdown-menu" style="width: 167.5px;margin: 0px 0px 0px;"><a class="dropdown-item" href="#" style="color: var(--bs-navbar-active-color);background: #343a40;padding: 10px 16px;width: 200px;">jobs by salary</a><a class="dropdown-item" href="#" style="background: #343a40;color: var(--bs-navbar-active-color);width: 200px;">jobs by location</a></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="text-start d-flex flex-grow-0 align-items-center align-self-center" style="width: 302.525px;height: 91px;margin: 2px;padding: 0px;margin-left: 11px;margin-right: 17px;"><img class="rounded-circle" src="data:image/jpeg;base64,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" style="width: 70px;height: 70px;">
-                <div class="dropdown" style="color: var(--bs-navbar-brand-color);"><a class="dropdown-toggle fs-4" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="margin-left: 20px;color: var(--bs-navbar-brand-color);">My account</a>
-                    <div class="dropdown-menu fs-5" style="width: 235.5px;margin: 0px 0px 0px;margin-left: 23px;padding: 0px;"><a class="dropdown-item" href="#" style="background: #343a40;color: var(--bs-navbar-brand-color);padding-top: 10px;padding-bottom: 10px;">My Profile</a><a class="dropdown-item" href="#" style="background: #343a40;color: var(--bs-navbar-brand-color);padding-top: 10px;padding-bottom: 10px;">View My Applications</a><a class="dropdown-item" href="#" style="background: #343a40;color: var(--bs-navbar-brand-color);padding-top: 10px;padding-bottom: 10px;">Log Out</a></div>
-                </div>
-            </div>
+
+<body>
+    <div id="banner">
+
+        <div id="search-box">
+            <h1>Welcome to our company</h1>
+            <h1>Find your dream job</h1>
+            <input type="text" placeholder="I'm looking for..." width="10rem" height="20rem">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-    </nav>
+    </div>
 
 
 
-    <!-- Banner here -->
 
-    <header class="masthead" style="background-image: url('assets/img/header-bg.jpg');width: 1600px;">
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in"><span style="font-family: Acme, sans-serif;">Welcome To Our Company!</span></div>
-                <div class="intro-heading text-uppercase" style="font-family: 'Kaushan Script', serif;"><span>Find your dream job</span></div>
-                <form class="search-form">
-                    <div class="input-group" style="height: 69px;"><span class="input-group-text" style="width: 51.8625px;height: 60px;"><i class="fa fa-search"></i></span><input class="form-control" type="text" placeholder="I am looking for..." style="height: 60px;width: 172.99px;padding: 6px 12px;"><button class="btn btn-light" type="button" style="background: var(--bs-btn-hover-border-color);height: 60px;">Search </button></div>
-                </form>
-            </div>
+    <div id="introduce">
+        <div id="intro-head">
+            <h1>find your job and come to us</h1>
+            <p class="text-muted">A wise man know where he belongs to</p>
         </div>
-    </header>
-
-
-<!-- Body here -->
-    <section id="introduce" style="width: 100%;">
-        <div class="container">
+        <div id="intro-body">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading" style="background: var(--bs-navbar-color);font-family: Montserrat, sans-serif;">find your job and come to us</h2>
-                    <h3 class="text-muted section-subheading">A wise man know where he belongs to</h3>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa-regular fa-stack-1x fa-heart"></i></span>
-                    
-                    <h4 class="section-heading">SUITABLE JOBS</h4>
-                    <p class="text-muted">Find a job that suitable to your passion and inclination.</p>
-                </div>
-                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa-sharp fa-stack-1x fa-solid fa-laptop"></i></span>
-                    <h4 class="section-heading">DEVELOPER'S WORLD</h4>
-                    <p class="text-muted">As a technology, we are seeking passionate developers and give them the best environment for them to work and become the best of version of themselves.</p>
-                </div>
-                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa-solid fa-stack-1x fa-hand-holding-dollar"></i></span>
-                    <h4 class="section-heading">GOOD WELFARE</h4>
-                    <p class="text-muted">If you work for us, you will&nbsp; not suffer any losses. You will enjoy the best perks and benefits we have for you.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="hot-jobs" style="margin-top: -150px;background: #ffffff;width: 1600px;">
-        <div class="container" style="margin-right: 160px;">
-            <h1 class="text-center" style="color: var(--bs-red);margin-bottom: 50px;">TODAY HOT JOBS</h1>
-        </div>
-        <ul style="list-style: none;">
-            <li class="d-flex justify-content-between" style="border-style: solid;padding: 36px;width: 1123.4px;margin: 1px;margin-left: 200px;border-radius: 21px;background: #def4ea;margin-bottom: 40px;margin-right: 0px;">
-                <div class="d-flex"><img style="height: 173px;width: 168px;border-radius: 15px;" src="https://dotnet.microsoft.com/static/images/redesign/social/square.png">
-                    <div style="margin-left: 40px;">
-                        <h1>Lập trình viên .Net</h1>
-                        <p class="fs-4 fw-bold" style="margin-bottom: 0px;">Công ty phần mềm&nbsp; Monke Tech</p>
-                        <p class="fs-5" style="margin-bottom: 0px;">TP.Hô Chí Minh</p>
-                        <p class="fs-5" style="margin-bottom: 0px;">1000$-2000$</p>
-                        <p class="fs-5">Lập trình viên</p>
+                <div class="col-sm-4">
+                    <div class="intro-info">
+                        <i class="fa-regular fa-heart"></i>
+                        <h1>SUITABLE JOBS</h1>
+                        <p class="text-muted">Find a job that suitable to your passion and inclination.</p>
                     </div>
                 </div>
-                <div style="margin-top: 65px;">
-                    <p class="fs-5">Ngày đăng: 18/2/2023</p>
-                    <p class="fs-5">Ngày hết hạn: 18/2/2023</p><button class="btn btn-primary" type="button" style="color: var(--bs-btn-disabled-color);background: var(--bs-cyan);">Lưu tin</button>
-                </div>
-            </li>
-            <li class="d-flex justify-content-between" style="border-style: solid;padding: 36px;width: 1123.4px;margin: 1px;margin-left: 200px;border-radius: 21px;background: #def4ea;margin-right: 0px;margin-bottom: 40px;">
-                <div class="d-flex"><img style="height: 173px;width: 168px;border-radius: 15px;" src="https://dotnet.microsoft.com/static/images/redesign/social/square.png">
-                    <div style="margin-left: 40px;">
-                        <h1>Lập trình viên .Net</h1>
-                        <p class="fs-4 fw-bold" style="margin-bottom: 0px;">Công ty phần mềm&nbsp; Monke Tech</p>
-                        <p class="fs-5" style="margin-bottom: 0px;">TP.Hô Chí Minh</p>
-                        <p class="fs-5" style="margin-bottom: 0px;">1000$-2000$</p>
-                        <p class="fs-5">Lập trình viên</p>
+                <div class="col-sm-4">
+                    <div class="intro-info">
+                        <i class="fa-sharp fa-solid fa-laptop"></i>
+                        <h1>DEVELOPER'S WORLD</h1>
+                        <p class="text-muted">As a technology company, we are seeking passionate developers and give
+                            them the best
+                            environment for them to work and become the best of version of themselves.</p>
                     </div>
                 </div>
-                <div style="margin-top: 108px;">
-                    <p class="fs-5">Ngày đăng: 18/2/2023</p><button class="btn btn-primary" type="button" style="color: var(--bs-btn-disabled-color);background: var(--bs-cyan);">Lưu tin</button>
-                </div>
-            </li>
-        </ul>
-    </section>
-    <footer class="text-white bg-dark" style="height: 365.2px;width: 1600px;">
-        <div class="container py-4 py-lg-5">
-            <div class="row justify-content-center">
-                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
-                    <h3 class="fs-6 text-white">Services</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Web design</a></li>
-                        <li><a class="link-light" href="#">Development</a></li>
-                        <li><a class="link-light" href="#">Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
-                    <h3 class="fs-6 text-white">About</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Company</a></li>
-                        <li><a class="link-light" href="#">Team</a></li>
-                        <li><a class="link-light" href="#">Legacy</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
-                    <h3 class="fs-6 text-white">Careers</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Job openings</a></li>
-                        <li><a class="link-light" href="#">Employee success</a></li>
-                        <li><a class="link-light" href="#">Benefits</a></li>
-                    </ul>
+                <div class="col-sm-4">
+                    <div class="intro-info">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <h1>GOOD WELFARE</h1>
+                        <p class="text-muted">If you work for us, you will&nbsp; not suffer any losses. You will enjoy
+                            the best
+                            perks and benefits we have for you.</p>
+
+                    </div>
                 </div>
             </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 Brand</p>
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook">
-                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
-                        </svg></li>
-                    <li class="list-inline-item"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-twitter">
-                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
-                        </svg></li>
-                    <li class="list-inline-item"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram">
-                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
-                        </svg></li>
-                </ul>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- Hot job here -->
+    <div id="hot-jobs">
+        <h1>Today Hot Jobs</h1>
+        <div id="job-posting">
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="imgage">
+                        <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="job-intro">
+                        <h1><a href="#">Lập trình viên .Net</a></h1>
+                        <h3>Công ty phần mềm Monke Tech</h3>
+                        <p>Địa điểm: TP.Hồ Chí Minh</p>
+                        <p>Mức lương: 1000$-2000$</p>
+                        <p>Cấp bậc: nhân viên</p>
+                        <p>Yêu cầu: .Net, C#</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Ngày đăng: 20/02/2023</h2>
+                    <h2>Ngày hết hạn:30/04/2023</h2>
+                    <button class="apply-btn"><a href="#">Ứng tuyển ngay</a></button>
+                    <button class="save-btn">Lưu tin</button>
+                </div>
             </div>
         </div>
-    </footer>
-    
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/agency.js"></script>
+    </div>
+
 </body>
 
 </html>
