@@ -1,0 +1,192 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 9, 2023, 8:01:52 PM
+    Author     : KHOA
+*/
+
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: #343747;
+}
+
+#header {
+    background-color: #1a1c28;
+    height: 150px;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    height: 150px;
+    line-height: 150px;
+}
+
+
+/* CSS for Logo */
+
+#logo img {
+    width: 180px;
+    height: 150px;
+}
+
+
+/* CSS for main menu */
+nav #main-menu {
+    display: flex;
+    list-style: none;
+    font-size: 20px;
+    position: relative;
+}
+
+nav #main-menu li:hover {
+    border-bottom: 3px solid red;
+    background-color: #343747;
+}
+
+nav #main-menu li a {
+    text-decoration: none;
+    padding: 0px 20px;
+    /* margin-top: 30px; */
+    display: block;
+    color: white;
+    margin-right: 100px;
+}
+
+
+/* CSS for sub-menu*/
+#main-menu li>.sub-menu {
+    display: none;
+    position: absolute;
+}
+
+#main-menu .sub-menu ul {
+    list-style: none;
+    height: 100px;
+}
+
+#main-menu li:hover .sub-menu {
+    display: block;
+}
+
+#main-menu .sub-menu ul li {
+    background-color: #1a1c28;
+    height: 100px;
+}
+
+#main-menu .sub-menu ul li:hover {
+    background-color: #343747;
+}
+
+
+/* CSS for search box */
+#search {
+    margin-top: 50px;
+    display: flex;
+    height: 40px;
+
+}
+
+#search input {
+    border-radius: 5px;
+}
+
+#search button {
+    border-radius: 5px;
+    margin-left: 5px;
+    background-color: rgb(197, 32, 32);
+}
+
+#search button:hover {
+    background-color: rgb(216, 112, 112);
+}
+
+/*
+*/
+
+#account{
+    margin-right: 10px;
+}
+#account a{
+    text-decoration: none;
+    color: black;
+}
+#account button{
+    padding: 9px 25px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+#account button:hover{
+    background-color: rgb(153, 153, 153);
+}
+#account button a:hover{
+    color: white;
+}
+
+/**/
+
+#login-account {
+    display: flex;
+}
+
+#login-account img {
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 40px;
+
+}
+
+#login-account a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 30px;
+    margin-left: 20px;
+    padding-bottom: 30px;
+    color: white;
+}
+
+#account-menu>.sub-menu {
+    display: none;
+    /* position: absolute; */
+    list-style: none;
+    font-size: 20px;
+    margin-top: 0%;
+
+}
+
+#account-menu:hover .sub-menu {
+    display: block;
+
+}
+
+#account-menu .sub-menu li {
+    background-color: #1a1c28;
+    color: white;
+    padding: 10px;
+    height: 120px;
+}
+
+#account-menu .sub-menu li:hover {
+    border-bottom: 3px solid red;
+    background-color: #343747;
+}
+
+#account-menu .sub-menu ul {
+    height: 80px;
+}
+

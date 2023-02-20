@@ -1,0 +1,268 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 17, 2023, 10:12:15 AM
+    Author     : KHOA
+*/
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: #343747;
+}
+
+#job-detail-head {
+    background-color: white;
+    width: 85%;
+    margin-left: 10%;
+    padding: 2rem;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#job-head #job-logo img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+#job-head {
+    display: flex;
+}
+
+#general-info {
+    margin-top: 10px;
+}
+
+#general-info h2,
+p {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+#general-info p i {
+    margin-right: 5px;
+}
+
+#job-detail-head #apply-buton button:first-child {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #00b14f;
+    border: 3px solid #00b14f;
+    margin-right: 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+#job-detail-head #apply-buton button:last-child {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 3px solid #00b14f;
+    margin-right: 1rem;
+    color: #00b14f;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+
+#job-detail-head #apply-buton button a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#job-detail-head #apply-buton button i:first-child {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-right: 1rem;
+}
+
+#job-detail-head #apply-buton button i:last-child {
+    font-size: 2rem;
+    color: #00b14f;
+    margin-right: 1rem;
+}
+
+
+
+
+/* CSS for recruit detail  */
+
+#job-detail-body {
+    background-color: white;
+    width: 85%;
+    margin-left: 10%;
+    padding: 2rem;
+    margin-top: 3%;
+}
+
+#job-detail-body #job-general-info {
+    margin-top: 10px;
+    background-color: #d4f2e1;
+    padding: 2rem;
+}
+
+#job-detail-body #job-general-info h1 {
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+#job-detail-body #job-general-info .general-info-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+}
+
+#job-detail-body #job-general-info .general-info-list li {
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgb(244, 131, 131);
+}
+
+#job-detail-body #job-general-info .general-info-list li p {
+    color: initial;
+    font-weight: normal;
+}
+
+#job-detail-body #job-general-info .general-info-list i {
+    margin-right: 1rem;
+    font-size: 2rem;
+    margin-top: 2rem;
+    display: inline-block;
+}
+
+#job-detail-body #job-general-info .general-info-list p {
+    margin-left: 3.5rem;
+}
+
+
+
+/* CSS for Job Location */
+#job-detail-body #job-location {
+    background-color: #d4f2e1;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+#job-detail-body #job-location h1 {
+    text-decoration: underline;
+}
+
+
+/* CSS for Job Describe */
+#job-detail-body #job-describe {
+    background-color: #d4f2e1;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+
+/* CSS for Job Require */
+#job-detail-body #job-require {
+    background-color: #d4f2e1;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+
+/* CSS for Job Welfare */
+#job-detail-body #job-welfare {
+    background-color: #d4f2e1;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+#job-detail-body .info-list {
+    list-style-type: none;
+    padding: 0%;
+    font-size: 1.5rem;
+}
+
+#job-detail-body .info-list li {
+    margin: 1rem;
+}
+
+#job-detail-body .info-list li::before {
+    content: "\2013";
+    /* Unicode character for an en dash */
+    margin-right: 5px;
+}
+
+
+
+
+/* CSS for Job Apply */
+
+#job-detail-body #job-apply {
+    background-color: #d4f2e1;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+#job-detail-body #job-apply p a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #00b14f;
+}
+
+/* #job-detail-body #job-apply button{
+    padding: 9px 25px;
+    background-color: #00b14f;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #00b14f;
+    font-weight: bold;
+} */
+
+#job-detail-body #job-apply p,
+button {
+    margin: 0.5rem;
+}
+
+#job-detail-body #job-apply button a {
+    text-decoration: none;
+    color: white;
+
+}
+
+
+#job-detail-body .apply-button {
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #00b14f;
+    border: 3px solid #00b14f;
+    margin-right: 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#job-detail-body .save-job-button {
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 3px solid #00b14f;
+    margin-right: 1rem;
+    color: #00b14f;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
