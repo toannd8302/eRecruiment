@@ -75,14 +75,12 @@ public class JobApplicationController {
         return "homePage";
     }
 
-    @GetMapping("/job/application/viewMyJob/{ID}")
-    public String viewMyJobApplication(Model model,@PathVariable(value = "ID")String canId) {
-
-        List<candidate> list = this.candidateService.getCandidateById(canId);
-        candidate candidate = list.get(0);
-       
-        model.addAttribute("User", candidate);
-        return "viewJobApplication";
+    @GetMapping("/job/viewMyJob")
+    public String viewMyJobApplication(Model model,
+            HttpSession session) {
+        candidate candidate = (candidate) session.getAttribute("user");
+        model.addAttribute("JobApplications", candidate.getJobApplications());
+        return "view-JobApplication";
     }
 
 }

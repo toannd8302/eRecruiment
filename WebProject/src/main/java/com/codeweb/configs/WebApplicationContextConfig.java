@@ -41,12 +41,10 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**")
-                .addResourceLocations("/resources/css/");
+//        registry.addResourceHandler("/css/**")
+//                .addResourceLocations("/resources/css/");
         registry.addResourceHandler("/icons/**")
                 .addResourceLocations("/resources/icons/");
-        registry.addResourceHandler("/bootstrap/**")
-                .addResourceLocations("/resources/bootstrap/");
     }
 
     //cau hinh view resolver

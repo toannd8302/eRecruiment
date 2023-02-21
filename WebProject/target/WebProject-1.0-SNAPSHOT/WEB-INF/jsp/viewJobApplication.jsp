@@ -4,15 +4,42 @@
     Author     : toan0
 --%>
 
-<%@page import="java.util.List"%>
-<%@page import="java.util.TreeSet"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Set"%>
-<%@page import="com.codeweb.pojos.jobApplication"%>
-<%@page import="com.codeweb.pojos.candidate"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+
+
+
+
+
+<c:forEach var="jobApplication" items="${JobApplications}">
+    Job Name: ${jobApplication.jobPosting.jobPosition.jobName}
+    Apply Date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/>
+    <%--In lịch ngay đây, thêm pojo schedule, 1 job application có nhiều schedule--%>
+    <c:forEach var="schedule" items="${jobApplication.getSchedule()}">
+        Schedule date: ${schedule.getScheduleDate()}
+    </c:forEach>
+</c:forEach>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ViewJobApplication Page</title>
@@ -61,13 +88,5 @@
             </tbody>
         </table>
 
-
-
-
-
-
-
-
-
     </body>
-</html>
+</html>-->

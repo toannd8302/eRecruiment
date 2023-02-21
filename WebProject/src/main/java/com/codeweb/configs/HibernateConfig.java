@@ -37,9 +37,9 @@ public class HibernateConfig {
     public DataSource dataSource() {
         DriverManagerDataSource d = new DriverManagerDataSource();
         d.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        d.setUrl("jdbc:sqlserver://localhost:1433;databaseName=HRManagement");
+        d.setUrl("jdbc:sqlserver://localhost:1433;databaseName=helloooo");
         d.setUsername("sa");
-        d.setPassword("123456");
+        d.setPassword("12345");
         return d;
     }
 

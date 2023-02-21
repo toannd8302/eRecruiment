@@ -4,6 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!--<!DOCTYPE tiles-definitions PUBLIC "-//Apache 
+Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">-->
 
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache
             Software Foundation//DTD Tiles Configuration 3.0//EN"
@@ -32,5 +35,9 @@ and open the template in the editor.
     <definition name="account-information" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>
         <put-attribute name="content" value="/WEB-INF/jsp/account.jsp" />
+    </definition>
+    <definition name="view-JobApplication" extends="baseLayout">
+        <put-attribute name="title" value="View Job Application"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/viewJobApplication.jsp" />
     </definition>
 </tiles-definitions>

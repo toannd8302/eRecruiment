@@ -10,259 +10,284 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 
+<!-- Font here -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
-<link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-<link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-<link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-<link rel="stylesheet" href="assets/css/Footer-Dark-Multi-Column-icons.css">
-<link rel="stylesheet" href="assets/css/Pretty-Search-Form-.css">
-<link rel="stylesheet" href="assets/css/Projects-Grid-Horizontal-images.css">
 
-<link rel="stylesheet" type="text/css"
+<!-- Bootstrap here -->
+<!--<link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
 
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
-    <section id="introduce" style="width: 100%;">
-        <div class="container">
+
+
+<style>
+    html {
+        font-size: 62.5%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+
+
+    #banner {
+        width: 100%;
+        height: 100%;
+        padding-top: 50%;
+        background: url('https://github.com/Toannd832/eRecruiment/blob/Thang/Home_Page_For_Web/img/banner.jpg?raw=true') top center / cover no-repeat;
+    }
+
+    #banner #search-box {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        /* bottom: 50%; */
+        margin-top: 18rem;
+    }
+
+    #banner #search-box h1:first-child {
+        font-family: Acme, sans-serif;
+        font-size: 6rem;
+        margin-bottom: 3rem;
+    }
+
+    #banner #search-box h1 {
+        font-family: 'Kaushan Script', serif;
+        text-transform: uppercase;
+        font-size: 6rem;
+        margin-bottom: 3rem;
+    }
+
+
+    #banner #search-box input {
+        padding: 1rem 20rem;
+        border-radius: 1rem;
+    }
+
+    #banner #search-box button {
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+    }
+
+
+
+
+    /* CSS for introduce */
+    #introduce {
+        /* height: 1000px; */
+        margin-top: 5rem;
+        margin-bottom: 10rem;
+    }
+
+    #introduce #intro-head {
+        margin-bottom: 5rem;
+        text-align: center;
+        font-size: 1.5rem;
+
+    }
+
+    #introduce #intro-head h1 {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        font-size: 4rem;
+    }
+
+    #introduce #intro-body {
+        margin-left: 5rem;
+        margin-right: 5rem;
+        font-size: 1.5rem;
+    }
+
+    #introduce #intro-body .intro-info {
+        width: 40rem;
+        text-align: center;
+    }
+
+    #intro-body .intro-info i {
+        margin-bottom: 2rem;
+        font-size: 5rem;
+        padding: 4rem;
+        border-radius: 50%;
+        background-color: rgb(238, 190, 58);
+    }
+
+
+    /* CSS for hot-jobs */
+
+    #hot-jobs {
+        margin-bottom: 5rem;
+    }
+
+    #hot-jobs>h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: rgb(171, 36, 36);
+    }
+
+    #job-posting {
+        border: 1px solid black;
+        width: 80%;
+        padding: 3rem;
+        border-radius: 2rem;
+        background-color: rgb(170, 215, 248);
+        margin-left: 15rem;
+        margin-bottom: 2rem;
+    }
+
+    #hot-jobs #job-posting img {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 1rem;
+        margin-right: 5rem;
+        margin-top: 1rem;
+    }
+
+
+    #hot-jobs #job-posting .col-sm-6 a {
+        text-decoration: none;
+        color: rgb(225, 97, 225);
+    }
+
+    #hot-jobs #job-posting .col-sm-6 {
+        font-size: 2rem;
+    }
+
+    #hot-jobs #job-posting .col-sm-4 {
+        margin-top: 12rem;
+        font-size: 1.2rem;
+    }
+
+    #hot-jobs #job-posting .col-sm-4 h2 {
+        margin-bottom: 1rem;
+    }
+
+
+    #hot-jobs #job-posting .col-sm-4 button {
+        padding: 0.5rem 5rem;
+        font-size: 1.5rem;
+        border-radius: 1rem;
+    }
+
+    #hot-jobs #job-posting .col-sm-4 .apply-btn a {
+        text-decoration: none;
+        color: black;
+    }
+
+</style>
+
+<!-- Header here -->
+
+<body>
+    <div id="banner">
+
+        <div id="search-box">
+            <h1>Welcome to our company</h1>
+            <h1>Find your dream job</h1>
+            <input type="text" placeholder="I'm looking for..." width="10rem" height="20rem">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
+
+
+
+
+    <div id="introduce">
+        <div id="intro-head">
+            <h1>find your job and come to us</h1>
+            <p class="text-muted">A wise man know where he belongs to</p>
+        </div>
+        <div id="intro-body">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading" style="background: var(--bs-navbar-color);font-family: Montserrat, sans-serif;">find your job and come to us</h2>
-                    <h3 class="text-muted section-subheading">A wise man know where he belongs to</h3>
+                <div class="col-sm-4">
+                    <div class="intro-info">
+                        <i class="fa-regular fa-heart"></i>
+                        <h1>SUITABLE JOBS</h1>
+                        <p class="text-muted">Find a job that suitable to your passion and inclination.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa-regular fa-stack-1x fa-heart"></i></span>
+                <div class="col-sm-4">
+                    <div class="intro-info">
+                        <i class="fa-sharp fa-solid fa-laptop"></i>
+                        <h1>DEVELOPER'S WORLD</h1>
+                        <p class="text-muted">As a technology company, we are seeking passionate developers and give
+                            them the best
+                            environment for them to work and become the best of version of themselves.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="intro-info">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <h1>GOOD WELFARE</h1>
+                        <p class="text-muted">If you work for us, you will&nbsp; not suffer any losses. You will enjoy
+                            the best
+                            perks and benefits we have for you.</p>
 
-                    <h4 class="section-heading">SUITABLE JOBS</h4>
-                    <p class="text-muted">Find a job that suitable to your passion and inclination.</p>
-                </div>
-                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa-sharp fa-stack-1x fa-solid fa-laptop"></i></span>
-                    <h4 class="section-heading">DEVELOPER'S WORLD</h4>
-                    <p class="text-muted">As a technology, we are seeking passionate developers and give them the best environment for them to work and become the best of version of themselves.</p>
-                </div>
-                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa-solid fa-stack-1x fa-hand-holding-dollar"></i></span>
-                    <h4 class="section-heading">GOOD WELFARE</h4>
-                    <p class="text-muted">If you work for us, you will&nbsp; not suffer any losses. You will enjoy the best perks and benefits we have for you.</p>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </section>
-    <section id="hot-jobs" style="margin-top: -150px;background: #ffffff;width: 100%;">
-        <div class="container" style="margin-right: 160px;">
-            <h1 class="text-center" style="color: var(--bs-red);margin-bottom: 50px;">TODAY HOT JOBS</h1>
-        </div>
+    </div>
+
+
+
+
+    <!-- Hot job here -->
+    <div id="hot-jobs">
+        <h1>Today Hot Jobs</h1>
         <c:forEach var="item" items="${list}">
-            <ul style="list-style: none;">
-                <li class="d-flex justify-content-between" style="border-style: solid;padding: 36px;width: 1123.4px;margin: 1px;border-radius: 21px;background: #def4ea; margin-bottom: 40px;">
-                    <div class="d-flex"><img style="height: 173px;width: 168px;border-radius: 15px;" src="https://dotnet.microsoft.com/static/images/redesign/social/square.png">
-                        <div style="margin-left: 40px;">
-                            <a href="<c:url value="/post-detail/${item.postId}"/>">
-                                <h1>${item.jobPosition.jobName}</h1>
-                            </a>
-                            <p class="fs-4 fw-bold" style="margin-bottom: 0px;">Công ty phần mềm&nbsp; Monke Tech</p>
-                            <p class="fs-5" style="margin-bottom: 0px;">TP.Hô Chí Minh</p>
-                            <p class="fs-5" style="margin-bottom: 0px;">1000$-2000$</p>
-                            <p class="fs-5">Lập trình viên</p>
+            <div id="job-posting">
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="imgage">
+                            <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="">
                         </div>
                     </div>
-                    <div style="margin-top: 65px;">
-                        <p class="fs-5">Ngày đăng: 18/2/2023</p>
-                        <p class="fs-5">Ngày hết hạn: 18/2/2023</p><button class="btn btn-primary" type="button" style="color: var(--bs-btn-disabled-color);background: var(--bs-cyan);">Lưu tin</button>
+                    <div class="col-sm-6">
+                        <div class="job-intro">
+                            <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
+                            <h3>Công ty phần mềm Monke Tech</h3>
+                            <p>Địa điểm: ${item.locations}</p>
+                            <p>Mức lương: ${item.salary}</p>
+                            <p>Cấp bậc: nhân viên</p>
+                            <p>Yêu cầu: </p>
+                            <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
+                            
+                            ${skill.skillName}
+                            </c:forEach>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                    <div class="col-sm-4">
+                        <h2>Ngày đăng: 20/02/2023</h2>
+                        <h2>Ngày hết hạn:30/04/2023</h2>
+                        <button class="apply-btn"><a href="#">Ứng tuyển ngay</a></button>
+                        <button class="save-btn">Lưu tin</button>
+                    </div>
+                </div>
+            </div>
         </c:forEach>
-    </section>
+    </div>
+
 </body>
 
 
-
-
-<form:form action="">
-    
-</form:form>
-
-
-
-
-<!--<style>
-    #hot-job{
-        text-align: center;
-        color: orangered;
-        margin-top: 30px;
-        font-size: 20px;
-
-    }
-
-    #job-list {
-        /* border: solid 2px rgb(0, 0, 0); */
-        max-width: 600px;
-        font-size: 20px;
-        background-color: white;
-        margin-left: 30%;
-        margin-top: 3%;
-        border-radius: 5px;
-    }
-    #job-list ul{
-        list-style: none;
-        padding-left: 0;
-    } 
-    #job-list #job-list-head{
-        padding: 5px;
-        display: flex;
-        margin-top: 10px;
-    }
-    #job-list #job-list-head .job-title a{
-        text-decoration: none;
-        color: rgb(160, 26, 26);
-    }
-    #job-list #job-list-head img{
-        height: 80px;
-        width: 80px;
-        margin-right: 20px;
-    }
-    #job-list #job-list-body ul {
-        /* border-top: 2px solid red; */
-        display: flex;
-        list-style: none;
-        padding: 10px 25px;
-
-    }
-
-    #job-list #job-list-body ul li {
-        margin-right: 10px;
-        border: 2px solid rgb(15, 133, 180);
-        border-radius: 15px;
-        padding: 5px; 
-    }
-
-
-    #job-list #job-list-foot{
-        border-bottom: 30px solid #343747;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-    }
-    #job-list #job-list-foot ul {
-        border-top: 2px solid red;
-        display: flex;
-        list-style: none;
-        margin-top: 5px;
-        padding: 10px;
-    }
-    #job-list #job-list-foot ul li{
-        margin-right: 10px;
-        border: 2px solid rgb(21, 204, 73);
-        border-radius: 15px;
-        padding: 10px;
-    }
-    #job-list #job-list-foot ul i{
-        color: black;
-    }
-    .search-box {
-        margin-left:500px;
-        width: 50%;
-        padding-top: 20px;
-        display: flex;
-
-    }
-
-    .search-form input {
-        height:50px;
-        width: 200px;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    .search-button button {
-        height:50px;
-        width: 100px;
-        border-radius: 5px;
-        margin-left: 5px;
-        background-color: rgb(197, 32, 32);
-        text-align: center;
-    }
-
-
-
-    .search-button button:hover {
-        background-color: rgb(216, 112, 112);
-    }
-</style>-->
-
-
-<!--<form action="">
-    <div class="banner">
-        <div class="body">
-            <div id="banner">
-                <div class="search-box">
-                    <div class="search-form">
-                        <input class="fa-solid fa-magnifying-glass" type="text" name="keyword" placeholder="Keyword skill, job name" size="80">
-                    </div>
-                    <div class="search-button">
-                        <button class="fa-solid fa-magnifying-glass" type="submit">Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-
-<div id="hot-job">
-    <h1><i class="fa-brands fa-hotjar"></i>Hot Jobs</h1>
-</div>
-
-<div id="job-list">
-    <ul>
-        <c:forEach var="item" items="${list}">
-            <li>
-                <div id="job-list-head">
-                    <div id="job-pic">
-                        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/front-end-developer-4830933-4041850.png" alt="Front-end">
-                    </div>
-                    <div class="job-title">
-                        <a href="<c:url value="/post-detail/${item.postId}"/>">
-                            <h1>${item.jobPosition.jobName}</h1>
-                        </a>
-                        <h1>Công ty phần mềm Monke Tech</h1>
-                    </div>
-                </div>
-                <div id="job-list-body">
-                    <ul>
-
-                        <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
-                            <li>
-                                ${skill.skillName}
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
-                <div id="job-list-foot">
-                    <ul>
-                        <li><i class="fa-solid fa-dollar-sign"></i>${item.salary}</li>
-                        <li><i class="fa-solid fa-location-dot"></i>${item.locations}</li>
-                        <li><i class="fa-solid fa-clock"></i>Time</li>
-                        <li><c:if test="${item.typeOfWork == true}">
-                                Type Of Work: At Office
-                            </c:if> 
-                            <c:if test="${item.typeOfWork == false}">
-                                Type Of Work: Hybrid
-                            </c:if> 
-                        </li>
-                    </ul>
-                </div>
-            </c:forEach>
-        </li>
-    </ul>
-</div>-->
 
 
 
