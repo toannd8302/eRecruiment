@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -74,13 +75,13 @@ public class JobApplicationController {
         return "homePage";
     }
 
-    @GetMapping("/job/application/viewMyJob")
-    public String viewMyJobApplication(Model model, HttpSession session) {
-        candidate candidate = this.candidateService.getCandidateByCode("CA0001");
-        Set<jobApplication> List = candidate.getJobApplications();
-        session.setAttribute("User", candidate);
-        session.setAttribute("LOAP", List);
+    @GetMapping("/job/application/viewMyJob/{ID}")
+    public String viewMyJobApplication(Model model,@PathVariable(value = "ID")String canId) {
 
+        List<candidate> list = this.candidateService.getCandidateById(canId);
+        candidate candidate = list.get(0);
+       
+        model.addAttribute("User", candidate);
         return "viewJobApplication";
     }
 

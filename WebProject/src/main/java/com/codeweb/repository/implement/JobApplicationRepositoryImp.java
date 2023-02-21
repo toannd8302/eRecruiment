@@ -13,8 +13,6 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -61,7 +59,7 @@ public class JobApplicationRepositoryImp implements JobApplicationRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<jobApplication> query = builder.createQuery(jobApplication.class);
         Root<jobApplication> root = query.from(jobApplication.class);
-
+       
         Query q = session.createQuery(query);
         return q.getResultList();
     }
