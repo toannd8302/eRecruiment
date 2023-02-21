@@ -95,3 +95,16 @@ li {
 #my-account .dropdown-item:hover {
     background-color: #393a3a;
 }
+
+/* CSS for login link */
+#login{
+    margin-left: 10rem;
+    margin-top: 4rem;
+
+}
+
+#login a{
+    font-size: 2rem;
+    text-decoration: none;
+    color: rgb(125, 123, 123);
+}
