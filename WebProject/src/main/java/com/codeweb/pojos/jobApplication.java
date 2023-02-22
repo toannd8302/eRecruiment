@@ -5,13 +5,17 @@
  */
 package com.codeweb.pojos;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Entity
 @Table(name = "Job_Applications")
-public class jobApplication {
+public class jobApplication implements Serializable{
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
@@ -61,6 +65,17 @@ public class jobApplication {
 
     @Transient
     private MultipartFile file;
+    
+    @OneToMany(mappedBy = "jobApplication", fetch = FetchType.EAGER)
+    private Set<jobApplicationSchedule>jobApSche;
+
+    public Set<jobApplicationSchedule> getJobApSche() {
+        return jobApSche;
+    }
+
+    public void setJobApSche(Set<jobApplicationSchedule> jobApSche) {
+        this.jobApSche = jobApSche;
+    }
     
     public String getApplicationId() {
         return applicationId;
@@ -143,6 +158,8 @@ public class jobApplication {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
+
+    
 
     @Override
     public String toString() {

@@ -36,6 +36,7 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Column(name = "Post_id")
     private String postId;
     
+    
     @Column(name = "Descriptions")
     private String descriptions;
     

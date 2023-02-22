@@ -9,17 +9,12 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.jobApplication;
-import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.jobApplicationSchedule;
+import com.codeweb.pojos.schedule;
 import com.codeweb.service.CandidateService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +76,17 @@ public class JobApplicationController {
         candidate candidate = (candidate) session.getAttribute("user");
         model.addAttribute("JobApplications", candidate.getJobApplications());
         return "view-JobApplication";
+    }
+
+    @GetMapping("/job/view")
+    public String view(Model model) {
+
+        List<jobApplication> List = this.jobApplicationService.jobApplicationList();
+       jobApplication job = List.get(0);
+       model.addAttribute("list", List);
+        Set<jobApplicationSchedule> JAPS  = job.getJobApSche();
+        model.addAttribute("SSS", JAPS);
+        return "Test";
     }
 
 }

@@ -194,7 +194,7 @@
                     <c:if test="${sessionScope.user == null}">
                         <div class="col-sm-4">
                             <div id="login">
-                                <a id="login-btn" href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8084/WebProject/LoginController&response_type=code
+                                <a id="login-btn" href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8080/WebProject/LoginController&response_type=code
                                    &client_id=14093495895-chh4kno5un2kj4l9p5e2qh2a89h7tp3s.apps.googleusercontent.com&approval_prompt=force">Login</a>
                             </div> 
                         </div>
