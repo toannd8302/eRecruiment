@@ -5,8 +5,9 @@
 package com.codeweb.pojos;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
+import java.sql.Time;
+
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -27,6 +30,7 @@ public class schedule implements Serializable{
     @Column(name = "Schedule_id")
     private String scheduleId;   
     @Column(name = "Schedule_date")
+     @Temporal(TemporalType.DATE)
     private Date scheduleDate;
     @Column(name = "Schedule_time")
     private Time scheduleTime;
@@ -93,6 +97,11 @@ public class schedule implements Serializable{
 
     public void setjAS(Set<jobApplicationSchedule> jAS) {
         this.jAS = jAS;
+    }
+
+    @Override
+    public String toString() {
+        return "schedule{" + "scheduleId=" + scheduleId + ", scheduleDate=" + scheduleDate + ", scheduleTime=" + scheduleTime + ", location=" + location + ", typeOfInterview=" + typeOfInterview + ", status=" + status + ", jAS=" + jAS + '}';
     }
     
 }

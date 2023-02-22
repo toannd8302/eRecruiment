@@ -37,7 +37,7 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/account.jsp" />
     </definition>
     <definition name="view-JobApplication" extends="baseLayout">
-        <put-attribute name="title" value="View Job Application"/>
+        
         <put-attribute name="content" value="/WEB-INF/jsp/viewJobApplication.jsp" />
     </definition>
-</tiles-definitions>
+</tiles-definitions>    

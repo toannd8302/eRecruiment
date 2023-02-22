@@ -77,12 +77,12 @@ public class JobApplicationController {
         model.addAttribute("JobApplications", candidate.getJobApplications());
         return "view-JobApplication";
     }
-
+//THIS IS USING FOR TEST
     @GetMapping("/job/view")
     public String view(Model model) {
 
         List<jobApplication> List = this.jobApplicationService.jobApplicationList();
-       jobApplication job = List.get(0);
+       jobApplication job = List.get(1);
        model.addAttribute("list", List);
         Set<jobApplicationSchedule> JAPS  = job.getJobApSche();
         model.addAttribute("SSS", JAPS);
