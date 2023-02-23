@@ -1,312 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 html {
     font-size: 62.5%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 * {
     box-sizing: border-box;
+    padding: 0;
     margin: 0;
 }
 
-body {
-    background-color: #343747;
+
+.view-app-left{
+    float: left;
+    margin-top: 15rem;
+    width: 35%;
 }
 
-
-/*CSS for header  */
-#header {
-    background-color: #1a1c28;
-    height: 150px;
-    padding: 0;
-    position: relative;
-}
-
-#header nav {
-    display: flex;
-    justify-content: space-between;
-    justify-items: center;
-    height: 150px;
-    line-height: 150px;
-}
-
-
-/* CSS for Logo */
-
-#logo img {
-    width: 180px;
-    height: 150px;
-}
-
-
-/* CSS for main menu */
-nav #main-menu {
-    display: flex;
-    list-style: none;
-    font-size: 20px;
-    position: relative;
-}
-
-nav #main-menu li:hover {
-    border-bottom: 3px solid red;
-    background-color: #343747;
-}
-
-nav #main-menu li a {
+.view-app-left a{
+    font-size: 2rem;
+    margin-left: 5rem;
     text-decoration: none;
-    padding: 0px 20px;
-    /* margin-top: 30px; */
-    display: block;
-    color: white;
-    margin-right: 100px;
-}
-
-
-/* CSS for sub-menu*/
-#main-menu li>.sub-menu {
-    display: none;
-    position: absolute;
-}
-
-#main-menu .sub-menu ul {
-    list-style: none;
-    height: 100px;
-}
-
-#main-menu li:hover .sub-menu {
-    display: block;
-}
-
-#main-menu .sub-menu ul li {
-    background-color: #1a1c28;
-    height: 100px;
-}
-
-#main-menu .sub-menu ul li:hover {
-    background-color: #343747;
-}
-
-
-/* CSS for search box */
-#search {
-    margin-top: 50px;
-    display: flex;
-    height: 40px;
-
-}
-
-#search input {
-    border-radius: 5px;
-}
-
-#search button {
-    border-radius: 5px;
-    margin-left: 5px;
-    background-color: rgb(197, 32, 32);
-}
-
-#search button:hover {
-    background-color: rgb(216, 112, 112);
-}
-
-
-/* ////////////////////////////////// */
-/* CSS  for Login button*/
-
-#account {
-    margin-right: 10px;
-}
-
-#account a {
-    text-decoration: none;
-    color: black;
-}
-
-#account button {
-    padding: 9px 25px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 0%;
-
-}
-
-#account button:hover {
-    background-color: rgb(153, 153, 153);
-}
-
-#account button a:hover {
-    color: white;
-}
-
-
-
-#login-account {
-    display: flex;
-}
-
-#login-account img {
-    height: 60px;
-    border-radius: 50%;
-    margin-top: 40px;
-
-}
-
-#login-account a {
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 30px;
-    margin-left: 20px;
-    /* padding-bottom: 30px; */
-    color: white;
-}
-
-
-#account-menu>.sub-menu {
-    display: none;
-    /* position: absolute; */
-    list-style: none;
-    padding: 0%;
-    margin: 0%;
-
-}
-
-#account-menu:hover .sub-menu {
-    display: block;
-
-}
-
-#account-menu .sub-menu li {
-    background-color: #1a1c28;
-    color: white;
-    padding: 10px;
-    height: 120px;
-    /* align-items: center; */
-}
-
-#account-menu .sub-menu li a {
-    margin-bottom: 5rem;
-    display: inline;
-}
-
-#account-menu .sub-menu li:hover {
-    border-bottom: 3px solid red;
-    background-color: #343747;
-}
-
-#account-menu .sub-menu ul {
-    height: 80px;
-    list-style: none;
-    padding-left: 0%;
-}
-
-
-
-/* CSS for body */
-#body {
-    background-color: white;
-    width: 85%;
-    margin-left: 7.5%;
     padding: 2rem;
-    margin-top: 3%;
-}
-
-#job-applied-list table {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-#job-applied-list table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 2rem 5.5rem;
-    font-size: 1.5rem;
-}
-
-#job-applied-list th {
-    background-color: #e8e8e8;
-}
-
-#job-applied-list tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#job-applied-list .accept-btn {
-    padding: 1rem 2rem;
-}
-
-#job-applied-list .reject-btn {
-    padding: 1rem 2rem;
-}
-
-
-
-.pagination {
     display: inline-block;
 }
 
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    margin-top: 2rem;
-}
-
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
-}
-
-.pagination a:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.pagination a:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+.view-app-left i{
+    font-size: 3rem;
+    margin-right: 1.5rem;
 }
 
 
-
-
-/* CSS for footer */
-#footer {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 4rem;
-    background-color: #1a1c28;
-
+.view-app-right{
+    margin-bottom: 5rem;
+    
 }
 
-#footer ul {
-    list-style: none;
-    font-size: 2rem;
-    padding: 0%;
-
-}
-
-#footer h1 {
+#applied-list{
+     margin-top: 5rem;
     font-weight: bold;
-    color: white;
-    margin-top: 2rem;
+    font-size: 5rem;
 }
 
-#footer ul li {
-    margin: 1rem;
 
+.table {
+    width: 65% !important;
+    background-color: white;
+    float: right;
+    margin-top: 5rem;
 }
 
-#footer ul li a {
+
+.table thead>tr {
+    border: 1rem solid white;
+}
+
+.table tr th{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.table th,
+td {
+    color: black;
+    font-size: 1.3rem;
+}
+
+.table .row {
+    position: static;
+}
+
+.table .row p {
+    width: 3rem !important;
+}
+
+.detail-row {
+    border-bottom: 2px solid black;
+}
+
+.table button {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+}
+
+.detail-info a {
     text-decoration: none;
-    /* margin: 2rem; */
-    color: crimson;
+
 }
+
+.detail-info ul {
+    list-style: none;
+}
+
+.detail-info li {
+    font-size: 1.3rem;
+}
+
+
+.pagination{
+    margin-top: 2rem;
+    clear: both;
+    margin-left: 53rem;
+
+}
+
+.pagination li a{
+    font-size: 1.5rem;
+}
+
+
+
