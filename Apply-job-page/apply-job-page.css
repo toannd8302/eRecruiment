@@ -1,0 +1,92 @@
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+/* CSS for body */
+#apply-job-page {
+    background-color: white;
+    width: 80%;
+    margin-left: 15rem;
+}
+
+#job-detail-head {
+    background-color: rgb(255, 255, 255);
+    margin-left: 40rem;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+#job-logo img {
+    width: 15rem;
+    height: 15rem;
+}
+
+#general-info {
+    margin-top: 2rem;
+}
+
+#general-info h1 {
+    font-size: 3rem;
+}
+
+#general-info h2 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+
+#cv-info {
+    margin-top: 2rem;
+    width: 70%;
+    margin-left: 10rem;
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+}
+
+#cv-info span {
+    text-align: center;
+}
+
+#cv-info p {
+    font-size: 1.3rem;
+
+}
+
+#cv-info input {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#cv-info span {
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+#apply-cv a {
+    font-size: 1.5rem;
+}
+
+.mute-text {
+    color: gray;
+}
+
+
+#apply-reason {
+    margin-left: 14rem;
+}
+
+
+#send-cv-btn button {
+    margin-top: 2rem;
+    padding: 1rem 20rem;
+    margin-left: 20rem;
+    font-size: 1.3rem;
+}
