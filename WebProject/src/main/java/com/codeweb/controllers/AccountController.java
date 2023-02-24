@@ -15,9 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,19 +37,26 @@ public class AccountController {
     
     @Autowired
     private JobPostingService jobPostingService;
-            
+          
+    @Autowired
+    JavaMailSender mailSender;
+    
+    
     @ModelAttribute
     public void modelAttribute(Model model, 
             @RequestParam(required = false) Map<String,String> params) {
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
     }
     
+
+   
     @RequestMapping("/LoginController")
     public String login(Model model,
             @RequestParam(value = "code") String code,
             HttpSession session) throws IOException {
         candidate candidate = this.candidateService.getCandidateByCode(code);
         session.setAttribute("user", candidate);
+//        sendEmail("EMAIL GUI", "EMAIL NHAN", "Login", "Login Success in Web");
         return "redirect:/";
     }
     
@@ -53,11 +64,22 @@ public class AccountController {
     public String logout(Model model, HttpSession session){
         if(session!=null)
             session.invalidate();
+        
         return "redirect:/";
     }
     
     @GetMapping("/account")
     public String account(Model model, HttpSession session){
         return "account-information";
+    }
+    
+    public void sendEmail(String from, String to, String subject, String content){
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setFrom(from);
+        mailMessage.setTo(to);
+        mailMessage.setSubject(subject);
+        mailMessage.setText(content);
+        
+        mailSender.send(mailMessage);
     }
 }

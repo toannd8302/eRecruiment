@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface CandidateService {
     candidate getCandidateByCode(String code);
+    List<candidate> getCandidateById(String id);
     boolean addOrUpdate(candidate candidate);
     List<candidate> getAll();
+     candidate getCandidateById_2(String id);
 }

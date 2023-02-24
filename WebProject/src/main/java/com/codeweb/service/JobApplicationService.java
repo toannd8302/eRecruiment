@@ -6,6 +6,7 @@
 package com.codeweb.service;
 
 import com.codeweb.pojos.jobApplication;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,5 @@ import com.codeweb.pojos.jobApplication;
  */
 public interface JobApplicationService {
     boolean addOrUpdate(jobApplication jobApplication);
+    List<jobApplication>jobApplicationList();
 }

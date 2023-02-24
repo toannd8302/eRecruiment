@@ -61,4 +61,10 @@ public class CandidateRepositoryImp implements CandidateRepository{
         Query q = session.createQuery("FROM candidate");
         return q.getResultList();
     }
+
+    @Override
+    public candidate getCandidateById_2(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

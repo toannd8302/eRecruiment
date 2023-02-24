@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,11 @@ import org.springframework.stereotype.Service;
 /**
  *
  * @author KHOA
+ */
+//Business Logic Layer
+
+/*
+chịu trách nhiệm cho việc xử lý các nghiệp vụ của ứng dụng
  */
 @Service
 public class JobApplicationServiceImp implements JobApplicationService {
@@ -36,7 +42,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
         try {
             Map r = this.cloudinary.uploader().upload(jobApplication.getFile().getBytes(),
                     ObjectUtils.asMap("resource_type", "auto"));
-            
+
             jobApplication.setCv((String) r.get("secure_url"));
 
             long millis = System.currentTimeMillis();
@@ -54,6 +60,11 @@ public class JobApplicationServiceImp implements JobApplicationService {
             System.err.println("==CREATE APPLICATION==" + e.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public List<jobApplication> jobApplicationList() {
+           return this.jobApplicationRepository.jobApplicationList();
     }
 
 }

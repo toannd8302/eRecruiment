@@ -36,6 +36,7 @@ public class CandidateServiceImp implements CandidateService {
         try {
             String accessToken = getToken(code);
             user = getUserInfo(accessToken);
+            // Has problem
             List<candidate> users = this.candidateRepository.getCandidateById(user.getId());
             if(!users.isEmpty()){
                 user = users.get(0);
@@ -83,5 +84,15 @@ public class CandidateServiceImp implements CandidateService {
 
         candidate user = new Gson().fromJson(response, candidate.class);
         return user;
+    }
+
+    @Override
+    public candidate getCandidateById_2(String id) {
+        return this.candidateRepository.getCandidateById_2(id);
+    }
+
+    @Override
+    public List<candidate> getCandidateById(String id) {
+        return this.candidateRepository.getCandidateById(id);
     }
 }

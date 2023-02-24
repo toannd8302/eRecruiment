@@ -30,11 +30,12 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "Job_postings")
-public class jobPosting implements Serializable { //Giup dong bo tren moi truong internet(Server)
+public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup dong bo tren moi truong internet(Server)
 
     @Id
     @Column(name = "Post_id")
     private String postId;
+    
     
     @Column(name = "Descriptions")
     private String descriptions;
@@ -199,6 +200,11 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Override
     public String toString() {
         return "jobPosting{" + "postId=" + postId + ", descriptions=" + descriptions + ", typeOfWork=" + typeOfWork + ", exprienceRequirement=" + exprienceRequirement + ", locations=" + locations + ", welfare=" + welfare + ", salary=" + salary + ", PostingTime=" + PostingTime + ", ExpiredTime=" + ExpiredTime + ", ApprovedStatus=" + ApprovedStatus + '}';
+    }
+
+    @Override
+    public int compareTo(jobPosting o) {
+        return this.getPostId().compareTo(o.getPostId());
     }
 
     

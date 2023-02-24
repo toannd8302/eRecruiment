@@ -5,7 +5,10 @@
  */
 package com.codeweb.controllers;
 
+import com.codeweb.pojos.jobPosting;
 import com.codeweb.service.JobPostingService;
+import com.codeweb.service.implement.WishListImp;
+import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,4 +38,26 @@ public class JobPostingController {
         mdv.addObject("jobPosting",this.jobPostingService.getPostByID(postID));
         return mdv;
     }
+    
+    @Autowired
+    private WishListImp wishList; //ĐƯỢC TẠO TRONG SERVICE
+    @GetMapping("/post-detail/save/{postID}")
+    public String saveJob(HttpSession session,
+            @PathVariable(value = "postID") String postID) {
+            //NÊN HIỂN THI NAME LÊN URL THÌ TỐT HƠN
+           jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
+//           List<jobPosting>list = new ArrayList<>();
+//          list.add(jobPostingSave);
+//           session.setAttribute("List", list);
+
+           wishList.addToWishList(jobPostingSave);
+           //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
+        return "homePage";
+    }
+     @GetMapping("/post-detail/view")
+     public String viewWishList(Model model){
+         Set<jobPosting>wishlist = wishList.getWishList();
+         model.addAttribute("wishList", wishlist);
+         return "viewWishList";
+     }
 }

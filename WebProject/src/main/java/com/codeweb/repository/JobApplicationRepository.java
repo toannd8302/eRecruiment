@@ -6,6 +6,7 @@
 package com.codeweb.repository;
 
 import com.codeweb.pojos.jobApplication;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,5 @@ import com.codeweb.pojos.jobApplication;
  */
 public interface JobApplicationRepository {
     boolean addOrUpdate(jobApplication jobApplication);
+    List<jobApplication>jobApplicationList();
 }
