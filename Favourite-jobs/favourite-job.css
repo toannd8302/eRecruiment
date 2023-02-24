@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0%;
+    margin: 0%;
+}
+
+#header {
+    background-color: #161718;
+    width: 100%;
+    height: 10rem;
+    position: relative;
+}
+
+#logo img {
+    width: 15rem;
+    height: 12rem;
+}
+
+#main-info {
+    list-style: none;
+    font-size: 2rem;
+    margin-top: 4rem;
+    position: relative;
+}
+
+#main-info a {
+    text-decoration: none;
+    color: white;
+}
+
+#main-info .dropdown-menu {
+    padding: 0%;
+}
+
+#main-info .dropdown-item {
+    color: white;
+    background-color: #161718;
+    font-size: 2rem;
+
+}
+
+#main-info .dropdown-item:hover {
+    background-color: #393a3a;
+}
+
+#account {
+    margin-left: 10rem;
+    margin-top: 2.5rem;
+    position: relative;
+    height: 6.5rem;
+}
+
+#account img {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    margin-right: 3rem;
+}
+
+#account li {
+    font-size: 2rem;
+    list-style: none;
+}
+
+
+#account li a {
+    color: white;
+}
+
+#account ul {
+    padding-left: 0%;
+}
+
+#my-account {
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+#my-account .dropdown-menu {
+    padding: 0%;
+}
+
+#my-account .dropdown-item {
+    background-color: #161718;
+}
+
+#my-account .dropdown-item:hover {
+    background-color: #393a3a;
+}
+
+/* CSS for login link */
+#login {
+    margin-left: 10rem;
+    margin-top: 4rem;
+
+}
+
+#login a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: rgb(125, 123, 123);
+}
+
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+
+
+
+.view-favour-left{
+    float: left;
+    width: 35%;
+    margin-top: 15rem;
+}
+
+.view-favour-left a{
+    font-size: 2rem;
+    margin-left: 5rem;
+    text-decoration: none;
+    padding: 2rem;
+    display: inline-block;
+}
+
+.view-favour-left i{
+    font-size: 3rem;
+    margin-right: 1.5rem;
+}
+
+.view-favour-right{
+    float: right;
+    width: 65%;
+    margin-top: 5rem;
+}
+
+.view-favour-right h1{
+    font-size: 4rem;
+}
+
+.table{
+    margin-top: 3rem;
+
+}
+
+.table thead tr th{
+    font-size: 2rem;
+}
+
+.table tbody tr td{
+    font-size: 1.5rem;
+}
+
+.table tbody tr td button{
+    font-size: 1.5rem;
+}
+
+.dialog{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    width: 30%;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.5s;
+
+}
+
+
+.dialog:target{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.overlay{
+    background-color: aquamarine;
+}
+
+.dialog-body i{
+    padding: 3rem;
+    background-color: rgb(52, 153, 52);
+    border-radius: 50%;
+    margin-top: -50%;
+    font-size: 5rem;
+    width: 13rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.dialog-body button{
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.dialog-body button a{
+    text-decoration: none;
+    color: black;
+}
+

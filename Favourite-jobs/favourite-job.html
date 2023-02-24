@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <!-- CSS Here -->
+    <link rel="stylesheet" href="favourite-job.css">
+
+    <!-- Font here -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
+
+    <!-- Bootstrap here -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<!-- style="background-color: #161718;" -->
+<body>
+
+
+    <div class="container-fluid mt-3" style="margin-top: 0% !important; padding-left: 0%; padding-right: 0%;">
+        <div id="header">
+            <div class="row" style="margin: 0%;">
+                <div class="col-sm-3">
+                    <div id="logo">
+                        <a href="#"><img
+                                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Job-posting-content/img/MonkeTech_Logo_PNG.png?raw=true"
+                                alt="Monke Tech"></a>
+
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div id="header-info">
+                        <ul id="main-info">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <li><a href="#">Home</a></li>
+                                </div>
+                                <div class="col-sm">
+                                    <li><a href="#">About</a></li>
+                                </div>
+                                <div class="col-sm">
+                                    <li><a href="#">Contact</a></li>
+                                </div>
+
+                                <div class="col-sm">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-bs-toggle="dropdown">Jobs by title</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Jobs By Skill</a></li>
+                                            <li><a class="dropdown-item" href="#">Jobs By Salary</a></li>
+                                            <li><a class="dropdown-item" href="#">Job By Location</a></li>
+                                        </ul>
+                                    </li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-4">
+                    <div id="login">
+                        <a href="#">Login</a>
+                    </div>
+                </div> -->
+                <div class="col-sm-4">
+                    <div id="account">
+                        <div class="row">
+                            <div class="col-sm-2"><img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD-9sDGxPiE5pWJz2UUcUkaDUkla4oxkGWbw&usqp=CAU"
+                                    alt="Avatar"></div>
+                            <div class="col-sm-8">
+                                <div id="my-account">
+                                    <ul>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                                data-bs-toggle="dropdown">My Account</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                                <li><a class="dropdown-item" href="#">View My Applications</a></li>
+                                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Body here -->
+    <div class="view-favour-left">
+        <a href="#"><i class="fa-solid fa-paper-plane"></i>My Applications</a>
+        <br>
+        <a href="#"><i class="fa-solid fa-heart-circle-check"></i>Favourite Jobs</a>
+    </div>
+
+
+    <!-- <div class="sidebar">
+        <ul>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </div> -->
+
+    <div class="view-favour-right">
+        <h1>Favourite Jobs</h1>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Job Title</th>
+                    <th>Department</th>
+                    <th>Location</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>ReactJS Developer</td>
+                    <td>20/02/2023</td>
+                    <td>30/02/2023</td>
+                    <td>30/02/2023</td>
+                    <td><button class="btn btn-success detail-toggle">Apply Now</button></td>
+                    <td><button class="btn btn-danger detail-toggle">Unsave</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="dialog-btn" href="#my-dialog">Click me!</a>
+    
+    <div class="dialog overlay" id="my-dialog">
+        <div class="dialog-body">
+            <i class="modal-title fa-solid fa-check"></i>
+            <h2>Saved job successfully</h2>
+            <button><a href="#">OK</a></button>
+        </div>
+    </div>
+
+</body>
+
+</html>

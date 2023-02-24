@@ -1,0 +1,81 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    height: 80px;
+    /* position: fixed; */
+}
+
+.header nav li {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.header nav a:hover {
+    color: crimson;
+    transition: all 0.4s ease 0s;
+    font-size: 30px;
+}
+
+.header nav a {
+
+    color: aqua;
+}
+
+.header nav li i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header .logo a {
+    color: aqua;
+}
+
+
+
+/* CSS for .account */
+.header .account button {
+    border-radius: 5px;
+    background-color: black;
+
+}
+
+.header .account a {
+    color: aqua;
+    font-size: 20px;
+}
+
+.header .account a:hover {
+    color: crimson;
+    transition: all 0.4s ease 0s;
+    font-size: 30px;
+}
+
+.header .account i {
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.header .account ul{
+    list-style: none;
+    position: relative;
+    display: none;
+}
+
+.header .account img{
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

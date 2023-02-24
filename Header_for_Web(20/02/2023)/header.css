@@ -1,0 +1,341 @@
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    /* background-color: #343a40; */
+}
+
+#header #logo img {
+    width: 15rem;
+    height: 12rem;
+}
+
+#header nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #161718;
+    height: 10rem;
+    /* position: fixed; */
+    position: relative;
+}
+
+#header nav #header-info #main-info {
+    display: flex;
+    list-style: none;
+    margin-top: 3rem;
+    /* width: 20rem; */
+}
+
+#header nav #header-info #main-info li {
+    /* margin: 2rem; */
+    padding: 2rem;
+    font-size: 2.5rem;
+    list-style: none;
+    width: 18rem;
+
+}
+
+#header nav #header-info #main-info li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.header-sub-menu {
+    background-color: #161718;
+    border-bottom: 1px solid crimson;
+    position: absolute;
+    display: none;
+    top: 100%;
+}
+
+.header-sub-menu li:hover {
+    background-color: #474a4e;
+}
+
+.header-sub-menu ul {
+    padding-left: 0%;
+    text-align: center;
+}
+
+#main-info li:hover .header-sub-menu {
+    display: block;
+    color: red;
+}
+
+
+
+
+
+#header nav #account {
+    margin-left: 6rem;
+    display: flex;
+    margin-top: 2rem;
+    position: relative;
+    height: 8rem;
+}
+
+#header nav #account img {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    margin-right: 3rem;
+}
+
+#header nav #account h2,
+li {
+    font-size: 2.5rem;
+    color: white;
+    list-style: none;
+}
+
+#header nav #account ul {
+    padding-left: 0%;
+}
+
+#header nav #account li {
+    padding: 2rem;
+}
+
+#header nav #account li a {
+    text-decoration: none;
+    color: white;
+}
+
+#my-account .account-sub-menu {
+    background-color: #161718;
+    border-bottom: 1px solid crimson;
+    position: absolute;
+    display: none;
+    top: 100%;
+
+}
+
+#my-account li:hover .account-sub-menu {
+    display: block;
+
+}
+
+#my-account li:hover {
+    background-color: #474a4e;
+
+}
+
+
+
+
+/* CSS for banner */
+#banner {
+    width: 100%;
+    height: 100%;
+    padding-top: 50%;
+    background: url('img/banner.jpg') top center / cover no-repeat;
+}
+
+#banner #search-box {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    /* bottom: 50%; */
+    margin-top: 18rem;
+}
+
+#banner #search-box h1:first-child {
+    font-family: Acme, sans-serif;
+    font-size: 6rem;
+    margin-bottom: 3rem;
+}
+
+#banner #search-box h1 {
+    font-family: 'Kaushan Script', serif;
+    text-transform: uppercase;
+    font-size: 6rem;
+    margin-bottom: 3rem;
+}
+
+
+#banner #search-box input {
+    padding: 1rem 20rem;
+    border-radius: 1rem;
+}
+
+#banner #search-box button {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+}
+
+
+
+
+/* CSS for introduce */
+#introduce {
+    /* height: 1000px; */
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+
+#introduce #intro-head {
+    margin-bottom: 5rem;
+    text-align: center;
+
+}
+
+#introduce #intro-head h1 {
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+}
+
+#introduce #intro-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+#introduce #intro-body .intro-info {
+    width: 40rem;
+    text-align: center;
+}
+
+#intro-body .intro-info h4 {
+    font-size: 10rem;
+    font-weight: bold;
+}
+
+.text-muted {
+    color: grey;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+
+#introduce #intro-body .intro-info i {
+    margin-bottom: 2rem;
+    font-size: 5rem;
+    padding: 4rem;
+    border-radius: 50%;
+    background-color: rgb(238, 190, 58);
+}
+
+
+
+
+#hot-jobs>h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: rgb(171, 36, 36);
+}
+
+#hot-jobs #job-posting {
+    border: 1px solid black;
+    border-radius: 2rem;
+    width: 80%;
+    margin-left: 17rem;
+    background-color: rgb(203, 244, 230);
+}
+
+#hot-jobs #job-posting .posting-left {
+    display: flex;
+    font-size: 2rem;
+}
+
+#hot-jobs #job-posting .posting-left img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 1rem;
+    margin-right: 5rem;
+    margin-top: 2rem;
+}
+
+#hot-jobs #job-posting .posting-left .job-intro h1,
+h3,
+p {
+    margin: 2rem;
+}
+
+#hot-jobs #job-posting .posting-left .job-intro a {
+    text-decoration: none;
+    color: rgb(172, 51, 172);
+}
+
+#hot-jobs #job-posting .posting-left,
+.posting-right {
+    padding: 3rem;
+}
+
+#hot-jobs #job-posting {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10rem;
+}
+
+
+#hot-jobs #job-posting .posting-right {
+    margin-top: 20rem;
+    font-size: 1.2rem;
+}
+
+
+#hot-jobs #job-posting .posting-right .apply-btn a {
+    text-decoration: none;
+    color: black;
+}
+
+#hot-jobs #job-posting .posting-right h2,
+button {
+    margin: 1rem;
+}
+
+#hot-jobs #job-posting .posting-right button {
+    padding: 0.5rem 5rem;
+}
+
+
+
+/* CSS for footer */
+#footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+    background-color: #1a1c28;
+
+}
+
+#footer ul {
+    list-style: none;
+    font-size: 2rem;
+    padding: 0%;
+
+}
+
+#footer h1 {
+    font-weight: bold;
+    color: white;
+    margin-top: 2rem;
+}
+
+#footer ul li {
+    margin: 1rem;
+
+}
+
+#footer ul li a {
+    text-decoration: none;
+    /* margin: 2rem; */
+    color: crimson;
+}
