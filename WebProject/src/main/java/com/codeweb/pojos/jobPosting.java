@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 /**
  *
@@ -30,7 +29,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "Job_postings")
-public class jobPosting implements Serializable { //Giup dong bo tren moi truong internet(Server)
+public class jobPosting implements Serializable,Comparable<jobPosting> { //Giup dong bo tren moi truong internet(Server)
 
     @Id
     @Column(name = "Post_id")
@@ -200,6 +199,11 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     @Override
     public String toString() {
         return "jobPosting{" + "postId=" + postId + ", descriptions=" + descriptions + ", typeOfWork=" + typeOfWork + ", exprienceRequirement=" + exprienceRequirement + ", locations=" + locations + ", welfare=" + welfare + ", salary=" + salary + ", PostingTime=" + PostingTime + ", ExpiredTime=" + ExpiredTime + ", ApprovedStatus=" + ApprovedStatus + '}';
+    }
+
+    @Override
+    public int compareTo(jobPosting t) {
+        return this.getPostId().compareTo(t.getPostId());
     }
 
     

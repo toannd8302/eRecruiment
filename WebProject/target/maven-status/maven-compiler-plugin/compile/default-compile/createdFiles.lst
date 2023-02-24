@@ -22,6 +22,7 @@ com\codeweb\service\CandidateService.class
 com\codeweb\service\JobApplicationService.class
 com\codeweb\pojos\round.class
 com\codeweb\service\implement\JobPostingServiceImp.class
+com\codeweb\service\implement\WishList.class
 com\codeweb\configs\TilesConfig.class
 com\codeweb\configs\HibernateConfig.class
 com\codeweb\controllers\AccountController.class
