@@ -39,3 +39,9 @@ body{
 .content{
     background-color: whitesmoke;
 }
+.far{
+    color: rgb(83, 83, 84);
+    margin-left: 810px;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
