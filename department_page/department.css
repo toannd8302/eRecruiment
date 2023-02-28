@@ -1,0 +1,200 @@
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+.container-fluid {
+    padding: 0%;
+    margin: 0%;
+}
+
+#header {
+    background-color: #161718;
+    width: 100%;
+    height: 10rem;
+    position: fixed;
+}
+
+#logo img {
+    width: 15rem;
+    height: 12rem;
+}
+
+#main-info {
+    list-style: none;
+    font-size: 2rem;
+    margin-top: 4rem;
+    position: relative;
+}
+
+#main-info a {
+    text-decoration: none;
+    color: white;
+}
+
+#main-info .dropdown-menu {
+    padding: 0%;
+}
+
+#main-info .dropdown-item {
+    color: white;
+    background-color: #161718;
+}
+
+#main-info .dropdown-item:hover {
+    background-color: #393a3a;
+}
+
+#account {
+    margin-left: 10rem;
+    margin-top: 2.5rem;
+    position: relative;
+    height: 6.5rem;
+}
+
+#account img {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    margin-right: 3rem;
+}
+
+#account h2,
+li {
+    font-size: 2rem;
+    list-style: none;
+}
+
+#account li a {
+    color: white;
+}
+
+#account ul {
+    padding-left: 0%;
+}
+
+#my-account {
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+#my-account .dropdown-menu {
+    padding: 0%;
+}
+
+#my-account .dropdown-item {
+    background-color: #161718;
+}
+
+#my-account .dropdown-item:hover {
+    background-color: #393a3a;
+}
+
+/* CSS for login link */
+#login{
+    margin-left: 10rem;
+    margin-top: 4rem;
+
+}
+
+#login a{
+    font-size: 2rem;
+    text-decoration: none;
+    color: rgb(125, 123, 123);
+}
+
+
+.create-job-post-left{
+    left: 7%;
+    /* width: 30%; */
+    position: fixed;
+    margin-top: 15rem;
+    /* background-color: aquamarine; */
+}
+
+.create-job-post-left a{
+    text-decoration: none;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.create-job-post-left a:first-child{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.create-job-post-right{
+    float: right;
+    width: 70%;
+    border-left: 1px solid black;
+    /* margin-left: 2rem; */
+    padding-left: 2rem;
+    margin-top: 15rem;
+}
+
+.create-job-post-right h1{
+    font-weight: bold;
+    font-size: 3.5rem;
+}
+
+.create-job-post-right select{
+    font-size: 1.5rem;
+}
+
+.create-job-post-right input{
+    font-size: 1.5rem;
+}
+
+.create-job-post-right button{
+    margin-left: 10rem;
+    font-size: 1.8rem;
+    padding: 0.2rem 2rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+}
+
+
+#job-descript{
+    margin-top: 1.35rem;
+}
+
+/* CSS for footer */
+#footer {
+    margin-top: 4rem;
+    background-color: #161718;
+    /* position: static; */
+    clear: both;
+    width: 100%;
+    height: 10rem;
+
+}
+
+#footer .row {
+    margin-left: 20rem;
+}
+
+#footer ul {
+    list-style: none;
+    font-size: 2rem;
+    padding: 0%;
+
+}
+
+#footer h1 {
+    font-weight: bold;
+    color: white;
+    margin-top: 2rem;
+}
+
+#footer ul li a {
+    text-decoration: none;
+    color: crimson;
+}
