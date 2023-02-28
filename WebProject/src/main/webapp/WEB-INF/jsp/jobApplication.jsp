@@ -15,7 +15,7 @@
         <form:input type="text" id="introduction" path="introduction"/>
     </div>
     
-    <div>
+     <div>
         <label>File CV</label>
         <form:input type="file" id="file" path="file"/>
     </div>

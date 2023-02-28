@@ -11,8 +11,10 @@ com\codeweb\service\implement\JobApplicationServiceImp.class
 com\codeweb\repository\implement\JobApplicationRepositoryImp.class
 com\codeweb\repository\implement\JobPostingRepositoryImp.class
 com\codeweb\repository\JobApplicationRepository.class
+com\codeweb\repository\JobPositionRepository.class
 com\codeweb\service\JobPostingService.class
 com\codeweb\configs\DispatcherServletInitializer.class
+com\codeweb\controllers\DepartmentController.class
 com\codeweb\repository\JobPostingRepository.class
 com\codeweb\pojos\jobPosition.class
 com\codeweb\repository\implement\CandidateRepositoryImp.class
@@ -29,3 +31,5 @@ com\codeweb\controllers\AccountController.class
 com\codeweb\controllers\HomeController.class
 com\codeweb\pojos\skill.class
 com\codeweb\pojos\jobApplicationSchedule.class
+com\codeweb\repository\DepartmentRepository.class
+com\codeweb\service\JobPositionService.class

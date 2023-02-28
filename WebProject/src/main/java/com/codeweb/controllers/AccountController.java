@@ -52,7 +52,7 @@ public class AccountController {
             HttpSession session) throws IOException {
         candidate candidate = this.candidateService.getCandidateByCode(code);
         session.setAttribute("user", candidate);
-        sendEmail("toanndse161748@fpt.edu.vn", "toan03182@gmail.com", "Login", "Login Success in Web");
+       // sendEmail("toanndse161748@fpt.edu.vn", "toan03182@gmail.com", "Login", "Login Success in Web");
         return "redirect:/";
     }
 

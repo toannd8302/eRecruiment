@@ -47,7 +47,7 @@
                     <td><%= j.getJobPosition().getDepartment().getDepartmentName()%></td>
                     <td><%= j.getLocations()%></td>
                     <td><%= j.getSalary()%></td>
-                    <td><a href="<c:url value="/post-detail/delete"/>">Delete </a> </td>
+                    <td><a href="<c:url value="/post-detail/{postID}/delete"/>">Delete </a> </td>
                     
                 </tr>
 

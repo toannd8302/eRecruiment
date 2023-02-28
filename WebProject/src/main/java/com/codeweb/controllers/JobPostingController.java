@@ -8,6 +8,7 @@ package com.codeweb.controllers;
 import com.codeweb.pojos.jobPosting;
 import com.codeweb.service.JobPostingService;
 import com.codeweb.service.implement.WishList;
+import java.util.Iterator;
 
 import java.util.Set;
 
@@ -66,12 +67,20 @@ public class JobPostingController {
         return "viewWishList";
     }
 
-    @GetMapping("/post-detail/delete/{postID}")
+    @GetMapping("/post-detail/{id}/delete")
     public String deletePost(HttpSession session,
-            @PathVariable(value = "postID") String postID) {
-        
-        jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
-        wishList.removeJobPosting(jobPostingSave);
+            @PathVariable(value = "id") String id) {
+
+        Set<jobPosting> wishlist = wishList.getWishList();
+
+       Iterator<jobPosting> it = wishlist.iterator();
+       while(it.hasNext()){
+           
+            jobPosting jobPostingSave = this.jobPostingService.getPostByID(id);
+            wishList.removeJobPosting(jobPostingSave);
+       }
+	
+
         return "viewWishList";
 
     }

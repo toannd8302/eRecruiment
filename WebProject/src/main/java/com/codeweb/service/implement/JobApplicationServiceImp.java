@@ -64,7 +64,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
 
     @Override
     public List<jobApplication> jobApplicationList() {
-           return this.jobApplicationRepository.jobApplicationList();
+        return this.jobApplicationRepository.jobApplicationList();
     }
 
 }
