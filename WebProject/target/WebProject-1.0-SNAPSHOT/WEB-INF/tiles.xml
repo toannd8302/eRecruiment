@@ -18,7 +18,7 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
-        <put-attribute name="content" value="BASE"/>
+        <put-attribute name="content" value=""/>
     </definition>
     <definition name="homePage" extends="baseLayout">
         <put-attribute name="title" value="HomePage"/>
@@ -37,7 +37,6 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/account.jsp" />
     </definition>
     <definition name="view-JobApplication" extends="baseLayout">
-        
         <put-attribute name="content" value="/WEB-INF/jsp/viewJobApplication.jsp" />
     </definition>
     <definition name="viewWishList" extends="baseLayout">

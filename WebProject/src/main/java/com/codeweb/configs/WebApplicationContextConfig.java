@@ -5,8 +5,6 @@
  */
 package com.codeweb.configs;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 import java.util.Properties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -35,13 +33,13 @@ import org.springframework.web.servlet.view.JstlView;
     "com.codeweb.service"
 })
 
-public class WebApplicationContextConfig implements WebMvcConfigurer{
+public class WebApplicationContextConfig implements WebMvcConfigurer {
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-    
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry.addResourceHandler("/css/**")
@@ -52,16 +50,16 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
 
     //cau hinh view resolver
     @Bean
-    public InternalResourceViewResolver getInternalResourceViewResolver(){
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver resource = new InternalResourceViewResolver();
-        
+
         resource.setViewClass(JstlView.class);
         resource.setPrefix("/WEB-INF/jsp/");
         resource.setSuffix(".jsp");
-        
+
         return resource;
     }
-    
+
     @Bean
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
@@ -69,36 +67,25 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
 
         return resolver;
     }
-    
-    @Bean
-    public Cloudinary cloudinary() {
-        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "dd9f1tyca",
-                "api_key", "148271595886971",
-                "api_secret", "Y7Eb9gQZq7mstYAtb28G-GQFBl8",
-                "secure", true
-        ));
 
-        return c;
-    }
     //CẤU HÌNH GỬI MAIL
     @Bean
     public JavaMailSender getJavaMailSender() {
-    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-    mailSender.setHost("smtp.gmail.com");
-    mailSender.setPort(587);
-    //DÙNG EMAIL CỦA CHÍNH MÌNH ĐỂ GỬI
-    mailSender.setUsername("*******");
-    mailSender.setPassword("*******");
-    
-    Properties props = mailSender.getJavaMailProperties();
-    props.put("mail.transport.protocol", "smtp");
-    props.put("mail.smtp.auth", "true");
-    props.put("mail.smtp.starttls.enable", "true");
-    props.put("mail.debug", "true"); //Print out everything of screen
-    
-    mailSender.setJavaMailProperties(props);
-    
-    return mailSender;
-}
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        //DÙNG EMAIL CỦA CHÍNH MÌNH ĐỂ GỬI
+        mailSender.setUsername("*******");
+        mailSender.setPassword("*******");
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true"); //Print out everything of screen
+
+        mailSender.setJavaMailProperties(props);
+
+        return mailSender;
+    }
 }

@@ -4,10 +4,10 @@ GO
 DROP DATABASE HRManagement
 GO
 
-CREATE DATABASE helloooo
+CREATE DATABASE HRManagement
 GO
 
-USE helloooo
+USE HRManagement
 GO
 
 
@@ -50,6 +50,7 @@ CREATE TABLE Departments
 	Department_id nvarchar(36) NOT NULL PRIMARY KEY,
 	DepartmentName nvarchar(max) NULL,
 	Email nvarchar(max) NULL,
+	Password nvarchar(max) NULL,
 )
 GO
 
@@ -171,42 +172,42 @@ CREATE TABLE Job_application_Schedule
 
 --Insert Candidate
 INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name,  Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0001', N'Luong Nhu H', N'Nhu H', N'Luong', N'LuongH@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+	   VALUES(N'CA0001', N'Luong Nhu H', N'Nhu H', N'Luong', N'LuongH@gmail.com', NULL, NULL, NULL, NULL, N'ROLE_CANDIDATE', NULL, NULL, 0)
 INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0002', N'Tran Van C', N'Van C', N'Tran', N'TranC@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+	   VALUES(N'CA0002', N'Tran Van C', N'Van C', N'Tran', N'TranC@gmail.com', NULL, NULL, NULL, NULL, N'ROLE_CANDIDATE', NULL, NULL, 0)
 INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0003', N'Nguyen Thi D', N'Thi D', N'Nguyen', N'NguyenD@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+	   VALUES(N'CA0003', N'Nguyen Thi D', N'Thi D', N'Nguyen', N'NguyenD@gmail.com', NULL, NULL, NULL, NULL, N'ROLE_CANDIDATE', NULL, NULL, 0)
 INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name, Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
-	   VALUES(N'CA0004', N'Truong Van A', N'Van A', N'Truong', N'TruongA@gmail.com', NULL, NULL, NULL, NULL, N'candidate', NULL, NULL, 0)
+	   VALUES(N'CA0004', N'Truong Van A', N'Van A', N'Truong', N'TruongA@gmail.com', NULL, NULL, NULL, NULL, N'ROLE_CANDIDATE', NULL, NULL, 0)
 
 
 --Insert Interviewer
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
-	VALUES(N'EM0001', N'Nguyen The A', N'The A', N'Nguyen', N'NguyenA@gmail.com', 1, N'2000-10-2', N'Q.2', N'0302043234', Null, N'interviewer', 0)
+	VALUES(N'EM0001', N'Nguyen The A', N'The A', N'Nguyen', N'NguyenA@gmail.com', 1, N'2000-10-2', N'Q.2', N'0302043234', Null, N'ROLE_INTERVIEWER', 0)
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
-	VALUES(N'EM0002', N'Nguyen Van B', N'Van B', N'Nguyen', N'NguyenB@gmail.com', 0, N'1992-8-19', N'Q.9', N'0972834149', Null, N'interviewer', 0)
+	VALUES(N'EM0002', N'Nguyen Van B', N'Van B', N'Nguyen', N'NguyenB@gmail.com', 0, N'1992-8-19', N'Q.9', N'0972834149', Null, N'ROLE_INTERVIEWER', 0)
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
-	VALUES(N'EM0003', N'Truong Van C', N'Van C', N'Truong', N'TruongC@gmail.com', 1, N'1995-2-12', N'Q.5', N'0983716535', Null, N'interviewer', 0)
+	VALUES(N'EM0003', N'Truong Van C', N'Van C', N'Truong', N'TruongC@gmail.com', 1, N'1995-2-12', N'Q.5', N'0983716535', Null, N'ROLE_INTERVIEWER', 0)
 
 
 --Insert HR manager/HR employee
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
-	VALUES(N'EM0004', N'Tran The A', N'The A', N'Tran', N'TranA@gmail.com', 0, N'1998-1-2', N'Q.1', N'09038827488', Null, N'HR manager', 0)
+	VALUES(N'EM0004', N'Tran The A', N'The A', N'Tran', N'TranA@gmail.com', 0, N'1998-1-2', N'Q.1', N'09038827488', Null, N'ROLE_MANAGER', 0)
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
-	VALUES(N'EM0005', N'Nguyen Thi B', N'Thi B', N'Nguyen', N'NguyenB@gmail.com', 1, N'1992-12-3', N'Q.5', N'0936827812', Null, N'HR Employee', 0)
+	VALUES(N'EM0005', N'Nguyen Thi B', N'Thi B', N'Nguyen', N'NguyenB@gmail.com', 1, N'1992-12-3', N'Q.5', N'0936827812', Null, N'ROLE_EMPLOYEE', 0)
 
 
 --Insert Departments
-INSERT Departments(Department_id, DepartmentName, Email)
-	VALUES(N'MA', N'MARKETING', N'Marketing@gmail.com')
-INSERT Departments(Department_id, DepartmentName, Email)
-	VALUES(N'HC', N'Hanh Chinh', N'Hanhchinh@gmail.com')
-INSERT Departments(Department_id, DepartmentName, Email)
-	VALUES(N'NS', N'Nhan su', N'Nhansu@gmail.com')
-INSERT Departments(Department_id, DepartmentName, Email)
-	VALUES(N'KT', N'Ke Toan', N'Ketoan@gmail.com')
-INSERT Departments(Department_id, DepartmentName, Email)
-	VALUES(N'IT', N'Information Technology', N'ITech@gmail.com')
+INSERT Departments(Department_id, DepartmentName, Email, Password)
+	VALUES(N'MA', N'MARKETING', N'Marketing@gmail.com', N'123')
+INSERT Departments(Department_id, DepartmentName, Email, Password)
+	VALUES(N'HC', N'Hanh Chinh', N'Hanhchinh@gmail.com', N'123')
+INSERT Departments(Department_id, DepartmentName, Email, Password)
+	VALUES(N'NS', N'Nhan su', N'Nhansu@gmail.com', N'123')
+INSERT Departments(Department_id, DepartmentName, Email, Password)
+	VALUES(N'KT', N'Ke Toan', N'Ketoan@gmail.com', N'123')
+INSERT Departments(Department_id, DepartmentName, Email, Password)
+	VALUES(N'IT', N'Information Technology', N'ITech@gmail.com', N'123')
 
 --Insert Job_positions
 INSERT Job_positions(Job_id, JobName, Department_id)

@@ -67,4 +67,17 @@ public class CandidateRepositoryImp implements CandidateRepository{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public List<candidate> findByEmail(String email) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
+        Root root = query.from(candidate.class);
+        query = query.select(root);
+        Predicate p1 = builder.like(root.get("email").as(String.class), email);
+        query = query.where(p1);
+        Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
 }

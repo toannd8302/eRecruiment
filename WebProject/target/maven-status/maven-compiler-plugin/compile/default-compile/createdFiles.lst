@@ -1,5 +1,7 @@
+com\codeweb\configs\SecurityWebAppInitializer.class
+com\codeweb\configs\WebSecurityConfig.class
 com\codeweb\pojos\candidate.class
-com\codeweb\constants\Constants.class
+com\codeweb\service\implement\WishListImp.class
 com\codeweb\controllers\JobApplicationController.class
 com\codeweb\repository\CandidateRepository.class
 com\codeweb\pojos\department.class
@@ -7,6 +9,7 @@ com\codeweb\pojos\jobApplication.class
 com\codeweb\controllers\JobPostingController.class
 com\codeweb\configs\WebApplicationContextConfig.class
 com\codeweb\service\implement\CandidateServiceImp.class
+com\codeweb\handler\CustomAuthenticationSuccessHandler.class
 com\codeweb\service\implement\JobApplicationServiceImp.class
 com\codeweb\repository\implement\JobApplicationRepositoryImp.class
 com\codeweb\repository\implement\JobPostingRepositoryImp.class
@@ -14,13 +17,16 @@ com\codeweb\repository\JobApplicationRepository.class
 com\codeweb\service\JobPostingService.class
 com\codeweb\configs\DispatcherServletInitializer.class
 com\codeweb\repository\JobPostingRepository.class
+com\codeweb\configs\GoogleClientRegistration.class
 com\codeweb\pojos\jobPosition.class
 com\codeweb\repository\implement\CandidateRepositoryImp.class
+com\codeweb\googleModel\CustomUserDetails.class
 com\codeweb\pojos\jobPosting.class
 com\codeweb\pojos\schedule.class
 com\codeweb\service\CandidateService.class
 com\codeweb\service\JobApplicationService.class
 com\codeweb\pojos\round.class
+com\codeweb\service\implement\CustomOAuth2UserService.class
 com\codeweb\service\implement\JobPostingServiceImp.class
 com\codeweb\configs\TilesConfig.class
 com\codeweb\configs\HibernateConfig.class

@@ -17,4 +17,5 @@ public interface CandidateRepository {
     boolean addOrUpdate(candidate candidate);
     List<candidate> getAll();
     candidate getCandidateById_2(String id);
+    List<candidate> findByEmail(String email);
 }

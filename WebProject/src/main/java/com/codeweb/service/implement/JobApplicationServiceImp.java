@@ -11,9 +11,6 @@ import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.JobApplicationRepository;
 import com.codeweb.service.JobApplicationService;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +27,14 @@ chịu trách nhiệm cho việc xử lý các nghiệp vụ của ứng dụng
  */
 @Service
 public class JobApplicationServiceImp implements JobApplicationService {
-
+    
+//    private final Cloudinary cloudinary;
+//
+//    @Autowired
+//    public JobApplicationServiceImpl(Cloudinary cloudinary) {
+//        this.cloudinary = cloudinary;
+//    }
+    
     @Autowired
     private Cloudinary cloudinary;
 

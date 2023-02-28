@@ -13,9 +13,9 @@ import java.util.List;
  * @author KHOA
  */
 public interface CandidateService {
-    candidate getCandidateByCode(String code);
-    List<candidate> getCandidateById(String id);
-    boolean addOrUpdate(candidate candidate);
     List<candidate> getAll();
-     candidate getCandidateById_2(String id);
+    List<candidate> getCandidateById(String id);
+    List<candidate> findByEmail(String email);
+    boolean addOrUpdate(candidate candidate);
+    candidate findCandidate(String id);
 }

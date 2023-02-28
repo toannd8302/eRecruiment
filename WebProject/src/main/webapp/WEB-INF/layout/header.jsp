@@ -12,6 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
     <head>
@@ -24,16 +25,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
-
-        <!-- Bootstrap here -->
-        <!--        <link rel="stylesheet" type="text/css"
-                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-                <link rel="stylesheet" type="text/css"
-                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
-
 
         <style>
             html {
@@ -156,7 +147,7 @@
                 <div class="row" style="margin: 0%;">
                     <div class="col-sm-3">
                         <div id="logo">
-                            
+
                             <a href="<c:url value="/"/>"><img
                                     src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
                                     alt="Monke Tech"></a>
@@ -191,22 +182,23 @@
                             </ul>
                         </div>
                     </div>
-                    <c:if test="${sessionScope.user == null}">
+                    <sec:authorize access="!isAuthenticated()">
+                        <div>
+                            <a href="<c:url value="/LoginDepartment"/>">For Department</a>
+                        </div>
                         <div class="col-sm-4">
                             <div id="login">
-                                <a id="login-btn" href="https://accounts.google.com/o/oauth2/auth?scope=email profile&redirect_uri=http://localhost:8080/WebProject/LoginController&response_type=code
-                                   &client_id=14093495895-chh4kno5un2kj4l9p5e2qh2a89h7tp3s.apps.googleusercontent.com&approval_prompt=force">Login</a>
-                            </div> 
+                                <a href="<c:url value="/loginPage"/>">Login</a>
+                            </div>
                         </div>
+                    </sec:authorize>
 
-                    </c:if>
-                    <c:if test="${sessionScope.user != null}">
-                        <c:url value="/LogoutController" var="action"/>
+                    <sec:authorize access="isAuthenticated()">
                         <div class="col-sm-4">
                             <div id="account">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <img src="<c:url value="${user.getPicture()}"/>"/>
+                                        <img src="<c:url value="${sessionScope.user.getPicture()}"/>"/>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="my-account">
@@ -217,7 +209,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="<c:url value="/account"/>">My Profile</a></li>
                                                         <li><a class="dropdown-item" href="<c:url value="/job/viewMyJob"/>">View My Applications</a></li>
-                                                        <li><a class="dropdown-item" href="<c:url value="/LogoutController"/>">Log Out</a></li>
+                                                        <li><a class="dropdown-item" href="<c:url value="/logout"/>">Log Out</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -226,7 +218,7 @@
                                 </div>
                             </div>
                         </div>
-                    </c:if>
+                    </sec:authorize>    
                 </div>
             </div>
         </div>

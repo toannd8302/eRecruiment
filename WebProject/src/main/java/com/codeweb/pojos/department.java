@@ -35,6 +35,9 @@ public class department implements Serializable{
     @Column(name = "Email")
     private String email;
     
+    @Column(name = "Password")
+    private String password;
+    
     @OneToMany(mappedBy = "department")
     private Set<jobPosition>jobPositions;
 
