@@ -16,12 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
@@ -29,46 +34,87 @@ import org.springframework.security.oauth2.client.registration.InMemoryClientReg
  */
 @Configuration
 @EnableWebSecurity
+@EnableTransactionManagement
 @ComponentScan(basePackages = {
     "com.codeweb.repository",
-    "com.codeweb.service"
+    "com.codeweb.service",
+    "com.codeweb.handler"
 })
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomOAuth2UserService customOAuth2UserService;
 
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-                .antMatchers("/", "/home/**", "/post-detail/**", "/oauth2/**","/loginPage", "/LoginDepartment").permitAll()
-                .antMatchers("/account","/job/application","/job/viewMyJob","/post-detail/save/**","/post-detail/view","/candidate").hasRole("candidate")
-                .anyRequest().authenticated()
+                .authorizeRequests()
+                    .antMatchers("/", "/home/**", "/post-detail/**", "/oauth2/**", "/loginPage", "/login").permitAll()
+                    .antMatchers("/account", "/job/application", "/job/viewMyJob", "/post-detail/save/**", "/post-detail/view", "/candidate").hasRole("CANDIDATE")
+                    .antMatchers("/employee").hasRole("EMPLOYEE")
+                    .antMatchers("/interviewer").hasRole("INTERVIEWER")
+                    .antMatchers("/manager").hasRole("MANAGER")
+                    .antMatchers("/department").hasRole("DEPARTMENT")
+                    .anyRequest().authenticated()
                 .and()
-            .oauth2Login()
-                .loginPage("/loginPage")
-                .userInfoEndpoint()
-                    .userService(customOAuth2UserService)
+                .formLogin()
+                    .loginPage("/login")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/department")
+                        .failureUrl("/login?error")
+//                        .permitAll()
                     .and()
-                .successHandler(new CustomAuthenticationSuccessHandler())
-                .failureUrl("/")
+                    .exceptionHandling()
+                    .accessDeniedPage("/LoginDepartment?accessDenied")
                 .and()
-            .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
+                    .oauth2Login()
+                        .loginPage("/loginPage")
+                        .userInfoEndpoint()
+                        .userService(customOAuth2UserService)
+                    .and()
+                    .successHandler(customAuthenticationSuccessHandler)
+                    .failureUrl("/")
                 .and()
-            .csrf().disable();
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                .and()
+                .csrf().disable();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        return authenticationProvider;
     }
     
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         List<ClientRegistration> registrations = Arrays.asList(GoogleClientRegistration.candidateClientRegistration(), GoogleClientRegistration.employeeClientRegistration());
         return new InMemoryClientRegistrationRepository(registrations);
     }
-    
+
     @Bean
     public Cloudinary cloudinary() {
         Cloudinary c = new Cloudinary(ObjectUtils.asMap(

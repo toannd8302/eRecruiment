@@ -63,11 +63,22 @@ public class jobApplication implements Serializable{
     @JoinColumn(name = "Post_id")
     private jobPosting jobPosting;
 
+    @OneToMany(mappedBy = "jobApplication",fetch = FetchType.EAGER)
+    private Set<report> reports;
+    
     @Transient
     private MultipartFile file;
     
     @OneToMany(mappedBy = "jobApplication", fetch = FetchType.EAGER)
     private Set<jobApplicationSchedule>jobApSche;
+
+    public Set<report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<report> reports) {
+        this.reports = reports;
+    }
 
     public Set<jobApplicationSchedule> getJobApSche() {
         return jobApSche;

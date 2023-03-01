@@ -12,11 +12,13 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -27,22 +29,36 @@ import javax.persistence.TemporalType;
 public class schedule implements Serializable{
     
     @Id
-    @Column(name = "Schedule_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Schedule_id", columnDefinition = "NVARCHAR(6)")
     private String scheduleId;   
+    
     @Column(name = "Schedule_date")
      @Temporal(TemporalType.DATE)
     private Date scheduleDate;
+    
     @Column(name = "Schedule_time")
     private Time scheduleTime;
+    
     @Column(name = "Location")
     private String location;
+    
     @Column(name = "Type_of_interview")
     private boolean typeOfInterview;
+    
     @Column(name = "Status")
     private String status;
+    
     @OneToMany(mappedBy = "schedule",fetch = FetchType.EAGER)
     private Set<jobApplicationSchedule>jAS;
-
+    
+    @OneToMany(mappedBy = "schedule",fetch = FetchType.EAGER)
+    private Set<interviewerReasons>iRS;
+    
+    @OneToMany(mappedBy = "schedule",fetch = FetchType.EAGER)
+    private Set<report> reports;
+    
     public String getScheduleId() {
         return scheduleId;
     }

@@ -11,5 +11,6 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
  *
  * @author KHOA
  */
+//Initialize Spring Security
 public class SecurityWebAppInitializer extends AbstractSecurityWebApplicationInitializer{
 }

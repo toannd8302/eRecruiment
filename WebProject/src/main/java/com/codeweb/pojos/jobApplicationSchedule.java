@@ -7,10 +7,14 @@ package com.codeweb.pojos;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -23,9 +27,11 @@ public class jobApplicationSchedule implements Serializable{
     @Id
     @Column(name = "Application_id")
     private String applicationId ;
+    
     @Id
     @Column(name = "Schedule_id")
     private String scheduleId ;
+    
     @Column(name = "Reason_content")
     private String Reason_content;
     @Column(name = "File_path")
@@ -38,6 +44,17 @@ public class jobApplicationSchedule implements Serializable{
     @ManyToOne()
     @JoinColumn(name = "Schedule_id")
     private schedule schedule;
+    
+    @Transient
+    private MultipartFile file;
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 
     public String getApplicationId() {
         return applicationId;

@@ -43,5 +43,10 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value="Job Application"/>
         <put-attribute name="content" value="/WEB-INF/jsp/viewWishList.jsp" />
     </definition>
+    <definition name="department-Page" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/departmentHeader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/departmentPage.jsp" />
+    </definition>
 </tiles-definitions>    
     

@@ -5,6 +5,7 @@
  */
 package com.codeweb.service;
 
+import com.codeweb.googleModel.CustomOAuth2User;
 import com.codeweb.pojos.candidate;
 import java.util.List;
 
@@ -14,8 +15,9 @@ import java.util.List;
  */
 public interface CandidateService {
     List<candidate> getAll();
-    List<candidate> getCandidateById(String id);
-    List<candidate> findByEmail(String email);
     boolean addOrUpdate(candidate candidate);
-    candidate findCandidate(String id);
+    candidate findCandidateByID(String id);
+    candidate findCandidateByEmail(String email);
+
+    public candidate processOAuthPostLogin(CustomOAuth2User oauthUser);
 }

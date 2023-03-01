@@ -12,10 +12,12 @@ package com.codeweb.pojos;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -24,8 +26,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Rounds")
 public class round implements Serializable{
+    
     @Id
-    @Column(name = "Round_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Round_id", columnDefinition = "NVARCHAR(6)")
     private String roundID;
     
     @Column(name = "Round_number")

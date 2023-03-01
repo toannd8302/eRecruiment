@@ -5,6 +5,7 @@
  */
 package com.codeweb.service.implement;
 
+import com.codeweb.googleModel.CustomOAuth2User;
 import com.codeweb.pojos.candidate;
 import com.codeweb.repository.CandidateRepository;
 import com.codeweb.service.CandidateService;
@@ -33,21 +34,47 @@ public class CandidateServiceImp implements CandidateService {
     }
     
     @Override
-    public List<candidate> getCandidateById(String id) {
-        return this.candidateRepository.getCandidateById(id);
-    }
-    
-    @Override
-    public List<candidate> findByEmail(String email) {
-        return this.candidateRepository.findByEmail(email);
-    }
-    
-    @Override
-    public candidate findCandidate(String id) {
-        List<candidate> candidates = this.getCandidateById(id);
+    public candidate findCandidateByID(String id) {
+        List<candidate> candidates = this.candidateRepository.getCandidateById(id);
         if(!candidates.isEmpty())
             return candidates.get(0);
         else
             return null;
+    }
+    
+    @Override
+    public candidate findCandidateByEmail(String email) {
+        List<candidate> candidates = this.candidateRepository.getCandidateByEmail(email);
+        if(!candidates.isEmpty())
+            return candidates.get(0);
+        else
+            return null;
+    }
+
+    @Override
+    public candidate processOAuthPostLogin(CustomOAuth2User oauthUser) {
+        String email = oauthUser.getEmail();
+        candidate existUser = this.findCandidateByEmail(email);
+        if(existUser == null){
+            candidate newUser = new candidate();
+            newUser.setId(oauthUser.getID());
+            newUser.setEmail(oauthUser.getEmail());
+            newUser.setName(oauthUser.getName());
+            newUser.setGiven_name(oauthUser.getGivenName());
+            newUser.setFamily_name(oauthUser.getLastName());
+            newUser.setPicture(oauthUser.getPicture());
+            newUser.setRole("ROLE_CANDIDATE");
+            this.candidateRepository.addOrUpdate(newUser);
+            return newUser;
+        }else{
+            if(!existUser.getName().equals(oauthUser.getName()) || !existUser.getPicture().equals(oauthUser.getPicture())){
+                existUser.setName(oauthUser.getName());
+                existUser.setFamily_name(oauthUser.getLastName());
+                existUser.setGiven_name(oauthUser.getGivenName());
+                existUser.setPicture(oauthUser.getPicture());
+                this.candidateRepository.addOrUpdate(existUser);
+            }
+            return existUser;
+        }
     }
 }

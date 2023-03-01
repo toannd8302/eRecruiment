@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  *
  * @author KHOA
  */
+//Initialize DispatcherServlet
 public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override

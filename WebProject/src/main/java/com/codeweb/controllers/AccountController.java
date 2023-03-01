@@ -10,6 +10,7 @@ import com.codeweb.service.CandidateService;
 import com.codeweb.service.JobPostingService;
 import java.io.IOException;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,25 +52,35 @@ public class AccountController {
     }
 
     @GetMapping("/loginPage")
-    public String loginPage() {
+    public String loginPage(Model model, @RequestParam(value = "error", required = false) String error) {
+        try {
+            if (error != null) {
+                if (error.equals("noRoleSupported")) {
+                    model.addAttribute("ERROR", "You have no role to access!");
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("ERROR AT ACCOUNT CONTROLLER: " + e.toString());
+        }
         return "loginPage";
     }
-    
-    @GetMapping("/LoginDepartment")
+
+    @GetMapping("/login")
     public String loginDepartment() {
         return "loginDepartment";
     }
-    
 
-    @RequestMapping("/candidate")
+    @GetMapping("/candidate")
     public String loginSuccessfully(Model model,
             Authentication authentication,
+            HttpServletRequest request,
             HttpSession session) throws IOException {
-        OAuth2User oauth2User = (OAuth2User) authentication.getPrincipal();
-        candidate candidate = this.candidateService.findCandidate((String) oauth2User.getAttribute("sub"));
-        session.setAttribute("user", candidate);
-//        sendEmail("EMAIL GUI", "EMAIL NHAN", "Login", "Login Success in Web");
         return "redirect:/";
+    }
+    
+    @GetMapping("/department")
+    public String loginSuccessfully1(){
+        return "department-Page";
     }
 
     @GetMapping("/account")

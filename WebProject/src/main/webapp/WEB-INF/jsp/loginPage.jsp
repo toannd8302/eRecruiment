@@ -13,7 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>LOGIN PAGE</h1>
+        <c:if test="${ERROR != null}">
+            <p>${ERROR}</p>
+        </c:if>
         <sec:authorize access="!isAuthenticated()">
             <h2>Login for Candidate</h2>
             <p><a href="<c:url value="/oauth2/authorization/google-candidate"/>">Login with Google</a></p>

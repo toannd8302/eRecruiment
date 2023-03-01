@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,6 +24,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -33,7 +35,9 @@ import javax.persistence.Transient;
 public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup dong bo tren moi truong internet(Server)
 
     @Id
-    @Column(name = "Post_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Post_id", columnDefinition = "NVARCHAR(6)")
     private String postId;
     
     
@@ -64,7 +68,7 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     private Date ExpiredTime;
     
     @Column(name = "Approved_status")
-    private boolean ApprovedStatus;
+    private String ApprovedStatus;
     
     @Column(name = "Level")
     private String level;
@@ -165,11 +169,11 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
         this.ExpiredTime = ExpiredTime;
     }
 
-    public boolean isApprovedStatus() {
+    public String isApprovedStatus() {
         return ApprovedStatus;
     }
 
-    public void setApprovedStatus(boolean ApprovedStatus) {
+    public void setApprovedStatus(String ApprovedStatus) {
         this.ApprovedStatus = ApprovedStatus;
     }
 

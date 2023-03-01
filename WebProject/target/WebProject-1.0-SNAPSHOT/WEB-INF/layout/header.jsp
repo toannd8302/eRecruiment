@@ -184,7 +184,7 @@
                     </div>
                     <sec:authorize access="!isAuthenticated()">
                         <div>
-                            <a href="<c:url value="/LoginDepartment"/>">For Department</a>
+                            <a href="<c:url value="/login"/>">For Department</a>
                         </div>
                         <div class="col-sm-4">
                             <div id="login">

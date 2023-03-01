@@ -67,15 +67,13 @@
     </div>
 </body>
 
-
-
 <c:url value="/job/application" var="action"/>
 <form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
     <div>
         <label>Introduction</label>
         <form:input type="text" id="introduction" path="introduction"/>
     </div>
-
+                
     <div>
         <label>File CV</label>
         <form:input type="file" id="file" path="file"/>
