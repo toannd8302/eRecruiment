@@ -6,7 +6,9 @@
 package com.codeweb.controllers;
 
 import com.codeweb.pojos.candidate;
+import com.codeweb.pojos.department;
 import com.codeweb.service.CandidateService;
+import com.codeweb.service.DepartmentService;
 import com.codeweb.service.JobPostingService;
 import java.io.IOException;
 import java.util.Map;
@@ -20,6 +22,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +44,9 @@ public class AccountController {
 
     @Autowired
     private JobPostingService jobPostingService;
+    
+    @Autowired
+    private DepartmentService departmentService;
 
     @Autowired
     JavaMailSender mailSender;
@@ -65,10 +71,11 @@ public class AccountController {
         return "loginPage";
     }
 
-    @GetMapping("/login")
-    public String loginDepartment() {
-        return "loginDepartment";
-    }
+    //Custom a login page
+//    @GetMapping("/login")
+//    public String loginDepartment() {
+//        return "loginDepartment";
+//    }
 
     @GetMapping("/candidate")
     public String loginSuccessfully(Model model,
@@ -79,12 +86,18 @@ public class AccountController {
     }
     
     @GetMapping("/department")
-    public String loginSuccessfully1(){
+    public String loginSuccessfully1(Model model, HttpSession session){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        department department = this.departmentService.getDepartment(email);
+        if(department == null)
+            model.addAttribute("ERROR", "No department found");
+        session.setAttribute("department", department);
         return "department-Page";
     }
 
     @GetMapping("/account")
-    public String account(Model model, HttpSession session) {
+    public String account(Model model) {
         return "account-information";
     }
 

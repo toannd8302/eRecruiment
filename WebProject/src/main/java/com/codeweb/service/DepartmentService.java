@@ -15,4 +15,5 @@ import java.util.List;
 public interface DepartmentService{
     boolean addDepartment(department department);
     List<department> getDepartments(String email);
+    department getDepartment(String email);
 }

@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>DEPARTMENT PAGE</h1>
+        
+        <h2>Department: ${sessionScope.department.departmentName}</h2>
     </body>
 </html>

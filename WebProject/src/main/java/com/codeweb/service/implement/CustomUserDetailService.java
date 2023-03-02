@@ -5,6 +5,7 @@
  */
 package com.codeweb.service.implement;
 
+import com.codeweb.googleModel.CustomUserDetails;
 import com.codeweb.pojos.department;
 import com.codeweb.service.DepartmentService;
 import java.util.HashSet;
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Service;
  *
  * @author KHOA
  */
-@Service("userDetailsService")
+@Service
 public class CustomUserDetailService implements UserDetailsService{
 
     @Autowired
@@ -35,14 +36,8 @@ public class CustomUserDetailService implements UserDetailsService{
         if(departments.isEmpty()){
             return null;
         } 
-        final department department = departments.get(0);
-//        boolean enabled = !department.getBlockStatus();
-        UserDetails user = User.withUsername(department.getEmail())
-                .password(department.getPassword())
-//                .disabled(enabled)
-                .authorities(department.getRole()).build();
-        
-        return user;
+        department department = departments.get(0);
+        return new CustomUserDetails(department);
     }
     
 }

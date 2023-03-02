@@ -9,7 +9,9 @@ package com.codeweb.configs;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.codeweb.handler.CustomAuthenticationSuccessHandler;
+import com.codeweb.passwordEncoder.NoOpPasswordEncoder;
 import com.codeweb.service.implement.CustomOAuth2UserService;
+import com.codeweb.service.implement.CustomUserDetailService;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -64,12 +63,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .defaultSuccessUrl("/")
-                        .failureUrl("/")
-//                        .permitAll()
+//                    .loginPage("/login")
+                        .usernameParameter("email")
+//                        .passwordParameter("password")
+                        .defaultSuccessUrl("/department")
+                        .failureUrl("/login?error")
+                        .permitAll()
                     .and()
                     .exceptionHandling()
                     .accessDeniedPage("/LoginDepartment?accessDenied")
@@ -95,12 +94,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return new CustomUserDetailService();
+    }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setPasswordEncoder(new NoOpPasswordEncoder());
+        authenticationProvider.setUserDetailsService(userDetailsService());
         return authenticationProvider;
     }
     

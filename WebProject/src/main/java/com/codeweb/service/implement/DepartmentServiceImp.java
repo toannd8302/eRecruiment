@@ -31,4 +31,12 @@ public class DepartmentServiceImp implements DepartmentService{
     public List<department> getDepartments(String email) {
         return this.departmentRepository.getDepartments(email);
     }
+
+    @Override
+    public department getDepartment(String email) {
+        List<department> departments = this.getDepartments(email);
+        if(departments.isEmpty())
+            return null;
+        return departments.get(0);
+    }
 }

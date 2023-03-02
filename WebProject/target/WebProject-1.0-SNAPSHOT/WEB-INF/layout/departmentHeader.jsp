@@ -177,6 +177,30 @@
                             </ul>
                         </div>
                     </div>
+                    <sec:authorize access="isAuthenticated()">
+                        <div class="col-sm-4">
+                            <div id="account">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <img src="<c:url value="${sessionScope.user.getPicture()}"/>"/>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div id="my-account">
+                                            <ul>
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                                       data-bs-toggle="dropdown">My Account</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="<c:url value="/logout"/>">Log Out</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sec:authorize>    
                 </div>
             </div>
         </div>
