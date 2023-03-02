@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.codeweb.googleModel;
+package com.codeweb.loginModel;
 
 import com.codeweb.pojos.candidate;
 import java.util.ArrayList;

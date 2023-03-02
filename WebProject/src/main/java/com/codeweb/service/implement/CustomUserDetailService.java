@@ -5,7 +5,7 @@
  */
 package com.codeweb.service.implement;
 
-import com.codeweb.googleModel.CustomUserDetails;
+import com.codeweb.loginModel.CustomUserDetails;
 import com.codeweb.pojos.department;
 import com.codeweb.service.DepartmentService;
 import java.util.HashSet;

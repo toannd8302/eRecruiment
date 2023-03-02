@@ -5,7 +5,7 @@
  */
 package com.codeweb.service;
 
-import com.codeweb.googleModel.CustomOAuth2User;
+import com.codeweb.loginModel.CustomOAuth2User;
 import com.codeweb.pojos.candidate;
 import java.util.List;
 
