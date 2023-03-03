@@ -51,12 +51,6 @@ public class AccountController {
     @Autowired
     JavaMailSender mailSender;
 
-    @ModelAttribute
-    public void modelAttribute(Model model,
-            @RequestParam(required = false) Map<String, String> params) {
-        model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
-    }
-
     @GetMapping("/loginPage")
     public String loginPage(Model model, @RequestParam(value = "error", required = false) String error) {
         try {
@@ -79,10 +73,14 @@ public class AccountController {
 
     @GetMapping("/candidate")
     public String loginSuccessfully(Model model,
-            Authentication authentication,
-            HttpServletRequest request,
-            HttpSession session) throws IOException {
+            @RequestParam(required = false) Map<String, String> params) throws IOException {
+        model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
         return "redirect:/";
+    }
+    
+    @GetMapping("/employee")
+    public String loginSuccessfully2(){
+        return "employee-page";
     }
     
     @GetMapping("/department")

@@ -43,17 +43,17 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
 
         String registrationID = oauthUser.getRegistrationId();
-
+        
         if (registrationID.equals("google-candidate")) {
             candidate candidate = this.candidateService.processOAuthPostLogin(oauthUser);
-
             HttpSession session = request.getSession();
             session.setAttribute("user", candidate);
-
             response.sendRedirect(request.getContextPath() + "/candidate");
         } else if (registrationID.equals("google-employee")) {
             employee employee = this.employeeService.processOAuthPostLogin(oauthUser);
             if (employee != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", employee);
                 if (employee.getRole().equals("ROLE_EMPLOYEE")) {
                     response.sendRedirect(request.getContextPath() + "/employee");
                 } else if (employee.getRole().equals("ROLE_INTERVIEWER")) {

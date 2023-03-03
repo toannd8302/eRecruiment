@@ -1,6 +1,8 @@
 com\codeweb\repository\implement\EmployeeRepositoryImp.class
+com\codeweb\loginModel\CustomOAuth2User.class
 com\codeweb\repository\CandidateRepository.class
 com\codeweb\service\EmployeeService.class
+com\codeweb\controllers\employeeController.class
 com\codeweb\configs\WebApplicationContextConfig.class
 com\codeweb\handler\CustomAuthenticationSuccessHandler.class
 com\codeweb\service\implement\JobApplicationServiceImp.class
@@ -33,12 +35,11 @@ com\codeweb\pojos\jobApplication.class
 com\codeweb\service\DepartmentService.class
 com\codeweb\controllers\JobPostingController.class
 com\codeweb\service\implement\CandidateServiceImp.class
-com\codeweb\googleModel\CustomOAuth2User.class
+com\codeweb\loginModel\CustomUserDetails.class
 com\codeweb\configs\DispatcherServletInitializer.class
 com\codeweb\configs\GoogleClientRegistration.class
 com\codeweb\repository\implement\CandidateRepositoryImp.class
 com\codeweb\pojos\employee.class
-com\codeweb\googleModel\CustomUserDetails.class
 com\codeweb\service\CandidateService.class
 com\codeweb\pojos\round.class
 com\codeweb\service\implement\CustomOAuth2UserService.class

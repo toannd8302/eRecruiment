@@ -25,7 +25,7 @@ CREATE TABLE Candidates
 	Role nvarchar(20) NULL,
 	Job_Name nvarchar(max) NULL,
 	Experience int NULL,
-	Blocked_status bit NULL,
+	Blocked_status bit default 0,
 )
 
 CREATE TABLE Employees
@@ -41,7 +41,7 @@ CREATE TABLE Employees
 	Address nvarchar(max) NULL,
 	Avatar nvarchar(max) NULL,
 	Role nvarchar(20) NULL,
-	Blocked_status bit NULL,
+	Blocked_status bit default 0,
 )
 
 
@@ -74,7 +74,7 @@ CREATE TABLE Job_postings
 	Salary int NULL,
 	Posting_time date NOT NULL,
 	Expired_time date NOT NULL,
-	Approved_status nvarchar(20) NULL,
+	Approved_status nvarchar(20) default N'Pending',
 	Level nvarchar(50) NULL,
 	Picture nvarchar(50) NULL,
 	Job_id nvarchar(36) NOT NULL,
@@ -85,9 +85,9 @@ Create TABLE Job_Applications
 	Application_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Created_time date NOT NULL,
 	CV nvarchar(max) NOT NULL,
-	CV_status nvarchar(20) NULL,
+	CV_status nvarchar(20) default N'Pending',
 	Round_number int NULL,
-	Application_status nvarchar(20) NULL,
+	Application_status nvarchar(20) default N'Review',
 	Introduction nvarchar (max) NULL,
 	Candidate_id nvarchar(30) NOT NULL,
 	Post_id nvarchar(36) NOT NULL,
@@ -101,18 +101,10 @@ CREATE TABLE Schedules
 	Schedule_time time NOT NULL,
 	Location nvarchar(max) NOT NULL,
 	Type_of_interview bit NULL,
-	Status nvarchar(10) NOT NULL,
+	Status nvarchar(15) default N'Pending',
+	Round_id nvarchar(36) NOT NULL
 )
 
-
-CREATE TABLE Interviewer_Reasons
-(
-	Reason_content nvarchar(max) NULL,
-	File_path nvarchar(max) NULL,
-	Schedule_id nvarchar(36) NOT NULL,
-	Employee_id nvarchar(30) NOT NULL,
-	CONSTRAINT PKReasons PRIMARY KEY (Schedule_id,Employee_id),
-)
 
 CREATE TABLE Skills
 (
@@ -165,11 +157,21 @@ CREATE TABLE Job_application_Schedule
 (
 	Reason_content nvarchar(max) NULL,
 	File_path nvarchar(max) NULL,
+	Status nvarchar(20) default N'Pending',
 	Application_id nvarchar(36) NOT NULL,
 	Schedule_id nvarchar(36) NOT NULL,
 	CONSTRAINT PKJob_application_Schedule PRIMARY KEY (Application_id,Schedule_id),
 )
 
+CREATE TABLE Interviewer_Reasons
+(
+	Reason_content nvarchar(max) NULL,
+	File_path nvarchar(max) NULL,
+	Status nvarchar(20) default N'Pending',
+	Schedule_id nvarchar(36) NOT NULL,
+	Employee_id nvarchar(30) NOT NULL,
+	CONSTRAINT PKReasons PRIMARY KEY (Schedule_id,Employee_id),
+)
 
 --Insert Candidate
 INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name,  Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
@@ -196,6 +198,8 @@ INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, 
 	VALUES(N'EM0004', N'Tran The A', N'The A', N'Tran', N'TranA@gmail.com', 0, N'1998-1-2', N'Q.1', N'09038827488', Null, N'ROLE_MANAGER', 0)
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
 	VALUES(N'EM0005', N'Nguyen Thi B', N'Thi B', N'Nguyen', N'NguyenB@gmail.com', 1, N'1992-12-3', N'Q.5', N'0936827812', Null, N'ROLE_EMPLOYEE', 0)
+INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
+	VALUES(N'100608636561630496525', N'le dang khoa', N'le', N'dang khoa', N'ledangkhoa9aa2@gmail.com', 1, null, null, null, N'https://lh3.googleusercontent.com/a/AGNmyxbHpqK1DJed-9OfIXatnXKRSvUznDmwLgIgIcr6=s96-c', N'ROLE_EMPLOYEE', 0)
 
 
 --Insert Departments
@@ -223,13 +227,13 @@ INSERT Job_positions(Job_id, JobName, Department_id)
 --Insert Job_postings (4-5)
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0001', N'Participate in the software design phase;Analyze software functions as required by management or departments;Building and designing databases according to designs on SQL Server, programming Store procedures',
-	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-24', N'2023-1-15',N'Pending',N'Mid', Null, 'J0001' )
+	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', Null, 'J0001' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
-	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15',N'Pending', N'Architect', Null, 'J0002' )
+	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15',N'Approved', N'Architect', Null, 'J0002' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0003', N'Segmed�s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
-	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-2-4', N'2023-3-31',N'Pending', N'Junior', Null,'J0003' )
+	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-2-4', N'2023-3-31',N'Approved', N'Junior', Null,'J0003' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0004', N'Analyzing and developing web applications and web services. Working with other developers to build applications with ReactJS/NextJS/AngularJS and Restful API. Work as part of a team to meet demanding project requirements. Write clean, modular, robust code to implement the desired requirements with little or no supervision. Work with the QA team to triage and fix bugs with rapid turnaround perform a technical.', 
 	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months;All insurances according to Vietnamese Labor law','3000', N'2021-12-22', N'2022-3-24',N'Pending', N'Senior', Null,'J0004' )
@@ -238,44 +242,50 @@ INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Sal
 
 --Insert Job_Applications
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0001', N'2022-12-25', N'Null', N'Approved', '2', N'Approved', N'I was the editor of the yearly periodical at Miranda House and also completed two internships at Caravan and The Indian Express. I was excited to find this position as an Assistant Editor at your organisation and I believe I would be a great fit for this role.', 
+	VALUES (N'A0001', N'2022-12-25', N'Null', N'Approved', '2', N'Schedule', N'I was the editor of the yearly periodical at Miranda House and also completed two internships at Caravan and The Indian Express. I was excited to find this position as an Assistant Editor at your organisation and I believe I would be a great fit for this role.', 
 	N'CA0001', N'P0001')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0002', N'2023-3-13', N'Null', N'Pending', Null, N'Pending', N'Being a certified professional, I have pursued BTech in Computer Science Engineering with a specialization in Networking and Security from VIT Vellore. I have recently appeared for the CCNA certification examination and I am awaiting the result.', 
+	VALUES (N'A0002', N'2023-3-13', N'Null', N'Pending', Null, N'Review', N'Being a certified professional, I have pursued BTech in Computer Science Engineering with a specialization in Networking and Security from VIT Vellore. I have recently appeared for the CCNA certification examination and I am awaiting the result.', 
 	N'CA0002', N'P0003')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0003', N'2022-1-9', N'Null', N'Rejected', Null, N'Rejected', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	VALUES (N'A0003', N'2022-1-9', N'Null', N'Approved', Null, N'On Going', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	N'CA0003', N'P0004')
+INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
+	VALUES (N'A0004', N'2022-1-9', N'Null', N'Approved', Null, N'Waiting', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	N'CA0003', N'P0004')
+INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
+	VALUES (N'A0005', N'2022-1-9', N'Null', N'Rejected', Null, N'Fail', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
 	N'CA0003', N'P0004')
 
 --Insert Schedules
-INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status)
-	VALUES(N'S0001', '2023-3-26', '13:30', N'At Home', 0, N'Approved')
-INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status)
-	VALUES(N'S0002', '2023-7-18', '15:00', N'Q.9', 1, N'Approved')
-INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status)
-	VALUES(N'S0003', '2023-12-25', '16:00', N'At Home', 0, N'Rejected')
-INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status)
-	VALUES(N'S0004', '2023-9-7', '8:00', N'Q.2', 1, N'Pending')
+INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status, Round_id)
+	VALUES(N'S0001', '2023-3-26', '13:30', N'At Home', 0, N'Pending', N'R0001')
+INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status, Round_id)
+	VALUES(N'S0002','2023-7-18', '15:00', N'Q.9', 1, N'Pending', N'R0002')
+INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status, Round_id)
+	VALUES(N'S0003', '2023-12-25', '16:00', N'At Home', 0, N'On Going', N'R0003')
+INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status, Round_id)
+	VALUES(N'S0004', '2023-9-7', '8:00', N'Q.2', 1, N'On Going', N'R0004')
 
 --Insert Interviewer_Reasons
-INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
-	VALUES(NULL,NULL, N'S0001', N'EM0001')
-INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
-	VALUES(NULL, NULL, N'S0003', N'EM0002')
-INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
-	VALUES(NULL,NULL, N'S0001', N'EM0003')
-INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id)
-	VALUES(NULL, NULL, N'S0002', N'EM0001')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id, Status)
+	VALUES(NULL,NULL, N'S0001', N'EM0001', N'Pending')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id, Status)
+	VALUES(NULL, NULL, N'S0003', N'EM0002', N'Pending')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id, Status)
+	VALUES(NULL,NULL, N'S0001', N'EM0003', N'Approved')
+INSERT Interviewer_Reasons(Reason_content, File_path, Schedule_id, Employee_id, Status)
+	VALUES(N'I dont have time :))', NULL, N'S0002', N'EM0001', N'Rejected')
 
 --Insert Job_application_Schedule
-INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id)
-	VALUES(NULL, NULL, 'A0001','S0001')
-INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id)
-	VALUES(NULL, NULL, 'A0002','S0002')
-INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id)
-	VALUES(NULL, NULL, 'A0003','S0003')
-INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id)
-	VALUES(NULL, NULL, 'A0001','S0004')
+INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id, Status)
+	VALUES(NULL, NULL, 'A0001','S0001', N'Pending')
+INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id, Status)
+	VALUES(NULL, NULL, 'A0002','S0002', N'Approved')
+INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id, Status)
+	VALUES(NULL, NULL, 'A0003','S0003', N'Approved')
+INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id, Status)
+	VALUES(NULL, NULL, 'A0001','S0004', N'Rejected')
 
 --Insert Rounds
 INSERT Rounds(Round_id, Round_number, Content, Post_id)
@@ -285,7 +295,9 @@ INSERT Rounds(Round_id, Round_number, Content, Post_id)
 INSERT Rounds(Round_id, Round_number, Content, Post_id)
 	VALUES(N'R0003', '1', N'Soft skill', N'P0002')
 INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0004', '1', N'Hard skill', N'P0002')
+	VALUES(N'R0004', '2', N'Hard skill', N'P0002')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0005', '1', N'Hard skill', N'P0003')
 
 --Insert Reports
 INSERT Reports(Report_id, Created_time, Content, Point, Employee_id, Application_id, Schedule_id)
@@ -425,6 +437,10 @@ GO
 
 ALTER TABLE Job_application_Schedule ADD CONSTRAINT [FK_Job_application_Schedule2] FOREIGN KEY(Schedule_id)
 REFERENCES Schedules(Schedule_id)
+GO
+
+ALTER TABLE Schedules ADD CONSTRAINT [FK_Schedules] FOREIGN KEY(Round_id)
+REFERENCES Rounds(Round_id)
 GO
 
 

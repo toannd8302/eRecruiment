@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author KHOA
  */
 @Entity
-@Table(name = "Employees")
+@Table(name = "Interviewer_Reasons")
 public class interviewerReasons implements Serializable{
     @Id
     @Column(name = "Schedule_id")
@@ -36,9 +36,12 @@ public class interviewerReasons implements Serializable{
     @Column(name = "File_path")
     private String filepath;
     
+    @Column(name = "Status")
+    private String status;
+    
     @ManyToOne()
     @JoinColumn(name = "Schedule_id")
-    private schedule schedule;
+    private schedule employeeSchedule;
     
     @ManyToOne
     @JoinColumn(name = "Employee_id")
@@ -47,12 +50,28 @@ public class interviewerReasons implements Serializable{
     @Transient
     private MultipartFile file;
 
+    public schedule getEmployeeSchedule() {
+        return employeeSchedule;
+    }
+
+    public void setEmployeeSchedule(schedule employeeSchedule) {
+        this.employeeSchedule = employeeSchedule;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public schedule getSchedule() {
-        return schedule;
+        return employeeSchedule;
     }
 
     public void setSchedule(schedule schedule) {
-        this.schedule = schedule;
+        this.employeeSchedule = schedule;
     }
 
     public employee getEmployee() {
