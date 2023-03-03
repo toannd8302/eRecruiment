@@ -25,22 +25,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class CandidateRepositoryImp implements CandidateRepository{
+public class CandidateRepositoryImp implements CandidateRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    
-    @Override
-    public List<candidate> getCandidateById(String id) {
-        Session session = sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
-        Root root = query.from(candidate.class);
-        query = query.select(root);
-        Predicate p1 = builder.like(root.get("id").as(String.class), id);
-        query = query.where(p1);
-        Query q = session.createQuery(query);
-        return q.getResultList();
-    }
 
     @Override
     public boolean addOrUpdate(candidate candidate) {
@@ -63,8 +51,37 @@ public class CandidateRepositoryImp implements CandidateRepository{
     }
 
     @Override
-    public candidate getCandidateById_2(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<candidate> getCandidateById(String id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
+        Root root = query.from(candidate.class);
+        query = query.select(root);
+
+        if (!id.isEmpty()) {
+            Predicate p1 = builder.like(root.get("id").as(String.class), id.trim());
+            query = query.where(p1);
+        }
+
+        Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<candidate> getCandidateByEmail(String email) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
+        Root root = query.from(candidate.class);
+        query = query.select(root);
+
+        if (!email.isEmpty()) {
+            Predicate p1 = builder.like(root.get("email").as(String.class), email.trim());
+            query = query.where(p1);
+        }
+
+        Query q = session.createQuery(query);
+        return q.getResultList();
     }
 
 }

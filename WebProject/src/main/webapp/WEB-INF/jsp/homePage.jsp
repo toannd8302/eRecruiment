@@ -10,7 +10,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-
 <!-- Font here -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
@@ -25,8 +24,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
-
-
 
 <style>
     html {
@@ -107,7 +104,7 @@
     }
 
     #introduce #intro-body {
-        margin-left: 5rem;
+        margin-left: 8rem;
         margin-right: 5rem;
         font-size: 1.5rem;
     }
@@ -118,6 +115,7 @@
     }
 
     #intro-body .intro-info i {
+        display: inline-block;
         margin-bottom: 2rem;
         font-size: 5rem;
         padding: 4rem;
@@ -189,6 +187,62 @@
         color: black;
     }
 
+
+
+    .dialog{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0.1);
+        width: 30%;
+        text-align: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: transform 0.5s;
+    }
+
+
+    .dialog:target{
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+    }
+
+    .overlay{
+        background-color: #ffffff;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+    }
+
+    .dialog-body i{
+        padding: 3rem;
+        background-color: rgb(52, 153, 52);
+        border-radius: 50%;
+        margin-top: -50%;
+        font-size: 5rem;
+        width: 13rem;
+        color: white;
+        margin-bottom: 2rem;
+        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    .dialog-body button{
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+    }
+
+    .dialog-body button a{
+        text-decoration: none;
+    }
+
+    #ok-btn{
+
+        font-size: 1.5rem;
+        padding: 0.5rem 2rem;
+        color: black;
+
+    }
+
 </style>
 
 <!-- Header here -->
@@ -199,8 +253,10 @@
         <div id="search-box">
             <h1>Welcome to our company</h1>
             <h1>Find your dream job</h1>
-            <input type="text" placeholder="I'm looking for..." width="10rem" height="20rem">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            <form action="<c:url value="/${keyword}"/>">
+                <input type="text" name="keyword" placeholder="I'm looking for..." width="10rem" height="20rem">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
         </div>
     </div>
 
@@ -260,7 +316,7 @@
                             <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" id="job-posting-item">
                         <div class="job-intro">
                             <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
                             <h3>Công ty phần mềm Monke Tech</h3>
@@ -269,8 +325,8 @@
                             <p>Cấp bậc: nhân viên</p>
                             <p>Yêu cầu: </p>
                             <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
-                            
-                            ${skill.skillName}
+
+                                ${skill.skillName}
                             </c:forEach>
                         </div>
                     </div>
@@ -278,11 +334,22 @@
                         <h2>Ngày đăng: 20/02/2023</h2>
                         <h2>Ngày hết hạn:30/04/2023</h2>
                         <button class="apply-btn"><a href="#">Ứng tuyển ngay</a></button>
-                        <button class="save-btn">Lưu tin</button>
+                        <!--<button class="save-btn"><a class="dialog-btn" href="">Lưu tin</a></button>-->
                     </div>
                 </div>
             </div>
         </c:forEach>
+    </div>
+
+
+
+
+    <div class="dialog overlay" id="my-dialog">
+        <div class="dialog-body">
+            <i class="modal-title fa-solid fa-check"></i>
+            <h2>Saved job successfully</h2>
+            <button><a href="#hot-jobs" id="ok-btn">OK</a></button>
+        </div>
     </div>
 
 </body>

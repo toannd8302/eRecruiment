@@ -83,28 +83,4 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         return q.getResultList();
     }
 
-    @Override
-    public boolean addOrUpdate(jobPosting jobPosting) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        try {
-            session.save(jobPosting);
-            return true;
-        } catch (Exception e) {
-            System.err.println("== ADD JOB POSTING ERROR ==" + e.getMessage());
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public List<jobPosting> getAllJobPosting() {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
-        Root<jobPosting>root = query.from(jobPosting.class);
-        
-        Query q = session.createQuery(query);
-        return q.getResultList();
-    }
-
 }

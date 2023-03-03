@@ -86,11 +86,16 @@
 
     }
 
+    #job-detail-head #apply-buton button{
+        text-transform: uppercase;
+    }
+
     #job-detail-head #apply-buton button a {
         text-decoration: none;
         color: white;
         font-weight: bold;
         font-size: 1.5rem;
+
     }
 
     #job-detail-head #apply-buton button i:first-child {
@@ -288,7 +293,8 @@
 
     <div id="apply-buton">
         <button class="apply-button"><i class="fa-regular fa-paper-plane"></i><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
-        <button class="save-job-button"><i class="fa-regular fa-heart"></i>save job</button>
+<!--        <button class="save-job-button" value="<c:url value="/post-detail/save/${jobPosting.postId}"/>"v><i class="fa-regular fa-heart"></i>save job</button>-->
+        <button class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
     </div>
 </div>
 
@@ -296,7 +302,7 @@
     <div id="recrui-detail">
         <h1>Recruitment Details</h1>
         <div id="job-general-info">
-            <h1>general information</h1>
+            <h1>General information</h1>
             <ul class="general-info-list">
                 <li><i class="fa-solid fa-money-bill"></i>
                     Salary
@@ -306,29 +312,29 @@
                 <li><i class="fa-sharp fa-solid fa-suitcase"></i>Type of works
                     <c:if test="${jobPosting.typeOfWork == true}"><p>At Office</p></c:if>
                     <c:if test="${jobPosting.typeOfWork == false}"><p>Hybrid</p></c:if>
-                </li>
+                    </li>
 
-                <li><br><i class="fa-solid fa-venus-mars"></i>Gender<p>No</p>
-                </li>
+                    <li><br><i class="fa-solid fa-venus-mars"></i>Gender<p>No</p>
+                    </li>
 
-                <li><br><i class="fa-sharp fa-solid fa-people-group"></i>Number of recruits<p>No</p>
-                </li>
+                    <li><br><i class="fa-sharp fa-solid fa-people-group"></i>Number of recruits<p>No</p>
+                    </li>
 
-                <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.level}</p>
+                    <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.level}</p>
                 </li>
 
                 <li><br><i class="fa-brands fa-black-tie"></i>Experience
                     <c:if test="${jobPosting.exprienceRequirement == 0}"><p>none</p></c:if>
                     <c:if test="${jobPosting.exprienceRequirement != 0}"><p>${jobPosting.exprienceRequirement}</p></c:if>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div id="job-location">
-        <h1>Work Location</h1>
-        <ul class="info-list">
-            <li>
+        <div id="job-location">
+            <h1>Work Location</h1>
+            <ul class="info-list">
+                <li>
                 ${jobPosting.locations}
             </li>
         </ul>
@@ -339,7 +345,7 @@
         <ul class="info-list">
             <c:forTokens var="description" items="${jobPosting.descriptions}" delims=";">
                 <li>${description}</li>
-            </c:forTokens>
+                </c:forTokens>
         </ul>
     </div>
 
@@ -348,7 +354,7 @@
         <ul class="info-list">
             <c:forTokens var="requirement" items="" delims=";">
                 <li>${requirement}</li>
-            </c:forTokens>
+                </c:forTokens>
         </ul>
     </div>
 
@@ -357,7 +363,7 @@
         <ul class="info-list">
             <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=";">
                 <li>${welfare}</li>
-            </c:forTokens>
+                </c:forTokens>
         </ul>
     </div>
 
@@ -365,8 +371,7 @@
         <h1>How to apply</h1>
         <p>Candidates apply online by clicking <a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">Apply now</a> below</p>
         <button class="apply-button"><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">APPLY NOW</a></button>
-        <!--CHUA XU LI-->
-        <button class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <button class="save-job-button">SAVE JOB</button>
         <P>Submission deadline: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></P>
     </div>
 </div>

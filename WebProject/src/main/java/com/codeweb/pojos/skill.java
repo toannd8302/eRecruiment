@@ -21,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -30,8 +31,10 @@ import javax.persistence.Table;
 @Table(name = "Skills")
 public class skill implements Serializable{
     @Id
-    @Column(name = "Skill_id")
-    private int skillId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Skill_id", columnDefinition = "NVARCHAR(6)")
+    private String skillId;
     
     @Column(name = "SKillName")
     private String skillName;
@@ -51,7 +54,14 @@ public class skill implements Serializable{
             inverseJoinColumns = { @JoinColumn(name = "Candidate_id") }
     )
     private Set<candidate> candidates;
-
+    
+    @ManyToMany
+    @JoinTable(
+            name = "Employee_Skills",
+            joinColumns = { @JoinColumn(name = "Skill_id") },
+            inverseJoinColumns = { @JoinColumn(name = "Employee_id") }
+    )
+    private Set<employee> employees;
     
     public Set<candidate> getCandidates() {
         return candidates;
@@ -61,11 +71,11 @@ public class skill implements Serializable{
         this.candidates = candidates;
     }
     
-    public int getSkillId() {
+    public String getSkillId() {
         return skillId;
     }
 
-    public void setSkillId(int skillId) {
+    public void setSkillId(String skillId) {
         this.skillId = skillId;
     }
 

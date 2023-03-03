@@ -6,20 +6,28 @@
 package com.codeweb.controllers;
 
 import com.codeweb.pojos.candidate;
+import com.codeweb.pojos.department;
 import com.codeweb.service.CandidateService;
+import com.codeweb.service.DepartmentService;
 import com.codeweb.service.JobPostingService;
 import java.io.IOException;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,9 +44,12 @@ public class AccountController {
 
     @Autowired
     private JobPostingService jobPostingService;
+    
+    @Autowired
+    private DepartmentService departmentService;
 
     @Autowired
-    private JavaMailSender mailSender;
+    JavaMailSender mailSender;
 
     @ModelAttribute
     public void modelAttribute(Model model,
@@ -46,30 +57,50 @@ public class AccountController {
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
     }
 
-    @RequestMapping("/LoginController")
-    public String login(Model model,
-            @RequestParam(value = "code") String code,
-            HttpSession session) throws IOException {
-        candidate candidate = this.candidateService.getCandidateByCode(code);
-        session.setAttribute("user", candidate);
-       // sendEmail("toanndse161748@fpt.edu.vn", "toan03182@gmail.com", "Login", "Login Success in Web");
-        return "redirect:/";
+    @GetMapping("/loginPage")
+    public String loginPage(Model model, @RequestParam(value = "error", required = false) String error) {
+        try {
+            if (error != null) {
+                if (error.equals("noRoleSupported")) {
+                    model.addAttribute("ERROR", "You have no role to access!");
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("ERROR AT ACCOUNT CONTROLLER: " + e.toString());
+        }
+        return "loginPage";
     }
 
-    @RequestMapping(path = "/LogoutController", method = RequestMethod.GET)
-    public String logout(Model model, HttpSession session) {
-        if (session != null) {
-            session.invalidate();
-        }
+    //Custom a login page
+//    @GetMapping("/login")
+//    public String loginDepartment() {
+//        return "loginDepartment";
+//    }
 
+    @GetMapping("/candidate")
+    public String loginSuccessfully(Model model,
+            Authentication authentication,
+            HttpServletRequest request,
+            HttpSession session) throws IOException {
         return "redirect:/";
+    }
+    
+    @GetMapping("/department")
+    public String loginSuccessfully1(Model model, HttpSession session){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        department department = this.departmentService.getDepartment(email);
+        if(department == null)
+            model.addAttribute("ERROR", "No department found");
+        session.setAttribute("department", department);
+        return "department-Page";
     }
 
     @GetMapping("/account")
-    public String account(Model model, HttpSession session) {
+    public String account(Model model) {
         return "account-information";
     }
-    // GUI MAIL TINH
+
     public void sendEmail(String from, String to, String subject, String content) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(from);

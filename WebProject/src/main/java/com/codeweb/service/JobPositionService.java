@@ -5,11 +5,13 @@
 package com.codeweb.service;
 
 import com.codeweb.pojos.jobPosition;
+import java.util.List;
 
 /**
  *
  * @author toan0
  */
 public interface JobPositionService {
-    jobPosition getJobPositionById(String id);
+
+  
 }

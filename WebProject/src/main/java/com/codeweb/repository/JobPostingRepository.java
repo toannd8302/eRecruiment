@@ -15,6 +15,4 @@ import java.util.List;
 public interface JobPostingRepository {
     List<jobPosting> getPostByKeyword(String kw);
     List<jobPosting> getPostById(String id);
-    List<jobPosting> getAllJobPosting();
-    boolean addOrUpdate(jobPosting jobPosting);
 }

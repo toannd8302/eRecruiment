@@ -40,6 +40,7 @@
     #footer {
         margin-top: 4rem;
         background-color: #161718;
+        clear: both;
     }
 
     #footer .row {
