@@ -5,10 +5,15 @@
  */
 package com.codeweb.repository;
 
+import com.codeweb.pojos.jobPosition;
+import java.util.List;
+
 /**
  *
  * @author toan0
  */
 public interface JobPositionRepository {
+
+    public List<jobPosition> getAllJobPositions();
     
 }

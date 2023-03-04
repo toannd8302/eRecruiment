@@ -42,6 +42,7 @@ com\codeweb\service\implement\CandidateServiceImp.class
 com\codeweb\repository\JobPositionRepository.class
 com\codeweb\loginModel\CustomUserDetails.class
 com\codeweb\configs\DispatcherServletInitializer.class
+com\codeweb\controllers\DepartmentController.class
 com\codeweb\configs\GoogleClientRegistration.class
 com\codeweb\repository\implement\CandidateRepositoryImp.class
 com\codeweb\pojos\employee.class

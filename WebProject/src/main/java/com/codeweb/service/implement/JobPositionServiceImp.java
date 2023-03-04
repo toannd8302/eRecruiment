@@ -5,6 +5,7 @@
 package com.codeweb.service.implement;
 
 import com.codeweb.pojos.jobPosition;
+import com.codeweb.repository.JobPositionRepository;
 
 import com.codeweb.service.JobPositionService;
 import java.util.List;
@@ -18,8 +19,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class JobPositionServiceImp implements JobPositionService {
 
-//    @Autowired
-//    private JobPositionRepository JobPositionRepository;
+
+    @Autowired
+    private JobPositionRepository JobPositionRepository;
+    
+    
+    public List<jobPosition> getAllJobPositions() {
+      return this.JobPositionRepository.getAllJobPositions();
+    }
+
+
 
 
 

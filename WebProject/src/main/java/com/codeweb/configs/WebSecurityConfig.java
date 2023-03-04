@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/employee").hasRole("EMPLOYEE")
                     .antMatchers("/interviewer").hasRole("INTERVIEWER")
                     .antMatchers("/manager").hasRole("MANAGER")
-                    .antMatchers("/department", "/department-homepage", "/department-homepage/createjobposting").hasRole("DEPARTMENT")
+                    .antMatchers("/department", "/department-homepage", "/createjobposting").hasRole("DEPARTMENT")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()
