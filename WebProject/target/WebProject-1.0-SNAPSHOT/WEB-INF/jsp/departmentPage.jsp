@@ -4,16 +4,12 @@
     Author     : KHOA
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>DEPARTMENT PAGE</h1>
-        
-        <h2>Department: ${sessionScope.department.departmentName}</h2>
-    </body>
-</html>
+<!--TẠI TRANG NÀY SẼ VIEW CÁC JOBPOSTING CỦA PHÒNG ĐANG ĐĂNG NHẬP VÀ TẠO MỚI 1 JOBPOSTING-->
+<h1>DEPARTMENT PAGE</h1>
+
+<h2>Department: ${sessionScope.department.departmentName}</h2>
+
+<a href="<c:url value="/createjobposting" />">Create Job Posting</a>

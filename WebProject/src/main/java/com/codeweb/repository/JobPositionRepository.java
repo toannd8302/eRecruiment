@@ -13,7 +13,6 @@ import java.util.List;
  * @author toan0
  */
 public interface JobPositionRepository {
-
-    public List<jobPosition> getAllJobPositions();
-    
+    List<jobPosition>getAll();
+    jobPosition getbyId(String id);
 }

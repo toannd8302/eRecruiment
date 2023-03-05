@@ -25,6 +25,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -65,6 +66,8 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
 
     @Column(name = "Expired_time")
     @Temporal(TemporalType.DATE)
+    //Hỗ trợ việc đúng định dạng khi insert xuống database
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ExpiredTime;
     
     @Column(name = "Approved_status")

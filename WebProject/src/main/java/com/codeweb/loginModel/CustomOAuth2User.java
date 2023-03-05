@@ -6,6 +6,7 @@
 package com.codeweb.loginModel;
 
 import com.codeweb.pojos.candidate;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -18,7 +19,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
  *
  * @author KHOA
  */
-public class CustomOAuth2User implements OAuth2User {
+public class CustomOAuth2User implements OAuth2User,Serializable {
 
     private OAuth2User oauth2User;
     private String registrationId;

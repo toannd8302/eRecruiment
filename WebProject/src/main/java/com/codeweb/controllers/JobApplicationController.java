@@ -49,7 +49,6 @@ public class JobApplicationController {
 
     @GetMapping("/job/application")
     public String Job(Model model,
-            HttpSession session,
             @RequestParam("data") String postID) {
         model.addAttribute("application", new jobApplication());
         model.addAttribute("postID", postID);

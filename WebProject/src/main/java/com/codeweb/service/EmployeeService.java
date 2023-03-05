@@ -19,5 +19,5 @@ public interface EmployeeService {
     employee findEmployeeByID(String id);
     employee findEmployeeByEmail(String email);
 
-    public employee processOAuthPostLogin(CustomOAuth2User oauthUser);
+    employee processOAuthPostLogin(CustomOAuth2User oauthUser);
 }

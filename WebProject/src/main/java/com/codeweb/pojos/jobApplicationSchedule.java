@@ -34,8 +34,12 @@ public class jobApplicationSchedule implements Serializable{
     
     @Column(name = "Reason_content")
     private String Reason_content;
+    
     @Column(name = "File_path")
     private String filepath;
+    
+    @Column(name = "Status")
+    private String status;
     
     @ManyToOne
     @JoinColumn(name = "Application_id")
@@ -43,10 +47,26 @@ public class jobApplicationSchedule implements Serializable{
     
     @ManyToOne()
     @JoinColumn(name = "Schedule_id")
-    private schedule schedule;
+    private schedule applicationSchedule;
+
+    public schedule getApplicationSchedule() {
+        return applicationSchedule;
+    }
+
+    public void setApplicationSchedule(schedule applicationSchedule) {
+        this.applicationSchedule = applicationSchedule;
+    }
     
     @Transient
     private MultipartFile file;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public MultipartFile getFile() {
         return file;
@@ -97,11 +117,11 @@ public class jobApplicationSchedule implements Serializable{
     }
 
     public schedule getSchedule() {
-        return schedule;
+        return applicationSchedule;
     }
 
     public void setSchedule(schedule schedule) {
-        this.schedule = schedule;
+        this.applicationSchedule = schedule;
     }
     
 }

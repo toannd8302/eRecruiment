@@ -23,7 +23,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author KHOA
  */
 @Entity
-@Table(name = "Employees")
+@Table(name = "Reports")
 public class report implements Serializable{
     
     @Id
