@@ -36,15 +36,18 @@ public class DepartmentController {
     @Autowired
     private JobPostingService jobPostingService;
 
+   
+    
+    
     @GetMapping("/createjobposting")
-    public String viewDepartmenJobPosting(Model model) {
+    public String viewFormDepartmenJobPosting(Model model) {
+        
         model.addAttribute("jobPosting", new jobPosting());
-
+        
         List<jobPosition> Positiions = this.jobPositionService.getAll();
 
         model.addAttribute("joPositions", Positiions);
-//jobPosition jobPosition  =jobPositionService.getbyId("J0002");
-//        model.addAttribute("jobPosition", jobPosition);
+
         return "formJobPosting";
     }
 
@@ -58,11 +61,13 @@ public class DepartmentController {
             model.addAttribute("joPositions", jobPositions);
             return "formJobPosting";
         }
-        //
+        
         department department = (department) session.getAttribute("department");
 
         String jobId = jobPosting.getJobPosition().getJobId();
+        
         jobPosition jobposition = this.jobPositionService.getbyId(jobId);
+        
         if (jobposition.getDepartment().getDepartmentId().equals(department.getDepartmentId())) {
             jobPosting.setJobPosition(jobposition);
 

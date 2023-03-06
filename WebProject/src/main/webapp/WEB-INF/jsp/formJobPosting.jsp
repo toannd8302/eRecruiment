@@ -37,7 +37,7 @@
 
             <div>
                 <form:label path="descriptions">Descriptions</form:label>
-                <form:textarea  path="descriptions" />
+                <form:textarea  path="descriptions" required="true" />
             </div>
 
             <div>
@@ -51,15 +51,15 @@
             </div>
             <div>
                 <form:label path="locations">Locations</form:label>
-                <form:input type="text" path="locations" />
+                <form:input type="text" path="locations" required="true" />
             </div>
             <div>
                 <form:label path="welfare">Welfare</form:label>
-                <form:input type="text" path="welfare" />
+                <form:input type="text" path="welfare" required="true"/>
             </div>
             <div>
                 <form:label path="salary">Salary</form:label>
-                <form:input type="number" path="salary" min="0" /> $
+                <form:input type="number" path="salary" min="0" required="true"/> $
             </div>
             <div>
                 <form:label path="ExpiredTime">Expired Time</form:label>
@@ -69,7 +69,7 @@
 
             <div>
                 <form:label path="level">Level</form:label>
-                <form:input type="text" path="level" />
+                <form:input type="text" path="level" required="true" />
             </div>
 
             <div>           

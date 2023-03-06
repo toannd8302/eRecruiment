@@ -88,4 +88,9 @@ public class JobPostingServiceImp implements JobPostingService {
         }
         return resul;
     }
+
+    @Override
+    public List<jobPosting> getAllJobPosting() {
+        return this.jobPostingRepository.getAllJobPosting();
+    }
 }
