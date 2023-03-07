@@ -6,7 +6,9 @@
 package com.codeweb.service;
 
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.skill;
 import java.util.List;
+import java.util.Set;
 
 /**
  *

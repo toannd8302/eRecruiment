@@ -32,6 +32,11 @@ public class JobPositionServiceImp implements JobPositionService{
     public jobPosition getbyId(String id) {
         return this.jobPositionRepository.getbyId(id);
     }
+
+    @Override
+    public boolean createJobPosition(jobPosition jobPosition) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     

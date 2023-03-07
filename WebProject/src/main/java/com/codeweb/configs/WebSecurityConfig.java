@@ -54,38 +54,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/home/**", "/post-detail/**", "/oauth2/**", "/loginPage", "/login").permitAll()
-                    .antMatchers("/account", "/job/application", "/job/viewMyJob", "/post-detail/save/**", "/post-detail/view", "/candidate").hasRole("CANDIDATE")
-                    .antMatchers("/employee","/jobPostings","/jobApps","/schedules").hasRole("EMPLOYEE")
-                    .antMatchers("/interviewer").hasRole("INTERVIEWER")
-                    .antMatchers("/manager").hasRole("MANAGER")
-                    .antMatchers("/department","/createjobposting").hasRole("DEPARTMENT")
-                    .anyRequest().authenticated()
+                .antMatchers("/", "/home/**", "/post-detail/**", "/post-detail/view/delete/**",
+        "/oauth2/**", "/loginPage", "/login").permitAll()
+                .antMatchers("/account", "/job/application", "/job/viewMyJob", "/post-detail/save/**",
+                        "/post-detail/view", "/candidate").hasRole("CANDIDATE")
+                .antMatchers("/employee", "/jobPostings", "/jobApps", "/schedules").hasRole("EMPLOYEE")
+                .antMatchers("/interviewer").hasRole("INTERVIEWER")
+                .antMatchers("/manager").hasRole("MANAGER")
+                .antMatchers("/department", "/createjobposting").hasRole("DEPARTMENT")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-//                    .loginPage("/login")
-                        .usernameParameter("email")
-//                        .passwordParameter("password")
-                        .defaultSuccessUrl("/department")
-                        .failureUrl("/login?error")
-                        .permitAll()
-                    .and()
-                    .exceptionHandling()
-                    .accessDeniedPage("/LoginDepartment?accessDenied")
+                //                    .loginPage("/login")
+                .usernameParameter("email")
+                //                        .passwordParameter("password")
+                .defaultSuccessUrl("/department")
+                .failureUrl("/login?error")
+                .permitAll()
                 .and()
-                    .oauth2Login()
-                        .loginPage("/loginPage")
-                        .userInfoEndpoint()
-                        .userService(customOAuth2UserService)
-                    .and()
-                    .successHandler(customAuthenticationSuccessHandler)
-                    .failureUrl("/")
+                .exceptionHandling()
+                .accessDeniedPage("/LoginDepartment?accessDenied")
+                .and()
+                .oauth2Login()
+                .loginPage("/loginPage")
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService)
+                .and()
+                .successHandler(customAuthenticationSuccessHandler)
+                .failureUrl("/")
                 .and()
                 .logout()
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/")
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID")
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
                 .and()
                 .csrf().disable();
     }
@@ -94,9 +96,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new CustomUserDetailService();
     }
 
@@ -107,7 +109,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setUserDetailsService(userDetailsService());
         return authenticationProvider;
     }
-    
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());

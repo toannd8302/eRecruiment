@@ -55,4 +55,16 @@ public class JobPositionRepositoryImp implements JobPositionRepository {
         return typedQuery.getSingleResult();
     }
 
+    @Override
+    public boolean createJobPosition(jobPosition jobPosition) {
+        try {
+            Session session = sessionFactory.getObject().getCurrentSession();
+            session.save(jobPosition);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

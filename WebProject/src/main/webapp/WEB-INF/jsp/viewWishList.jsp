@@ -99,6 +99,7 @@
                 int count = 1;
                 for (jobPosting j : wishList) {
             %>
+
             <tr>
                 <td><%= count++%></td>
                 <td><%= j.getJobPosition().getJobName()%></td>
@@ -107,10 +108,14 @@
                 <td><%= j.getLocations()%></td>
                 <td><%= j.getSalary()%></td>
                 <td><button class="btn btn-success detail-toggle">Apply Now</button></td>
-                <td><button class="btn btn-danger detail-toggle">Unsave</button></td>
-            </tr>
-            <%
-                    }%>
+        <form action="/post-detail/view/delete/<%=j.getPostId()%>"/>">
+        <td><button class="btn btn-danger detail-toggle">Unsave</button></td>
+
+        </form>
+        </tr>
+
+        <%
+                }%>
         </tbody>
     </table>
 

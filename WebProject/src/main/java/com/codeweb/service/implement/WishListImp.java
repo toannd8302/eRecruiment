@@ -26,19 +26,17 @@ public class WishListImp {
     private static final int MAX_WISHLIST_SIZE = 5;
     private int wishListCount = 0;
 
-    public void addToWishList(jobPosting joP) {
+    public void addToWishList(jobPosting jobPosting) {
         if (wishListCount < MAX_WISHLIST_SIZE) {
             wishListCount++;
-            wishList.add(joP);
+            wishList.add(jobPosting);
         }
 
     }
 
-    public void removeJobPosting(jobPosting joP) {
-        if (wishListCount < MAX_WISHLIST_SIZE) {
-            wishListCount++;
-            wishList.remove(joP);
-        }
+    public void removeJobPosting(jobPosting jobPosting) {
+     
+            wishList.remove(jobPosting);
 
     }
 

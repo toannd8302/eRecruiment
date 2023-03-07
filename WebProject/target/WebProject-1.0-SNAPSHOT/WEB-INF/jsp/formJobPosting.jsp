@@ -22,15 +22,15 @@
 
         <h1 style="text-align: center">Create Job Posting</h1>
 
- <%
- String msg = (String)session.getAttribute("ERROR");
- if(msg!=null){
-     %>
-     <h2><%= msg %></h2>
         <%
-}
- %>
- 
+            String msg = (String) session.getAttribute("ERROR");
+            if (msg != null) {
+        %>
+        <h2><%= msg%></h2>
+        <%
+            }
+        %>
+
         <c:url value="/createjobposting" var="action" />
         <form:form method="post" modelAttribute="jobPosting" action="${action}" >      
 
@@ -72,7 +72,8 @@
                 <form:input type="text" path="level" required="true" />
             </div>
 
-            <div>           
+            <div>    
+                
                 <form:select  path="jobPosition.jobId" required="true">
                     <form:option value="">-- Select Job Title --</form:option>
                     <form:options items="${joPositions}" itemValue="jobId" itemLabel="JobName"></form:options>
@@ -80,7 +81,7 @@
 
             </div>
 
-
+             
 
             <button type="submit">Create</button>
             <input type="reset" value="Reset" />

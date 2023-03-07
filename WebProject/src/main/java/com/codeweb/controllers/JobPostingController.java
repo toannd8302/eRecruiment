@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -52,7 +53,7 @@ public class JobPostingController {
 
            wishList.addToWishList(jobPostingSave);
            //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
-        return "homePage";
+        return "redirect:/";
     }
      @GetMapping("/post-detail/view")
      public String viewWishList(Model model){
@@ -60,4 +61,12 @@ public class JobPostingController {
          model.addAttribute("wishList", wishlist);
          return "viewWishList";
      }
+     
+     @GetMapping("/post-detail/view/delete/{postId}")
+     public String deleteJob(@PathVariable(value = "postId") String postId){
+         jobPosting jobPosting = this.jobPostingService.getPostByID(postId);
+         wishList.removeJobPosting(jobPosting);
+         return "viewWishList";
+     }
+     
 }

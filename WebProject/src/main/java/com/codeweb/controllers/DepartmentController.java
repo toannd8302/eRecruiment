@@ -8,8 +8,10 @@ package com.codeweb.controllers;
 import com.codeweb.pojos.department;
 import com.codeweb.pojos.jobPosition;
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.skill;
 import com.codeweb.service.JobPositionService;
 import com.codeweb.service.JobPostingService;
+import com.codeweb.service.SkillService;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -35,7 +38,8 @@ public class DepartmentController {
     private JobPositionService jobPositionService;
     @Autowired
     private JobPostingService jobPostingService;
-
+    @Autowired
+    private SkillService skillService;
    
     
     
@@ -47,6 +51,10 @@ public class DepartmentController {
         List<jobPosition> Positiions = this.jobPositionService.getAll();
 
         model.addAttribute("joPositions", Positiions);
+        
+//        List<skill> skills = this.skillService.getAllSkills();
+//        
+//        model.addAttribute("skills", skills);
 
         return "formJobPosting";
     }
