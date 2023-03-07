@@ -22,7 +22,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class WebTesting {
      private static WebDriver myBrowser;
 
-    @BeforeAll
+    @Test
     //Chạy 1 lần duy nhất trước tất cả các @Test
     //Khởi động các giá trị sẽ dùng trong @Test
     public static void setUpClass() {

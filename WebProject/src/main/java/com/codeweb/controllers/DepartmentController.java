@@ -81,7 +81,7 @@ public class DepartmentController {
 
             boolean Result = this.jobPostingService.create(jobPosting);
             if (Result == true) {
-                return "redirect:/";
+                return "redirect:/department";
             }
 
         } else {

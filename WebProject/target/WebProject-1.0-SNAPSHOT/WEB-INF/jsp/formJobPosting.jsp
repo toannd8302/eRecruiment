@@ -47,20 +47,23 @@
 
             <div>
                 <form:label path="exprienceRequirement">Exprience Requirement</form:label>
-                <form:input type="number" path="exprienceRequirement" min="0"/> (year/years)
+                <form:input type="number" path="exprienceRequirement" min="0" max="30"/> (year/years)
             </div>
+            
             <div>
                 <form:label path="locations">Locations</form:label>
                 <form:input type="text" path="locations" required="true" />
             </div>
+            
             <div>
                 <form:label path="welfare">Welfare</form:label>
                 <form:input type="text" path="welfare" required="true"/>
             </div>
             <div>
                 <form:label path="salary">Salary</form:label>
-                <form:input type="number" path="salary" min="0" required="true"/> $
+                <form:input type="number" path="salary" min="0" required="true" /> $
             </div>
+            
             <div>
                 <form:label path="ExpiredTime">Expired Time</form:label>
                 <form:input type="date" path="ExpiredTime" required="true"/>
