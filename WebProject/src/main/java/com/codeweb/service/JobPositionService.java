@@ -6,7 +6,6 @@
 package com.codeweb.service;
 
 import com.codeweb.pojos.jobPosition;
-
 import java.util.List;
 
 /**
@@ -16,5 +15,4 @@ import java.util.List;
 public interface JobPositionService {
      List<jobPosition>getAll();
      jobPosition getbyId(String id);
-     boolean createJobPosition(jobPosition jobPosition);
 }

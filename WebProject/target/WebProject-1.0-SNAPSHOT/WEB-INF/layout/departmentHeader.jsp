@@ -161,18 +161,7 @@
                                     <div class="col-sm">
                                         <li><a href="#">Contact</a></li>
                                     </div>
-
-                                    <div class="col-sm">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                               data-bs-toggle="dropdown">Jobs by title</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Jobs By Skill</a></li>
-                                                <li><a class="dropdown-item" href="#">Jobs By Salary</a></li>
-                                                <li><a class="dropdown-item" href="#">Job By Location</a></li>
-                                            </ul>
-                                        </li>
-                                    </div>
+                                   
                                 </div>
                             </ul>
                         </div>

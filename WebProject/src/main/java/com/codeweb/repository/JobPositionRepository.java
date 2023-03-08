@@ -15,5 +15,4 @@ import java.util.List;
 public interface JobPositionRepository {
     List<jobPosition>getAll();
     jobPosition getbyId(String id);
-    boolean createJobPosition(jobPosition jobPosition);
 }
