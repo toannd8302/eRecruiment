@@ -90,12 +90,20 @@
         text-transform: uppercase;
     }
 
-    #job-detail-head #apply-buton button a {
+    #job-detail-head #apply-buton .apply-buton button a {
         text-decoration: none;
         color: white;
         font-weight: bold;
         font-size: 1.5rem;
 
+    }
+
+
+    #job-detail-head #save-job-button button a{
+        text-decoration: none;
+        color: #00b14f !important;
+        font-weight: bold;
+        font-size: 1.5rem;
     }
 
     #job-detail-head #apply-buton button i:first-child {
@@ -232,15 +240,6 @@
         color: #00b14f;
     }
 
-    /* #job-detail-body #job-apply button{
-        padding: 9px 25px;
-        background-color: #00b14f;
-        color: white;
-        border-radius: 3px;
-        border: 1px solid #00b14f;
-        font-weight: bold;
-    } */
-
     #job-detail-body #job-apply p,
     button {
         margin: 0.5rem;
@@ -276,6 +275,16 @@
         text-align: center;
     }
 
+    
+    #apply-link{
+        text-decoration: none;
+        color: white;
+    }
+    
+    #save-job-link{
+        text-decoration: none;
+        color: #00b14f;
+    }
 </style>
 
 <div id="job-detail-head">
@@ -292,9 +301,8 @@
     </div>
 
     <div id="apply-buton">
-        <button class="apply-button"><i class="fa-regular fa-paper-plane"></i><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
-<!--        <button class="save-job-button" value="<c:url value="/post-detail/save/${jobPosting.postId}"/>"v><i class="fa-regular fa-heart"></i>save job</button>-->
-        <button class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <button><i class="fa-regular fa-paper-plane"></i><a id="apply-link" href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
+        <button><a id="save-job-link" href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
     </div>
 </div>
 

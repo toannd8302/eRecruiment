@@ -13,10 +13,11 @@ import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -26,7 +27,9 @@ import javax.persistence.Table;
 @Table(name = "Departments")
 public class department implements Serializable{
     @Id
-    @Column(name = "Department_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Department_id", columnDefinition = "NVARCHAR(6)")
     private String departmentId;
     
     @Column(name = "DepartmentName")
@@ -34,6 +37,28 @@ public class department implements Serializable{
     
     @Column(name = "Email")
     private String email;
+    
+    @Column(name = "Password")
+    private String password;
+    
+    @Column(name = "Role")
+    private String role;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
     
     @OneToMany(mappedBy = "department")
     private Set<jobPosition>jobPositions;

@@ -18,8 +18,10 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
-        <put-attribute name="content" value="BASE"/>
+        <put-attribute name="content" value=""/>
     </definition>
+    
+    <!--All tiles for candidate-->
     <definition name="homePage" extends="baseLayout">
         <put-attribute name="title" value="HomePage"/>
         <put-attribute name="content" value="/WEB-INF/jsp/homePage.jsp" />
@@ -37,12 +39,48 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/account.jsp" />
     </definition>
     <definition name="view-JobApplication" extends="baseLayout">
-        
         <put-attribute name="content" value="/WEB-INF/jsp/viewJobApplication.jsp" />
     </definition>
     <definition name="viewWishList" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>
         <put-attribute name="content" value="/WEB-INF/jsp/viewWishList.jsp" />
+    </definition>
+    
+    <!--All tiles for departments-->
+    <definition name="department-Page" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/departmentFooter.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/departmentPage.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/departmentFooter.jsp"/>
+    </definition>
+    
+    <definition name="formJobPosting" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/departmentFooter.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/formJobPosting.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/departmentFooter.jsp"/>
+    </definition>
+
+    <!--ALl tiles for Employee role-->
+    <definition name="employee-page" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/employeeHeader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/employeeHomePage.jsp" />
+    </definition>
+    <definition name="view-all-postings" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/employeeHeader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/allPostings.jsp" />
+    </definition>
+    <definition name="view-all-apps" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/employeeHeader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/allApplications.jsp" />
+    </definition>
+    <definition name="view-all-schedules" extends="baseLayout">
+        <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/employeeHeader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/allSchedules.jsp" />
     </definition>
 </tiles-definitions>    
     

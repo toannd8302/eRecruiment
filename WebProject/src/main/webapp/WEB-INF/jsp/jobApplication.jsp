@@ -9,9 +9,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<body style="background-color: #1d1f28;">
+<!--<body style="background-color: #1d1f28;">
 
-    <!-- Body Here -->
+     Body Here 
     <div id="apply-job-page">
         <div id="job-detail-head">
             <div class="row">
@@ -65,17 +65,15 @@
         </div>
 
     </div>
-</body>
-
-
-
+</body>-->
+<h1>Create New Application</h1>
 <c:url value="/job/application" var="action"/>
 <form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
     <div>
         <label>Introduction</label>
         <form:input type="text" id="introduction" path="introduction"/>
     </div>
-
+                
     <div>
         <label>File CV</label>
         <form:input type="file" id="file" path="file"/>

@@ -10,12 +10,17 @@ package com.codeweb.pojos;
  * @author KHOA
  */
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -24,8 +29,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Rounds")
 public class round implements Serializable{
+    
     @Id
-    @Column(name = "Round_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Round_id", columnDefinition = "NVARCHAR(6)")
     private String roundID;
     
     @Column(name = "Round_number")
@@ -38,6 +46,17 @@ public class round implements Serializable{
     @JoinColumn(name = "Post_id")
     private jobPosting jobPoting;
 
+    @OneToMany (mappedBy = "round", fetch = FetchType.EAGER)
+    private Set<schedule> schedule;
+
+    public Set<schedule> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Set<schedule> schedule) {
+        this.schedule = schedule;
+    }
+    
     public String getRoundID() {
         return roundID;
     }

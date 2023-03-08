@@ -43,17 +43,20 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
         Root<jobPosting> root = query.from(jobPosting.class);
-        Join<jobPosting,jobPosition> position = root.join("jobPosition");
-        Join<jobPosition,skill> skill = position.join("skills");
+        Join<jobPosting, jobPosition> position = root.join("jobPosition");
+        Join<jobPosition, skill> skill = position.join("skills");
 
-        if(!kw.isEmpty() && kw!=null){
-            Predicate p1 = builder.like(position.get("jobName").as(String.class), 
+        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class), "Approved");
+        query = query.where(p3);
+
+        if (!kw.isEmpty() && kw != null) {
+            Predicate p1 = builder.like(position.get("jobName").as(String.class),
                     String.format("%%%s%%", kw));
-            Predicate p2 = builder.like(skill.get("skillName").as(String.class), 
+            Predicate p2 = builder.like(skill.get("skillName").as(String.class),
                     String.format("%%%s%%", kw));
-            query = query.where(builder.or(p1,p2));
+            query = query.where(builder.or(p1, p2));
         }
-        
+
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
 
@@ -63,9 +66,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
 //        q.setParameter("kw", new String("%" + kw + "%"));
 //        return q.getResultList();
     }
-    
-    
-    
+
     @Override
     public List<jobPosting> getPostById(String id) {
         Session session = sessionFactory.getObject().getCurrentSession();
@@ -80,6 +81,49 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
             query = query.where(p1);
         }
         Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<jobPosting> getPostByStatus(String status) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
+        Root<jobPosting> root = query.from(jobPosting.class);
+        Predicate p = builder.equal(root.get("ApprovedStatus").as(String.class), status);
+        query = query.where(p);
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
+
+    @Override
+    public boolean create(jobPosting jobPosting) {
+        try {
+            Session session = sessionFactory.getObject().getCurrentSession();
+            session.save(jobPosting);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    @Override
+    public List<jobPosting> getAllJobPosting() {
+
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
+
+        Root root = query.from(jobPosting.class);
+
+        query = query.select(root);
+
+        Query q = session.createQuery(query);
+        
         return q.getResultList();
     }
 

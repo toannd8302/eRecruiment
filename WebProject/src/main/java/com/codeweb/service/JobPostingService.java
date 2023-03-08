@@ -13,7 +13,15 @@ import java.util.List;
  * @author KHOA
  */
 public interface JobPostingService {
+
+    List<jobPosting> getAllJobPosting();
+
     List<jobPosting> getPostByKeyword(String kw);
+
     jobPosting getPostByID(String id);
+
     List<jobPosting> getPost(String id);
+
+    boolean create(jobPosting jobPosting);
+
 }

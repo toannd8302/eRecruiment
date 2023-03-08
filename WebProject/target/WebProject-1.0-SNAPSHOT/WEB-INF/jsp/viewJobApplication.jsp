@@ -183,7 +183,7 @@
         <h1 id="applied-list">My Applications</h1>
         <hr>
         <table class="table table-striped">
-            <caption>New York City Marathon Results 2013</caption>
+
             <thead>
                 <tr>
                     <th>No.</th>
