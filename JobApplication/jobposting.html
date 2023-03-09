@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noi dung trong website</title>
+    <title>Job Posting List</title>
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
@@ -181,6 +181,7 @@
             background-color: #1abc9c;
         }
     </style>
+    <!-- Sidebar Here -->
     <div class="sidebar">
         <div class="row">
             <div>
@@ -207,11 +208,13 @@
         </ul>
     </div>
     <div id="wrapper">
-        <h1>Job Application List</h1>
+        <h1>Welcome HR Employee</h1>
+        <h1>Job Posting List</h1>
         <div class="tabs">
             <ul class="nav-tabs">
                 <li class="active"><a href="#pending">Pending</a></li>
-                <li><a href="#approved">Approved</a></li>
+                <li><a href="#scheduling">Scheduling</a></li>
+                <li><a href="#on-going">On-going</a></li>
                 <li><a href="#rejected">Rejected</a></li>
             </ul>
             <div class="tab-content">
@@ -225,7 +228,7 @@
                                 <th>Department</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th>View Details</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -235,7 +238,7 @@
                                 <td>IT</td>
                                 <td>09113</td>
                                 <td>ITech@gmail.com</td>
-                                <td><a href="#">View Details</a></td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
                             </tr>
                             <tr>
                                 <td>P0002</td>
@@ -243,40 +246,79 @@
                                 <td>Marketing</td>
                                 <td>08115</td>
                                 <td>Marketing@gmail.com</td>
-                                <td><a href="#">View Details</a></td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div id="approved" class="tab-content-item">
-                    <h2>Approved</h2>
+                <div id="scheduling" class="tab-content-item">
+                    <h2>Scheduling</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Candidate</th>
-                                <th>Job Apply</th>
+                                <th>Job Title</th>
+                                <th>Department</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th>View Details</th>
+                                <th>Cancel</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>J0001</td>
-                                <td>Nguyễn Đức Toàn</td>
+                                <td>P0001</td>
                                 <td>Back-end Developer</td>
-                                <td>114</td>
-                                <td>toandeptraiso1@gmail.com</td>
-                                <td><a href="#">View Details</a></td>
+                                <td>IT</td>
+                                <td>09113</td>
+                                <td>ITech@gmail.com</td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
+                                <td><a href="#">Cancel</a></td>
                             </tr>
                             <tr>
-                                <td>J0002</td>
-                                <td>Lồ Quang Thắng</td>
+                                <td>P0002</td>
                                 <td>Front-end Developer</td>
+                                <td>Marketing</td>
+                                <td>08115</td>
+                                <td>Marketing@gmail.com</td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
+                                <td><a href="#">Cancel</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="on-going" class="tab-content-item">
+                    <h2>On-going</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Job Title</th>
+                                <th>Department</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>View Details</th>
+                                <th>Cancel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>P0003</td>
+                                <td>Quality Control</td>
+                                <td>Quality Assurance</td>
+                                <td>114</td>
+                                <td>QA@gmail.com</td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
+                                <td><a href="#">Cancel</a></td>
+                            </tr>
+                            <tr>
+                                <td>P0004</td>
+                                <td>UI Designer</td>
+                                <td>User Experience</td>
                                 <td>09666</td>
-                                <td>quangthanglor@gmail.com</td>
-                                <td><a href="#">View Details</a></td>
+                                <td>UX@gmail.com</td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
+                                <td><a href="#">Cancel</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -287,29 +329,29 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Candidate</th>
-                                <th>Job Apply</th>
+                                <th>Job Title</th>
+                                <th>Department</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th>View Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>J0001</td>
-                                <td>Lê Quang Phú</td>
-                                <td>Front-end Developer</td>
+                                <td>P0005</td>
+                                <td>Business Analyst</td>
+                                <td>Marketing</td>
                                 <td>114123</td>
-                                <td>phucobolanhat@gmail.com</td>
-                                <td><a href="#">View Details</a></td>
+                                <td>Marketing@gmail.com</td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
                             </tr>
                             <tr>
-                                <td>J0002</td>
-                                <td>Anh Là Nhất</td>
-                                <td>Back-end Developer</td>
+                                <td>P0006</td>
+                                <td>System Analyst</td>
+                                <td>IT</td>
                                 <td>999</td>
-                                <td>anhlanhatroi123@gmail.com</td>
-                                <td><a href="#">View Details</a></td>
+                                <td>ITech@gmail.com</td>
+                                <td><a href="jobpostingdetail.html">View Details</a></td>
                             </tr>
                         </tbody>
                     </table>
