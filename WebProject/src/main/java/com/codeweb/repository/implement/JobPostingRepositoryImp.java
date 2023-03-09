@@ -22,6 +22,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Set;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ListJoin;
@@ -97,7 +98,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     }
 
     @Override
-    public boolean create(jobPosting jobPosting) {
+    public boolean createJobPosting(jobPosting jobPosting) {
         try {
             Session session = sessionFactory.getObject().getCurrentSession();
             session.save(jobPosting);
@@ -123,8 +124,19 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         query = query.select(root);
 
         Query q = session.createQuery(query);
-        
+
         return q.getResultList();
+    }
+
+    @Override
+    public void deleteJobPosting(String id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaDelete<jobPosting> criteraDelete = builder.createCriteriaDelete(jobPosting.class);
+        Root<jobPosting> root = criteraDelete.from(jobPosting.class);
+        criteraDelete.where(builder.equal(root.get("postId"), id));
+        session.createQuery(criteraDelete).executeUpdate();
+        
     }
 
 }

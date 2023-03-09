@@ -67,7 +67,7 @@
 <%
 
     //    List<jobPosting> wishList = (List<jobPosting>) session.getAttribute("List");
-    Set<jobPosting> wishList = (Set<jobPosting>) request.getAttribute("wishList");
+    Set<jobPosting> wishList = (Set<jobPosting>) session.getAttribute("wishList");
     //QUY ĐỊNH CHỈ ĐƯỢC 5 JOBPOSTINGS
     if (!wishList.isEmpty()) {
         //HANDLE VẤN ĐỀ TRÙNG THÌ DÙNG SET HOẶC IF

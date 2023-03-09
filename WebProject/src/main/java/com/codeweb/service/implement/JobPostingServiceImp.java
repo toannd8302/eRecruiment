@@ -53,7 +53,7 @@ public class JobPostingServiceImp implements JobPostingService {
     
     //Tạo 1 jobPosting
     @Override
-    public boolean create(jobPosting jobPosting) {
+    public boolean createJobPosting(jobPosting jobPosting) {
         boolean resul = false;
         try {
 
@@ -81,7 +81,7 @@ public class JobPostingServiceImp implements JobPostingService {
 
             jobPosting.setLevel(jobPosting.getLevel());
 
-            resul = this.jobPostingRepository.create(jobPosting);
+            resul = this.jobPostingRepository.createJobPosting(jobPosting);
 
         } catch (Exception e) {
             System.err.println("==CREATE JOB POSTING==" + e.getMessage());
@@ -92,5 +92,10 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public List<jobPosting> getAllJobPosting() {
         return this.jobPostingRepository.getAllJobPosting();
+    }
+
+    @Override
+    public void deleteJobPosting(String id) {
+         this.jobPostingRepository.deleteJobPosting(id);
     }
 }

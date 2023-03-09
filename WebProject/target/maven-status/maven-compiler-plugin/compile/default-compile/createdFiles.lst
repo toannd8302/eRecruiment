@@ -1,6 +1,7 @@
 com\codeweb\repository\implement\EmployeeRepositoryImp.class
 com\codeweb\loginModel\CustomOAuth2User.class
 com\codeweb\repository\CandidateRepository.class
+com\codeweb\repository\SkillRepository.class
 com\codeweb\service\EmployeeService.class
 com\codeweb\controllers\employeeController.class
 com\codeweb\repository\implement\JobPositionRepositoryImp.class
@@ -22,6 +23,7 @@ com\codeweb\service\implement\CustomUserDetailService.class
 com\codeweb\service\implement\DepartmentServiceImp.class
 com\codeweb\configs\TilesConfig.class
 com\codeweb\configs\HibernateConfig.class
+com\codeweb\service\SkillService.class
 com\codeweb\controllers\AccountController.class
 com\codeweb\controllers\HomeController.class
 com\codeweb\repository\EmployeeRepository.class
@@ -31,8 +33,10 @@ com\codeweb\configs\SecurityWebAppInitializer.class
 com\codeweb\configs\WebSecurityConfig.class
 com\codeweb\pojos\candidate.class
 com\codeweb\service\implement\WishListImp.class
+com\codeweb\constants\Constants.class
 com\codeweb\controllers\JobApplicationController.class
 com\codeweb\pojos\department.class
+com\codeweb\service\implement\SkillServiceImp.class
 com\codeweb\pojos\jobApplication.class
 com\codeweb\service\DepartmentService.class
 com\codeweb\controllers\JobPostingController.class
@@ -53,4 +57,5 @@ com\codeweb\passwordEncoder\NoOpPasswordEncoder.class
 com\codeweb\pojos\jobApplicationSchedule.class
 com\codeweb\repository\DepartmentRepository.class
 com\codeweb\service\JobPositionService.class
+com\codeweb\repository\implement\SkillRepositoryImp.class
 com\codeweb\pojos\report.class

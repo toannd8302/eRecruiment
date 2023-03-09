@@ -48,26 +48,22 @@ public class JobPostingController {
             @PathVariable(value = "postID") String postID) {
         //NÊN HIỂN THI NAME LÊN URL THÌ TỐT HƠN
         jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
-//           List<jobPosting>list = new ArrayList<>();
-//          list.add(jobPostingSave);
-//           session.setAttribute("List", list);
-
         wishList.addToWishList(jobPostingSave);
         //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
-        return "homePage";
+        return "redirect:/";
     }
 
     @GetMapping("/post-detail/view")
-    public String viewWishList(Model model) {
+    public String viewWishList(HttpSession session) {
         Set<jobPosting> wishlist = wishList.getWishList();
-        model.addAttribute("wishList", wishlist);
+        session.setAttribute("wishList", wishlist);
         return "viewWishList";
     }
 
     @GetMapping("/post-detail/view/delete/{postId}")
-    public String deleteJob(@PathVariable(value = "postId") String postId) {
+    public String deleteJob(HttpSession session, @PathVariable(value = "postId") String postId) {
         jobPosting jobPosting = this.jobPostingService.getPostByID(postId);
         wishList.removeJobPosting(jobPosting);
-        return "redirect:/post-detail/view";
+        return "redirect:/post-detail/view"; 
     }
 }

@@ -194,6 +194,7 @@
             </thead>
             <c:forEach var="jobApplication" items="${JobApplications}" varStatus="counter">
                 <tbody>
+                   
                     <tr>
                         <td>${counter.count}</td>
                         <td>${jobApplication.jobPosting.jobPosition.jobName}</td>

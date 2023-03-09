@@ -21,6 +21,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -71,7 +72,7 @@ public class DepartmentController {
         if (jobposition.getDepartment().getDepartmentId().equals(department.getDepartmentId())) {
             jobPosting.setJobPosition(jobposition);
 
-            boolean Result = this.jobPostingService.create(jobPosting);
+            boolean Result = this.jobPostingService.createJobPosting(jobPosting);
             if (Result == true) {
                 return "redirect:/createjobposting";
             }
@@ -85,5 +86,13 @@ public class DepartmentController {
         }
         return "formJobPosting";
 
+    }
+    
+    @GetMapping("/deletejobposting/{postID}")
+    public String deleteJobPosting(HttpSession session, 
+            @PathVariable(value = "postID") String postID){
+          
+        this.jobPostingService.deleteJobPosting(postID);
+        return "redirect:/department";
     }
 }

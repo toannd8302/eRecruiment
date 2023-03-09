@@ -259,7 +259,7 @@
                         <div class="col-sm-6">
                             <div>
                                 <h3>Salary</h3>
-                                <form:input type="text" path="salary"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
+                                <form:input type="number" path="salary"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
                             </div>
                             <div>
                                 <%--<form:label path="level">Level</form:label>--%>
@@ -312,9 +312,10 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    
                 </div>
-                <button>Post</button>
+                <button>Post </button>
                 <input type="reset" value="Reset" />
             </div>
 

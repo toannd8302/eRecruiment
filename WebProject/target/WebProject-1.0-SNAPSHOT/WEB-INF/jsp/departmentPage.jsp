@@ -114,6 +114,8 @@
         width: 80%;
         padding-left: 2rem;
         margin-top: 2rem;
+/*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
+        font-family: serif; 
     }
 
     .post-list-right .table thead{
@@ -180,7 +182,7 @@
 
 
 
-<!--<h2>Department: ${sessionScope.department.departmentName}</h2>-->
+<!--<h2> </h2>-->
 
 <%
     department department = (department) session.getAttribute("department");
@@ -235,7 +237,7 @@
     </ul>
 </nav>
 <div class="post-list-right">
-    <h1>Job Posting List</h1>
+    <h1>Job Posting List of ${sessionScope.department.departmentName} Department</h1>
     <hr>
     <div class="container mt-3">
         <table class="styled-table">
@@ -270,7 +272,11 @@
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
                     <td><a href="<c:url value="/post-detail/${item.postId}"/>">View Detail</a></td>
-                    <td><i class="fa-solid fa-trash trash-bin"></i></td>
+                    <td>
+                        <i class="fa-solid fa-trash trash-bin">
+                            <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId() %>">Cancel</a>
+                        </i>
+                    </td>
                 </tr>   
 
                 <%
