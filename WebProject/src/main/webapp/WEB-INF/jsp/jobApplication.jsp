@@ -8,64 +8,167 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<style>
+    html {
+        font-size: 62.5%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-<!--<body style="background-color: #1d1f28;">
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
 
-     Body Here 
-    <div id="apply-job-page">
-        <div id="job-detail-head">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div id="job-logo">
-                        <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="Back-end">
+
+    /* CSS for body */
+    #apply-job-page {
+        background-color: white;
+        width: 80%;
+        margin-left: 15rem;
+    }
+
+    #job-detail-head {
+        background-color: rgb(255, 255, 255);
+        margin-left: 40rem;
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+
+    #job-logo img {
+        width: 15rem;
+        height: 15rem;
+        background-color: #1d1f28;
+    }
+
+    #general-info {
+        margin-top: 2rem;
+    }
+
+    #general-info h1 {
+        font-size: 3rem;
+    }
+
+    #general-info h2 {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+
+
+    #cv-info {
+        margin-top: 2rem;
+        width: 70%;
+        margin-left: 10rem;
+        background-color: rgb(255, 255, 255);
+        padding: 2rem;
+    }
+
+    #cv-info span {
+        text-align: center;
+    }
+
+    #cv-info p {
+        font-size: 1.3rem;
+
+    }
+
+    #cv-info input {
+        padding: 0.8rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    #cv-info span {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    #apply-cv a {
+        font-size: 1.5rem;
+    }
+
+    .mute-text {
+        color: gray;
+    }
+
+
+    #apply-reason {
+        margin-left: 14rem;
+    }
+
+
+    #send-cv-btn input {
+        margin-top: 2rem;
+        padding: 1rem 20rem;
+        margin-left: 20rem;
+        font-size: 1.3rem;
+    }
+</style>
+
+
+<body style="background-color: #1d1f28;">
+
+    <c:url value="/job/application" var="action"/>
+    <form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
+        <div id="apply-job-page">
+            <div id="job-detail-head">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div id="job-logo">
+                            <img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true" alt="Back-end">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-5">
-                    <div id="general-info">
-                        <h1>Lập trình viên .NET</h1>
-                        <h2>Công ty phần mềm Monke Tech</h2>
+                    <div class="col-sm-5">
+                        <div id="general-info">
+                            <h1>Lập trình viên .NET</h1>
+                            <h2>Công ty phần mềm Monke Tech</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <hr>
+            <hr>
 
-        <div id="cv-info">
-            <div class="row">
-                <div class="col-sm-2"><span class="input-group-text">
-                        <p>Kimi no na wa</p>
-                    </span></div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Full Name">
-                </div>
-            </div>
-            <div id="apply-cv">
+            <div id="cv-info">
                 <div class="row">
                     <div class="col-sm-2">
-                        <span class="input-group-text">
-                            <p>Your CV</p>
-                        </span>
+                            
+                            <p>Your name</p>
+                        </div>
+                    <div class="col-sm-10">
+                        <!--<input type="text" class="form-control" placeholder="Full Name">-->
+                        <form:input type="text" class="input-group-text" path="introduction"/>
                     </div>
-                    <div class="col-sm-8">
-                        <a href="#" class="btn btn-success">Choose file</a>
-                        <p>No file have been chose</p>
+                </div>
+                <div id="apply-cv">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            
+                                <p>Your CV</p>
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            <form:input type="file" path="file"/>
+                            <!--<a href="#" class="btn btn-success">Choose file</a>-->
+                            <!--<p>No file have been chose</p>-->
 
-                        <p class="mute-text">We accept doc, docx, pdf files, no password protected, up to 3MB</p>
+                            <p class="mute-text">We accept doc, docx, pdf files, no password protected, up to 3MB</p>
+                        </div>
                     </div>
+                </div>
+
+                <div id="apply-reason">
+                    <h3>What skills, work projects or achievements make you a strong candidate?</h3>
+                    <textarea rows="4" cols="130"></textarea>
+                </div>
+                <div id="send-cv-btn">
+                    <!--<button type="button" class="btn btn-danger">Send CV</button>-->
+                    <input type="submit" class="btn btn-danger" value="Send CV"/>
                 </div>
             </div>
 
-            <div id="apply-reason">
-                <h3>What skills, work projects or achievements make you a strong candidate?</h3>
-                <textarea rows="4" cols="130"></textarea>
-            </div>
-            <div id="send-cv-btn">
-                <button type="button" class="btn btn-danger">Send CV</button>
-            </div>
         </div>
-
-    </div>
-</body>-->
+    </form:form>
+</body>
+<%--
 <h1>Create New Application</h1>
 <c:url value="/job/application" var="action"/>
 <form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
@@ -84,3 +187,4 @@
     </div>
     <input type="hidden" name="postID" value="${postID}">
 </form:form>
+--%>

@@ -65,29 +65,95 @@
         padding: 0;
         margin: 0;
     }
-    .view-app-left{
-        float: left;
-        margin-top: 15rem;
-        width: 35%;
+    .post-list-left{
+        width: 8rem;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        background-color: rgb(172, 170, 170);
+        overflow: hidden;
+        transition: witdh 0.2s linear;
+        box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+
+
     }
 
-    .view-app-left a{
+    .post-list-left ul, li{
+        padding-left: 0;
+    }
+
+    .logo img{
+        width: 6rem;
+        height: 6rem;
+        background-color: rgb(43, 44, 44);
+        border-radius: 50%;
+
+    }
+
+    .logo{
+        /* text-align: center; */
+        display: flex;
+        transition: all 0.5s ease;
+    }
+
+    .logo span{
+        font-weight: bold;
         font-size: 2rem;
-        margin-left: 5rem;
-        text-decoration: none;
-        padding: 2rem;
-        display: inline-block;
+        text-transform: uppercase;
     }
 
-    .view-app-left i{
-        font-size: 3rem;
-        margin-right: 1.5rem;
+    .post-list-left a{
+        position: relative;
+        color: white;
+        font-size: 2rem;
+        display: table;
+        width: 40rem;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-height: 1rem;
+
+    }
+
+
+    .fa-solid{
+        position: relative;
+        width: 5rem;
+        height: 3rem;
+        top: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .nav-item{
+        position: relative;
+        top: 2rem;
+        margin-left: 1.8rem;
+    }
+
+    .post-list-left a:hover{
+        background: #eee;
+        color: black;
+    }
+
+    nav:hover{
+        width: 28rem;
+        transition: all 0.5s ease;
+    }
+
+    .logout{
+        position: absolute;
+        top: 90%;
+        bottom: 0%;
+
     }
 
 
     .view-app-right{
         margin-bottom: 5rem;
-
+        float: right;
+        width: 70%;
     }
 
     #applied-list{
@@ -98,9 +164,9 @@
 
 
     .table {
-        width: 65% !important;
+        /*width: 65% !important;*/
         background-color: white;
-        float: right;
+        /*float: right;*/
         margin-top: 5rem;
     }
 
@@ -173,11 +239,45 @@
 
 
 <body>
-    <div class="view-app-left">
-        <a href="<c:url value="/job/viewMyJob"/>"><i class="fa-solid fa-paper-plane"></i>My Applications</a>
-        <br>
-        <a href="<c:url value="/post-detail/view"/>"><i class="fa-solid fa-heart-circle-check"></i>Favourite Jobs</a>
-    </div>
+
+
+<nav class="post-list-left">
+    <ul>
+        <li>
+            <a href="<c:url value="/"/>" class="logo">
+                <img
+                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                    alt="Monke Tech"
+                    />
+                <span class="nav-item">Department</span>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/"/>">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-item">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/job/viewMyJob"/>">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span class="nav-item">My Applications</span>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/post-detail/view"/>">
+                <i class="fa-solid fa-heart-circle-check"></i>
+                <span class="nav-item">Favourite Jobs</span>
+            </a>
+        </li>
+        <li class="logout">
+            <a href="<c:url value="/logout"/>">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="nav-item ">Log Out</span>
+            </a>
+        </li>
+    </ul>
+</nav>
     <div class="view-app-right">
 
         <h1 id="applied-list">My Applications</h1>

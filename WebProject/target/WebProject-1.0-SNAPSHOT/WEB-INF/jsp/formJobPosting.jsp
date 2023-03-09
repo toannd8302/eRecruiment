@@ -43,7 +43,7 @@
 
             .post-list-left{
                 width: 8rem;
-                position: absolute;
+                position: fixed;
                 top: 0;
                 bottom: 0;
                 left: 0;
@@ -207,7 +207,7 @@
             <nav class="post-list-left">
                 <ul>
                     <li>
-                        <a href="<c:url value="/"/>" class="logo">
+                        <a href="<c:url value="/logout"/>" class="logo">
                             <img
                                 src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
                                 alt="Monke Tech"
@@ -216,7 +216,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<c:url value="/"/>">
+                        <a href="<c:url value="/logout"/>">
                             <i class="fa-solid fa-house"></i>
                             <span class="nav-item">Home</span>
                         </a>
@@ -231,12 +231,6 @@
                         <a href="#">
                             <i class="fa-solid fa-folder-plus"></i>
                             <span class="nav-item">Create a Job Posting</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-square-plus"></i>
-                            <span class="nav-item">Create a Job Position</span>
                         </a>
                     </li>
                     <li class="logout">

@@ -30,7 +30,7 @@
 
     .post-list-left{
         width: 8rem;
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
@@ -75,6 +75,8 @@
         width: 40rem;
         text-decoration: none;
         padding: 1.5rem;
+        text-height: 1rem;
+        
     }
 
 
@@ -125,12 +127,8 @@
     .post-list-right h1{
         font-weight: bold;
         font-size: 3.5rem;
+        padding-left: 1.5rem;
     }
-
-    .trash-bin{
-        cursor: pointer;
-    }
-
 
     .styled-table {
         border-collapse: collapse;
@@ -174,6 +172,19 @@
     }.styled-table tbody tr.active-row {
         font-weight: bold;
         color: #009879;
+    }
+    
+    .styled-table tbody td a{
+        text-decoration: none;
+        
+    }
+    
+    .blank{
+        height: 2.5rem;
+    }
+    .trash-bin{
+        margin-bottom: 1rem;
+        color:black;
     }
 </style>
 
@@ -225,12 +236,6 @@
                 <span class="nav-item">Create a Job Posting</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="fa-solid fa-square-plus"></i>
-                <span class="nav-item">Create a Job Position</span>
-            </a>
-        </li>
         <li class="logout">
             <a href="<c:url value="/logout"/>">
                 <i class="fa-solid fa-right-from-bracket"></i>
@@ -275,7 +280,13 @@
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
                     <td><a href="<c:url value="/post-detail/${item.postId}"/>">View Detail</a></td>
-                    <td><i class="fa-solid fa-trash trash-bin"></i></td>
+                    <td><a href="#"><i class="fa-solid fa-trash trash-bin"></i></a> 
+                        <br>
+                        <div class="blank">
+                            
+                        </div>
+                    </td>
+                    
                 </tr>   
 
                 <%

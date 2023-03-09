@@ -26,6 +26,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
     html {
         font-size: 62.5%;
         font-family: Arial, Helvetica, sans-serif;
@@ -40,20 +41,20 @@
 
     #banner {
         width: 100%;
-        height: 100%;
-        padding-top: 50%;
+        /* height: 50vh; */
+        padding-top: 30%;
         background: url('https://github.com/Toannd832/eRecruiment/blob/Thang/Home_Page_For_Web/img/banner.jpg?raw=true') top center / cover no-repeat;
     }
 
     #banner #search-box {
         text-align: center;
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white;
         /* bottom: 50%; */
-        margin-top: 18rem;
+        /*margin-top: 20rem;*/
     }
 
     #banner #search-box h1:first-child {
@@ -66,9 +67,22 @@
         font-family: 'Kaushan Script', serif;
         text-transform: uppercase;
         font-size: 6rem;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
+        margin-top: 4rem;
     }
 
+    #banner #search-box i {
+        font-size: 2rem;
+    }
+
+    #banner #search-box button:hover{
+        background-color: #a1a1a1;
+        color: white;
+    }
+
+    #banner #search-box input{
+        font-size: 1.5rem;
+    }
 
     #banner #search-box input {
         padding: 1rem 20rem;
@@ -121,72 +135,89 @@
         padding: 4rem;
         border-radius: 50%;
         background-color: rgb(238, 190, 58);
+
+    }
+
+    #intro-body .intro-info i:hover{
+        color: white;
+        background-color: aquamarine;
     }
 
 
     /* CSS for hot-jobs */
-
-    #hot-jobs {
-        margin-bottom: 5rem;
-    }
-
-    #hot-jobs>h1 {
+    #job-post-title {
         text-align: center;
         text-transform: uppercase;
-        font-size: 3rem;
+        font-size: 4rem;
         margin-bottom: 2rem;
         color: rgb(171, 36, 36);
+        font-family: 'Climate Crisis', cursive;
     }
-
-    #job-posting {
+    .hot-jobs{
+        margin-left: 20rem;
+    }
+    .hot-jobs .hot-post{
         border: 1px solid black;
-        width: 80%;
-        padding: 3rem;
-        border-radius: 2rem;
-        background-color: rgb(170, 215, 248);
-        margin-left: 15rem;
-        margin-bottom: 2rem;
+        border-top: 5px solid rgb(94, 93, 93);
+        padding: 2rem;
+        margin: 2rem;
     }
-
-    #hot-jobs #job-posting img {
-        width: 15rem;
-        height: 15rem;
-        border-radius: 1rem;
-        margin-right: 5rem;
-        margin-top: 1rem;
-    }
-
-
-    #hot-jobs #job-posting .col-sm-6 a {
-        text-decoration: none;
-        color: rgb(225, 97, 225);
-    }
-
-    #hot-jobs #job-posting .col-sm-6 {
-        font-size: 2rem;
-    }
-
-    #hot-jobs #job-posting .col-sm-4 {
-        margin-top: 12rem;
-        font-size: 1.2rem;
-    }
-
-    #hot-jobs #job-posting .col-sm-4 h2 {
-        margin-bottom: 1rem;
-    }
-
-
-    #hot-jobs #job-posting .col-sm-4 button {
-        padding: 0.5rem 5rem;
-        font-size: 1.5rem;
-        border-radius: 1rem;
-    }
-
-    #hot-jobs #job-posting .col-sm-4 .apply-btn a {
+    .hot-jobs .hot-post a{
         text-decoration: none;
         color: black;
     }
+    .hot-jobs .hot-post img{
+        width: 15rem;
+        height: 14rem;
+        margin-left: 8rem;
+        display: inline-block;
+    }
 
+    .hot-jobs .hot-post h3{
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    .hot-jobs .hot-post p{
+        font-size: 1.5rem;
+    }
+
+    .hot-jobs .hot-post .salary{
+        color: rgb(250, 31, 31);
+    }
+    
+    .hot-jobs .hot-post i{
+        margin-right: 1rem;
+    }
+    
+    .hot-jobs .hot-post .post-down i{
+        margin-right: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        width: 4rem;
+        display: block;
+        text-align: center;
+        padding: 1rem;
+        transition: 0.3s ease;
+    }
+
+    .hot-jobs .hot-post .post-down i:hover{
+        border-radius: 50%;
+        background-color: rgb(170, 249, 203);
+
+    }
+
+    .hot-jobs .hot-post .post-down i:active{
+        border-radius: 50%;
+        background-color: aquamarine;
+        transition: 0.3s ease;
+    }
+
+    .hot-jobs .hot-post .post-down{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 
 
     .dialog{
@@ -252,11 +283,12 @@
 
         <div id="search-box">
             <h1>Welcome to our company</h1>
-            <h1>Find your dream job</h1>
+
             <form action="<c:url value="/${keyword}"/>">
                 <input type="text" name="keyword" placeholder="I'm looking for..." width="10rem" height="20rem">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
+            <h1>Find your dream job</h1>
         </div>
     </div>
 
@@ -304,12 +336,69 @@
 
 
 
+
+
+    <!-- Hot job here -->
+    <h1 id="job-post-title">Today Hotjob</h1>
+
+    <div class="hot-jobs">
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <c:forEach var="item" items="${list}">
+                    <div class="col-sm-3 hot-post">
+                        <a href="<c:url value="/post-detail/${item.postId}"/>"><img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true" alt=""></a>
+                        <h3><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h3>
+                        <p class="salary"><i class="fa-sharp fa-solid fa-money-bill"></i>Salary: ${item.salary}</p>
+                        <div class="post-down"><p>Location: ${item.locations}</p>
+                            <i class="fa-regular fa-bookmark"></i></div>
+
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+
+    <%-- <div class="container-fluid mt-3 job-post">
+         <div class="row" style="margin-left: 15rem;">
+             <c:forEach var="item" items="${list}">
+                 <div class="col-sm-5 hot-job">
+                     <div class="row">
+                         <div class="col-sm-6">
+                             <p>Salary: 1000$</p>
+                             <p>Level: Junior</p>
+                             <p>Require: </p>         
+                             <ul class="require-list">         
+                                 <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
+                                     <li class="list-item">${skill.skillName}</li>
+                                     </c:forEach>
+                             </ul>
+                             <button class="apply-btn">Apply now</button>
+
+                        </div>
+                        <div class="col-sm-6"><img
+                                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true"
+                                alt="Monke Tech"/>
+                            <h2><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h2>
+                            <h3>MT Company</h3>
+                            <h3>Location: ${item.locations}</h3></div>
+                        <hr>         
+                        <div class="date">
+                            <p>Posted Date: 09/03/2023</p>
+                            <p>Expired Date: 31/03/2023</p>
+                        </div>
+
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div> 
+
+
     <!-- Hot job here -->
     <div id="hot-jobs">
         <h1>Today Hot Jobs</h1>
         <c:forEach var="item" items="${list}">
             <div id="job-posting">
-
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="imgage">
@@ -340,6 +429,7 @@
             </div>
         </c:forEach>
     </div>
+    --%>
 
 
 
