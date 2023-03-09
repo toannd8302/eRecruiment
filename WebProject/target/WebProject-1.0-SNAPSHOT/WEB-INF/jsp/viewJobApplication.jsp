@@ -249,7 +249,7 @@
                     src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
                     alt="Monke Tech"
                     />
-                <span class="nav-item">Department</span>
+                <span class="nav-item">User</span>
             </a>
         </li>
         <li>
@@ -330,13 +330,13 @@
                 </tbody>
             </c:forEach>
         </table>
-        <ul class="pagination">
+<!--        <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
             <li class="page-item "><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
+        </ul>-->
     </div>
 
 
