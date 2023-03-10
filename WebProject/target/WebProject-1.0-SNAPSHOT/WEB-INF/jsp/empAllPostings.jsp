@@ -249,7 +249,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <c:forEach var="item" items="${APPROVED}">
                         <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
                             <tr>
@@ -280,14 +279,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>P0005</td>
-                            <td>Business Analyst</td>
-                            <td>Marketing</td>
-                            <td>114123</td>
-                            <td>Marketing@gmail.com</td>
-                            <td><a href="jobpostingdetail.html">View Details</a></td>
-                        </tr>
+                        <c:forEach var="item" items="${REJECTED}">
+                        <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
+                            <tr>
+                                <td>${item.getPostId()}</td>
+                                <td>${item.jobPosition.jobName}</td>
+                                <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
+                                <td>${item.jobPosition.getDepartment().getEmail()}</td>
+                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><a href="#">Cancel</a></td>
+                            <input type="hidden" name="postID" value="${item.getPostId()}">
+                            </tr>
+                        </form>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

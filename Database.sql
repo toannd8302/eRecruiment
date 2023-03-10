@@ -77,7 +77,7 @@ CREATE TABLE Job_postings
 	Expired_time date NULL,
 	Approved_status nvarchar(20) default N'Pending',
 	Level nvarchar(50) NULL,
-	Picture nvarchar(50) NULL,
+	Picture nvarchar(max) NULL,
 	Job_id nvarchar(36) NOT NULL,
 )
 
@@ -263,16 +263,16 @@ INSERT Job_positions(Job_id, JobName, Department_id)
 --Insert Job_postings (4-5)
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0001', N'Participate in the software design phase;Analyze software functions as required by management or departments;Building and designing databases according to designs on SQL Server, programming Store procedures',
-	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-15', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', Null, 'J0001' )
+	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-15', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png', 'J0001' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
-	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-10', N'2022-9-16', N'2023-7-15',N'Approved', N'Architect', Null, 'J0002' )
+	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-10', N'2022-9-16', N'2023-7-15',N'Approved', N'Architect', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png', 'J0002' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0003', N'Segmed�s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
-	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-1-29', N'2023-2-4', N'2023-3-31',N'Approved', N'Junior', Null,'J0003' )
+	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-1-29', N'2023-2-4', N'2023-3-31',N'Approved', N'Junior', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png','J0003' )
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0004', N'Analyzing and developing web applications and web services. Working with other developers to build applications with ReactJS/NextJS/AngularJS and Restful API. Work as part of a team to meet demanding project requirements. Write clean, modular, robust code to implement the desired requirements with little or no supervision. Work with the QA team to triage and fix bugs with rapid turnaround perform a technical.', 
-	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months;All insurances according to Vietnamese Labor law','3000', N'2022-12-15', Null, Null, N'Pending', N'Senior', Null,'J0004' )
+	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months;All insurances according to Vietnamese Labor law','3000', N'2022-12-15', Null, Null, N'Pending', N'Senior', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png','J0004' )
 
 --Insert Rounds
 INSERT Rounds(Round_id, Round_number, Content, Post_id)

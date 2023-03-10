@@ -14,6 +14,10 @@ import java.util.Map;
  * @author KHOA
  */
 public interface JobPostingService {
+    List<jobPosting> getAllJobPosting();
+    boolean createJobPosting(jobPosting jobPosting);
+    void deleteJobPosting(String id);
+    
     List<jobPosting> getPostByKeyword(String kw);
     jobPosting getPostByID(String id);
     List<jobPosting> getPost(String id);

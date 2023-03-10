@@ -51,5 +51,16 @@ public class RoundRepositoryImp implements RoundRepository{
         Query q = session.createQuery(query);
         return q.getResultList();
     }
+
+    @Override
+    public boolean createRound(round round) {
+        try {
+            Session session = sessionFactory.getObject().getCurrentSession();
+            session.save(round);
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
     
 }

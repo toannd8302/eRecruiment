@@ -19,7 +19,8 @@ public interface EmployeeService {
     boolean addOrUpdate(employee employee);
     employee findEmployeeByID(String id);
     employee findEmployeeByEmail(String email);
-    employee processOAuthPostLogin(CustomOAuth2User oauthUser);
     String autoSchedulingJobApp(jobApplication jobApplication);
     String manuallySchedulingJobApp(String jobAppID, String scheduleID);
+    
+    employee processOAuthPostLogin(CustomOAuth2User oauthUser);
 }

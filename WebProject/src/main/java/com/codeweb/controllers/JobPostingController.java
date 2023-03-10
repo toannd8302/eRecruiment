@@ -29,6 +29,9 @@ public class JobPostingController {
     @Autowired
     private JobPostingService jobPostingService;
     
+    @Autowired
+    private WishListImp wishList;
+    
     @GetMapping("/post-detail/{postID}")
     public ModelAndView detailpage(Model model,
             @PathVariable(value = "postID") String postID,
@@ -39,25 +42,27 @@ public class JobPostingController {
         return mdv;
     }
     
-    @Autowired
-    private WishListImp wishList; //ĐƯỢC TẠO TRONG SERVICE
     @GetMapping("/post-detail/save/{postID}")
     public String saveJob(HttpSession session,
             @PathVariable(value = "postID") String postID) {
-            //NÊN HIỂN THI NAME LÊN URL THÌ TỐT HƠN
-           jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
-//           List<jobPosting>list = new ArrayList<>();
-//          list.add(jobPostingSave);
-//           session.setAttribute("List", list);
-
-           wishList.addToWishList(jobPostingSave);
-           //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
-        return "homePage";
+        //NÊN HIỂN THI NAME LÊN URL THÌ TỐT HƠN
+        jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
+        wishList.addToWishList(jobPostingSave);
+        //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
+        return "redirect:/";
     }
-     @GetMapping("/post-detail/view")
-     public String viewWishList(Model model){
-         Set<jobPosting>wishlist = wishList.getWishList();
-         model.addAttribute("wishList", wishlist);
-         return "viewWishList";
-     }
+    
+    @GetMapping("/post-detail/view")
+    public String viewWishList(HttpSession session) {
+        Set<jobPosting> wishlist = wishList.getWishList();
+        session.setAttribute("wishList", wishlist);
+        return "viewWishList";
+    }
+    
+    @GetMapping("/post-detail/view/delete/{postId}")
+    public String deleteJob(HttpSession session, @PathVariable(value = "postId") String postId) {
+        jobPosting jobPosting = this.jobPostingService.getPostByID(postId);
+        wishList.removeJobPosting(jobPosting);
+        return "redirect:/post-detail/view"; 
+    }
 }

@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface RoundRepository {
     List<round> getRounds(String postID, int roundNumber);
+    boolean createRound(round round); 
 }

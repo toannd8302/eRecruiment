@@ -77,6 +77,9 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @Column(name = "Level")
     private String level;
     
+    @Column(name = "Picture")
+    private String picture;
+    
     @ManyToOne
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
@@ -86,6 +89,14 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     
     @OneToMany(mappedBy = "jobPosting")
     private Set<jobApplication> jobApplications;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     public Date getCreatedTime() {
         return CreatedTime;

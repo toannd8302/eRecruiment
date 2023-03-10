@@ -91,6 +91,7 @@ public class AccountController {
         if(department == null)
             model.addAttribute("ERROR", "No department found");
         session.setAttribute("department", department);
+        model.addAttribute("jobPostings", this.jobPostingService.getAllJobPosting());
         return "department-Page";
     }
 

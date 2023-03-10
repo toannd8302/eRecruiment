@@ -324,7 +324,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="jobApplication" items="${SCHEDULING}">
+                        <c:forEach var="jobApplication" items="${ON_GOING}">
                         <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
                             <tr>
                                 <td>${jobApplication.getApplicationId()}</td>
@@ -356,14 +356,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>J0001</td>
-                            <td>Lê Quang Phú</td>
-                            <td>Front-end Developer</td>
-                            <td>114123</td>
-                            <td>phucobolanhat@gmail.com</td>
-                            <td><a href="jobapplicationdetail.html">View Details</a></td>
-                        </tr>
+                        <c:forEach var="jobApplication" items="${REJECT}">
+                        <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
+                            <tr>
+                                <td>${jobApplication.getApplicationId()}</td>
+                                <td>${jobApplication.getCandidate().getName()}</td>
+                                <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
+                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>${jobApplication.getCandidate().getEmail()}</td>
+                                <td><input type="submit" value="View Deatils"/></td>
+                                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                            </tr>
+                        </form>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

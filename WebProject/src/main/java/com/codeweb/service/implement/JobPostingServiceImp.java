@@ -6,11 +6,14 @@
 package com.codeweb.service.implement;
 
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.round;
 import com.codeweb.repository.JobPostingRepository;
 import com.codeweb.service.JobPostingService;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +22,8 @@ import org.springframework.stereotype.Service;
  * @author KHOA
  */
 @Service
-public class JobPostingServiceImp implements JobPostingService{
+public class JobPostingServiceImp implements JobPostingService {
+
     @Autowired
     private JobPostingRepository jobPostingRepository;
 
@@ -31,7 +35,7 @@ public class JobPostingServiceImp implements JobPostingService{
     @Override
     public jobPosting getPostByID(String id) {
         List<jobPosting> list = this.getPost(id);
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             return null;
         }
         return list.get(0);
@@ -43,10 +47,11 @@ public class JobPostingServiceImp implements JobPostingService{
     }
 
     @Override
-    public Map<String,List<jobPosting>> getPostByStatus() {
-        Map<String,List<jobPosting>> twoDimCollection = new HashMap<>();
-        twoDimCollection.put("Pending",this.jobPostingRepository.getPostByStatus("Pending"));
-        twoDimCollection.put("Approved",this.jobPostingRepository.getPostByStatus("Approved"));
+    public Map<String, List<jobPosting>> getPostByStatus() {
+        Map<String, List<jobPosting>> twoDimCollection = new HashMap<>();
+        twoDimCollection.put("Pending", this.jobPostingRepository.getPostByStatus("Pending"));
+        twoDimCollection.put("Approved", this.jobPostingRepository.getPostByStatus("Approved"));
+        twoDimCollection.put("Rejected", this.jobPostingRepository.getPostByStatus("Rejected"));
         return twoDimCollection;
     }
 
@@ -62,13 +67,66 @@ public class JobPostingServiceImp implements JobPostingService{
                 jobPosting.setApprovedStatus("Rejected");
             } else if (action.equals("end")) {
                 jobPosting.setApprovedStatus("End");
-            } else
+            } else {
                 return false;
+            }
             return this.jobPostingRepository.update(jobPosting);
         } catch (Exception e) {
             System.err.println("UPDATE JOB POSTING ERROR AT JobPostingServiceImp");
         }
         return false;
     }
-    
+
+    @Override
+    public List<jobPosting> getAllJobPosting() {
+        return this.jobPostingRepository.getAllJobPosting();
+    }
+
+    @Override
+    public boolean createJobPosting(jobPosting jobPosting) {
+        boolean resul = false;
+        try {
+
+            jobPosting.setApprovedStatus("Pending");
+
+            jobPosting.setDescriptions(jobPosting.getDescriptions());
+
+            jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
+
+            jobPosting.setLocations(jobPosting.getLocations());
+
+            jobPosting.setSalary(jobPosting.getSalary());
+
+            jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
+
+            jobPosting.setWelfare(jobPosting.getWelfare());
+
+            long millis = System.currentTimeMillis();
+            java.sql.Date date = new java.sql.Date(millis);
+            jobPosting.setPostingTime(date);
+
+            Date expiredTime = jobPosting.getExpiredTime();
+            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
+            jobPosting.setExpiredTime(sqlExpiredTime);
+
+            jobPosting.setLevel(jobPosting.getLevel());
+
+            resul = this.jobPostingRepository.createJobPosting(jobPosting);
+
+            Set<round> rounds = jobPosting.getRounds();
+            for (round round : rounds) {
+
+            }
+
+        } catch (Exception e) {
+            System.err.println("==CREATE JOB POSTING==" + e.getMessage());
+        }
+        return resul;
+    }
+
+    @Override
+    public void deleteJobPosting(String id) {
+        this.jobPostingRepository.deleteJobPosting(id);
+    }
+
 }

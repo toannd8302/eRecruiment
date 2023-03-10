@@ -215,7 +215,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/"/>">
+            <a href="<c:url value="/department"/>">
                 <i class="fa-solid fa-house"></i>
                 <span class="nav-item">Home</span>
             </a>
@@ -276,10 +276,10 @@
                     <td><fmt:formatDate value="<%= jobposting.getExpiredTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
-                    <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
+                    <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>"/>">View Detail</a></td>
                     <td>
 
-                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"><i class="fa-solid fa-trash trash-bin"></i></a>
+                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>"><i class="fa-solid fa-trash trash-bin"></i></a>
                         <br>
                         <div class="blank">
 

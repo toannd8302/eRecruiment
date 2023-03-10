@@ -54,6 +54,7 @@ public class employeeController {
         Map<String, List<jobPosting>> jobPostingMap = this.jobPostingService.getPostByStatus();
         model.addAttribute("PENDING", jobPostingMap.get("Pending"));
         model.addAttribute("APPROVED", jobPostingMap.get("Approved"));
+        model.addAttribute("REJECTED", jobPostingMap.get("Rejected"));
         return "view-all-postings";
     }
 
@@ -64,6 +65,7 @@ public class employeeController {
         model.addAttribute("SCHEDULING", jobApplicationMap.get("Scheduling"));
         model.addAttribute("SCHEDULED", jobApplicationMap.get("Scheduled"));
         model.addAttribute("ON_GOING", jobApplicationMap.get("On Going"));
+        model.addAttribute("REJECT", jobApplicationMap.get("Fail"));
         return "view-all-apps";
     }
 
