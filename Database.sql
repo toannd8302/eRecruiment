@@ -72,8 +72,9 @@ CREATE TABLE Job_postings
 	Locations nvarchar(max) NULL,
 	Welfare nvarchar(max) NULL,
 	Salary int NULL,
-	Posting_time date NOT NULL,
-	Expired_time date NOT NULL,
+	Created_time date NOT NULL,
+	Posting_time date NULL,
+	Expired_time date NULL,
 	Approved_status nvarchar(20) default N'Pending',
 	Level nvarchar(50) NULL,
 	Picture nvarchar(50) NULL,
@@ -86,8 +87,8 @@ Create TABLE Job_Applications
 	Created_time date NOT NULL,
 	CV nvarchar(max) NOT NULL,
 	CV_status nvarchar(20) default N'Pending',
-	Round_number int NULL,
 	Application_status nvarchar(20) default N'Review',
+	Round_number int NULL,
 	Introduction nvarchar (max) NULL,
 	Candidate_id nvarchar(30) NOT NULL,
 	Post_id nvarchar(36) NOT NULL,
@@ -97,11 +98,11 @@ Create TABLE Job_Applications
 CREATE TABLE Schedules
 (
 	Schedule_id nvarchar(36) NOT NULL PRIMARY KEY,
-	Schedule_date date NOT NULL,
-	Schedule_time time NOT NULL,
-	Location nvarchar(max) NOT NULL,
+	Schedule_date date NULL,
+	Schedule_time time NULL,
+	Location nvarchar(max) NULL,
 	Type_of_interview bit NULL,
-	Status nvarchar(15) default N'Pending',
+	Status nvarchar(20) default N'Pending',
 	Round_id nvarchar(36) NOT NULL
 )
 
@@ -216,33 +217,78 @@ INSERT Departments(Department_id, DepartmentName, Email, Password, Role)
 
 --Insert Job_positions
 INSERT Job_positions(Job_id, JobName, Department_id)
-	VALUES(N'J0001', N'Back-end Developer', N'IT')
+    VALUES(N'J0001', N'Back-end Developer', N'IT')
 INSERT Job_positions(Job_id, JobName, Department_id)
-	VALUES(N'J0002', N'Front-end Developer', N'IT')
+    VALUES(N'J0002', N'Front-end Developer', N'IT')
 INSERT Job_positions(Job_id, JobName, Department_id)
-	VALUES(N'J0003', N'System Analyst', N'KT')
+    VALUES(N'J0003', N'ITBA', N'IT')
 INSERT Job_positions(Job_id, JobName, Department_id)
-	VALUES(N'J0004', N'Tester', N'NS')
+    VALUES(N'J0004', N'Tester', N'IT')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0005', N'Full-Stack Developer', N'IT')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0006', N'Mobile App Developer', N'IT')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0007', N'Marketing Manager', N'MA')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0008', N'Content Writer', N'MA')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0009', N'Marketing Coordinator', N'MA')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0010', N'Marketing Analyst', N'MA')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0011', N'Marketing Researcher', N'MA')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0012', N'Administrative Assistant', N'HC')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0013', N'Receptionist ', N'HC')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0014', N'Recruiter', N'NS')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0015', N'Human Resources Manager', N'NS')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0016', N'Human Resources Analyst', N'NS')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0017', N'Employee Relations Specialist', N'NS')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0018', N'Chief Accountant', N'KT')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0019', N'Accountant', N'KT')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0020', N'Accounts Receivable Accountant', N'KT')
+INSERT Job_positions(Job_id, JobName, Department_id)
+    VALUES(N'J0021', N'Internal Auditor', N'KT')
+
 
 --Insert Job_postings (4-5)
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0001', N'Participate in the software design phase;Analyze software functions as required by management or departments;Building and designing databases according to designs on SQL Server, programming Store procedures',
-	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', Null, 'J0001' )
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
+	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-15', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', Null, 'J0001' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
-	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-16', N'2023-7-15',N'Approved', N'Architect', Null, 'J0002' )
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
+	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-10', N'2022-9-16', N'2023-7-15',N'Approved', N'Architect', Null, 'J0002' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0003', N'Segmed�s mission is to bring higher quality healthcare to millions of more patients around the world. We are revolutionizing healthcare research by building a medical AI development platform with secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too! We are a fast-growing startup in a quickly evolving field and we came out of Stanford and Y Combinator. We are a 100% remote and distributed team.', 
-	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-2-4', N'2023-3-31',N'Approved', N'Junior', Null,'J0003' )
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
+	'1', N'Q.2',N'Annual voluntary health insurance;Social insurance;Yearly company trip','2000', N'2023-1-29', N'2023-2-4', N'2023-3-31',N'Approved', N'Junior', Null,'J0003' )
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0004', N'Analyzing and developing web applications and web services. Working with other developers to build applications with ReactJS/NextJS/AngularJS and Restful API. Work as part of a team to meet demanding project requirements. Write clean, modular, robust code to implement the desired requirements with little or no supervision. Work with the QA team to triage and fix bugs with rapid turnaround perform a technical.', 
-	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months;All insurances according to Vietnamese Labor law','3000', N'2021-12-22', N'2022-3-24',N'Pending', N'Senior', Null,'J0004' )
+	'0', N'Q.9',N'Salary raises or bonus by work performance per 12 months;All insurances according to Vietnamese Labor law','3000', N'2022-12-15', Null, Null, N'Pending', N'Senior', Null,'J0004' )
 
-
+--Insert Rounds
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0001', '1', N'Soft skill', N'P0001')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0002', '2', N'Hard skill', N'P0001')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0003', '1', N'Soft skill', N'P0002')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0004', '2', N'Hard skill', N'P0002')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0005', '1', N'Hard skill', N'P0003')
 
 --Insert Job_Applications
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0001', N'2022-12-25', N'Null', N'Approved', '2', N'Schedule', N'I was the editor of the yearly periodical at Miranda House and also completed two internships at Caravan and The Indian Express. I was excited to find this position as an Assistant Editor at your organisation and I believe I would be a great fit for this role.', 
+	VALUES (N'A0001', N'2022-12-25', N'Null', N'Approved', '2', N'Scheduled', N'I was the editor of the yearly periodical at Miranda House and also completed two internships at Caravan and The Indian Express. I was excited to find this position as an Assistant Editor at your organisation and I believe I would be a great fit for this role.', 
 	N'CA0001', N'P0001')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
 	VALUES (N'A0002', N'2023-3-13', N'Null', N'Pending', Null, N'Review', N'Being a certified professional, I have pursued BTech in Computer Science Engineering with a specialization in Networking and Security from VIT Vellore. I have recently appeared for the CCNA certification examination and I am awaiting the result.', 
@@ -251,7 +297,7 @@ INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_numbe
 	VALUES (N'A0003', N'2022-1-9', N'Null', N'Approved', Null, N'On Going', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
 	N'CA0003', N'P0004')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0004', N'2022-1-9', N'Null', N'Approved', Null, N'Waiting', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	VALUES (N'A0004', N'2022-1-9', N'Null', N'Approved', Null, N'Scheduling', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
 	N'CA0003', N'P0004')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
 	VALUES (N'A0005', N'2022-1-9', N'Null', N'Rejected', Null, N'Fail', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
@@ -287,18 +333,6 @@ INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedul
 INSERT Job_application_Schedule(Reason_content,File_path,Application_id, Schedule_id, Status)
 	VALUES(NULL, NULL, 'A0001','S0004', N'Rejected')
 
---Insert Rounds
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0001', '1', N'Soft skill', N'P0001')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0002', '2', N'Hard skill', N'P0001')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0003', '1', N'Soft skill', N'P0002')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0004', '2', N'Hard skill', N'P0002')
-INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0005', '1', N'Hard skill', N'P0003')
-
 --Insert Reports
 INSERT Reports(Report_id, Created_time, Content, Point, Employee_id, Application_id, Schedule_id)
 	VALUES(N'RP0001', '2023-3-26', N'Soft Skill Online Interview', 8, N'EM0001', N'A0001', N'S0001')
@@ -326,6 +360,20 @@ INSERT Skills(Skill_id, SKillName)
 	VALUES(N'7', N'.NET')
 INSERT Skills(Skill_id, SKillName)
 	VALUES(N'8', N'C++')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'9', N'Bootstrap')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'10', N'Spring Boot')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'11', N'Android')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'12', N'iOS')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'13', N'Figma')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'14', N'selenium')
+INSERT Skills(Skill_id, SKillName)
+    VALUES(N'15', N'Git')
 
 --Insert  Candidate_Skills
 INSERT  Candidate_Skills(Candidate_id,Skill_id)

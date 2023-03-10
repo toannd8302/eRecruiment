@@ -138,6 +138,23 @@
                 text-decoration: none;
                 color: rgb(125, 123, 123);
             }
+
+
+            #for-department{
+                margin-top: 4rem;
+                display: inline-block;
+                text-decoration: none;
+                font-size: 2rem;
+                color: rgb(228, 36, 75);
+            }
+
+            #for-department:hover{
+                color: rgb(196, 32, 64);
+            }
+
+            #for-department i{
+                margin-right: 1rem;
+            }
         </style>
     </head>
     <body>
@@ -166,27 +183,18 @@
                                     <div class="col-sm">
                                         <li><a href="#">Contact</a></li>
                                     </div>
-
-                                    <div class="col-sm">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                               data-bs-toggle="dropdown">Jobs by title</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Jobs By Skill</a></li>
-                                                <li><a class="dropdown-item" href="#">Jobs By Salary</a></li>
-                                                <li><a class="dropdown-item" href="#">Job By Location</a></li>
-                                            </ul>
-                                        </li>
-                                    </div>
                                 </div>
                             </ul>
                         </div>
                     </div>
+
                     <sec:authorize access="!isAuthenticated()">
-                        <div>
-                            <a href="<c:url value="/login"/>">For Department</a>
+                        <div class="col-sm-2">
+                            <div>
+                                <a id="for-department" href="<c:url value="/login"/>"><i class="fa-solid fa-circle-chevron-right"></i>For Department</a>
+                            </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-2">
                             <div id="login">
                                 <a href="<c:url value="/loginPage"/>">Login</a>
                             </div>

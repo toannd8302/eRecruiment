@@ -59,6 +59,10 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @Column(nullable=true, name = "Salary")
     private Integer salary;
     
+    @Column(name = "Created_time")
+    @Temporal(TemporalType.DATE)
+    private Date CreatedTime;
+    
     @Column(name = "Posting_time")
     @Temporal(TemporalType.DATE)
     private Date PostingTime;
@@ -83,8 +87,14 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @OneToMany(mappedBy = "jobPosting")
     private Set<jobApplication> jobApplications;
 
-    
-    
+    public Date getCreatedTime() {
+        return CreatedTime;
+    }
+
+    public void setCreatedTime(Date CreatedTime) {
+        this.CreatedTime = CreatedTime;
+    }
+
     public String getLevel() {
         return level;
     }

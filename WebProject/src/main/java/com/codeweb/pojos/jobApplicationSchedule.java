@@ -32,22 +32,25 @@ public class jobApplicationSchedule implements Serializable{
     @Column(name = "Schedule_id")
     private String scheduleId ;
     
-    @Column(name = "Reason_content")
+    @Column(name = "Reason_content", insertable = false, updatable = true)
     private String Reason_content;
     
-    @Column(name = "File_path")
+    @Column(name = "File_path", insertable = false, updatable = true)
     private String filepath;
     
     @Column(name = "Status")
     private String status;
     
     @ManyToOne
-    @JoinColumn(name = "Application_id")
+    @JoinColumn(name = "Application_id", insertable = false, updatable = false)
     private jobApplication jobApplication;
     
     @ManyToOne()
-    @JoinColumn(name = "Schedule_id")
+    @JoinColumn(name = "Schedule_id", insertable = false, updatable = false)
     private schedule applicationSchedule;
+    
+    @Transient
+    private MultipartFile file;
 
     public schedule getApplicationSchedule() {
         return applicationSchedule;
@@ -56,9 +59,6 @@ public class jobApplicationSchedule implements Serializable{
     public void setApplicationSchedule(schedule applicationSchedule) {
         this.applicationSchedule = applicationSchedule;
     }
-    
-    @Transient
-    private MultipartFile file;
 
     public String getStatus() {
         return status;
@@ -115,13 +115,4 @@ public class jobApplicationSchedule implements Serializable{
     public void setJobApplication(jobApplication jobApplication) {
         this.jobApplication = jobApplication;
     }
-
-    public schedule getSchedule() {
-        return applicationSchedule;
-    }
-
-    public void setSchedule(schedule schedule) {
-        this.applicationSchedule = schedule;
-    }
-    
 }

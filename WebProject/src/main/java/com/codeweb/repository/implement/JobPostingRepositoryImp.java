@@ -38,6 +38,19 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
+    public boolean update(jobPosting jobPosting) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.update(jobPosting);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== UPDATE JOB POSTING ERROR AT JobPostingRepositoryImp ==" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    @Override
     public List<jobPosting> getPostByKeyword(String kw) {
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -97,5 +110,4 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
     }
-
 }

@@ -11,6 +11,7 @@ import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.JobApplicationRepository;
 import com.codeweb.service.JobApplicationService;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +28,13 @@ chịu trách nhiệm cho việc xử lý các nghiệp vụ của ứng dụng
  */
 @Service
 public class JobApplicationServiceImp implements JobApplicationService {
-    
+
 //    private final Cloudinary cloudinary;
 //
 //    @Autowired
 //    public JobApplicationServiceImpl(Cloudinary cloudinary) {
 //        this.cloudinary = cloudinary;
 //    }
-    
     @Autowired
     private Cloudinary cloudinary;
 
@@ -42,7 +42,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
     private JobApplicationRepository jobApplicationRepository;
 
     @Override
-    public boolean addOrUpdate(jobApplication jobApplication) {
+    public boolean add(jobApplication jobApplication) {
         try {
             Map r = this.cloudinary.uploader().upload(jobApplication.getFile().getBytes(),
                     ObjectUtils.asMap("resource_type", "auto"));
@@ -52,14 +52,10 @@ public class JobApplicationServiceImp implements JobApplicationService {
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
             jobApplication.setCreatedTime(date);
-
-            jobApplication.setCvStatus("Pending");
-
             jobApplication.setRoundNumber(null);
-
-            jobApplication.setApplicationStatus(null);
-
-            return this.jobApplicationRepository.addOrUpdate(jobApplication);
+            jobApplication.setCvStatus("Pending");
+            jobApplication.setApplicationStatus("Review");
+            return this.jobApplicationRepository.add(jobApplication);
         } catch (IOException e) {
             System.err.println("==CREATE APPLICATION==" + e.getMessage());
         }
@@ -67,8 +63,48 @@ public class JobApplicationServiceImp implements JobApplicationService {
     }
 
     @Override
-    public List<jobApplication> jobApplicationList() {
-           return this.jobApplicationRepository.jobApplicationList();
+    public boolean update(jobApplication jobApplication) {
+        return this.jobApplicationRepository.update(jobApplication);
     }
 
+    @Override
+    public boolean updateAfterReview(jobApplication jobApplication, boolean result) {
+        try {
+            if (result) {
+                jobApplication.setCvStatus("Approved");
+                jobApplication.setApplicationStatus("Scheduling");
+            } else {
+                jobApplication.setCvStatus("Rejected");
+                jobApplication.setApplicationStatus("Fail");
+            }
+            return this.jobApplicationRepository.update(jobApplication);
+        } catch (Exception e) {
+            System.err.println("==UPDATE APPLICATION==" + e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public List<jobApplication> jobApplicationList() {
+        return this.jobApplicationRepository.jobApplicationList();
+    }
+
+    @Override
+    public Map<String, List<jobApplication>> getApplicationByStatus() {
+        Map<String, List<jobApplication>> twoDimCollection = new HashMap<>();
+        twoDimCollection.put("Review", this.jobApplicationRepository.getJobApplicationByStatus("Review"));
+        twoDimCollection.put("Scheduling", this.jobApplicationRepository.getJobApplicationByStatus("Scheduling"));
+        twoDimCollection.put("Scheduled", this.jobApplicationRepository.getJobApplicationByStatus("Scheduled"));
+        twoDimCollection.put("On Going", this.jobApplicationRepository.getJobApplicationByStatus("On Going"));
+        return twoDimCollection;
+    }
+
+    @Override
+    public jobApplication getJobApplicationByID(String id) {
+        List<jobApplication> list = this.jobApplicationRepository.getJobApplicationByID(id);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
 }

@@ -20,7 +20,7 @@
         <sec:authorize access="!isAuthenticated()">
             <h2>Login for Candidate</h2>
             <p><a href="<c:url value="/oauth2/authorization/google-candidate"/>">Login with Google</a></p>
-            <h2>Login for Employee</h2>
+            <h2>Login for Employer</h2>
             <p><a href="<c:url value="/oauth2/authorization/google-employee"/>">Login with Google</a></p>
         </sec:authorize>
     </body>

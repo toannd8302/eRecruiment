@@ -6,6 +6,7 @@
 package com.codeweb.repository.implement;
 
 import com.codeweb.pojos.employee;
+import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.EmployeeRepository;
 import java.util.List;
 import javax.persistence.Query;

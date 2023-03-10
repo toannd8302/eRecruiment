@@ -13,6 +13,7 @@ import java.util.List;
  * @author KHOA
  */
 public interface JobPostingRepository {
+    boolean update(jobPosting jobPosting);
     List<jobPosting> getPostByKeyword(String kw);
     List<jobPosting> getPostById(String id);
     List<jobPosting> getPostByStatus(String status);
