@@ -198,7 +198,7 @@
         <li><a href="<c:url value="/schedules"/>">Schedule List</a></li>
     </ul>
 </div>
-    
+
 <div id="wrapper">
     <h1>Welcome HR Employee</h1>
     <h1>Job Application List</h1>
@@ -231,7 +231,14 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
                                 <!--                            <td><a href="jobapplicationdetail.html">View Details</a></td>-->
@@ -242,7 +249,7 @@
                     </tbody>
                 </table>
             </div>
-    
+
             <div id="scheduling" class="tab-content-item">
                 <h2>Scheduling</h2>
                 <table class="table table-striped">
@@ -267,15 +274,15 @@
                                 <td>${jobApplication.getCandidate().getPhone()}</td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
-                                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-                                <td><a href="#">Cancel</a></td>
+                            <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                            <td><a href="#">Cancel</a></td>
                             </tr>
                         </form>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
-            
+
             <div id="scheduled" class="tab-content-item">
                 <h2>Scheduled</h2>
                 <table class="table table-striped">
@@ -300,15 +307,15 @@
                                 <td>${jobApplication.getCandidate().getPhone()}</td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
-                                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-                                <td><a href="#">Cancel</a></td>
+                            <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                            <td><a href="#">Cancel</a></td>
                             </tr>
                         </form>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
-            
+
             <div id="on-going" class="tab-content-item">
                 <h2>On-going</h2>
                 <table class="table table-striped">
@@ -333,15 +340,15 @@
                                 <td>${jobApplication.getCandidate().getPhone()}</td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
-                                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-                                <td><a href="#">Cancel</a></td>
+                            <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                            <td><a href="#">Cancel</a></td>
                             </tr>
                         </form>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
-            
+
             <div id="rejected" class="tab-content-item">
                 <h2>Rejected</h2>
                 <table class="table table-striped">
@@ -365,7 +372,7 @@
                                 <td>${jobApplication.getCandidate().getPhone()}</td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
-                                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                            <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             </tr>
                         </form>
                     </c:forEach>
