@@ -115,7 +115,7 @@
         width: 80%;
         padding-left: 2rem;
         margin-top: 2rem;
-        /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
+        /*VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
         font-family: serif;
     }
 
