@@ -22,5 +22,7 @@ public interface JobPostingRepository {
     
     List<jobPosting> getPostByStatus(String status);
     
-    boolean create(jobPosting jobPosting);
+    boolean createJobPosting(jobPosting jobPosting);
+    
+    void deleteJobPosting(String id);
 }

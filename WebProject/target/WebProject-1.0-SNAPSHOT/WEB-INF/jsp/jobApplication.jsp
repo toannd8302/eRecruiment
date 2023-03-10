@@ -130,20 +130,21 @@
             <div id="cv-info">
                 <div class="row">
                     <div class="col-sm-2">
-                            
-                            <p>Your name</p>
-                        </div>
+
+                        <p>Introduction</p>
+                    </div>
                     <div class="col-sm-10">
                         <!--<input type="text" class="form-control" placeholder="Full Name">-->
-                        <form:input type="text" class="input-group-text" path="introduction"/>
+                        <%--<form:input type="text" class="input-group-text" path="introduction"/>--%>
+                        <form:textarea path="introduction" rows="2" cols="50"/>
                     </div>
                 </div>
                 <div id="apply-cv">
                     <div class="row">
                         <div class="col-sm-2">
-                            
-                                <p>Your CV</p>
-                            
+
+                            <p>Your CV</p>
+
                         </div>
                         <div class="col-sm-8">
                             <form:input type="file" path="file"/>
@@ -155,36 +156,12 @@
                     </div>
                 </div>
 
-                <div id="apply-reason">
-                    <h3>What skills, work projects or achievements make you a strong candidate?</h3>
-                    <textarea rows="4" cols="130"></textarea>
-                </div>
                 <div id="send-cv-btn">
                     <!--<button type="button" class="btn btn-danger">Send CV</button>-->
                     <input type="submit" class="btn btn-danger" value="Send CV"/>
                 </div>
             </div>
-
+            <input type="hidden" name="postID" value="${postID}">
         </div>
     </form:form>
 </body>
-<%--
-<h1>Create New Application</h1>
-<c:url value="/job/application" var="action"/>
-<form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
-    <div>
-        <label>Introduction</label>
-        <form:input type="text" id="introduction" path="introduction"/>
-    </div>
-                
-    <div>
-        <label>File CV</label>
-        <form:input type="file" id="file" path="file"/>
-    </div>
-
-    <div>
-        <input type="submit" value="Submit"/>
-    </div>
-    <input type="hidden" name="postID" value="${postID}">
-</form:form>
---%>

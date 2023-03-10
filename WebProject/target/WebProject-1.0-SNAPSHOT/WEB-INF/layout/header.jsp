@@ -46,7 +46,7 @@
             #header {
                 background-color: #161718;
                 width: 100%;
-                height: 12rem;
+                height: 10rem;
                 position: relative;
             }
 
@@ -166,7 +166,7 @@
                         <div id="logo">
 
                             <a href="<c:url value="/"/>"><img
-                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true"
+                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
                                     alt="Monke Tech"></a>
                         </div>
                     </div>

@@ -40,6 +40,7 @@ public class HomeController {
             HttpSession session){
         model.addAttribute("isLoginPage", true);
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
+        model.addAttribute("keyword", params);
         return "homePage";
     }
 }

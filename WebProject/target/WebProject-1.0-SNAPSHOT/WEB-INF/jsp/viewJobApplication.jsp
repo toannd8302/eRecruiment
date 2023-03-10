@@ -13,6 +13,7 @@
 <%@page import="com.codeweb.pojos.candidate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <script type="text/javascript">
     expandBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -52,7 +53,7 @@
             }
         });
     });
-</script>
+</script> 
 
 <style>
     html {
@@ -65,7 +66,7 @@
         padding: 0;
         margin: 0;
     }
-    .post-list-left{
+     .post-list-left{
         width: 8rem;
         position: fixed;
         top: 0;
@@ -153,7 +154,8 @@
     .view-app-right{
         margin-bottom: 5rem;
         float: right;
-        width: 70%;
+        width: 80%;
+
     }
 
     #applied-list{
@@ -164,9 +166,9 @@
 
 
     .table {
-        /*width: 65% !important;*/
+        width: 100%;
         background-color: white;
-        /*float: right;*/
+        
         margin-top: 5rem;
     }
 
@@ -239,9 +241,7 @@
 
 
 <body>
-
-
-<nav class="post-list-left">
+    <nav class="post-list-left">
     <ul>
         <li>
             <a href="<c:url value="/"/>" class="logo">
@@ -294,9 +294,10 @@
             </thead>
             <c:forEach var="jobApplication" items="${JobApplications}" varStatus="counter">
                 <tbody>
+                   
                     <tr>
                         <td>${counter.count}</td>
-                        <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
+                        <td>${jobApplication.jobPosting.jobPosition.jobName}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
                         <td><button class="btn btn-danger">Cancel Application</button></td>
@@ -330,13 +331,13 @@
                 </tbody>
             </c:forEach>
         </table>
-<!--        <ul class="pagination">
+        <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
             <li class="page-item "><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>-->
+        </ul>
     </div>
 
 

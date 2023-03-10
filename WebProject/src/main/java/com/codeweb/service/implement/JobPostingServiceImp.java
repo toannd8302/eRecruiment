@@ -7,6 +7,7 @@ package com.codeweb.service.implement;
 
 import com.codeweb.pojos.jobPosition;
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.round;
 import com.codeweb.repository.JobPositionRepository;
 import com.codeweb.repository.JobPostingRepository;
 import com.codeweb.service.JobPositionService;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +55,7 @@ public class JobPostingServiceImp implements JobPostingService {
     
     //Tạo 1 jobPosting
     @Override
-    public boolean create(jobPosting jobPosting) {
+    public boolean createJobPosting(jobPosting jobPosting) {
         boolean resul = false;
         try {
 
@@ -81,7 +83,12 @@ public class JobPostingServiceImp implements JobPostingService {
 
             jobPosting.setLevel(jobPosting.getLevel());
 
-            resul = this.jobPostingRepository.create(jobPosting);
+            resul = this.jobPostingRepository.createJobPosting(jobPosting);
+            
+            Set<round>rounds = jobPosting.getRounds();
+            for (round round : rounds) {
+                
+            }
 
         } catch (Exception e) {
             System.err.println("==CREATE JOB POSTING==" + e.getMessage());
@@ -92,5 +99,10 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public List<jobPosting> getAllJobPosting() {
         return this.jobPostingRepository.getAllJobPosting();
+    }
+
+    @Override
+    public void deleteJobPosting(String id) {
+         this.jobPostingRepository.deleteJobPosting(id);
     }
 }

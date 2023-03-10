@@ -10,8 +10,9 @@
 <%@page import="java.util.List"%>
 <%@page import="com.codeweb.pojos.department"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <!--TẠI TRANG NÀY SẼ VIEW CÁC JOBPOSTING CỦA PHÒNG ĐANG ĐĂNG NHẬP VÀ TẠO MỚI 1 JOBPOSTING-->
 
 
@@ -34,7 +35,7 @@
         top: 0;
         bottom: 0;
         left: 0;
-        height: 100%;
+        height: 100vh;
         background-color: rgb(172, 170, 170);
         overflow: hidden;
         transition: witdh 0.2s linear;
@@ -75,8 +76,6 @@
         width: 40rem;
         text-decoration: none;
         padding: 1.5rem;
-        text-height: 1rem;
-        
     }
 
 
@@ -116,6 +115,8 @@
         width: 80%;
         padding-left: 2rem;
         margin-top: 2rem;
+        /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
+        font-family: serif;
     }
 
     .post-list-right .table thead{
@@ -127,8 +128,12 @@
     .post-list-right h1{
         font-weight: bold;
         font-size: 3.5rem;
-        padding-left: 1.5rem;
     }
+
+    .trash-bin{
+        cursor: pointer;
+    }
+
 
     .styled-table {
         border-collapse: collapse;
@@ -169,17 +174,12 @@
 
     .styled-table tbody tr:last-of-type {
         border-bottom: 2px solid #009879;
-    }.styled-table tbody tr.active-row {
+    }
+    .styled-table tbody tr.active-row {
         font-weight: bold;
         color: #009879;
     }
-    
-    .styled-table tbody td a{
-        text-decoration: none;
-        
-    }
-    
-    .blank{
+        .blank{
         height: 2.5rem;
     }
     .trash-bin{
@@ -188,10 +188,6 @@
     }
 </style>
 
-
-
-
-<!--<h2>Department: ${sessionScope.department.departmentName}</h2>-->
 
 <%
     department department = (department) session.getAttribute("department");
@@ -210,7 +206,7 @@
 <nav class="post-list-left">
     <ul>
         <li>
-            <a href="<c:url value="/"/>" class="logo">
+            <a href="<c:url value="/logout"/>" class="logo">
                 <img
                     src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
                     alt="Monke Tech"
@@ -236,6 +232,7 @@
                 <span class="nav-item">Create a Job Posting</span>
             </a>
         </li>
+
         <li class="logout">
             <a href="<c:url value="/logout"/>">
                 <i class="fa-solid fa-right-from-bracket"></i>
@@ -245,7 +242,7 @@
     </ul>
 </nav>
 <div class="post-list-right">
-    <h1>Job Posting List</h1>
+    <h1>Job Posting List of ${sessionScope.department.departmentName} Department</h1>
     <hr>
     <div class="container mt-3">
         <table class="styled-table">
@@ -279,32 +276,32 @@
                     <td><fmt:formatDate value="<%= jobposting.getExpiredTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
-                    <td><a href="<c:url value="/post-detail/${item.postId}"/>">View Detail</a></td>
-                    <td><a href="#"><i class="fa-solid fa-trash trash-bin"></i></a> 
+                    <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
+                    <td>
+
+                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"><i class="fa-solid fa-trash trash-bin"></i></a>
                         <br>
                         <div class="blank">
-                            
+
                         </div>
                     </td>
-                    
                 </tr>   
 
                 <%
                         }
                     }
                 } else {
+
                 %>
+            <h2>Your Department has not created Job Posting before</h2>        
+
+            <%                }
+            %>
+
             </tbody>
         </table>
-
-
-
     </div>
 </div>
 
 
-<h2>No Result</h2>        
-
-<%    }
-%>
 

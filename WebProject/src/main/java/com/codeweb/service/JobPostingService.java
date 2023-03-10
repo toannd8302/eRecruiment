@@ -22,6 +22,8 @@ public interface JobPostingService {
 
     List<jobPosting> getPost(String id);
 
-    boolean create(jobPosting jobPosting);
+    boolean createJobPosting(jobPosting jobPosting);
+    
+    void deleteJobPosting(String id);
 
 }

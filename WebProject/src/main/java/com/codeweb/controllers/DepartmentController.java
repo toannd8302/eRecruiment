@@ -8,10 +8,12 @@ package com.codeweb.controllers;
 import com.codeweb.pojos.department;
 import com.codeweb.pojos.jobPosition;
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.round;
 import com.codeweb.service.JobPositionService;
 import com.codeweb.service.JobPostingService;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -36,14 +39,17 @@ public class DepartmentController {
     @Autowired
     private JobPostingService jobPostingService;
 
-   
-    
-    
     @GetMapping("/createjobposting")
     public String viewFormDepartmenJobPosting(Model model) {
         
-        model.addAttribute("jobPosting", new jobPosting());
+        jobPosting jobPosting = new jobPosting();
         
+        model.addAttribute("jobPosting", jobPosting);
+        
+     
+        
+        
+
         List<jobPosition> Positiions = this.jobPositionService.getAll();
 
         model.addAttribute("joPositions", Positiions);
@@ -61,19 +67,29 @@ public class DepartmentController {
             model.addAttribute("joPositions", jobPositions);
             return "formJobPosting";
         }
-        
+
         department department = (department) session.getAttribute("department");
 
         String jobId = jobPosting.getJobPosition().getJobId();
-        
+
         jobPosition jobposition = this.jobPositionService.getbyId(jobId);
-        
+
         if (jobposition.getDepartment().getDepartmentId().equals(department.getDepartmentId())) {
             jobPosting.setJobPosition(jobposition);
 
-            boolean Result = this.jobPostingService.create(jobPosting);
+            boolean Result = this.jobPostingService.createJobPosting(jobPosting);
+
+            // Lưu thông tin về các Round
+//            Set<round> rounds = jobPosting.getRounds();
+//            for (round round : rounds) {
+//                if (round.getContent() != null && !round.getContent().isEmpty() && round.getRoundNumber() != null) {
+//                    round.setJobPoting(jobPosting);
+//                  
+//                }
+//            }
+          
             if (Result == true) {
-                return "redirect:/";
+                return "forward:/viewround";
             }
 
         } else {
@@ -85,5 +101,13 @@ public class DepartmentController {
         }
         return "formJobPosting";
 
+    }
+
+    @GetMapping("/deletejobposting/{postID}")
+    public String deleteJobPosting(HttpSession session,
+            @PathVariable(value = "postID") String postID) {
+
+        this.jobPostingService.deleteJobPosting(postID);
+        return "redirect:/department";
     }
 }

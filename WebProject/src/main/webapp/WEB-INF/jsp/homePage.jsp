@@ -285,7 +285,8 @@
             <h1>Welcome to our company</h1>
 
             <form action="<c:url value="/${keyword}"/>">
-                <input type="text" name="keyword" placeholder="I'm looking for..." width="10rem" height="20rem">
+                <input type="text" name="keyword" value="${param.keyword}" placeholder="I'm looking for..." width="10rem" height="20rem">
+                
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <h1>Find your dream job</h1>
@@ -452,3 +453,4 @@
 
 
 
+    

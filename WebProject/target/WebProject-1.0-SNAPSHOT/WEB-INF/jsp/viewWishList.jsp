@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
-    html {
+   html {
         font-size: 62.5%;
         font-family: 'Poppins', sans-serif;
     }
@@ -107,9 +107,10 @@
         bottom: 0%;
 
     }
+
     .view-favour-right{
         float: right;
-        width: 65%;
+        width: 80%;
         margin-top: 5rem;
     }
 
@@ -134,6 +135,9 @@
         font-size: 1.5rem;
     }
 </style>
+
+
+
 
 
 
@@ -175,16 +179,14 @@
     </ul>
 </nav>
 
-            
 <%
 
     //    List<jobPosting> wishList = (List<jobPosting>) session.getAttribute("List");
-    Set<jobPosting> wishList = (Set<jobPosting>) request.getAttribute("wishList");
+    Set<jobPosting> wishList = (Set<jobPosting>) session.getAttribute("wishList");
     //QUY ĐỊNH CHỈ ĐƯỢC 5 JOBPOSTINGS
     if (!wishList.isEmpty()) {
         //HANDLE VẤN ĐỀ TRÙNG THÌ DÙNG SET HOẶC IF
 %>
-
 <div class="view-favour-right">
     <h1>Favourite Jobs</h1>
     <hr>
@@ -212,7 +214,9 @@
                 <td><%= j.getLocations()%></td>
                 <td><%= j.getSalary()%></td>
                 <td><button class="btn btn-success detail-toggle">Apply Now</button></td>
-                <td><button class="btn btn-danger detail-toggle">Unsave</button></td>
+                <td><button class="btn btn-danger detail-toggle" style="height: 5.2rem;">
+                        <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>" style="text-decoration: none; color: #fff; ">Unsave</a>
+                    </button></td>
             </tr>
             <%
                 }%>
@@ -221,7 +225,7 @@
 
     <% } else {
     %>
-    <h1 style="color: red; float: right"; >NO RESULT</h1>
+    <h1 style="color: red; font-family: serif; float: right; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)">NO RESULT</h1>
     <%
         }
     %> 

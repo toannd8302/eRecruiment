@@ -7,6 +7,7 @@ package com.codeweb.repository.implement;
 
 import com.codeweb.pojos.jobPosition;
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.pojos.round;
 import com.codeweb.pojos.skill;
 import com.codeweb.repository.JobPostingRepository;
 import java.util.Collection;
@@ -22,9 +23,11 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Set;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
-import javax.persistence.criteria.ListJoin;
+
+import javax.persistence.criteria.Subquery;
 
 /**
  *
@@ -97,7 +100,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     }
 
     @Override
-    public boolean create(jobPosting jobPosting) {
+    public boolean createJobPosting(jobPosting jobPosting) {
         try {
             Session session = sessionFactory.getObject().getCurrentSession();
             session.save(jobPosting);
@@ -123,8 +126,29 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         query = query.select(root);
 
         Query q = session.createQuery(query);
-        
+
         return q.getResultList();
     }
 
+    @Override
+    public void deleteJobPosting(String id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaDelete<jobPosting> deleteJobPostingCriteria = builder.createCriteriaDelete(jobPosting.class);
+        Root<jobPosting> jobPostingRoot = deleteJobPostingCriteria.from(jobPosting.class);
+        deleteJobPostingCriteria.where(builder.equal(jobPostingRoot.get("postId"), id));
+
+        Subquery<String> subquery = deleteJobPostingCriteria.subquery(String.class);
+        Root<round> roundRoot = subquery.from(round.class);
+//        subquery.select(roundRoot.get("",));
+        subquery.where(builder.equal(roundRoot.get("jobPosting"), jobPostingRoot));
+
+        deleteJobPostingCriteria.where(
+                builder.or(
+                        builder.equal(jobPostingRoot.get("postId"), id),
+                        builder.in(jobPostingRoot.get("rounds")).value(subquery)
+                ));
+
+        session.createQuery(deleteJobPostingCriteria).executeUpdate();
+    }
 }

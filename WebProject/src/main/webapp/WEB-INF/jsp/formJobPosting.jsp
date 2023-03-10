@@ -43,7 +43,7 @@
 
             .post-list-left{
                 width: 8rem;
-                position: fixed;
+                position: absolute;
                 top: 0;
                 bottom: 0;
                 left: 0;
@@ -87,7 +87,7 @@
                 width: 30rem;
                 text-decoration: none;
                 padding: 1.5rem;
-                
+
             }
 
 
@@ -198,53 +198,55 @@
             }
         %>
 
-        <c:url value="/createjobposting" var="action" />
-        <form:form method="post" modelAttribute="jobPosting" action="${action}" >
 
 
 
 
-            <nav class="post-list-left">
-                <ul>
-                    <li>
-                        <a href="<c:url value="/logout"/>" class="logo">
-                            <img
-                                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
-                                alt="Monke Tech"
-                                />
-                            <span class="nav-item">Department</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<c:url value="/logout"/>">
-                            <i class="fa-solid fa-house"></i>
-                            <span class="nav-item">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<c:url value="/department" />">
-                            <i class="fa-solid fa-list"></i>
-                            <span class="nav-item">Job Posting List</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-folder-plus"></i>
-                            <span class="nav-item">Create a Job Posting</span>
-                        </a>
-                    </li>
-                    <li class="logout">
-                        <a href="<c:url value="/logout"/>">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <span class="nav-item ">Log Out</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="create-job-post-right">
-                <h1>Create a Job Posting</h1>
-                <hr />
-                <h3>*Job Position</h3>            
+        <nav class="post-list-left">
+            <ul>
+                <li>
+                    <a href="<c:url value="/logout"/>" class="logo">
+                        <img
+                            src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                            alt="Monke Tech"
+                            />
+                        <span class="nav-item">Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/"/>">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/department" />">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="nav-item">Job Posting List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        <span class="nav-item">Create a Job Posting</span>
+                    </a>
+                </li>
+
+                <li class="logout">
+                    <a href="<c:url value="/logout"/>">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class="nav-item ">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="create-job-post-right">
+            <h1>Create a Job Posting</h1>
+            <hr />
+            <h3>*Job Position</h3>     
+            <c:url value="/createjobposting" var="action" />
+            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
+
                 <div>           
                     <form:select  path="jobPosition.jobId" required="true">
                         <form:option value="">-- Select Job Position --</form:option>
@@ -258,7 +260,7 @@
                         <div class="col-sm-6">
                             <div>
                                 <h3>Salary</h3>
-                                <form:input type="text" path="salary"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
+                                <form:input type="number" path="salary"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
                             </div>
                             <div>
                                 <%--<form:label path="level">Level</form:label>--%>
@@ -312,79 +314,15 @@
                         </div>
                     </div>
 
+
                 </div>
-                <button>Post</button>
+                <button>Create round</button>
                 <input type="reset" value="Reset" />
+
             </div>
 
         </form:form>
 
-        <%--
-                <h1 style="text-align: center">Create Job Posting</h1>
-
-         <%
-         String msg = (String)session.getAttribute("ERROR");
-         if(msg!=null){
-             %>
-             <h2><%= msg %></h2>
-                <%
-        }
-         %>
-
-        <c:url value="/createjobposting" var="action" />
-        <form:form method="post" modelAttribute="jobPosting" action="${action}" >      
-
-
-            <div>
-                <form:label path="descriptions">Descriptions</form:label>
-                <form:textarea  path="descriptions" />
-            </div>
-
-            <div>
-                <form:label path="typeOfWork">Full Time</form:label>
-                <form:checkbox  path="typeOfWork" checked="true" value="1"/>
-            </div>
-
-            <div>
-                <form:label path="exprienceRequirement">Exprience Requirement</form:label>
-                <form:input type="number" path="exprienceRequirement" min="0"/> (year/years)
-            </div>
-            <div>
-                <form:label path="locations">Locations</form:label>
-                <form:input type="text" path="locations" />
-            </div>
-            <div>
-                <form:label path="welfare">Welfare</form:label>
-                <form:input type="text" path="welfare" />
-            </div>
-            <div>
-                <form:label path="salary">Salary</form:label>
-                <form:input type="number" path="salary" min="0" /> $
-            </div>
-            <div>
-                <form:label path="ExpiredTime">Expired Time</form:label>
-                <form:input type="date" path="ExpiredTime" required="true"/>
-
-            </div>
-
-            <div>
-                <form:label path="level">Level</form:label>
-                <form:input type="text" path="level" />
-            </div>
-
-            <div>           
-                <form:select  path="jobPosition.jobId" required="true">
-                    <form:option value="">-- Select Job Title --</form:option>
-                    <form:options items="${joPositions}" itemValue="jobId" itemLabel="JobName"></form:options>
-                </form:select>
-            </div>
-
-
-
-            <button type="submit">Create</button>
-            <input type="reset" value="Reset" />
-        </form:form>
-        --%>
     </body>
 
 </html>
