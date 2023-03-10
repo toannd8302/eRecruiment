@@ -87,7 +87,7 @@
                 width: 30rem;
                 text-decoration: none;
                 padding: 1.5rem;
-                
+
             }
 
 
@@ -198,54 +198,63 @@
             }
         %>
 
-        <c:url value="/createjobposting" var="action" />
-        <form:form method="post" modelAttribute="jobPosting" action="${action}" >
 
 
 
 
-            <nav class="post-list-left">
-                <ul>
-                    <li>
-                        <a href="<c:url value="/logout"/>" class="logo">
-                            <img
-                                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
-                                alt="Monke Tech"
-                                />
-                            <span class="nav-item">Department</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<c:url value="/"/>">
-                            <i class="fa-solid fa-house"></i>
-                            <span class="nav-item">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<c:url value="/department" />">
-                            <i class="fa-solid fa-list"></i>
-                            <span class="nav-item">Job Posting List</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-folder-plus"></i>
-                            <span class="nav-item">Create a Job Posting</span>
-                        </a>
-                    </li>
-                    
-                    <li class="logout">
-                        <a href="<c:url value="/logout"/>">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <span class="nav-item ">Log Out</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="create-job-post-right">
-                <h1>Create a Job Posting</h1>
-                <hr />
-                <h3>*Job Position</h3>            
+        <nav class="post-list-left">
+            <ul>
+                <li>
+                    <c:url value="/viewround" var="action" />
+                    <form:form method="post" modelAttribute="jobPosting" action="${action}" >
+                        <button>ADD MORE ROUNDS</button>
+                    </form:form>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="<c:url value="/logout"/>" class="logo">
+                        <img
+                            src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                            alt="Monke Tech"
+                            />
+                        <span class="nav-item">Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/"/>">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/department" />">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="nav-item">Job Posting List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        <span class="nav-item">Create a Job Posting</span>
+                    </a>
+                </li>
+
+                <li class="logout">
+                    <a href="<c:url value="/logout"/>">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class="nav-item ">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="create-job-post-right">
+            <h1>Create a Job Posting</h1>
+            <hr />
+            <h3>*Job Position</h3>     
+            <c:url value="/createjobposting" var="action" />
+            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
+
                 <div>           
                     <form:select  path="jobPosition.jobId" required="true">
                         <form:option value="">-- Select Job Position --</form:option>
@@ -312,14 +321,19 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
-                <button>Post </button>
+                <button>Create round</button>
                 <input type="reset" value="Reset" />
+
             </div>
 
         </form:form>
+
+
+
+
 
         <%--
                 <h1 style="text-align: center">Create Job Posting</h1>

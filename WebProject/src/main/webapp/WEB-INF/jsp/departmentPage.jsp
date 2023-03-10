@@ -10,8 +10,9 @@
 <%@page import="java.util.List"%>
 <%@page import="com.codeweb.pojos.department"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <!--TẠI TRANG NÀY SẼ VIEW CÁC JOBPOSTING CỦA PHÒNG ĐANG ĐĂNG NHẬP VÀ TẠO MỚI 1 JOBPOSTING-->
 
 
@@ -114,8 +115,8 @@
         width: 80%;
         padding-left: 2rem;
         margin-top: 2rem;
-/*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
-        font-family: serif; 
+        /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
+        font-family: serif;
     }
 
     .post-list-right .table thead{
@@ -173,16 +174,13 @@
 
     .styled-table tbody tr:last-of-type {
         border-bottom: 2px solid #009879;
-    }.styled-table tbody tr.active-row {
+    }
+    .styled-table tbody tr.active-row {
         font-weight: bold;
         color: #009879;
     }
 </style>
 
-
-
-
-<!--<h2> </h2>-->
 
 <%
     department department = (department) session.getAttribute("department");
@@ -227,7 +225,7 @@
                 <span class="nav-item">Create a Job Posting</span>
             </a>
         </li>
-       
+
         <li class="logout">
             <a href="<c:url value="/logout"/>">
                 <i class="fa-solid fa-right-from-bracket"></i>
@@ -271,10 +269,10 @@
                     <td><fmt:formatDate value="<%= jobposting.getExpiredTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
-                    <td><a href="<c:url value="/post-detail/${item.postId}"/>">View Detail</a></td>
+                    <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
                     <td>
                         <i class="fa-solid fa-trash trash-bin">
-                            <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId() %>">Cancel</a>
+                            <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>">Cancel</a>
                         </i>
                     </td>
                 </tr>   
@@ -283,18 +281,18 @@
                         }
                     }
                 } else {
+
                 %>
+            <h2>Your Department has not created Job Posting before</h2>        
+
+            <%    
+                }
+            %>
+
             </tbody>
         </table>
-
-
-
     </div>
 </div>
 
 
-<h2>No Result</h2>        
-
-<%    }
-%>
 

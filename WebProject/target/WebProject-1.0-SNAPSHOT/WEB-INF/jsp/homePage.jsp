@@ -253,8 +253,11 @@
         <div id="search-box">
             <h1>Welcome to our company</h1>
             <h1>Find your dream job</h1>
+            <%
+           // String kw = (String)request.getAttribute("keyword");
+            %>
             <form action="<c:url value="/${keyword}"/>">
-                <input type="text" name="keyword" placeholder="I'm looking for..." width="10rem" height="20rem">
+                <input type="text" name="keyword" value="" placeholder="I'm looking for..." width="10rem" height="20rem">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
