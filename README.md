@@ -4,4 +4,4 @@
 * Spring mvc 
 * Hibernate 
 * SQL Server(Database)
-* Ojective: Manage Recruitment process 
+* Ojective: Manage recruitment process 
