@@ -61,9 +61,6 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         Root<jobPosting> root = query.from(jobPosting.class);
         Join<jobPosting,jobPosition> position = root.join("jobPosition");
         Join<jobPosition,skill> skill = position.join("skills");
-
-        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class),"Approved");
-        query = query.where(p3);
         
         if(!kw.isEmpty() && kw!=null){
             Predicate p1 = builder.like(position.get("jobName").as(String.class), 
@@ -72,6 +69,9 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
                     String.format("%%%s%%", kw));
             query = query.where(builder.or(p1,p2));
         }
+        
+        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class),"Approved");
+        query = query.where(builder.and(p3));
         
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();

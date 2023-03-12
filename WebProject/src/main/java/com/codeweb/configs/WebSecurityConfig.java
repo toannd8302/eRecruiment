@@ -57,17 +57,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/", "/home/**", "/post-detail/**", "/oauth2/**", "/loginPage", "/login").permitAll()
                     .antMatchers("/account", 
                             "/job/application", "/job/viewMyJob", 
-                            "/post-detail/save/**", "/post-detail/view", 
+                            "/post-detail/save/**", "/post-detail/view", "/post-detail/view/delete/**",
                             "/candidate").hasRole("CANDIDATE")
                     .antMatchers("/employee","/jobPostings","/jobApps","/schedules",
                             "/jobApps/job-application-details","/jobPostings/job-posting-details","/schedules/schedule-details",
                             "/review-app",
+                            "/start-schedule",
                             "/schedule-app","/schedule-app/create-new-schedule").hasRole("EMPLOYEE")
                     .antMatchers("/interviewer").hasRole("INTERVIEWER")
                     .antMatchers("/manager").hasRole("MANAGER")
                     .antMatchers("/department",
                             "/createjobposting","/createround",
-                            "/viewround","/post-detail/**").hasRole("DEPARTMENT")
+                            "/viewround").hasRole("DEPARTMENT")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()

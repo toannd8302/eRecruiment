@@ -33,13 +33,11 @@ public class JobPostingController {
     private WishListImp wishList;
     
     @GetMapping("/post-detail/{postID}")
-    public ModelAndView detailpage(Model model,
+    public String detailpage(Model model,
             @PathVariable(value = "postID") String postID,
             HttpSession session){
-        ModelAndView mdv = new  ModelAndView();
-        mdv.setViewName("post-detail-page");
-        mdv.addObject("jobPosting",this.jobPostingService.getPostByID(postID));
-        return mdv;
+        model.addAttribute("jobPosting",this.jobPostingService.getPostByID(postID));
+        return "post-detail-page";
     }
     
     @GetMapping("/post-detail/save/{postID}")

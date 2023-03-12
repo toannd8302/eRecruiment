@@ -19,4 +19,5 @@ public interface EmployeeRepository {
     List<employee> getAll();
     List<employee> getEmployeeByEmail(String email);
     List<employee> getEmployeeById(String id);
+    List<employee> getEmployeeByRole(String role);
 }

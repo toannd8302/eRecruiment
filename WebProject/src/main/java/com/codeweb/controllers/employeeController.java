@@ -5,11 +5,13 @@
  */
 package com.codeweb.controllers;
 
+import com.codeweb.pojos.interviewerReasons;
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobPosting;
 import com.codeweb.pojos.schedule;
 import com.codeweb.repository.RoundRepository;
 import com.codeweb.service.EmployeeService;
+import com.codeweb.service.InterviewReasonService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
 import com.codeweb.service.ScheduleService;
@@ -17,14 +19,17 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +42,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 public class employeeController {
 
+    @Autowired
+    private InterviewReasonService interviewReasonService;
+    
     @Autowired
     private JobPostingService jobPostingService;
 
@@ -94,33 +102,59 @@ public class employeeController {
     @GetMapping("/schedules/schedule-details")
     public String viewScheduleDetails(Model model,
             @RequestParam("scheduleID") String id) {
-        model.addAttribute("schedule", this.scheduleService.getScheduleByID(id));
+        schedule schedule = this.scheduleService.getScheduleByID(id);
+        String stringMatch = new String();
+        for(interviewerReasons i : schedule.getiRS()){
+            stringMatch += new String(i.getEmployeeId() + ", ");
+        }
+        model.addAttribute("stringMatch", stringMatch);
+        model.addAttribute("schedule", schedule);
+        model.addAttribute("listInterviewers", this.employeeService.getEmployeesByRole("ROLE_INTERVIEWER"));
         return "view-schedule-details";
     }
 
     //START SCHEDULE
-    @PostMapping
+    @PostMapping("/start-schedule")
     public String startSchedule(Model model,
             HttpServletRequest request,
             @RequestParam("scheduleID") String id,
             @RequestParam("action") String action) {
-        schedule schedule = this.scheduleService.getScheduleByID(id);
         if (action.equals("start")) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            //Get schedule
+            schedule schedule = this.scheduleService.getScheduleByID(id);
+            
+            //Get and set the list of interviewerReasons of schedule
+            String[] selectedOptions = request.getParameterValues("interviewers");
+            for(String interviewID : selectedOptions){
+                interviewerReasons irs = new interviewerReasons();
+                irs.setEmployeeId(interviewID);
+                irs.setScheduleId(id);
+                irs.setStatus("Pending");
+                this.interviewReasonService.add(irs);
+            }
+            
+            //Get date and time
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
             Date interviewDate = null;
-            Time interviewTime = null;
-            String timeStr;
+            Date interviewTime = null;
             try {
+                //Get date
                 interviewDate = dateFormat.parse(request.getParameter("InterviewDate"));
-                timeStr = request.getParameter("InterviewTime");
-                interviewTime = Time.valueOf(timeStr);
+                //Get time
+                interviewTime = timeFormat.parse(request.getParameter("InterviewTime"));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            if(interviewDate != null && interviewTime != null){
+            if(interviewDate != null){
                 schedule.setScheduleDate(interviewDate);
-                schedule.setScheduleTime(interviewTime);
             }
+            if(interviewTime != null){
+                java.sql.Time sqlTime = new java.sql.Time(interviewTime.getTime());
+                schedule.setScheduleTime(sqlTime);
+            }
+            
+            //Update schedule (new set of interviewerReasons, new date and time)
             if(this.scheduleService.update(schedule,action))
                 model.addAttribute("MESSAGE","Update schedule successfully");
             else
@@ -156,7 +190,7 @@ public class employeeController {
             @RequestParam("postID") String id,
             @RequestParam("action") String action) {
         jobPosting jobPosting = this.jobPostingService.getPostByID(id);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date expiredDate = null;
         try {
             expiredDate = dateFormat.parse(request.getParameter("expiredDate"));

@@ -32,10 +32,10 @@ public class jobApplicationSchedule implements Serializable{
     @Column(name = "Schedule_id")
     private String scheduleId ;
     
-    @Column(name = "Reason_content", insertable = false, updatable = true)
+    @Column(name = "Reason_content")
     private String Reason_content;
     
-    @Column(name = "File_path", insertable = false, updatable = true)
+    @Column(name = "File_path")
     private String filepath;
     
     @Column(name = "Status")

@@ -7,6 +7,7 @@ package com.codeweb.service.implement;
 
 import com.codeweb.common.CustomOAuth2User;
 import com.codeweb.pojos.employee;
+import com.codeweb.pojos.interviewerReasons;
 import com.codeweb.pojos.round;
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobApplicationSchedule;
@@ -19,6 +20,7 @@ import com.codeweb.service.EmployeeService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.ScheduleService;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,11 @@ public class EmployeeServiceImp implements EmployeeService {
     @Override
     public List<employee> getAll() {
         return this.employeeRepository.getAll();
+    }
+    
+    @Override
+    public List<employee> getEmployeesByRole(String role) {
+        return this.employeeRepository.getEmployeeByRole(role);
     }
 
     @Override
@@ -137,5 +144,4 @@ public class EmployeeServiceImp implements EmployeeService {
             return "Successfully manually scheduling job application";
         }
     }
-
 }
