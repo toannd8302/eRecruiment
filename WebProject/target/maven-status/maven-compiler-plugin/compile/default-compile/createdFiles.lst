@@ -13,6 +13,7 @@ com\codeweb\handler\CustomAuthenticationSuccessHandler.class
 com\codeweb\repository\implement\ScheduleRepositoryImp.class
 com\codeweb\service\implement\JobApplicationServiceImp.class
 com\codeweb\repository\implement\JobApplicationRepositoryImp.class
+com\codeweb\controllers\InterviewerController.class
 com\codeweb\repository\implement\JobPostingRepositoryImp.class
 com\codeweb\repository\JobApplicationRepository.class
 com\codeweb\service\JobPostingService.class
@@ -27,6 +28,7 @@ com\codeweb\pojos\schedule.class
 com\codeweb\service\JobApplicationService.class
 com\codeweb\repository\implement\RoundRepositoryImp.class
 com\codeweb\service\implement\CustomUserDetailService.class
+com\codeweb\service\implement\ReportServiceImp.class
 com\codeweb\service\ScheduleService.class
 com\codeweb\service\implement\DepartmentServiceImp.class
 com\codeweb\configs\TilesConfig.class
@@ -47,6 +49,7 @@ com\codeweb\pojos\department.class
 com\codeweb\service\implement\SkillServiceImp.class
 com\codeweb\repository\ScheduleRepository.class
 com\codeweb\pojos\jobApplication.class
+com\codeweb\repository\implement\ReportRepositoryImp.class
 com\codeweb\service\DepartmentService.class
 com\codeweb\controllers\JobPostingController.class
 com\codeweb\service\implement\CandidateServiceImp.class
@@ -70,6 +73,8 @@ com\codeweb\common\CustomOAuth2User.class
 com\codeweb\repository\implement\InterviewReasonRepositoryImp.class
 com\codeweb\pojos\jobApplicationSchedule.class
 com\codeweb\repository\DepartmentRepository.class
+com\codeweb\repository\ReportRepository.class
 com\codeweb\service\JobPositionService.class
 com\codeweb\repository\implement\SkillRepositoryImp.class
 com\codeweb\pojos\report.class
+com\codeweb\service\ReportService.class

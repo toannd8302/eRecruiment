@@ -16,6 +16,7 @@ public interface ScheduleRepository {
 //    List<schedule> getScheduleByStatus(String status);
     boolean add(schedule schedule);
     boolean update(schedule schedule);
+    List<schedule> getScheduleByInterviewerID(String interviewerID);
     List<schedule> getScheduleByID(String scheduleID);
     List<Object[]> getScheduleByStatus(String status);
     List<schedule> getSuitableSchedule(String postID, int roundNumber);

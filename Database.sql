@@ -192,7 +192,8 @@ INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, 
 	VALUES(N'EM0002', N'Nguyen Van B', N'Van B', N'Nguyen', N'NguyenB@gmail.com', 0, N'1992-8-19', N'Q.9', N'0972834149', Null, N'ROLE_INTERVIEWER', 0)
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
 	VALUES(N'EM0003', N'Truong Van C', N'Van C', N'Truong', N'TruongC@gmail.com', 1, N'1995-2-12', N'Q.5', N'0983716535', Null, N'ROLE_INTERVIEWER', 0)
-
+INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
+	VALUES(N'117845668841620113575', N'Khoa Le', N'Khoa', N'Le', N'lek35067@gmail.com', 1, null, null, null, N'https://lh3.googleusercontent.com/a/AGNmyxa4BFl3N3jVoPMQdqPuMWmgeeJUBpHqyeGqPslP=s96-c', N'ROLE_INTERVIEWER', 0)
 
 --Insert HR manager/HR employee
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
@@ -284,24 +285,30 @@ INSERT Rounds(Round_id, Round_number, Content, Post_id)
 INSERT Rounds(Round_id, Round_number, Content, Post_id)
 	VALUES(N'R0004', '2', N'Hard skill', N'P0002')
 INSERT Rounds(Round_id, Round_number, Content, Post_id)
-	VALUES(N'R0005', '1', N'Hard skill', N'P0003')
+	VALUES(N'R0005', '1', N'Soft skill', N'P0003')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0006', '2', N'Hard skill', N'P0003')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0007', '1', N'Soft skill', N'P0004')
+INSERT Rounds(Round_id, Round_number, Content, Post_id)
+	VALUES(N'R0008', '2', N'Hard skill', N'P0004')
 
 --Insert Job_Applications
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0001', N'2022-12-25', N'Null', N'Approved', '2', N'Scheduled', N'I was the editor of the yearly periodical at Miranda House and also completed two internships at Caravan and The Indian Express. I was excited to find this position as an Assistant Editor at your organisation and I believe I would be a great fit for this role.', 
+	VALUES (N'A0001', N'2022-12-25', NULL, N'Approved', '2', N'Scheduled', N'I was the editor of the yearly periodical at Miranda House and also completed two internships at Caravan and The Indian Express. I was excited to find this position as an Assistant Editor at your organisation and I believe I would be a great fit for this role.', 
 	N'CA0001', N'P0001')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0002', N'2023-3-13', N'Null', N'Pending', Null, N'Review', N'Being a certified professional, I have pursued BTech in Computer Science Engineering with a specialization in Networking and Security from VIT Vellore. I have recently appeared for the CCNA certification examination and I am awaiting the result.', 
+	VALUES (N'A0002', N'2023-3-13', NULL, N'Pending', Null, N'Review', N'Being a certified professional, I have pursued BTech in Computer Science Engineering with a specialization in Networking and Security from VIT Vellore. I have recently appeared for the CCNA certification examination and I am awaiting the result.', 
 	N'CA0002', N'P0003')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0003', N'2022-1-9', N'Null', N'Approved', Null, N'On Going', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	VALUES (N'A0003', N'2022-1-9', NULL, N'Approved', Null, N'On Going', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
 	N'CA0003', N'P0004')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0004', N'2022-1-9', N'Null', N'Approved', Null, N'Scheduling', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
-	N'CA0003', N'P0004')
+	VALUES (N'A0004', N'2022-1-9', NULL, N'Approved', Null, N'Scheduling', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	N'CA0004', N'P0004')
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
-	VALUES (N'A0005', N'2022-1-9', N'Null', N'Rejected', Null, N'Fail', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
-	N'CA0003', N'P0004')
+	VALUES (N'A0005', N'2022-1-9', NULL, N'Rejected', Null, N'Fail', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	N'CA0003', N'P0001')
 
 --Insert Schedules
 INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status, Round_id)

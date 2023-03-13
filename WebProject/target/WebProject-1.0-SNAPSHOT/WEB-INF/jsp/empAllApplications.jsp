@@ -271,7 +271,14 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
@@ -304,7 +311,14 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
@@ -337,7 +351,14 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
@@ -369,7 +390,14 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Deatils"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">

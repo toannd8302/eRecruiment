@@ -4,6 +4,7 @@
     Author     : KHOA
 --%>
 
+<%@page import="com.codeweb.pojos.department"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -287,6 +288,7 @@
         <div id="general-info">
             <h1>${jobPosting.jobPosition.jobName}</h1>
             <h2>Công ty phần mềm Monke Tech</h2> 
+      
             <p><i class="fa-regular fa-clock"></i>Expired time: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></p>
         </div>
     </div>
@@ -375,32 +377,3 @@
         <P>Submission deadline: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></P>
     </div>
 </div>
-
-<%--
-<h1>Post Detail</h1>
-
-<c:url value="/job/application" var="action"/>
-
-<form:form method="get" action="${action}" modelAttribute="jobPosting">
-    Job Name: ${jobPosting.jobPosition.jobName}
-    Loaction: ${jobPosting.locations}
-    Description: ${jobPosting.descriptions}
-    Requirement: ${jobPosting.exprienceRequirement} Year
-    Salary: ${jobPosting.salary}
-    Welfare: ${jobPosting.welfare}
-    Round: 
-    <ul>
-        <c:forEach var="round" items="${jobPosting.getRounds()}">
-            ${round.roundNumber} - ${round.content}
-        </c:forEach>
-    </ul>
-    Skill:
-    <ul>
-        <c:forEach var="skill" items="${jobPosting.jobPosition.getSkills()}">
-            ${skill.skillName}
-        </c:forEach>
-    </ul>
-    <input type="submit" value="Apply Job"/>
-</form:form>
-
---%>

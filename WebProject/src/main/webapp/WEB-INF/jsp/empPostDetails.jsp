@@ -358,18 +358,18 @@
         <div class="col-sm-2">
             <div id="apply-buton">
                 <c:if test="${jobPosting.isApprovedStatus() eq 'Pending'}">
-                    <form method="post" action="<c:url value="/evaluate-post"/>">
+                    <form method="post" action="<c:url value="/jobPostings/job-posting-details/evaluate-post"/>">
                         <input type="hidden" name="postID" value="${jobPosting.getPostId()}">
                         <input type="date" name="expiredDate" required="true"/>
                         <input type="submit" name="action" value="accept"/>
                     </form>
-                    <form method="post" action="<c:url value="/reject-post"/>">
+                    <form method="post" action="<c:url value="/jobPostings/job-posting-details/reject-post"/>">
                         <input type="hidden" name="postID" value="${jobPosting.getPostId()}">
                         <input type="submit" name="action" value="reject"/>
                     </form>  
                 </c:if>
                 <c:if test="${jobPosting.isApprovedStatus() eq 'Approved'}">
-                    <form method="post" action="<c:url value="/end-post"/>">
+                    <form method="post" action="<c:url value="/jobPostings/job-posting-details/end-post"/>">
                         <input type="hidden" name="postID" value="${jobPosting.getPostId()}">
                         <input type="submit" name="action" value="end"/>
                     </form>

@@ -83,6 +83,11 @@ public class AccountController {
         return "employee-page";
     }
     
+    @GetMapping("/interviewer")
+    public String loginSuccessfully3(){
+        return "interviewer-page";
+    }
+    
     @GetMapping("/department")
     public String loginSuccessfully1(Model model, HttpSession session){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

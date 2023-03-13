@@ -41,7 +41,7 @@
         =========================
     </c:forEach>
 
-    <form method="post" action="<c:url value="/start-schedule"/>">
+    <form method="post" action="<c:url value="/schedules/schedule-details/start-schedule"/>">
         <h3>Choose interviewers</h3>
         <select id="interviewers" name="interviewers" multiple>
             <c:forEach var="item" items="${listInterviewers}">

@@ -61,13 +61,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/candidate").hasRole("CANDIDATE")
                     .antMatchers("/employee","/jobPostings","/jobApps","/schedules",
                             "/jobApps/job-application-details","/jobPostings/job-posting-details","/schedules/schedule-details",
-                            "/review-app",
-                            "/start-schedule",
-                            "/schedule-app","/schedule-app/create-new-schedule").hasRole("EMPLOYEE")
-                    .antMatchers("/interviewer").hasRole("INTERVIEWER")
+                            "/jobApps/job-application-details/review-app","/jobApps/job-application-details/schedule-app",
+                            "/schedule-app/create-new-schedule", "/schedule-app/choosed-schedule",
+                            "/jobPostings/job-posting-details/evaluate-post", "/jobPostings/job-posting-details/reject-post", "/jobPostings/job-posting-details/end-post",
+                            "/schedules/schedule-details/start-schedule").hasRole("EMPLOYEE")
+                    .antMatchers("/interviewer","/interview/schedules","/interview/reports").hasRole("INTERVIEWER")
                     .antMatchers("/manager").hasRole("MANAGER")
                     .antMatchers("/department",
-                            "/createjobposting","/createround",
+                            "/createjobposting","/createround","/view-post-detail/**",
                             "/viewround").hasRole("DEPARTMENT")
                     .anyRequest().authenticated()
                 .and()

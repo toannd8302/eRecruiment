@@ -84,44 +84,34 @@ public class JobPostingServiceImp implements JobPostingService {
 
     @Override
     public boolean createJobPosting(jobPosting jobPosting) {
-        boolean resul = false;
+        boolean result = false;
         try {
 
             jobPosting.setApprovedStatus("Pending");
-
-            jobPosting.setDescriptions(jobPosting.getDescriptions());
-
-            jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
-
-            jobPosting.setLocations(jobPosting.getLocations());
-
-            jobPosting.setSalary(jobPosting.getSalary());
-
-            jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
-
-            jobPosting.setWelfare(jobPosting.getWelfare());
+//            jobPosting.setDescriptions(jobPosting.getDescriptions());
+//            jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
+//            jobPosting.setLocations(jobPosting.getLocations());
+//            jobPosting.setSalary(jobPosting.getSalary());
+//            jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
+//            jobPosting.setWelfare(jobPosting.getWelfare());
+//            jobPosting.setLevel(jobPosting.getLevel());
 
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
-            jobPosting.setPostingTime(date);
+            jobPosting.setCreatedTime(date);
 
-            Date expiredTime = jobPosting.getExpiredTime();
-            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
-            jobPosting.setExpiredTime(sqlExpiredTime);
+//            Date expiredTime = jobPosting.getExpiredTime();
+//            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
+//            jobPosting.setExpiredTime(sqlExpiredTime);
 
-            jobPosting.setLevel(jobPosting.getLevel());
+            
 
-            resul = this.jobPostingRepository.createJobPosting(jobPosting);
-
-            Set<round> rounds = jobPosting.getRounds();
-            for (round round : rounds) {
-
-            }
-
+            result = this.jobPostingRepository.createJobPosting(jobPosting);
+            
         } catch (Exception e) {
             System.err.println("==CREATE JOB POSTING==" + e.getMessage());
         }
-        return resul;
+        return result;
     }
 
     @Override

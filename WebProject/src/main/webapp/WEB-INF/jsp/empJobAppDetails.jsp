@@ -363,7 +363,7 @@
             </div>
         </div>
         <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
-            <form method="post" action="<c:url value="/review-app"/>">
+            <form method="post" action="<c:url value="/jobApps/job-application-details/review-app"/>">
                 <div class="col-sm-2">
                     <div id="apply-buton">
                         <input type="submit" name="action" value="accept"/>
@@ -377,7 +377,7 @@
         </c:if>
 
         <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
-            <form method="post" action="<c:url value="/schedule-app"/>">
+            <form method="post" action="<c:url value="/jobApps/job-application-details/schedule-app"/>">
                 <div class="col-sm-2">
                     <div id="apply-buton">
                         <input type="submit" name="action" value="auto schedule"/>

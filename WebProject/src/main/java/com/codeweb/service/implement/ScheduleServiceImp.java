@@ -102,4 +102,9 @@ public class ScheduleServiceImp implements ScheduleService {
         }
         return null;
     }
+
+    @Override
+    public List<schedule> getScheduleByInterviewerID(String interviewerID) {
+        return this.scheduleRepository.getScheduleByInterviewerID(interviewerID);
+    }
 }

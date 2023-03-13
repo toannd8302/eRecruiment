@@ -61,6 +61,21 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
         }
         return false;
     }
+    
+    @Override
+    public List<schedule> getScheduleByInterviewerID(String interviewerID) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<schedule> query = builder.createQuery(schedule.class);
+        Root<schedule> root = query.from(schedule.class);
+        Join<schedule,interviewerReasons> interviewReasonJoin = root.join("iRS", JoinType.LEFT);
+        
+        Predicate p = builder.equal(interviewReasonJoin.get("employeeId").as(String.class),interviewerID);
+        query = query.where(p);
+        
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
 
     @Override
     public List<schedule> getScheduleByID(String scheduleID) {
