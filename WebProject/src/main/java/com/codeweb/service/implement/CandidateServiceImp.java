@@ -5,7 +5,7 @@
  */
 package com.codeweb.service.implement;
 
-import com.codeweb.loginModel.CustomOAuth2User;
+import com.codeweb.common.CustomOAuth2User;
 import com.codeweb.pojos.candidate;
 import com.codeweb.repository.CandidateRepository;
 import com.codeweb.service.CandidateService;

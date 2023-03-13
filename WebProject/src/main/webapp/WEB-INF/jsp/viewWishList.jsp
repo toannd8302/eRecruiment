@@ -146,7 +146,7 @@
         <li>
             <a href="<c:url value="/"/>" class="logo">
                 <img
-                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                    src="<c:url value="${sessionScope.user.getPicture()}"/>"
                     alt="Monke Tech"
                     />
                 <span class="nav-item">User</span>
@@ -187,6 +187,8 @@
     if (!wishList.isEmpty()) {
         //HANDLE VẤN ĐỀ TRÙNG THÌ DÙNG SET HOẶC IF
 %>
+
+
 <div class="view-favour-right">
     <h1>Favourite Jobs</h1>
     <hr>
@@ -214,8 +216,8 @@
                 <td><%= j.getLocations()%></td>
                 <td><%= j.getSalary()%></td>
                 <td><button class="btn btn-success detail-toggle">Apply Now</button></td>
-                <td><button class="btn btn-danger detail-toggle" style="height: 5.2rem;">
-                        <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>" style="text-decoration: none; color: #fff; ">Unsave</a>
+                <td><button class="btn btn-danger detail-toggle" style="height: 5rem; " >
+                        <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>" style="text-decoration: none; color: white;">Unsave</a>
                     </button></td>
             </tr>
             <%
@@ -225,7 +227,7 @@
 
     <% } else {
     %>
-    <h1 style="color: red; font-family: serif; float: right; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)">NO RESULT</h1>
+    <h1 style="color: red">NO RESULT</h1>
     <%
         }
     %> 

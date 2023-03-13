@@ -135,12 +135,12 @@
         padding: 4rem;
         border-radius: 50%;
         background-color: rgb(238, 190, 58);
+        transition: 0.5s;
 
     }
 
     #intro-body .intro-info i:hover{
-        color: white;
-        background-color: aquamarine;
+        transform: rotate(360deg);
     }
 
 
@@ -284,7 +284,7 @@
         <div id="search-box">
             <h1>Welcome to our company</h1>
 
-            <form action="<c:url value="/${keyword}"/>">
+            <form action="<c:url value="/resultpage/${keyword}"/>">
                 <input type="text" name="keyword" value="${param.keyword}" placeholder="I'm looking for..." width="10rem" height="20rem">
                 
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -350,91 +350,15 @@
                         <a href="<c:url value="/post-detail/${item.postId}"/>"><img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true" alt=""></a>
                         <h3><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h3>
                         <p class="salary"><i class="fa-sharp fa-solid fa-money-bill"></i>Salary: ${item.salary}</p>
-                        <div class="post-down"><p>Location: ${item.locations}</p>
-                            <i class="fa-regular fa-bookmark"></i></div>
-
+                        <div class="post-down"><p>Location: ${item.locations}</p>                              
+                            <a href="<c:url value="/post-detail/save/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></div></a>
                     </div>
                 </c:forEach>
             </div>
         </div>
     </div>
 
-    <%-- <div class="container-fluid mt-3 job-post">
-         <div class="row" style="margin-left: 15rem;">
-             <c:forEach var="item" items="${list}">
-                 <div class="col-sm-5 hot-job">
-                     <div class="row">
-                         <div class="col-sm-6">
-                             <p>Salary: 1000$</p>
-                             <p>Level: Junior</p>
-                             <p>Require: </p>         
-                             <ul class="require-list">         
-                                 <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
-                                     <li class="list-item">${skill.skillName}</li>
-                                     </c:forEach>
-                             </ul>
-                             <button class="apply-btn">Apply now</button>
-
-                        </div>
-                        <div class="col-sm-6"><img
-                                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true"
-                                alt="Monke Tech"/>
-                            <h2><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h2>
-                            <h3>MT Company</h3>
-                            <h3>Location: ${item.locations}</h3></div>
-                        <hr>         
-                        <div class="date">
-                            <p>Posted Date: 09/03/2023</p>
-                            <p>Expired Date: 31/03/2023</p>
-                        </div>
-
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-    </div> 
-
-
-    <!-- Hot job here -->
-    <div id="hot-jobs">
-        <h1>Today Hot Jobs</h1>
-        <c:forEach var="item" items="${list}">
-            <div id="job-posting">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <div class="imgage">
-                            <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6" id="job-posting-item">
-                        <div class="job-intro">
-                            <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
-                            <h3>Công ty phần mềm Monke Tech</h3>
-                            <p>Địa điểm: ${item.locations}</p>
-                            <p>Mức lương: ${item.salary}</p>
-                            <p>Cấp bậc: nhân viên</p>
-                            <p>Yêu cầu: </p>
-                            <c:forEach var="skill" items="${item.jobPosition.getSkills()}">
-
-                                ${skill.skillName}
-                            </c:forEach>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <h2>Ngày đăng: 20/02/2023</h2>
-                        <h2>Ngày hết hạn:30/04/2023</h2>
-                        <button class="apply-btn"><a href="#">Ứng tuyển ngay</a></button>
-                        <!--<button class="save-btn"><a class="dialog-btn" href="">Lưu tin</a></button>-->
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-    --%>
-
-
-
-
+    
     <div class="dialog overlay" id="my-dialog">
         <div class="dialog-body">
             <i class="modal-title fa-solid fa-check"></i>

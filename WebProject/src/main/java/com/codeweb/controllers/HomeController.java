@@ -35,12 +35,17 @@ public class HomeController {
     private JobPostingService jobPostingService;
     
     @RequestMapping("/")
-    public String index(Model model,
+    public String index(){
+        return "homePage";
+    }
+    
+    @GetMapping("/resultpage")
+    public String showResult(Model model,
             @RequestParam(required = false) Map<String,String> params,
             HttpSession session){
         model.addAttribute("isLoginPage", true);
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
-        model.addAttribute("keyword", params);
-        return "homePage";
+        return "resultPage";
     }
+    
 }

@@ -7,6 +7,7 @@ package com.codeweb.repository.implement;
 
 import com.codeweb.pojos.jobPosition;
 import com.codeweb.repository.JobPositionRepository;
+import com.codeweb.repository.JobPositionRepository;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;

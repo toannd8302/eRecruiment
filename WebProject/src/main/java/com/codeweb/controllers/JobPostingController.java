@@ -26,21 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @ControllerAdvice
 public class JobPostingController {
-
     @Autowired
     private JobPostingService jobPostingService;
-
-    @GetMapping("/post-detail/{postID}")
-    public ModelAndView detailpage(Model model,
-            @PathVariable(value = "postID") String postID,
-            HttpSession session) {
-        ModelAndView mdv = new ModelAndView();
-        mdv.setViewName("post-detail-page");
-        mdv.addObject("jobPosting", this.jobPostingService.getPostByID(postID));
-        return mdv;
-    }
-
-    @Autowired
+    
+     @Autowired
     private WishListImp wishList; //ĐƯỢC TẠO TRONG SERVICE
 
     @GetMapping("/post-detail/save/{postID}")
@@ -66,4 +55,36 @@ public class JobPostingController {
         wishList.removeJobPosting(jobPosting);
         return "redirect:/post-detail/view"; 
     }
+    
+//    @GetMapping("/post-detail/{postID}")
+//    public String detailpage(Model model,
+//            @PathVariable(value = "postID") String postID,
+//            HttpSession session){
+//        model.addAttribute("jobPosting",this.jobPostingService.getPostByID(postID));
+//        return "post-detail-page";
+//    }
+//    
+//    @GetMapping("/post-detail/save/{postID}")
+//    public String saveJob(HttpSession session,
+//            @PathVariable(value = "postID") String postID) {
+//        //NÊN HIỂN THI NAME LÊN URL THÌ TỐT HƠN
+//        jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
+//        wishList.addToWishList(jobPostingSave);
+//        //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
+//        return "redirect:/";
+//    }
+//    
+//    @GetMapping("/post-detail/view")
+//    public String viewWishList(HttpSession session) {
+//        Set<jobPosting> wishlist = wishList.getWishList();
+//        session.setAttribute("wishList", wishlist);
+//        return "viewWishList";
+//    }
+//    
+//    @GetMapping("/post-detail/view/delete/{postId}")
+//    public String deleteJob(HttpSession session, @PathVariable(value = "postId") String postId) {
+//        jobPosting jobPosting = this.jobPostingService.getPostByID(postId);
+//        wishList.removeJobPosting(jobPosting);
+//        return "redirect:/post-detail/view"; 
+//    }
 }

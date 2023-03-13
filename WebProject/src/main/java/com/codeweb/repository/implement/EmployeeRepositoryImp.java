@@ -6,6 +6,7 @@
 package com.codeweb.repository.implement;
 
 import com.codeweb.pojos.employee;
+import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.EmployeeRepository;
 import java.util.List;
 import javax.persistence.Query;
@@ -25,7 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class EmployeeRepositoryImp implements EmployeeRepository{
+public class EmployeeRepositoryImp implements EmployeeRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
@@ -70,6 +72,19 @@ public class EmployeeRepositoryImp implements EmployeeRepository{
         Root root = query.from(employee.class);
         query = query.select(root);
         Predicate p1 = builder.like(root.get("id").as(String.class), id);
+        query = query.where(p1);
+        Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<employee> getEmployeeByRole(String role) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<employee> query = builder.createQuery(employee.class);
+        Root root = query.from(employee.class);
+        query = query.select(root);
+        Predicate p1 = builder.like(root.get("role").as(String.class), role);
         query = query.where(p1);
         Query q = session.createQuery(query);
         return q.getResultList();

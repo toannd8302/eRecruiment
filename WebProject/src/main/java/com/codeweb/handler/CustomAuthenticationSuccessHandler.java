@@ -5,7 +5,7 @@
  */
 package com.codeweb.handler;
 
-import com.codeweb.loginModel.CustomOAuth2User;
+import com.codeweb.common.CustomOAuth2User;
 import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.employee;
 import com.codeweb.service.CandidateService;
@@ -55,50 +55,18 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 HttpSession session = request.getSession();
                 session.setAttribute("user", employee);
                 if (employee.getRole().equals("ROLE_EMPLOYEE")) {
-                    response.sendRedirect(request.getContextPath() + "/employee");
+                    response.sendRedirect(request.getContextPath() + "/jobApps");
                 } else if (employee.getRole().equals("ROLE_INTERVIEWER")) {
                     response.sendRedirect(request.getContextPath() + "/interviewer");
                 } else if (employee.getRole().equals("ROLE_MANAGER")) {
                     response.sendRedirect(request.getContextPath() + "/manager");
                 }
             } else {
-
-//                String errorMessage = "Invalid username or password";
-//                if (exception instanceof LockedException) {
-//                    errorMessage = "Your account has been locked due to too many failed login attempts. Please contact the system administrator.";
-//                } else if (exception instanceof DisabledException) {
-//                    errorMessage = "Your account has been disabled. Please contact the system administrator.";
-//                }
-//                RedirectAttributes redirectAttributes = new RedirectAttributesModelMap();
-//                redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
-//                response.sendRedirect(request.getContextPath() + "/login?error");
-
-                // Invalidate the authentication if user doesn't have ROLE_EMPLOYEE
                 SecurityContextHolder.getContext().setAuthentication(null);
                 response.sendRedirect(request.getContextPath() + "/loginPage?error=noRoleSupported");
             }
         } else {
             response.sendRedirect(request.getContextPath() + "/login?error=noRegistration");
         }
-
-//        for (GrantedAuthority authority : authorities) {
-//            if (authority.getAuthority().equals("ROLE_INTERVIEWER")) {
-//                response.sendRedirect(request.getContextPath() + "/interviewer");
-//                return;
-//            }
-//            else if (authority.getAuthority().equals("ROLE_MANAGER")) {
-//                response.sendRedirect(request.getContextPath() + "/manager");
-//                return;
-//            }
-//            else if (authority.getAuthority().equals("ROLE_EMPLOYEE")) {
-//                response.sendRedirect(request.getContextPath() + "/hr");
-//                return;
-//            }
-//            else if (authority.getAuthority().equals("ROLE_CANDIDATE")) {
-//                response.sendRedirect(request.getContextPath() + "/candidate");
-//                return;
-//            }
-//        }
-        // Default redirect URL
     }
 }

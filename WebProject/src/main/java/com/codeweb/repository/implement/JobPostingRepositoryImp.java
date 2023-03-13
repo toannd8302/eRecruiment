@@ -26,7 +26,7 @@ import java.util.Set;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
-
+import javax.persistence.criteria.ListJoin;
 import javax.persistence.criteria.Subquery;
 
 /**
@@ -41,6 +41,19 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
+    public boolean update(jobPosting jobPosting) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.update(jobPosting);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== UPDATE JOB POSTING ERROR AT JobPostingRepositoryImp ==" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
     public List<jobPosting> getPostByKeyword(String kw) {
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -49,9 +62,6 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         Join<jobPosting, jobPosition> position = root.join("jobPosition");
         Join<jobPosition, skill> skill = position.join("skills");
 
-        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class), "Approved");
-        query = query.where(p3);
-
         if (!kw.isEmpty() && kw != null) {
             Predicate p1 = builder.like(position.get("jobName").as(String.class),
                     String.format("%%%s%%", kw));
@@ -59,6 +69,9 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
                     String.format("%%%s%%", kw));
             query = query.where(builder.or(p1, p2));
         }
+
+        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class), "Approved");
+        query = query.where(builder.and(p3));
 
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
@@ -100,21 +113,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     }
 
     @Override
-    public boolean createJobPosting(jobPosting jobPosting) {
-        try {
-            Session session = sessionFactory.getObject().getCurrentSession();
-            session.save(jobPosting);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-
-    }
-
-    @Override
     public List<jobPosting> getAllJobPosting() {
-
         Session session = sessionFactory.getObject().getCurrentSession();
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -131,24 +130,29 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     }
 
     @Override
+    public boolean createJobPosting(jobPosting jobPosting) {
+        try {
+            Session session = sessionFactory.getObject().getCurrentSession();
+            session.save(jobPosting);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
     public void deleteJobPosting(String id) {
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaDelete<jobPosting> deleteJobPostingCriteria = builder.createCriteriaDelete(jobPosting.class);
-        Root<jobPosting> jobPostingRoot = deleteJobPostingCriteria.from(jobPosting.class);
-        deleteJobPostingCriteria.where(builder.equal(jobPostingRoot.get("postId"), id));
+        CriteriaDelete<round> deleteRound = builder.createCriteriaDelete(round.class);
+        Root<round> rootRound = deleteRound.from(round.class);
+        deleteRound.where(builder.equal(rootRound.get("jobPoting").get("postId"), id));
+        session.createQuery(deleteRound).executeUpdate();
 
-        Subquery<String> subquery = deleteJobPostingCriteria.subquery(String.class);
-        Root<round> roundRoot = subquery.from(round.class);
-//        subquery.select(roundRoot.get("",));
-        subquery.where(builder.equal(roundRoot.get("jobPosting"), jobPostingRoot));
-
-        deleteJobPostingCriteria.where(
-                builder.or(
-                        builder.equal(jobPostingRoot.get("postId"), id),
-                        builder.in(jobPostingRoot.get("rounds")).value(subquery)
-                ));
-
-        session.createQuery(deleteJobPostingCriteria).executeUpdate();
+        CriteriaDelete<jobPosting> deleteJobPosting = builder.createCriteriaDelete(jobPosting.class);
+        Root<jobPosting> rootJobPosting = deleteJobPosting.from(jobPosting.class);
+        deleteJobPosting.where(builder.equal(rootJobPosting.get("postId"), id));
+        session.createQuery(deleteJobPosting).executeUpdate();
     }
 }

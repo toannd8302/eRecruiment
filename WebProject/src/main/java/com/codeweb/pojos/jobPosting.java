@@ -25,7 +25,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -40,7 +39,6 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "Post_id", columnDefinition = "NVARCHAR(6)")
     private String postId;
-    
     
     @Column(name = "Descriptions")
     private String descriptions;
@@ -60,14 +58,16 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @Column(nullable=true, name = "Salary")
     private Integer salary;
     
+    @Column(name = "Created_time")
+    @Temporal(TemporalType.DATE)
+    private Date CreatedTime;
+    
     @Column(name = "Posting_time")
     @Temporal(TemporalType.DATE)
     private Date PostingTime;
 
     @Column(name = "Expired_time")
     @Temporal(TemporalType.DATE)
-    //Hỗ trợ việc đúng định dạng khi insert xuống database
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ExpiredTime;
     
     @Column(name = "Approved_status")
@@ -75,6 +75,9 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     
     @Column(name = "Level")
     private String level;
+    
+    @Column(name = "Picture")
+    private String picture;
     
     @ManyToOne
     @JoinColumn(name = "Job_id")
@@ -86,8 +89,22 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @OneToMany(mappedBy = "jobPosting")
     private Set<jobApplication> jobApplications;
 
-    
-    
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Date getCreatedTime() {
+        return CreatedTime;
+    }
+
+    public void setCreatedTime(Date CreatedTime) {
+        this.CreatedTime = CreatedTime;
+    }
+
     public String getLevel() {
         return level;
     }

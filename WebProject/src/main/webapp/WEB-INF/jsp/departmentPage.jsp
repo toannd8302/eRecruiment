@@ -179,7 +179,7 @@
         font-weight: bold;
         color: #009879;
     }
-        .blank{
+    .blank{
         height: 2.5rem;
     }
     .trash-bin{
@@ -215,7 +215,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/"/>">
+            <a href="<c:url value="/department"/>">
                 <i class="fa-solid fa-house"></i>
                 <span class="nav-item">Home</span>
             </a>
@@ -231,6 +231,12 @@
                 <i class="fa-solid fa-folder-plus"></i>
                 <span class="nav-item">Create a Job Posting</span>
             </a>
+        </li>
+        <li>
+            <c:url value="/viewround" var="action" />
+            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
+                <button>ADD MORE ROUNDS</button>
+            </form:form>
         </li>
 
         <li class="logout">
@@ -252,7 +258,6 @@
                     <th>Job Position</th>
                     <th>Level</th>
                     <th>Posted Date</th>
-                    <th>Expired Date</th>
                     <th>Type of Work</th>
                     <th>Status</th>
                     <th>View Detail</th>
@@ -273,13 +278,12 @@
                     <td><%= jobposting.getJobPosition().getJobName()%></td>
                     <td><%= jobposting.getLevel()%></td>
                     <td> <fmt:formatDate value="<%= jobposting.getPostingTime()%>"  pattern="dd/MM/yyyy"/></td>
-                    <td><fmt:formatDate value="<%= jobposting.getExpiredTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
                     <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
                     <td>
 
-                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"><i class="fa-solid fa-trash trash-bin"></i></a>
+                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/><i class="fa-solid fa-trash trash-bin"></i></a>
                         <br>
                         <div class="blank">
 

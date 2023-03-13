@@ -41,14 +41,10 @@ public class DepartmentController {
 
     @GetMapping("/createjobposting")
     public String viewFormDepartmenJobPosting(Model model) {
-        
+
         jobPosting jobPosting = new jobPosting();
-        
+
         model.addAttribute("jobPosting", jobPosting);
-        
-     
-        
-        
 
         List<jobPosition> Positiions = this.jobPositionService.getAll();
 
@@ -61,52 +57,32 @@ public class DepartmentController {
     public String getFormOfDepartments(@ModelAttribute(value = "jobPosting") jobPosting jobPosting,
             BindingResult result, Model model, HttpSession session
     ) {
-
         if (result.hasErrors()) {
+            session.setAttribute("ERROR", "CANNOT CREATE JOB POSTING");
             List<jobPosition> jobPositions = jobPositionService.getAll();
             model.addAttribute("joPositions", jobPositions);
+            model.addAttribute("skills", jobPosting.getJobPosition().getSkills());
             return "formJobPosting";
         }
-
         department department = (department) session.getAttribute("department");
-
-        String jobId = jobPosting.getJobPosition().getJobId();
-
-        jobPosition jobposition = this.jobPositionService.getbyId(jobId);
-
+        jobPosition jobposition = this.jobPositionService.getbyId(jobPosting.getJobPosition().getJobId());
         if (jobposition.getDepartment().getDepartmentId().equals(department.getDepartmentId())) {
             jobPosting.setJobPosition(jobposition);
-
             boolean Result = this.jobPostingService.createJobPosting(jobPosting);
-
-            // Lưu thông tin về các Round
-//            Set<round> rounds = jobPosting.getRounds();
-//            for (round round : rounds) {
-//                if (round.getContent() != null && !round.getContent().isEmpty() && round.getRoundNumber() != null) {
-//                    round.setJobPoting(jobPosting);
-//                  
-//                }
-//            }
-          
             if (Result == true) {
                 return "forward:/viewround";
             }
-
         } else {
-
             session.setAttribute("ERROR", "PLS INPUT JOBTITLE SUITABLY");
             List<jobPosition> jobPositions = jobPositionService.getAll();
             model.addAttribute("joPositions", jobPositions);
-
         }
         return "formJobPosting";
-
     }
 
     @GetMapping("/deletejobposting/{postID}")
     public String deleteJobPosting(HttpSession session,
             @PathVariable(value = "postID") String postID) {
-
         this.jobPostingService.deleteJobPosting(postID);
         return "redirect:/department";
     }

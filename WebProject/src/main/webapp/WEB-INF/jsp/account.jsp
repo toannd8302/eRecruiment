@@ -172,12 +172,7 @@
 
 
 
-
-
-
-
-
-
+<%--
 <p>${user.email}</p>
 
 <p><fmt:formatDate value="${user.getDob()}" pattern="dd/MM/yyyy"/></p>
@@ -198,3 +193,4 @@
         ${skill.skillName}
     </li>
 </c:forEach>
+--%>
