@@ -4,6 +4,7 @@
     Author     : KHOA
 --%>
 
+<%@page import="com.codeweb.pojos.department"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -287,6 +288,7 @@
         <div id="general-info">
             <h1>${jobPosting.jobPosition.jobName}</h1>
             <h2>Công ty phần mềm Monke Tech</h2> 
+      
             <p><i class="fa-regular fa-clock"></i>Expired time: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></p>
         </div>
     </div>

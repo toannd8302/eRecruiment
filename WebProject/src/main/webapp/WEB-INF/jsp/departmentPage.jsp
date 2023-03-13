@@ -116,7 +116,7 @@
         padding-left: 2rem;
         margin-top: 2rem;
         /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
-        font-family: serif;
+        
     }
 
     .post-list-right .table thead{
@@ -128,6 +128,7 @@
     .post-list-right h1{
         font-weight: bold;
         font-size: 3.5rem;
+        color: orangered;
     }
 
     .trash-bin{
@@ -179,7 +180,7 @@
         font-weight: bold;
         color: #009879;
     }
-        .blank{
+    .blank{
         height: 2.5rem;
     }
     .trash-bin{
@@ -200,7 +201,6 @@
         int count = 1;
 
 %>
-
 
 
 <nav class="post-list-left">
@@ -251,7 +251,7 @@
                     <th>No.</th>
                     <th>Job Position</th>
                     <th>Level</th>
-                    <th>Posted Date</th>
+                    <th>Created Date</th>
                     <th>Type of Work</th>
                     <th>Status</th>
                     <th>View Detail</th>
@@ -271,16 +271,14 @@
                     <td><%= count++%></td>
                     <td><%= jobposting.getJobPosition().getJobName()%></td>
                     <td><%= jobposting.getLevel()%></td>
-                    <td> <fmt:formatDate value="<%= jobposting.getPostingTime()%>"  pattern="dd/MM/yyyy"/></td>
+                    <td> <fmt:formatDate value="<%= jobposting.getCreatedTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
-                    <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
+                    <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
                     <td>
-
                         <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/><i class="fa-solid fa-trash trash-bin"></i></a>
                         <br>
                         <div class="blank">
-
                         </div>
                     </td>
                 </tr>   

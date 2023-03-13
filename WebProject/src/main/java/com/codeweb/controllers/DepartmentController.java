@@ -86,4 +86,14 @@ public class DepartmentController {
         this.jobPostingService.deleteJobPosting(postID);
         return "redirect:/department";
     }
+
+    @GetMapping("/view-post-detail/{postID}")
+    public String postDetailPage(Model model,
+            @PathVariable(value = "postID") String postID,
+            HttpSession session) {
+
+        model.addAttribute("jobPosting", this.jobPostingService.getPostByID(postID));
+
+        return "departmentViewPostDetail";
+    }
 }

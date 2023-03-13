@@ -67,7 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/interviewer").hasRole("INTERVIEWER")
                     .antMatchers("/manager").hasRole("MANAGER")
                     .antMatchers("/department",
-                            "/createjobposting","/createround",
+                            "/createjobposting","/createround","/view-post-detail/**",
                             "/viewround").hasRole("DEPARTMENT")
                     .anyRequest().authenticated()
                 .and()
