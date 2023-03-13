@@ -43,14 +43,14 @@ public class jobApplication implements Serializable{
     @Column(name = "CV")
     private String cv;
     
-    @Column(name = "CV_status")
-    private String cvStatus;
-    
     @Column(nullable=true, name = "Round_number")
     private Integer roundNumber;
     
     @Column(name = "Application_status")
     private String applicationStatus;
+    
+    @Column(name = "CV_status")
+    private String cvStatus;
     
     @Column(name = "Introduction")
     private String introduction;
@@ -168,14 +168,5 @@ public class jobApplication implements Serializable{
 
     public void setFile(MultipartFile file) {
         this.file = file;
-    }
-
-    
-
-    @Override
-    public String toString() {
-        return "jobApplication{" + "applicationId=" + applicationId + ", createdTime=" + createdTime + ", cv=" + cv + ", cvStatus=" + cvStatus + ", roundNumber=" + roundNumber + ", applicationStatus=" + applicationStatus + ", introduction=" + introduction + ", file=" + file + '}';
-    }
-    
-    
+    }   
 }

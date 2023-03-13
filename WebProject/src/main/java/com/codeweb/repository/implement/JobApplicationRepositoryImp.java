@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +37,27 @@ public class JobApplicationRepositoryImp implements JobApplicationRepository {
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
-    @Autowired
-    private CandidateService candidateService;
-
     @Override
-    public boolean addOrUpdate(jobApplication jobApplication) {
+    public boolean add(jobApplication jobApplication) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try {
             session.save(jobApplication);
             return true;
         } catch (Exception e) {
             System.err.println("== ADD JOB APPLICATION ERROR ==" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    @Override
+    public boolean update(jobApplication jobApplication) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.update(jobApplication);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== UPDATE JOB APPLICATION ERROR AT JobApplicationRepositoryImp ==" + e.getMessage());
             e.printStackTrace();
         }
         return false;
@@ -64,4 +75,27 @@ public class JobApplicationRepositoryImp implements JobApplicationRepository {
         return q.getResultList();
     }
 
+    @Override
+    public List<jobApplication> getJobApplicationByStatus(String status) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobApplication> query = builder.createQuery(jobApplication.class);
+        Root<jobApplication> root = query.from(jobApplication.class);
+        Predicate p = builder.equal(root.get("applicationStatus").as(String.class),status);
+        query = query.where(p);
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
+    
+    @Override
+    public List<jobApplication> getJobApplicationByID(String id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobApplication> query = builder.createQuery(jobApplication.class);
+        Root<jobApplication> root = query.from(jobApplication.class);
+        Predicate p = builder.equal(root.get("applicationId").as(String.class),id);
+        query = query.where(p);
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
 }

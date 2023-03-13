@@ -5,8 +5,10 @@
  */
 package com.codeweb.service;
 
-import com.codeweb.loginModel.CustomOAuth2User;
+import com.codeweb.common.CustomOAuth2User;
 import com.codeweb.pojos.employee;
+import com.codeweb.pojos.jobApplication;
+import com.codeweb.pojos.schedule;
 import java.util.List;
 
 /**
@@ -15,9 +17,13 @@ import java.util.List;
  */
 public interface EmployeeService {
     List<employee> getAll();
+    List<employee> getEmployeesByRole(String role);
+            
     boolean addOrUpdate(employee employee);
     employee findEmployeeByID(String id);
     employee findEmployeeByEmail(String email);
-
+    String autoSchedulingJobApp(jobApplication jobApplication);
+    String manuallySchedulingJobApp(String jobAppID, String scheduleID);
+    
     employee processOAuthPostLogin(CustomOAuth2User oauthUser);
 }

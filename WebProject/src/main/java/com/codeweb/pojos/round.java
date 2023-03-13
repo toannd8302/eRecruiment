@@ -36,8 +36,8 @@ public class round implements Serializable{
     @Column(name = "Round_id", columnDefinition = "NVARCHAR(6)")
     private String roundID;
     
-    @Column(name = "Round_number")
-    private String roundNumber;
+    @Column(nullable=true,name = "Round_number")
+    private Integer roundNumber;
     
     @Column(name = "Content")
     private String content;
@@ -65,11 +65,13 @@ public class round implements Serializable{
         this.roundID = roundID;
     }
 
-    public String getRoundNumber() {
+    public int getRoundNumber() {
+        if(roundNumber == null)
+            return 1;
         return roundNumber;
     }
 
-    public void setRoundNumber(String roundNumber) {
+    public void setRoundNumber(Integer roundNumber) {
         this.roundNumber = roundNumber;
     }
 

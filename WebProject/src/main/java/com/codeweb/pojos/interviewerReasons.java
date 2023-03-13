@@ -40,11 +40,11 @@ public class interviewerReasons implements Serializable{
     private String status;
     
     @ManyToOne()
-    @JoinColumn(name = "Schedule_id")
+    @JoinColumn(name = "Schedule_id", insertable = false, updatable = false)
     private schedule employeeSchedule;
     
     @ManyToOne
-    @JoinColumn(name = "Employee_id")
+    @JoinColumn(name = "Employee_id", insertable = false, updatable = false)
     private employee employee;
     
     @Transient

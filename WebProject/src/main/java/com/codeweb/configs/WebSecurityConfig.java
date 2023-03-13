@@ -9,7 +9,7 @@ package com.codeweb.configs;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.codeweb.handler.CustomAuthenticationSuccessHandler;
-import com.codeweb.passwordEncoder.NoOpPasswordEncoder;
+import com.codeweb.passwordEncoder.NoPasswordEncoder;
 import com.codeweb.service.implement.CustomOAuth2UserService;
 import com.codeweb.service.implement.CustomUserDetailService;
 import java.util.Arrays;
@@ -55,17 +55,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/", "/home/**", "/post-detail/**", "/oauth2/**", "/loginPage", "/login").permitAll()
-                    .antMatchers("/account", "/job/application", "/job/viewMyJob", "/post-detail/save/**", "/post-detail/view", "/candidate").hasRole("CANDIDATE")
-                    .antMatchers("/employee","/jobPostings","/jobApps","/schedules").hasRole("EMPLOYEE")
+                    .antMatchers("/account", 
+                            "/job/application", "/job/viewMyJob", 
+                            "/post-detail/save/**", "/post-detail/view", "/post-detail/view/delete/**",
+                            "/candidate").hasRole("CANDIDATE")
+                    .antMatchers("/employee","/jobPostings","/jobApps","/schedules",
+                            "/jobApps/job-application-details","/jobPostings/job-posting-details","/schedules/schedule-details",
+                            "/review-app",
+                            "/start-schedule",
+                            "/schedule-app","/schedule-app/create-new-schedule").hasRole("EMPLOYEE")
                     .antMatchers("/interviewer").hasRole("INTERVIEWER")
                     .antMatchers("/manager").hasRole("MANAGER")
-                    .antMatchers("/department","/createjobposting","/createround","/viewround").hasRole("DEPARTMENT")
+                    .antMatchers("/department",
+                            "/createjobposting","/createround",
+                            "/viewround").hasRole("DEPARTMENT")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()
 //                    .loginPage("/login")
                         .usernameParameter("email")
-//                        .passwordParameter("password")
                         .defaultSuccessUrl("/department")
                         .failureUrl("/login?error")
                         .permitAll()
@@ -103,7 +111,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setPasswordEncoder(new NoOpPasswordEncoder());
+        authenticationProvider.setPasswordEncoder(new NoPasswordEncoder());
         authenticationProvider.setUserDetailsService(userDetailsService());
         return authenticationProvider;
     }

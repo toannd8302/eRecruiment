@@ -107,12 +107,10 @@
                 <td><%= j.getLocations()%></td>
                 <td><%= j.getSalary()%></td>
                 <td><button class="btn btn-success detail-toggle">Apply Now</button></td>
-                <td><button class="btn btn-danger detail-toggle">
-                        <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>">Unsave</a>
-                    </button></td>
+                <td><button class="btn btn-danger detail-toggle">Unsave</button></td>
             </tr>
             <%
-                }%>
+                    }%>
         </tbody>
     </table>
 

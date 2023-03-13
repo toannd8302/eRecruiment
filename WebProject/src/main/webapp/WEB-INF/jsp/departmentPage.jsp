@@ -115,7 +115,7 @@
         width: 80%;
         padding-left: 2rem;
         margin-top: 2rem;
-        /*VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
+        /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
         font-family: serif;
     }
 
@@ -179,6 +179,13 @@
         font-weight: bold;
         color: #009879;
     }
+        .blank{
+        height: 2.5rem;
+    }
+    .trash-bin{
+        margin-bottom: 1rem;
+        color:black;
+    }
 </style>
 
 
@@ -208,7 +215,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/"/>">
+            <a href="<c:url value="/department"/>">
                 <i class="fa-solid fa-house"></i>
                 <span class="nav-item">Home</span>
             </a>
@@ -245,7 +252,6 @@
                     <th>Job Position</th>
                     <th>Level</th>
                     <th>Posted Date</th>
-                    <th>Expired Date</th>
                     <th>Type of Work</th>
                     <th>Status</th>
                     <th>View Detail</th>
@@ -266,14 +272,16 @@
                     <td><%= jobposting.getJobPosition().getJobName()%></td>
                     <td><%= jobposting.getLevel()%></td>
                     <td> <fmt:formatDate value="<%= jobposting.getPostingTime()%>"  pattern="dd/MM/yyyy"/></td>
-                    <td><fmt:formatDate value="<%= jobposting.getExpiredTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
                     <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
                     <td>
-                        <i class="fa-solid fa-trash trash-bin">
-                            <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>">Cancel</a>
-                        </i>
+
+                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/><i class="fa-solid fa-trash trash-bin"></i></a>
+                        <br>
+                        <div class="blank">
+
+                        </div>
                     </td>
                 </tr>   
 
@@ -285,8 +293,7 @@
                 %>
             <h2>Your Department has not created Job Posting before</h2>        
 
-            <%    
-                }
+            <%                }
             %>
 
             </tbody>

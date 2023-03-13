@@ -13,6 +13,9 @@ import java.util.List;
  * @author KHOA
  */
 public interface JobApplicationRepository {
-    boolean addOrUpdate(jobApplication jobApplication);
+    boolean add(jobApplication jobApplication);
+    boolean update(jobApplication jobApplication);
     List<jobApplication>jobApplicationList();
+    List<jobApplication> getJobApplicationByStatus(String status);
+    List<jobApplication> getJobApplicationByID(String id);
 }

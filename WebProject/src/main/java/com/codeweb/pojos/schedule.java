@@ -7,7 +7,6 @@ package com.codeweb.pojos;
 import java.io.Serializable;
 import java.util.Date;
 import java.sql.Time;
-
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +36,7 @@ public class schedule implements Serializable{
     private String scheduleId;   
     
     @Column(name = "Schedule_date")
-     @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date scheduleDate;
     
     @Column(name = "Schedule_time")
@@ -46,8 +45,8 @@ public class schedule implements Serializable{
     @Column(name = "Location")
     private String location;
     
-    @Column(name = "Type_of_interview")
-    private boolean typeOfInterview;
+    @Column(name = "Type_of_interview", nullable = true)
+    private Boolean typeOfInterview;
     
     @Column(name = "Status")
     private String status;
@@ -121,11 +120,11 @@ public class schedule implements Serializable{
         this.location = location;
     }
 
-    public boolean isTypeOfInterview() {
+    public Boolean isTypeOfInterview() {
         return typeOfInterview;
     }
 
-    public void setTypeOfInterview(boolean typeOfInterview) {
+    public void setTypeOfInterview(Boolean typeOfInterview) {
         this.typeOfInterview = typeOfInterview;
     }
 

@@ -7,12 +7,17 @@ package com.codeweb.service;
 
 import com.codeweb.pojos.jobApplication;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author KHOA
  */
 public interface JobApplicationService {
-    boolean addOrUpdate(jobApplication jobApplication);
+    boolean add(jobApplication jobApplication);
+    boolean update(jobApplication jobApplication);
+    boolean updateAfterReview(jobApplication jobApplication, boolean result);
     List<jobApplication>jobApplicationList();
+    Map<String,List<jobApplication>> getApplicationByStatus();
+    jobApplication getJobApplicationByID(String id);
 }

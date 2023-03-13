@@ -7,6 +7,7 @@ package com.codeweb.repository;
 
 import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.employee;
+import com.codeweb.pojos.jobApplication;
 import java.util.List;
 
 /**
@@ -16,8 +17,7 @@ import java.util.List;
 public interface EmployeeRepository {
     boolean addOrUpdate(employee employee);
     List<employee> getAll();
-    
     List<employee> getEmployeeByEmail(String email);
-    
     List<employee> getEmployeeById(String id);
+    List<employee> getEmployeeByRole(String role);
 }

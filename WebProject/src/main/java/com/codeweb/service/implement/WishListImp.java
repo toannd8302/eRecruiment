@@ -27,7 +27,6 @@ public class WishListImp {
     private int wishListCount = 0;
 
     public void addToWishList(jobPosting joP) {
-        //TRÁNH VÒNG LẶP VÔ TẬN
         if (wishListCount < MAX_WISHLIST_SIZE) {
             wishListCount++;
             wishList.add(joP);
@@ -35,9 +34,12 @@ public class WishListImp {
 
     }
 
-    public void removeJobPosting(jobPosting joP) {      
+    public void removeJobPosting(jobPosting joP) {
+        if (wishListCount < MAX_WISHLIST_SIZE) {
+            wishListCount++;
             wishList.remove(joP);
-        
+        }
+
     }
 
     public Set<jobPosting> getWishList() {

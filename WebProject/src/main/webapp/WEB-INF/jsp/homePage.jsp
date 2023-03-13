@@ -16,15 +16,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
 
-<!-- Bootstrap here -->
-<!--<link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
-
 <style>
     html {
         font-size: 62.5%;
@@ -253,9 +244,8 @@
         <div id="search-box">
             <h1>Welcome to our company</h1>
             <h1>Find your dream job</h1>
-
             <form action="<c:url value="/${keyword}"/>">
-                <input type="text" name="keyword" value="" placeholder="I'm looking for..." width="10rem" height="20rem">
+                <input type="text" name="keyword" placeholder="I'm looking for..." width="10rem" height="20rem">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
