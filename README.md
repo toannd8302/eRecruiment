@@ -1,4 +1,4 @@
-# eRecruiment
+# E-recruiment
 # This project include:
 * Maven
 * Spring mvc 
