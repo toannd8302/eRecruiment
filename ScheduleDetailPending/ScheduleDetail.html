@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Interview Schedule</title>
+    <link rel="stylesheet" type="text/css" href="ScheduleDetail.css">
+  </head>
+  <body>
+    <header>
+      <h1>Interview Schedule Detail</h1>
+    </header>
+	<section>
+		<h2>Pending</h2>
+	</section>
+	<hr>
+    <section>
+		<table class="interview-table">
+			<thead>
+			  <tr>
+				<th>Job Name</th>
+				<th>Schedule ID</th>
+				<th>Round 1</th>
+				<th>Type of interview</th>
+				<th>Number of candidate</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>Front-End</td>
+				<td>S0002</td>
+				<td>Soft Skill</td>
+				<td>Online</td>
+				<td>10</td>
+			  </tr>
+			</tbody>
+		  </table>
+	  </section>
+    <section>
+      <h2>Interviewer & Date and Time</h2>
+	  <div class="box-container">
+		<div class="box">
+			<h4>Day and Time Interview</h4>
+			<p>- Setup day and time of interview schedule</p>
+			<label for="datetime">- Select date and time:</label>
+			<input type="datetime-local" id="datetime" name="datetime">
+		</div>
+		<div class="box">
+			<h4>Interviewer</h4>
+			<p>- Choose the number of interview for this schedule</p>
+			<label for="quantity">Number of Interview:</label>
+			<input type="number" id="quantity" name="quantity" min="1" max="3" step="1">
+			<div class="question">- Interviewer:</div>
+				<div class="label">
+				  <label class="multiple-checkbox">
+					<input type="checkbox" name="fruit" value="apple">
+					Email: TranVanC@gmail.com;
+					Full Name: Tran Van C;
+					Role: Manager
+				  </label>
+				  <label>
+					<input type="checkbox" name="fruit" value="banana">						
+					Email: TranVanC@gmail.com;
+					Full Name: Tran Van C;
+					Role: Manager
+				  </label>
+				  <label>
+					<input type="checkbox" name="fruit" value="banana">						
+					Email: TranVanC@gmail.com;
+					Full Name: Tran Van C;
+					Role: Manager
+				  </label>
+
+				</div>
+			  </div>
+		</div>
+	  </div>
+    </section>
+	<div class="center">
+		<button class="start-btn">Start</button>
+	  </div>
+  </body>
+</html>
