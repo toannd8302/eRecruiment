@@ -7,6 +7,7 @@ package com.codeweb.controllers;
 
 import com.codeweb.pojos.interviewerReasons;
 import com.codeweb.pojos.jobApplication;
+import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.pojos.jobPosting;
 import com.codeweb.pojos.schedule;
 import com.codeweb.repository.RoundRepository;
@@ -139,7 +140,7 @@ public class employeeController {
     }
     
     //=================JOB APPLICATION HERE=======================//
-
+    
     @GetMapping("/jobApps")
     public String viewApplication(Model model) {
         Map<String, List<jobApplication>> jobApplicationMap = this.jobApplicationService.getApplicationByStatus();
@@ -154,7 +155,9 @@ public class employeeController {
     @GetMapping("/jobApps/job-application-details")
     public String viewJobAppDetails(Model model,
             @RequestParam("jobAppID") String id) {
-        model.addAttribute("jobApplication", this.jobApplicationService.getJobApplicationByID(id));
+        jobApplication jobApp = this.jobApplicationService.getJobApplicationByID(id);
+        model.addAttribute("jobApplication", jobApp);
+        model.addAttribute("scheduleID", this.scheduleService.getCurrentScheduleOfJobApp(jobApp).getScheduleId());
         return "view-application-details";
     }
     
@@ -224,7 +227,7 @@ public class employeeController {
         model.addAttribute("ScheduleList", this.scheduleService.getSuitableListOfSchedule(postID, roundNumber));
         return "scheduling-job-application";
     }
-
+    
     //MANUALLY SCHEDULING WITH A CHOOSED SCHEDULE
     @PostMapping("/schedule-app/choosed-schedule")
     public String chooseSchedule(Model model,
@@ -234,7 +237,6 @@ public class employeeController {
         model.addAttribute("MESSAGE", message);
         return "redirect:/jobApps";
     }
-
     
     //=================SCHEDULES HERE=======================//
     
@@ -245,7 +247,7 @@ public class employeeController {
         model.addAttribute("ON_GOING", scheduleMap.get("On Going"));
         return "view-all-schedules";
     }
-
+    
     @GetMapping("/schedules/schedule-details")
     public String viewScheduleDetails(Model model,
             @RequestParam("scheduleID") String id) {
@@ -265,10 +267,14 @@ public class employeeController {
     public String startSchedule(Model model,
             HttpServletRequest request,
             @RequestParam("scheduleID") String id,
-            @RequestParam("action") String action) {
+            @RequestParam("action") String action,
+            @RequestParam("Location") String location) {
         if (action.equals("start")) {
             //Get schedule
             schedule schedule = this.scheduleService.getScheduleByID(id);
+            
+            //Set location
+            schedule.setLocation(location);
             
             //Get and set the list of interviewerReasons of schedule
             String[] selectedOptions = request.getParameterValues("interviewers");
@@ -279,7 +285,7 @@ public class employeeController {
                 irs.setStatus("Pending");
                 this.interviewReasonService.add(irs);
             }
-            
+            //InterviewDate InterviewTime
             //Get date and time
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -312,3 +318,5 @@ public class employeeController {
         return "redirect:/schedules";
     }
 }
+
+

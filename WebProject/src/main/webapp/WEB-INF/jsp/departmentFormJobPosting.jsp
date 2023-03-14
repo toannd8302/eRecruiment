@@ -503,15 +503,14 @@
                     </div>
                 </div>
 
-                <button>Create round</button>
+                <button>Post</button>
                 <input type="reset" value="Reset" />
             </form:form>
                 
-<!--                Vẫn còn code dâm chỗ add more round này hãy lưu ý-->
-            <c:url value="/viewround" var="action" />
-            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
-                <button>ADD MORE ROUNDS</button>
-            </form:form>
+            <%--<c:url value="/viewround" var="action" />--%>
+            <%--<form:form method="post" modelAttribute="jobPosting" action="${action}" >--%>
+                <!--<button>ADD MORE ROUNDS</button>-->
+            <%--</form:form>--%>
         </div>
         <script type="text/javascript">
             const selectBtn = document.querySelector(".select-btn"),

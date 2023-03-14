@@ -204,7 +204,7 @@
     <h1>Job Application List</h1>
     <div class="tabs">
         <ul class="nav-tabs">
-            <li class="active"><a href="#pending">Pending</a></li>
+            <li class="active"><a href="#pending">Review</a></li>
             <li><a href="#scheduling">Scheduling</a></li>
             <li><a href="#scheduled">Scheduled</a></li>
             <li><a href="#on-going">On-going</a></li>
@@ -240,7 +240,7 @@
                                     </c:if>
                                 </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                                 <!--                            <td><a href="jobapplicationdetail.html">View Details</a></td>-->
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             </tr>
@@ -280,7 +280,7 @@
                                     </c:if>
                                 </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
                             </tr>
@@ -320,7 +320,7 @@
                                     </c:if>
                                 </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
                             </tr>
@@ -360,7 +360,7 @@
                                     </c:if>
                                 </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
                             </tr>
@@ -399,7 +399,7 @@
                                     </c:if>
                                 </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             </tr>
                         </form>

@@ -6,6 +6,7 @@
 package com.codeweb.service.implement;
 
 import com.codeweb.pojos.jobApplication;
+import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.pojos.round;
 import com.codeweb.pojos.schedule;
 import com.codeweb.repository.RoundRepository;
@@ -15,6 +16,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.codeweb.repository.ScheduleRepository;
+import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.ScheduleService;
 import java.util.ArrayList;
 
@@ -30,6 +32,9 @@ public class ScheduleServiceImp implements ScheduleService {
 
     @Autowired
     private ScheduleRepository scheduleRepository;
+    
+    @Autowired
+    private JobApplicationService jobApplicationService;
 
     @Override
     public boolean add(schedule schedule) {
@@ -40,8 +45,30 @@ public class ScheduleServiceImp implements ScheduleService {
     public boolean update(schedule schedule, String action) {
         if(action.equals("start")){
             schedule.setStatus("On Going");
+            jobApplication jobApp = new jobApplication();
+            for(jobApplicationSchedule a : schedule.getjAS()){
+                jobApp = a.getJobApplication();
+                jobApp.setApplicationStatus("On Going");
+                if(this.jobApplicationService.update(jobApp) == false)
+                    return false;
+            }
         }
         return this.scheduleRepository.update(schedule);
+    }
+    
+    @Override
+    public schedule getCurrentScheduleOfJobApp(jobApplication jobApplication) {
+        schedule schedule = new schedule();
+        int roundNumber = jobApplication.getRoundNumber();
+        String scheduleID = new String();
+        for(jobApplicationSchedule a : jobApplication.getJobApSche()){
+            if(!a.getStatus().equals("Rejected")){
+                schedule = this.scheduleRepository.getScheduleByID(a.getScheduleId()).get(0);
+                if(schedule.getRound().getRoundNumber() == roundNumber)
+                    return schedule;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -85,7 +85,7 @@ Create TABLE Job_Applications
 (
 	Application_id nvarchar(36) NOT NULL PRIMARY KEY,
 	Created_time date NOT NULL,
-	CV nvarchar(max) NOT NULL,
+	CV nvarchar(max) NULL,
 	CV_status nvarchar(20) default N'Pending',
 	Application_status nvarchar(20) default N'Review',
 	Round_number int NULL,
@@ -403,22 +403,23 @@ INSERT Employee_Skills(Employee_id,Skill_id)
 
 --Insert Job_Positions_Skills
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0001', N'1')
+        VALUES(N'J0003', N'6')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0001', N'4')
+        VALUES(N'J0004', N'14')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0001', N'7')
+        VALUES(N'J0004', N'15')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0001', N'8')
+        VALUES(N'J0005', N'7')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0002', N'2')
+        VALUES(N'J0005', N'10')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0002', N'5')
+        VALUES(N'J0005', N'9')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0003', N'6')
+        VALUES(N'J0005', N'5')
 INSERT Job_Positions_Skills(Job_id,Skill_id)
-		VALUES(N'J0004', N'3')
-
+        VALUES(N'J0006', N'11')
+INSERT Job_Positions_Skills(Job_id,Skill_id)
+        VALUES(N'J0006', N'12')
 
 ALTER TABLE Job_Applications ADD CONSTRAINT [FK_application_posting1] FOREIGN KEY(Candidate_id)
 REFERENCES  Candidates(Candidate_id)

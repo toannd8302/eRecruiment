@@ -310,6 +310,9 @@
     #footer {
         background-color: #161718;
     }
+    .review input{
+
+    }
 </style>
 
 <!-- Sidebar here -->
@@ -362,31 +365,52 @@
                 <h2 class="apply-time">Apply time: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></h2>
             </div>
         </div>
-        <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
-            <form method="post" action="<c:url value="/jobApps/job-application-details/review-app"/>">
-                <div class="col-sm-2">
-                    <div id="apply-buton">
-                        <input type="submit" name="action" value="accept"/>
-                        <input type="submit" name="action" value="reject"/>
-                        <!--                <button class="apply-button"><i class="fa-solid fa-check-double"></i><a href="#">Approve</a></button>
-                                        <button class="save-job-button"><i class="fa-regular fa-circle-xmark"></i>Reject</button>-->
-                    </div>
-                </div>
-                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-            </form>
-        </c:if>
-
-        <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
-            <form method="post" action="<c:url value="/jobApps/job-application-details/schedule-app"/>">
-                <div class="col-sm-2">
-                    <div id="apply-buton">
-                        <input type="submit" name="action" value="auto schedule"/>
-                        <input type="submit" name="action" value="manually schedule"/>
-                    </div>
-                </div>
-                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-            </form>
-        </c:if>
+        <div class="col-sm-2">
+            <div class="review">
+                <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
+                    <form method="post" action="<c:url value="/jobApps/job-application-details/review-app"/>">
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <input type="submit" name="action" value="accept"/>
+                                <input type="submit" name="action" value="reject"/>
+                                <!--                <button class="apply-button"><i class="fa-solid fa-check-double"></i><a href="#">Approve</a></button>
+                                                <button class="save-job-button"><i class="fa-regular fa-circle-xmark"></i>Reject</button>-->
+                            </div>
+                        </div>
+                        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                    </form>
+                </c:if>
+            </div>
+            <div class="scheduling">
+                <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
+                    <form method="post" action="<c:url value="/jobApps/job-application-details/schedule-app"/>">
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <input type="submit" name="action" value="auto schedule"/>
+                                <input type="submit" name="action" value="manually schedule"/>
+                            </div>
+                        </div>
+                        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                    </form>
+                </c:if>
+            </div>
+            <div class="scheduled">
+                <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduled'}">
+                    <form method="get" action="<c:url value="/schedules/schedule-details"/>">
+                        <input type="hidden" name="scheduleID" value="${scheduleID}">
+                        <input type="submit" value="View Schedule"/>
+                    </form>
+                </c:if>
+            </div>
+            <div class="on-going">
+                <c:if test="${jobApplication.getApplicationStatus() eq 'On Going'}">
+                    <form method="get" action="<c:url value="/schedules/schedule-details"/>">
+                        <input type="hidden" name="scheduleID" value="${scheduleID}">
+                        <input type="submit" value="View Schedule"/>
+                    </form>
+                </c:if>
+            </div>
+        </div>
     </div>
 </div>
 

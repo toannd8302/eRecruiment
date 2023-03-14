@@ -17,6 +17,7 @@ import java.util.Map;
 public interface ScheduleService {
     boolean add(schedule schedule);
     boolean update(schedule schedule, String action);
+    schedule getCurrentScheduleOfJobApp(jobApplication jobApplication);
     List<schedule> getScheduleByInterviewerID(String interviewerID);
     Map<String,List<Object[]>> getScheduleByStatusV2();
     schedule getScheduleByID(String scheduleID);
