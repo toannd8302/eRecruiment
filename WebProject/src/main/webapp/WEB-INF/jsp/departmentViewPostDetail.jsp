@@ -1,9 +1,10 @@
 <%-- 
-    Document   : postDetail
-    Created on : Feb 9, 2023, 4:15:49 PM
-    Author     : KHOA
+    Document   : departmentViewPostDetail
+    Created on : Mar 13, 2023, 3:26:47 PM
+    Author     : toan0
 --%>
 
+<%@page import="com.codeweb.pojos.department"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -90,20 +91,12 @@
         text-transform: uppercase;
     }
 
-    #job-detail-head #apply-buton .apply-buton button a {
+    #job-detail-head #apply-buton button a {
         text-decoration: none;
         color: white;
         font-weight: bold;
         font-size: 1.5rem;
 
-    }
-
-
-    #job-detail-head #save-job-button button a{
-        text-decoration: none;
-        color: #00b14f !important;
-        font-weight: bold;
-        font-size: 1.5rem;
     }
 
     #job-detail-head #apply-buton button i:first-child {
@@ -139,7 +132,7 @@
 
     #job-detail-body #job-general-info h1 {
         margin-bottom: 1rem;
-        text-decoration: underline;
+
     }
 
     #job-detail-body #job-general-info .general-info-list {
@@ -178,9 +171,10 @@
         margin-top: 1rem;
         padding: 2rem;
     }
-
-    #job-detail-body #job-location h1 {
-        text-decoration: underline;
+    #job-detail-body #job-rounds{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
     }
 
 
@@ -218,7 +212,7 @@
     }
 
     #job-detail-body .info-list li::before {
-        content: "\2013";
+        /*        content: "\2013";*/
         /* Unicode character for an en dash */
         margin-right: 5px;
     }
@@ -240,6 +234,15 @@
         color: #00b14f;
     }
 
+    /* #job-detail-body #job-apply button{
+        padding: 9px 25px;
+        background-color: #00b14f;
+        color: white;
+        border-radius: 3px;
+        border: 1px solid #00b14f;
+        font-weight: bold;
+    } */
+
     #job-detail-body #job-apply p,
     button {
         margin: 0.5rem;
@@ -251,6 +254,11 @@
 
     }
 
+    #job-detail-body #job-skills{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
 
     #job-detail-body .apply-button {
         padding: 1rem;
@@ -275,16 +283,6 @@
         text-align: center;
     }
 
-    
-    #apply-link{
-        text-decoration: none;
-        color: white;
-    }
-    
-    #save-job-link{
-        text-decoration: none;
-        color: #00b14f;
-    }
 </style>
 
 <div id="job-detail-head">
@@ -296,14 +294,12 @@
         <div id="general-info">
             <h1>${jobPosting.jobPosition.jobName}</h1>
             <h2>Công ty phần mềm Monke Tech</h2> 
-            <p><i class="fa-regular fa-clock"></i>Expired time: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></p>
+
+            <p><i class="fa-regular fa-clock"></i>Create Time: <fmt:formatDate value="${jobPosting.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
         </div>
     </div>
 
-    <div id="apply-buton">
-        <button><i class="fa-regular fa-paper-plane"></i><a id="apply-link" href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
-        <button><a id="save-job-link" href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
-    </div>
+
 </div>
 
 <div id="job-detail-body">
@@ -322,27 +318,41 @@
                     <c:if test="${jobPosting.typeOfWork == false}"><p>Hybrid</p></c:if>
                     </li>
 
-                    <li><br><i class="fa-solid fa-venus-mars"></i>Gender<p>No</p>
-                    </li>
-
-                    <li><br><i class="fa-sharp fa-solid fa-people-group"></i>Number of recruits<p>No</p>
-                    </li>
-
                     <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.level}</p>
                 </li>
 
-                <li><br><i class="fa-brands fa-black-tie"></i>Experience
+                <li><br><i class="fa-brands fa-black-tie"></i>Experience Year
                     <c:if test="${jobPosting.exprienceRequirement == 0}"><p>none</p></c:if>
                     <c:if test="${jobPosting.exprienceRequirement != 0}"><p>${jobPosting.exprienceRequirement}</p></c:if>
                     </li>
                 </ul>
             </div>
         </div>
-
-        <div id="job-location">
-            <h1>Work Location</h1>
+        <div id="job-skills">
+            <h1>Skills requirement</h1>
             <ul class="info-list">
+
+            <c:forEach var="skill" items="${jobPosting.jobPosition.skills}">
                 <li>
+                    ${skill.skillName}
+                </li> 
+            </c:forEach>
+        </ul>
+    </div>
+    <div id="job-rounds">
+        <h1>Round</h1>
+        <ul class="info-list">
+            <c:forEach var="round" items="${jobPosting.rounds}">
+                <li>
+                    ${round.roundNumber} - ${round.content}
+                </li> 
+            </c:forEach>
+        </ul>
+    </div>
+    <div id="job-location">
+        <h1>Work Location</h1>
+        <ul class="info-list">
+            <li>
                 ${jobPosting.locations}
             </li>
         </ul>
@@ -356,31 +366,14 @@
                 </c:forTokens>
         </ul>
     </div>
-
-    <div id="job-require">
-        <h1>Requirement</h1>
-        <ul class="info-list">
-            <c:forTokens var="requirement" items="" delims=";">
-                <li>${requirement}</li>
-                </c:forTokens>
-        </ul>
-    </div>
-
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
-            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=";">
+            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=",">
                 <li>${welfare}</li>
                 </c:forTokens>
         </ul>
     </div>
-
-    <div id="job-apply">
-        <h1>How to apply</h1>
-        <p>Candidates apply online by clicking <a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">Apply now</a> below</p>
-        <button class="apply-button"><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">APPLY NOW</a></button>
-        <button class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
-        <P>Submission deadline: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></P>
-    </div>
 </div>
+
 

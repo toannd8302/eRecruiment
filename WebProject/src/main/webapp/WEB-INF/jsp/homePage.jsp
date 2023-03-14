@@ -135,12 +135,12 @@
         padding: 4rem;
         border-radius: 50%;
         background-color: rgb(238, 190, 58);
-        transition: 0.5s;
 
     }
 
     #intro-body .intro-info i:hover{
-        transform: rotate(360deg);
+        color: white;
+        background-color: aquamarine;
     }
 
 
@@ -284,7 +284,7 @@
         <div id="search-box">
             <h1>Welcome to our company</h1>
 
-            <form action="<c:url value="/resultpage/${keyword}"/>">
+            <form action="<c:url value="/${keyword}"/>">
                 <input type="text" name="keyword" value="${param.keyword}" placeholder="I'm looking for..." width="10rem" height="20rem">
                 
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -350,15 +350,16 @@
                         <a href="<c:url value="/post-detail/${item.postId}"/>"><img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true" alt=""></a>
                         <h3><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h3>
                         <p class="salary"><i class="fa-sharp fa-solid fa-money-bill"></i>Salary: ${item.salary}</p>
-                        <div class="post-down"><p>Location: ${item.locations}</p>                              
-                            <a href="<c:url value="/post-detail/save/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></div></a>
+                        <div class="post-down"><p>Location: ${item.locations}</p>
+                            
+                            <a href="<c:url value="/post-detail/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></div></a>
+
                     </div>
                 </c:forEach>
             </div>
         </div>
     </div>
 
-    
     <div class="dialog overlay" id="my-dialog">
         <div class="dialog-body">
             <i class="modal-title fa-solid fa-check"></i>

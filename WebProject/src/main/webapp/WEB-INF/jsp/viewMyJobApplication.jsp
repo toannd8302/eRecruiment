@@ -246,7 +246,7 @@
         <li>
             <a href="<c:url value="/"/>" class="logo">
                 <img
-                    src="<c:url value="${sessionScope.user.getPicture()}"/>"
+                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
                     alt="Monke Tech"
                     />
                 <span class="nav-item">User</span>
@@ -322,7 +322,6 @@
 
                                         </c:forEach> </li>
 
-
                                 </ul>
                                 <p><strong><a href="<c:url value="/post-detail/${jobApplication.jobPosting.getPostId()}"/>">Link to Job Posting</a></strong></p>
                             </div>
@@ -333,26 +332,6 @@
         </table>
     </div>
 
-
-    <%--
-        <h1 >Welcome <%= candidate.getName()%></h2>
-        <h2><c:forEach var="jobApplication" items="${JobApplications}">
-                Cho 1 link dan sang post-detail page
-                <a href="<c:url value="/post-detail/${jobApplication.jobPosting.getPostId()}"/>"/><h2>Job Name: ${jobApplication.jobPosting.jobPosition.jobName}</h2></a>
-                <h2>Apply Date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></h2>
-                <c:forEach var="round" items="${jobApplication.jobPosting.getRounds()}">
-
-                Round ${round.getRoundNumber()}: ${round.getContent()}
-            </c:forEach>
-        </h2>
-        In lịch ngay đây, thêm pojo schedule, 1 job application có nhiều schedule
-        <h2><c:forEach var="schedule" items="${jobApplication.getJobApSche()}">
-                Schedule date: <fmt:formatDate value="${schedule.schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/>
-                <h2>Status: ${schedule.schedule.getStatus()} </h2>
-                <h2>------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h2>
-            </c:forEach></h2> 
-
-    </c:forEach></h2>--%>
 
     <script>
         $(document).ready(function () {

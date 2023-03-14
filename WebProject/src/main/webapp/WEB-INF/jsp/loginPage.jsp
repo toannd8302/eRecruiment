@@ -19,12 +19,10 @@
                 padding: 0;
                 font-family: sans-serif;
             }
-
             body{
                 background: url('https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80') no-repeat;
                 background-size: cover;
             }
-
             .login-form{
                 position: absolute;
                 top: 50%;
@@ -34,25 +32,20 @@
                 width: 40%;
                 border-radius: 0.5rem;
             }
-
             .login-form h1{
                 text-align: center;
                 padding: 1.5rem;
                 border-bottom: 1px solid rgb(133, 133, 133);
             }
-
             .login-with-acc{
                 padding: 0 2rem;
                 box-sizing: border-box;
             }
-
             .txt_field{
                 position: relative;
                 border-bottom: 0.2rem solid #adadad;
                 margin: 2rem 0;
             }
-
-
             .txt_field input{
                 width: 100%;
                 padding: 0 0.5rem;
@@ -62,7 +55,6 @@
                 background: none;
                 outline: none;
             }
-
             .txt_field label{
                 position: absolute;
                 top: 50%;
@@ -73,7 +65,6 @@
                 pointer-events: none;
                 transition: 0.5s;
             }
-
             .txt_field span::before{
                 content: '';
                 position: absolute;
@@ -88,25 +79,19 @@
                 top: -0.3rem;
                 color: #2691d9;
             }
-
             .txt_field input:focus ~ span::before,
             .txt_field input:valid ~ span::before{
                 width: 100%;
-
             }
-
             #forgot-pass{
                 text-decoration: none;
                 color: #adadad;
                 font-size: 1.3rem;
                 margin-bottom: 1.5rem;
-
             }
-
             #forgot-pass:hover{
                 text-decoration: underline;
             }
-
             #login-btn{
                 width: 100%;
                 height: 3rem;
@@ -121,7 +106,6 @@
                 margin-top: 1.5rem;
                 margin-bottom: 1.5rem;
             }
-
             #login-btn:hover{
                 border-color: #2691d9;
                 transition: 0.5s;
@@ -129,33 +113,27 @@
             .signup_link{
                 text-align: center;
             }
-
             .signup_link{
                 color: #adadad;
             }
-
             .signup_link a{
                 text-decoration: none;
                 font-weight: bold;
                 color: #2691d9;
             }
-
             #or{
                 text-align: center;
                 margin-top: 2rem;
             }
-
             .login-with-google{
                 margin-top: 2rem;
                 margin-bottom: 2rem;
                 display: flex;
                 justify-content: space-around;
             }
-
             .login-with-google h3{
                 text-align: center;
             }
-
             .login-with-google a{
                 margin-top: 1rem;
                 width: 15rem;
@@ -167,11 +145,9 @@
                 border-radius: 2rem;
                 transition: 0.7s;
             }
-
             .login-with-google a:hover{
                 background-color: rgb(167, 54, 54);
             }
-
             .login-with-google .right a{
                 margin-top: 1rem;
                 width: 15rem;
@@ -184,11 +160,9 @@
                 border: 1px solid rgb(139, 139, 139);
                 transition: 0.7s;
             }
-
             .login-with-google .right a:hover{
                 background-color: rgb(168, 168, 168);
             }
-
         </style>
     </head>
     <body>

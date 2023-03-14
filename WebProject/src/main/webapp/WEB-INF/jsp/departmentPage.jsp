@@ -36,7 +36,8 @@
         bottom: 0;
         left: 0;
         height: 100vh;
-        background-color: rgb(172, 170, 170);
+        /*background-color: rgb(172, 170, 170);*/
+        background: #5c6664;
         overflow: hidden;
         transition: witdh 0.2s linear;
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
@@ -116,7 +117,7 @@
         padding-left: 2rem;
         margin-top: 2rem;
         /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
-        font-family: serif;
+        
     }
 
     .post-list-right .table thead{
@@ -128,6 +129,7 @@
     .post-list-right h1{
         font-weight: bold;
         font-size: 3.5rem;
+        color: orangered;
     }
 
     .trash-bin{
@@ -202,7 +204,6 @@
 %>
 
 
-
 <nav class="post-list-left">
     <ul>
         <li>
@@ -232,12 +233,6 @@
                 <span class="nav-item">Create a Job Posting</span>
             </a>
         </li>
-        <li>
-            <c:url value="/viewround" var="action" />
-            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
-                <button>ADD MORE ROUNDS</button>
-            </form:form>
-        </li>
 
         <li class="logout">
             <a href="<c:url value="/logout"/>">
@@ -257,7 +252,7 @@
                     <th>No.</th>
                     <th>Job Position</th>
                     <th>Level</th>
-                    <th>Posted Date</th>
+                    <th>Created Date</th>
                     <th>Type of Work</th>
                     <th>Status</th>
                     <th>View Detail</th>
@@ -277,16 +272,14 @@
                     <td><%= count++%></td>
                     <td><%= jobposting.getJobPosition().getJobName()%></td>
                     <td><%= jobposting.getLevel()%></td>
-                    <td> <fmt:formatDate value="<%= jobposting.getPostingTime()%>"  pattern="dd/MM/yyyy"/></td>
+                    <td> <fmt:formatDate value="<%= jobposting.getCreatedTime()%>"  pattern="dd/MM/yyyy"/></td>
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
-                    <td><a href="http://localhost:8080/WebProject/post-detail/<%= jobposting.getPostId()%>">View Detail</a></td>
+                    <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
                     <td>
-
                         <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/><i class="fa-solid fa-trash trash-bin"></i></a>
                         <br>
                         <div class="blank">
-
                         </div>
                     </td>
                 </tr>   

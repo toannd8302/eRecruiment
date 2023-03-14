@@ -87,35 +87,26 @@ public class JobPostingServiceImp implements JobPostingService {
         boolean result = false;
         try {
             jobPosting.setDescriptions(jobPosting.getDescriptions());
-            
+
             jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
-            
+
             jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
 
             jobPosting.setLocations(jobPosting.getLocations());
-            
-            jobPosting.setWelfare(jobPosting.getWelfare());
-            
-            jobPosting.setSalary(jobPosting.getSalary());
 
-            
+            jobPosting.setWelfare(jobPosting.getWelfare());
+
+            jobPosting.setSalary(jobPosting.getSalary());
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
             jobPosting.setCreatedTime(date);
-
-            
             jobPosting.setPostingTime(null);
-
 //            Date expiredTime = jobPosting.getExpiredTime();
 //            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
             jobPosting.setExpiredTime(null);
-            
-             jobPosting.setApprovedStatus("Pending");
-
+            jobPosting.setApprovedStatus("Pending");
             jobPosting.setLevel(jobPosting.getLevel());
-
             jobPosting.setPicture(jobPosting.getPicture());
-
             result = this.jobPostingRepository.createJobPosting(jobPosting);
 
         } catch (Exception e) {
