@@ -400,7 +400,7 @@
                                     <form:option value="Fresher">Fresher</form:option>
                                     <form:option value="Junior">Junior</form:option>
                                     <form:option value="Senior">Senior</form:option>
-                                    <%--<form:option value=""></form:option>--%>                                 
+                                                             
                                 </form:select>
 
                             </div>
@@ -472,7 +472,6 @@
                                                     <i class="fa-solid fa-check check-icon"></i>
                                                 </span>
                                                 <form:input type="text" path="welfare" class="item-text" value="You can off 2 days per week"  readonly="true"/>
-
                                             </li>
                                             <li class="item">
                                                 <span class="checkbox">
@@ -494,9 +493,6 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-
-
-
                             <div class="text-info">
                                 <h3>Picture</h3>
                                 <form:input type="text" path="picture" required="true"/>
