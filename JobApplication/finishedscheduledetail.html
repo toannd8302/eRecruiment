@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application List</title>
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
+    <!-- Bootstrap here -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        #wrapper {
+            margin: 0px auto;
+            margin-left: 3rem;
+        }
+
+        #wrapper h1 {
+            margin-left: 20rem;
+        }
+
+        /* Style nav tabs */
+        .tabs {
+            border-bottom: 1px solid #f5f5f5;
+            margin-left: 20rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            margin: 0px;
+            padding: 0;
+            border-bottom: 3px solid #ddd;
+        }
+
+        .nav-tabs li {
+            margin-right: 10px;
+        }
+
+        .nav-tabs li a {
+            display: block;
+            padding: 6px 10px;
+            text-decoration: none;
+            position: relative;
+            color: black;
+        }
+
+        .nav-tabs li a:after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            bottom: -3px;
+            background-color: transparent;
+        }
+
+        .nav-tabs li.active a::after,
+        .nav-tabs li:hover a::after {
+            background: #e74c3c;
+        }
+
+        td {
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        th {
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        /* Style tab-content */
+        .tab-content {
+            padding: 20px, 0px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            width: 200px;
+            color: rgb(165, 112, 94);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-x: hidden;
+            background-color: #5a3c30;
+        }
+
+        .sidebar h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: rgb(165, 112, 94);
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: rgb(211, 177, 166);
+        }
+
+        .sidebar a.active {
+            background-color: rgb(211, 177, 166);
+        }
+
+        /* Account */
+
+        .sidebar img {
+            width: 13.5rem;
+            height: 13.5rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
+        }
+
+        #my-account h2,
+        li {
+            font-size: 2rem;
+            list-style: none;
+        }
+
+        #my-account ul {
+            padding-left: 0%;
+        }
+
+        #my-account {
+            margin-left: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        #my-account .dropdown-menu {
+            padding: 0%;
+            color: rgb(165, 112, 94);
+            background-color: rgb(211, 177, 166);
+        }
+
+        #my-account .dropdown-item {
+            color: rgb(165, 112, 94);
+            background-color: rgb(211, 177, 166);
+        }
+
+        #my-account .dropdown-item:hover {
+            color: rgb(165, 112, 94);
+            background-color: rgb(211, 177, 166);
+        }
+    </style>
+    <!-- Sidebar Here -->
+    <div class="sidebar">
+        <div class="row">
+            <div>
+                <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
+            </div>
+            <div>
+                <div id="my-account">
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
+                                Account</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="#">My Profile</a></li>
+                                <li><a class="dropdown-item active" href="#">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul>
+            <li><a class="active" href="interviewfinished.html">Schedule List</a></li>
+        </ul>
+    </div>
+    <div id="wrapper">
+        <h1>Welcome Interviewer</h1>
+        <h1>Candidate List</h1>
+        <div class="tabs">
+            <ul class="nav-tabs">
+                <li class="active"><a href="#Finished">Finished</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="finished" class="tab-content-item">
+                    <h2>Finished Interview</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Candidate Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Send Report</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C0001</td>
+                                <td>Nguyễn Đức Toàn</td>
+                                <td>113</td>
+                                <td>toandeptraiso1@gmail.com</td>
+                                <td><a href="sendreport.html">Send Report</a></td>
+                            </tr>
+                            <tr>
+                                <td>C0002</td>
+                                <td>Lồ Quang Thắng</td>
+                                <td>666</td>
+                                <td>quangthanglor@gmail.com</td>
+                                <td><a href="sendreport.html">Send Report</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
