@@ -12,6 +12,7 @@ package com.codeweb.pojos;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -83,7 +84,7 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
-    @OneToMany (mappedBy = "jobPoting", fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "jobPoting", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<round> rounds;
     
     @OneToMany(mappedBy = "jobPosting")

@@ -324,220 +324,148 @@
 
 
 
-        <nav class="post-list-left">
-            <ul>
-                <li>
-                    <a href="<c:url value="/logout"/>" class="logo">
-                        <img
-                            src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
-                            alt="Monke Tech"
-                            />
-                        <span class="nav-item">${sessionScope.department.departmentName} Department</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/"/>">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="nav-item">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/department" />">
-                        <i class="fa-solid fa-list"></i>
-                        <span class="nav-item">Job Posting List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-folder-plus"></i>
-                        <span class="nav-item">Create a Job Posting</span>
-                    </a>
-                </li>
 
-                <li class="logout">
-                    <a href="<c:url value="/logout"/>">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span class="nav-item ">Log Out</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="create-job-post-right">
-            <h1>Create a Job Posting</h1>
-            <hr />
-            <h2>*Job Position</h2>     
-            <c:url value="/createjobposting" var="action" />
-            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
+        <h1>Create a Job Posting</h1>
 
-                <div id="Concak">           
-                    <form:select  path="jobPosition.jobId" required="true">
-                        <form:option value="">-- Select Job Position --</form:option>
-                        <form:options items="${joPositions}" itemValue="jobId" itemLabel="JobName"></form:options>
-                    </form:select>
-                </div>
+        <h2>*Job Position</h2>     
+        <c:url value="/createjobposting" var="action" />
+        <form:form method="post" modelAttribute="jobPosting" action="${action}" >
 
-                <h2><br />*General Information</h2>
-                <div class="container-fluid mt-3">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="text-info">
-                                <h3>Salary</h3>
-                                <form:input type="number" path="salary" required="true"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
-                            </div>
-                            <div class="text-info">
-                                <%--<form:label path="level">Level</form:label>--%>
-                                <h3>Level</h3>
-                                <form:select  path="level" required="true">
-                                    <form:option value="Intern">Intern</form:option>
-                                    <form:option value="Fresher">Fresher</form:option>
-                                    <form:option value="Junior">Junior</form:option>
-                                    <form:option value="Senior">Senior</form:option>
-                                    <%--<form:option value=""></form:option>--%>                                 
-                                </form:select>
 
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div id="checkbox"  class="text-info">
+            <form:select  path="jobPosition.jobId" required="true">
+                <form:option value="">-- Select Job Position --</form:option>
+                <form:options items="${joPositions}" itemValue="jobId" itemLabel="JobName"></form:options>
+            </form:select>
+            <h2><br />*General Information</h2>
 
-                                <h3>Type of Job</h3>
-                                <form:label path="typeOfWork">Full Time</form:label>                            
-                                <form:checkbox  path="typeOfWork" checked="true" value="1"/>
-                            </div>
+            <h3>Salary</h3>
+            <form:input type="number" path="salary" required="true"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
 
-                            <div class="text-info">
 
-                                <%--<form:label path="exprienceRequirement">Exprience Requirement</form:label>--%>
-                                <h3>Exprience Requirement</h3>
-                                <form:input type="number" path="exprienceRequirement" min="0" required="true"/> (year/years)
-                            </div>
-                        </div>
-                    </div>
-                    <h2><br />Detail Information</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="text-info">
-                                <h3>Location</h3>
-                                <form:select  path="locations" required="true">
-                                    <form:option value="District 1">District 1</form:option>
-                                    <form:option value="District 3">District 3</form:option>
-                                    <form:option value="District 4">District 4</form:option>
-                                    <form:option value="District 5">District 5</form:option>
-                                    <form:option value="District 6">District 6</form:option>
-                                    <form:option value="District 7">District 7</form:option>
-                                    <form:option value="District 8">District 8</form:option>
-                                    <form:option value="District 10">District 10</form:option>
-                                    <form:option value="District 11">District 11</form:option>
-                                    <form:option value="District 12">District 12</form:option>
-                                    <form:option value="Thu Duc City"> Thu Duc City </form:option>                             
-                                </form:select>
-
-                            </div>
-
-                            <div class="text-info">
-
-                                <h3>Welfare</h3>
-                                <%--<form:input type="text" path="welfare" required="true" />--%>
-                                <div class="welfare-list">
-                                    <div class="select-skill-container">
-                                        <div class="select-btn">
-                                            <div class="d-flex justify-content-between mb-3">
-                                                <div class="p-2">
-                                                    <span class="btn-text">Select welfare</span>
-                                                </div>
-                                                <div class="p-2">
-                                                    <span class="arrow-dwn">
-                                                        <i class="fa-solid fa-chevron-down"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <ul class="list-items">
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <form:input type="text" path="welfare" class="item-text" value="A lot of Money if you deligent"  readonly="true"/>
-                                            </li>
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <form:input type="text" path="welfare" class="item-text" value="You can off 2 days per week"  readonly="true"/>
-
-                                            </li>
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <form:input type="text" path="welfare" class="item-text" value="Oversea traveling 1 time per year"  readonly="true"/>
-
-                                            </li>
-                                            <li class="item">
-                                                <span class="checkbox">
-                                                    <i class="fa-solid fa-check check-icon"></i>
-                                                </span>
-                                                <form:input type="text" path="welfare" class="item-text" value="You get social insurance periodically "  readonly="true"/>
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
+            <%--<form:label path="level">Level</form:label>--%>
+            <h3>Level</h3>
+            <form:select  path="level" required="true">
+                <form:option value="">-- Select Level --</form:option>
+                <form:option value="Intern">Intern</form:option>
+                <form:option value="Fresher">Fresher</form:option>
+                <form:option value="Junior">Junior</form:option>
+                <form:option value="Senior">Senior</form:option>
+                <%--<form:option value=""></form:option>--%>                                 
+            </form:select>
 
 
 
-                            <div class="text-info">
-                                <h3>Picture</h3>
-                                <form:input type="text" path="picture" required="true"/>
-                            </div>
 
-                        </div>
-                        <div class="text-info">
-                            <h3>Description</h3>
-                            <%--<form:input type="text" path="descriptions" required="true"/>--%>
-                            <form:textarea cols="100" rows="10" path="descriptions"/>
-                        </div>
-                    </div>
-                </div>
+            <h3>Type of Job</h3>
+            <form:label path="typeOfWork">Full Time</form:label>                            
+            <form:checkbox  path="typeOfWork" checked="true" value="1"/>
 
-                <button>Create round</button>
-                <input type="reset" value="Reset" />
-            </form:form>
-                
-<!--                Vẫn còn code dâm chỗ add more round này hãy lưu ý-->
-            <c:url value="/viewround" var="action" />
-            <form:form method="post" modelAttribute="jobPosting" action="${action}" >
-                <button>ADD MORE ROUNDS</button>
-            </form:form>
+
+
+
+            <%--<form:label path="exprienceRequirement">Exprience Requirement</form:label>--%>
+            <h3>Exprience Requirement</h3>
+            <form:input type="number" path="exprienceRequirement" min="0" 
+                        placeholder="Please input the number of Exprience year" /> (year/years)
+
+            <h2><br />Detail Information</h2>
+
+            <h3>Location</h3>
+            <form:select  path="locations" required="true">
+                <form:option value="">-- Select Location --</form:option>
+                <form:option value="District 1">District 1</form:option>
+                <form:option value="District 3">District 3</form:option>
+                <form:option value="District 4">District 4</form:option>
+                <form:option value="District 5">District 5</form:option>
+                <form:option value="District 6">District 6</form:option>
+                <form:option value="District 7">District 7</form:option>
+                <form:option value="District 8">District 8</form:option>
+                <form:option value="District 10">District 10</form:option>
+                <form:option value="District 11">District 11</form:option>
+                <form:option value="District 12">District 12</form:option>
+                <form:option value="Thu Duc City"> Thu Duc City </form:option>                             
+            </form:select>
+
         </div>
-        <script type="text/javascript">
-            const selectBtn = document.querySelector(".select-btn"),
-                    items = document.querySelectorAll(".item");
 
-            selectBtn.addEventListener("click", () => {
-                selectBtn.classList.toggle("open");
-            });
 
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    item.classList.toggle("checked");
 
-                    let checked = document.querySelectorAll(".checked"),
-                            btnText = document.querySelector(".btn-text");
+        <h3>Welfare</h3>
+        <%--<form:input type="text" path="welfare" required="true" />--%>
 
-                    if (checked && checked.length > 0) {
-                        btnText.innerText = `${checked.length} Selected`;
-                    } else {
-                        btnText.innerText = "Select Skills";
-                    }
-                });
-            })
+        <form:input type="text" path="welfare" class="item-text" value="A lot of Money if you deligent"  readonly="true"/>
 
-        </script>
 
-    </body>
+        <form:input type="text" path="welfare" class="item-text" value="You can off 2 days per week"  readonly="true"/>
+
+
+        <form:input type="text" path="welfare" class="item-text" value="Oversea traveling 1 time per year"  readonly="true"/>
+
+        <form:input type="text" path="welfare" class="item-text" value="You get social insurance periodically "  readonly="true"/>
+        <h3>Picture</h3>
+        <form:input type="text" path="picture" />
+
+        <h3>Description</h3>
+        <%--<form:input type="text" path="descriptions" required="true"/>--%>
+        <form:textarea cols="100" rows="10" path="descriptions"/> <br/>
+
+
+        <label>Number of Rounds:</label>
+        <input type="number" name="numRounds" onclick="createRounds(this.value)"/><br/>
+
+        <div id="rounds"></div>
+
+        <br/><br/>
+        <button>Post</button>
+        <input type="reset" value="Reset" />
+    </form:form>
+    <script type="text/javascript">
+        function createRounds(numRounds) {
+            var roundContentArray = [];
+            var roundsDiv = document.getElementById("rounds");
+            var numRoundsInt = parseInt(numRounds);
+            while (roundsDiv.firstChild) {
+                roundsDiv.removeChild(roundsDiv.firstChild);
+            }
+
+            for (var i = 1; i <= numRoundsInt; i++) {
+                var roundDiv = document.createElement("div");
+                var roundNumberLabel = document.createElement("label");
+                roundNumberLabel.innerHTML = "Round ";
+                var roundNumberInput = document.createElement("input");
+                roundNumberInput.type = "number";
+                roundNumberInput.name = "jobPosting.rounds[" + (i - 1) + "].roundNumber";
+                roundNumberInput.value = i;
+                roundNumberInput.readOnly = true;
+                var contentLabel = document.createElement("label");
+                contentLabel.innerHTML = "Round " + i + " Content:";
+                var contentInput = document.createElement("input");
+                contentInput.type = "text";
+                contentInput.name = "jobPosting.rounds[" + (i - 1) + "].content";
+                contentInput.oninput = function () {
+                    // Lưu giá trị của input vào mảng roundContentArray
+                    var currentRound = parseInt(this.name.match(/\[(.*?)\]/)[1]);
+                    roundContentArray[currentRound] = this.value;
+                    document.getElementById("roundContentArrayInput").value = JSON.stringify(roundContentArray);
+                };
+                roundDiv.appendChild(roundNumberLabel);
+                roundDiv.appendChild(roundNumberInput);
+                roundDiv.appendChild(document.createElement("br"));
+                roundDiv.appendChild(contentLabel);
+                roundDiv.appendChild(contentInput);
+                roundDiv.appendChild(document.createElement("br"));
+                roundDiv.appendChild(document.createElement("br"));
+                roundsDiv.appendChild(roundDiv);
+            }
+
+            // Add hidden input field to submit roundContentArray with the form
+            var roundContentInput = document.createElement("input");
+            roundContentInput.type = "hidden";
+            roundContentInput.id = "roundContentArrayInput";
+            roundContentInput.name = "roundContentArray";
+            roundsDiv.appendChild(roundContentInput);
+        }
+    </script>
+</body>
 
 </html>
