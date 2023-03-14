@@ -66,7 +66,7 @@
         padding: 0;
         margin: 0;
     }
-     .post-list-left{
+    .post-list-left{
         width: 8rem;
         position: fixed;
         top: 0;
@@ -168,7 +168,7 @@
     .table {
         width: 100%;
         background-color: white;
-        
+
         margin-top: 5rem;
     }
 
@@ -242,68 +242,71 @@
 
 <body>
     <nav class="post-list-left">
-    <ul>
-        <li>
-            <a href="<c:url value="/"/>" class="logo">
-                <img
-                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
-                    alt="Monke Tech"
-                    />
-                <span class="nav-item">User</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/"/>">
-                <i class="fa-solid fa-house"></i>
-                <span class="nav-item">Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/job/viewMyJob"/>">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span class="nav-item">My Applications</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/post-detail/view"/>">
-                <i class="fa-solid fa-heart-circle-check"></i>
-                <span class="nav-item">Favourite Jobs</span>
-            </a>
-        </li>
-        <li class="logout">
-            <a href="<c:url value="/logout"/>">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="nav-item ">Log Out</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+        <ul>
+            <li>
+                <a href="<c:url value="/"/>" class="logo">
+                    <img
+                        src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
+                        alt="Monke Tech"
+                        />
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/"/>">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="nav-item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/job/viewMyJob"/>">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span class="nav-item">My Applications</span>
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/post-detail/view"/>">
+                    <i class="fa-solid fa-heart-circle-check"></i>
+                    <span class="nav-item">Favourite Jobs</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="<c:url value="/logout"/>">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item ">Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
     <div class="view-app-right">
 
-        <h1 id="applied-list">My Applications</h1>
-        <hr>
+        <div class="create-post-head" style="display: flex; justify-content: space-around">
+            <h1 style="display: flex; flex-direction: column-reverse;">My Applications</h1>
+            <h1 class="nav-item" style="padding-bottom: 2rem; color: red;">Welcome, ${sessionScope.user.getName()}</h1>
+        </div>
+        <hr/>
         <table class="table table-striped">
 
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Job Title</th>
+                    <th>Job Position</th>
                     <th>Apply Date</th>
+
                     <th>View Schedule</th>
                 </tr>
             </thead>
             <c:forEach var="jobApplication" items="${JobApplications}" varStatus="counter">
                 <tbody>
-                   
+
                     <tr>
                         <td>${counter.count}</td>
                         <td>${jobApplication.jobPosting.jobPosition.jobName}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
-                        <td><button class="btn btn-danger">Cancel Application</button></td>
+<!--                        <td><button class="btn btn-danger">Cancel Application</button></td>-->
                     </tr>
 
-                    <tr class="detail-row">
+                    <tr class="detail-row" style="display: none;">
                         <td colspan="3">
                             <div class="detail-info">
                                 <p><strong>Rounds:</strong></p>
@@ -319,7 +322,6 @@
                                         <c:forEach var="schedule" items="${jobApplication.getJobApSche()}">
                                             Schedule date: <fmt:formatDate value="${schedule.schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/>
                                             Status: ${schedule.schedule.getStatus()} 
-
                                         </c:forEach> </li>
 
                                 </ul>

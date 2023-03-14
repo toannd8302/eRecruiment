@@ -102,7 +102,7 @@
 
     nav:hover{
         width: 28rem;
-        transition: all 0.5s ease;
+        transition: all 0.5s ease-in-out;
     }
 
     .logout{
@@ -209,10 +209,9 @@
         <li>
             <a href="<c:url value="/logout"/>" class="logo">
                 <img
-                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
                     alt="Monke Tech"
                     />
-                <span class="nav-item">Department</span>
             </a>
         </li>
         <li>

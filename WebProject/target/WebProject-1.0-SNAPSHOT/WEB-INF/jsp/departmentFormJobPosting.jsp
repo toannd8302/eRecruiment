@@ -337,10 +337,9 @@
                 <li>
                     <a href="<c:url value="/logout"/>" class="logo">
                         <img
-                            src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                            src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
                             alt="Monke Tech"
-                            />
-                        <span class="nav-item">${sessionScope.department.departmentName} Department</span>
+                            />                     
                     </a>
                 </li>
                 <li>
@@ -371,7 +370,10 @@
             </ul>
         </nav>
         <div class="create-job-post-right">
-            <h1>Create a Job Posting</h1>
+            <div class="create-post-head" style="display: flex; justify-content: space-around">
+                <h1 style="display: flex; flex-direction: column-reverse;">Create a Job Posting</h1>
+                <h1 class="nav-item" style="padding-bottom: 2rem; color: red;">${sessionScope.department.departmentName} Department</h1>
+            </div>
             <hr />
             <h2>*Job Position</h2>     
             <c:url value="/createjobposting" var="action" />
@@ -400,7 +402,7 @@
                                     <form:option value="Fresher">Fresher</form:option>
                                     <form:option value="Junior">Junior</form:option>
                                     <form:option value="Senior">Senior</form:option>
-                                                             
+
                                 </form:select>
 
                             </div>
@@ -510,8 +512,8 @@
                 <button>Create round</button>
                 <input type="reset" value="Reset" />
             </form:form>
-                
-<!--                Vẫn còn code dâm chỗ add more round này hãy lưu ý-->
+
+            <!--                Vẫn còn code dâm chỗ add more round này hãy lưu ý-->
             <c:url value="/viewround" var="action" />
             <form:form method="post" modelAttribute="jobPosting" action="${action}" >
                 <button>ADD MORE ROUNDS</button>

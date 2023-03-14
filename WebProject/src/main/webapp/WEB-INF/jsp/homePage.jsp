@@ -26,7 +26,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=Noto+Sans+Lepcha&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&display=swap");
     html {
         font-size: 62.5%;
         font-family: Arial, Helvetica, sans-serif;
@@ -37,65 +39,51 @@
         margin: 0;
     }
 
-
-
     #banner {
         width: 100%;
         /* height: 50vh; */
-        padding-top: 30%;
-        background: url('https://github.com/Toannd832/eRecruiment/blob/Thang/Home_Page_For_Web/img/banner.jpg?raw=true') top center / cover no-repeat;
+        padding-top: 40%;
+        background: url("https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Blue%20Modern%20Tips%20Business%20Banner.png?raw=true")
+            top center / cover no-repeat;
     }
 
     #banner #search-box {
         text-align: center;
         position: absolute;
-        top: 40%;
-        left: 50%;
+        top: 10%;
+        right: 0%;
         transform: translate(-50%, -50%);
         color: white;
         /* bottom: 50%; */
-        /*margin-top: 20rem;*/
+        margin-top: 30rem;
+        color: #393a3a;
+
+        /* font-family: "Atkinson Hyperlegible", sans-serif;
+        font-family: "Climate Crisis", cursive; */
     }
 
     #banner #search-box h1:first-child {
-        font-family: Acme, sans-serif;
+        font-family: "Noto Sans Lepcha", sans-serif;
         font-size: 6rem;
         margin-bottom: 3rem;
+        margin-top: 8rem;
     }
 
     #banner #search-box h1 {
-        font-family: 'Kaushan Script', serif;
+        font-family: "Noto Sans Lepcha", sans-serif;
         text-transform: uppercase;
         font-size: 6rem;
         margin-bottom: 4rem;
         margin-top: 4rem;
+        margin-right: -10rem;
+        font-weight: bold;
     }
 
-    #banner #search-box i {
+    #banner #search-box p {
         font-size: 2rem;
+        margin-right: -50rem;
+        width: 42rem;
     }
-
-    #banner #search-box button:hover{
-        background-color: #a1a1a1;
-        color: white;
-    }
-
-    #banner #search-box input{
-        font-size: 1.5rem;
-    }
-
-    #banner #search-box input {
-        padding: 1rem 20rem;
-        border-radius: 1rem;
-    }
-
-    #banner #search-box button {
-        padding: 1rem 2rem;
-        border-radius: 0.5rem;
-    }
-
-
-
 
     /* CSS for introduce */
     #introduce {
@@ -108,17 +96,20 @@
         margin-bottom: 5rem;
         text-align: center;
         font-size: 1.5rem;
-
     }
 
     #introduce #intro-head h1 {
+        text-align: center;
         text-transform: uppercase;
-        margin-bottom: 2rem;
         font-size: 4rem;
+        margin-bottom: 2rem;
+        color: rgb(171, 36, 36);
+        font-weight: bold;
+        font-family: 'IBM Plex Mono', monospace;
     }
 
     #introduce #intro-body {
-        margin-left: 8rem;
+        margin-left: 5rem;
         margin-right: 5rem;
         font-size: 1.5rem;
     }
@@ -129,68 +120,69 @@
     }
 
     #intro-body .intro-info i {
-        display: inline-block;
         margin-bottom: 2rem;
         font-size: 5rem;
         padding: 4rem;
         border-radius: 50%;
         background-color: rgb(238, 190, 58);
-
+        animation: rotate 3s infinite linear;
     }
 
-    #intro-body .intro-info i:hover{
-        color: white;
-        background-color: aquamarine;
+    #intro-body .intro-info i:hover {
+        /* transform: rotate3d(1,0,1,360deg); */
+        animation: rotate 1s infinite reverse;
     }
 
-
+    @keyframes rotate {
+        to {
+            transform: rotateY(360deg);
+        }
+    }
     /* CSS for hot-jobs */
+
     #job-post-title {
         text-align: center;
         text-transform: uppercase;
         font-size: 4rem;
         margin-bottom: 2rem;
         color: rgb(171, 36, 36);
-        font-family: 'Climate Crisis', cursive;
+        font-weight: bold;
+        font-family: 'IBM Plex Mono', monospace;
     }
-    .hot-jobs{
-        margin-left: 20rem;
+    .hot-jobs {
+        margin-left: 13rem;
     }
-    .hot-jobs .hot-post{
+
+    .hot-jobs .hot-post {
         border: 1px solid black;
         border-top: 5px solid rgb(94, 93, 93);
         padding: 2rem;
         margin: 2rem;
     }
-    .hot-jobs .hot-post a{
+    .hot-jobs .hot-post a {
         text-decoration: none;
         color: black;
     }
-    .hot-jobs .hot-post img{
+    .hot-jobs .hot-post img {
         width: 15rem;
         height: 14rem;
-        margin-left: 8rem;
+        margin-left: 10rem;
         display: inline-block;
     }
 
-    .hot-jobs .hot-post h3{
+    .hot-jobs .hot-post h3 {
         font-weight: bold;
         margin-bottom: 1.5rem;
     }
 
-    .hot-jobs .hot-post p{
+    .hot-jobs .hot-post p {
         font-size: 1.5rem;
     }
 
-    .hot-jobs .hot-post .salary{
+    .hot-jobs .hot-post .salary {
         color: rgb(250, 31, 31);
     }
-    
-    .hot-jobs .hot-post i{
-        margin-right: 1rem;
-    }
-    
-    .hot-jobs .hot-post .post-down i{
+    .hot-jobs .hot-post .post-down i {
         margin-right: 1rem;
         font-size: 2rem;
         cursor: pointer;
@@ -201,105 +193,321 @@
         transition: 0.3s ease;
     }
 
-    .hot-jobs .hot-post .post-down i:hover{
+    .hot-jobs .hot-post .post-down i:hover {
         border-radius: 50%;
         background-color: rgb(170, 249, 203);
-
     }
 
-    .hot-jobs .hot-post .post-down i:active{
+    .hot-jobs .hot-post .post-down i:active {
         border-radius: 50%;
         background-color: aquamarine;
         transition: 0.3s ease;
     }
 
-    .hot-jobs .hot-post .post-down{
+    .hot-jobs .hot-post .post-down {
         width: 100%;
         display: flex;
         justify-content: space-between;
     }
 
+    .product-area-list {
+        padding-top: 5rem;
+        margin-left: 6rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-bottom: 10rem;
+    }
 
-    .dialog{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%) scale(0.1);
-        width: 30%;
+    .product-area-list .product {
+        border-radius: 1rem;
+        width: 80%;
         text-align: center;
-        visibility: hidden;
-        opacity: 0;
-        transition: transform 0.5s;
+        transition: 0.3s ease-in-out;
     }
 
-
-    .dialog:target{
-        visibility: visible;
-        opacity: 1;
-        transform: translate(-50%,-50%) scale(1);
+    .product-area-list .product:hover {
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        transform: scale(1.2);
+        cursor: pointer;
     }
 
-    .overlay{
-        background-color: #ffffff;
-        border: 1px solid black;
-        border-radius: 0.5rem;
+    .product-area-list .product h1 {
+        font-size: 3.5rem;
     }
 
-    .dialog-body i{
-        padding: 3rem;
-        background-color: rgb(52, 153, 52);
-        border-radius: 50%;
-        margin-top: -50%;
-        font-size: 5rem;
-        width: 13rem;
-        color: white;
-        margin-bottom: 2rem;
-        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.2);
+    .product-area-list .product h1 a{
+        text-decoration: none;
+        color: #2e2e2e;
     }
 
-    .dialog-body button{
-        margin-bottom: 2rem;
-        border-radius: 0.5rem;
-    }
-
-    .dialog-body button a{
+    .product-area-list .product a{
+        font-size: 2rem;
+        color: rgb(208, 41, 203);
         text-decoration: none;
     }
 
-    #ok-btn{
+    .product-area-list .product a i{
+        font-size: 1.7rem;
+        margin-left: 0.5rem;
+    }
 
+    .product-area-list .product p {
         font-size: 1.5rem;
-        padding: 0.5rem 2rem;
+    }
+
+    .product-area-list .product i {
+        font-size: 4rem;
+        color: rgb(185, 27, 185);
+        transition: 0.2s ease-in-out;
+    }
+
+    .product-area-list .product:hover i {
+        color: rgb(243, 20, 243);
+        transform: scale(1.1);
+    }
+
+
+    #seek-job{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 4rem;
+        margin-bottom: 2rem;
+        color: rgb(171, 36, 36);
+        font-weight: bold;
+        font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .search-job{
+        width: 100%;
+        height: 30vh;
+        /* background: linear-gradient(#5e5e60,#3b3be0); */
+        display: flex;
+        align-items: center;
+    }
+
+    .search-job .search-bar{
+        width: 85%;
+        background: rgba(200, 200, 200, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2rem;
+        padding: 1rem 2rem;
+        margin-left: 10rem;
+        opacity: 0.8;
+    }
+
+    .search-bar input{
+        background: transparent;
+        flex: 1;
+        border: 0;
+        outline: none;
+        padding: 1.5rem 1.5rem;
+        font-size: 2rem;
+        color: #000;
+    }
+
+    ::placeholder{
+        color: #2e2e2e;
+    }
+
+    .search-bar button {
+        width: 5rem;
+        height: 5rem;
+        border: 0;
+        border-radius: 50%;
+        background: #58629b;
+        cursor: pointer;
+    }
+
+    .search-bar button i{
+        font-size: 2rem;
+    }
+
+    .search-bar button:hover{
+        background-color: #b8b8b8;
+    }
+
+
+    .search-result{
+        width: 85%;
+        border: #a8a8a8 1px solid;
+        margin-left: 10rem;
+        margin-bottom: 5rem
+    }
+
+    .search-result{
+        border-radius: 1rem;
+    }
+    .search-result .result-post{
+        border-top: #a8a8a8 1px solid;
+        display: flex;
+        justify-content: space-between;
+        transition: background-color 0.3s ease;  
+    }
+
+    .search-result .result-post:hover{
+        background-color: rgb(252, 222, 252);
+    }
+
+    .search-result .result-post:hover img{
+        opacity: 1;
+        background-color: white;
+    }
+
+    .search-result .result-post:hover .post-down {
+        opacity: 1;
+        background-color: white;
+    }
+
+    .search-result .result-post img{
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+        height: 17rem;
+        width: 17rem;
+        transition: background-color 0.3s ease;
+        background-color: white;
+    }
+
+    .search-result .result-post h2{
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .search-result .result-post h2 a{
+        text-decoration: none;
         color: black;
+    }
+
+    .search-result .result-post p{
+        font-size: 1.5rem;
+    }
+
+    .search-result .result-post i{
+        margin-right: 1rem;
+    }
+
+    .search-result .result-post .post-down{
+        padding: 0.5rem;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+        display: inline-block;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 0.5rem;
+    }
+
+    .search-result .result-post .post-down p{
+        margin-bottom: 0%;
+    }
+
+    .search-result .result-post .result-post-right{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .search-result .result-post .result-post-right i{
+        margin-top: 2rem;
+        font-size: 3rem;
+        width: 5rem;
+        padding: 1rem;
+        text-align: center;
+        transition: 0.3s ease;
 
     }
 
+
+    .search-result .result-post .result-post-right p{
+        margin-right: 1rem;
+        font-style: italic;
+        color: rgb(47, 47, 246);
+    }
+
+    .search-result .result-post .result-post-right i:hover{
+        background-color: rgb(246, 248, 114);
+        border-radius: 50%;
+    }
+
+    .search-result .result-post .result-post-right i:active{
+        background-color: aquamarine;
+        border-radius: 50%;
+    }
+
+
+    .contact-us{
+        background: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80')top center / cover no-repeat;
+        width: 100%;
+        height: 80vh;
+    }
+
+    .contact-form h1{
+        border-bottom: 0.4rem solid black;
+        display: inline-block;
+        text-align: center;
+        margin-left: 65rem;
+        font-size: 4rem;
+        color: white;
+        padding-top: 2rem;
+    }
+
+    .contact-form .text-items{
+        display: flex;
+        flex-direction: column;
+        margin-left: 35rem;
+        margin-top: 5rem;
+    }
+
+    .contact-form .text-items h2{
+        margin: 2rem 0;
+        color: white;
+    }
+
+    .contact-form .text-items input{
+        width: 70%;
+        border-radius: 1rem;
+        height: 4rem;
+        font-size: 2rem;
+        opacity: 0.6;
+        background: linear-gradient(150deg,#64aef9,#fff);
+    }
+
+    .contact-form button{
+        width: 10rem;
+        border-radius: 0.5rem;
+        opacity: 0.8;
+        background: linear-gradient(150deg,#3c9eff,#196c79);
+        border: none;
+        margin-left: 68rem;
+        margin-top: 3rem;
+    }
+
+    .contact-form button a{
+        text-decoration: none;
+        font-size: 2.5rem;
+        color: #fff;
+    }
+
+    .contact-form button:hover{
+        background: linear-gradient(150deg,#153e68,#196c79);
+    }
 </style>
 
 <!-- Header here -->
 
 <body>
     <div id="banner">
-
         <div id="search-box">
-            <h1>Welcome to our company</h1>
-
-            <form action="<c:url value="/${keyword}"/>">
-                <input type="text" name="keyword" value="${param.keyword}" placeholder="I'm looking for..." width="10rem" height="20rem">
-                
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-            <h1>Find your dream job</h1>
+            <h1>GROW YOUR</h1>
+            <h1>CARRER NOW</h1>
+            <p>We have been a software company since 2010. 
+                Let us help your problem in this digital age</p>
         </div>
+
     </div>
-
-
-
 
     <div id="introduce">
         <div id="intro-head">
             <h1>find your job and come to us</h1>
-            <p class="text-muted">A wise man know where he belongs to</p>
+            <p class="text-muted" style="font-weight: bold;">A wise man know where he belongs to</p>
         </div>
         <div id="intro-body">
             <div class="row">
@@ -337,37 +545,120 @@
 
 
 
-
-
     <!-- Hot job here -->
-    <h1 id="job-post-title">Today Hotjob</h1>
+    <h1 id="job-post-title">Today Hotjobs</h1>
+    <div class="product-area-list">
+        <c:forEach var="item" items="${list}">
+            <div class="product">
+                <i class="fa-solid fa-chevron-down"></i>
+                <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
+                <p>${item.salary} $</p>
+                <!--<p>Assurance, Oversea traveling, Team building, Professional workplace welfare</p>-->
+                <p>${item.welfare}</p>
+                <a href="<c:url value="/post-detail/${item.postId}"/>">See more<i class="fa-solid fa-chevron-right"></i></a>
+            </div>
 
-    <div class="hot-jobs">
-        <div class="container-fluid mt-3">
-            <div class="row">
-                <c:forEach var="item" items="${list}">
-                    <div class="col-sm-3 hot-post">
-                        <a href="<c:url value="/post-detail/${item.postId}"/>"><img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true" alt=""></a>
-                        <h3><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h3>
-                        <p class="salary"><i class="fa-sharp fa-solid fa-money-bill"></i>Salary: ${item.salary}</p>
-                        <div class="post-down"><p>Location: ${item.locations}</p>
-                            
-                            <a href="<c:url value="/post-detail/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></div></a>
+        </c:forEach>
+    </div>    
 
-                    </div>
-                </c:forEach>
+
+    <h1 id="seek-job">You are seeking a Job?</h1>
+    <form action="<c:url value="/${keyword}"/>">
+        <div class="search-job">
+            <div class="search-bar">
+
+                <input type="text" name="keyword" value="${param.keyword}" placeholder="I'm looking for..." />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            </div>
+        </div>
+    </form>
+    <div class="search-result">
+        <h2 style="margin-left: 2rem">Found 6969 works</h2>
+        <div class="result-post">
+            <div class="result-post-left">
+                <div class="container mt-3">
+                    <div class="d-flex p-3">
+                        <div class="p-2">
+                            <a href="#"
+                               ><img
+                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Removed-bg-logo-comp.png?raw=true"
+                                    alt=""
+                                    /></a>
+                        </div>
+                        <div class="p-2">
+                            <h2><a href="#"> BrSE</a></h2>
+                            <p>MT Company</p>
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>1 distrcit, Ho Chi
+                                Minh city
+                            </p>
+                            <p class="salary">
+                                <i class="fa-sharp fa-solid fa-money-bill"></i>1000$
+                            </p>
+                            <div class="post-down">
+                                <p>Japanese</p>
+                            </div>
+                        </div>
+                    </div>           
+                </div>
+            </div>
+            <div class="result-post-right">
+                <i class="fa-regular fa-bookmark"></i>
+                <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
+                <p>4 hours ago</p>
+            </div>
+        </div>
+        <div class="result-post">
+            <div class="result-post-left">
+                <div class="container mt-3">
+                    <div class="d-flex p-3">
+                        <div class="p-2">
+                            <a href="#"
+                               ><img
+                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Removed-bg-logo-comp.png?raw=true"
+                                    alt=""
+                                    /></a>
+                        </div>
+                        <div class="p-2">
+                            <h2><a href="#"> BrSE</a></h2>
+                            <p>MT Company</p>
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>1 distrcit, Ho Chi
+                                Minh city
+                            </p>
+                            <p class="salary">
+                                <i class="fa-sharp fa-solid fa-money-bill"></i>1000$
+                            </p>
+                            <div class="post-down">
+                                <p>Japanese</p>
+                            </div>
+                        </div>
+                    </div>           
+                </div>
+            </div>
+            <div class="result-post-right">
+                <i class="fa-regular fa-bookmark"></i>
+                <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
+                <p>4 hours ago</p>
             </div>
         </div>
     </div>
 
-    <div class="dialog overlay" id="my-dialog">
-        <div class="dialog-body">
-            <i class="modal-title fa-solid fa-check"></i>
-            <h2>Saved job successfully</h2>
-            <button><a href="#hot-jobs" id="ok-btn">OK</a></button>
+    <div id="contact" class="contact-us">
+        <div class="contact-form">
+            <h1>Contact us</h1>
+            <div class="text-items">
+                <h2>Your Name</h2>
+                <input type="text">
+                <h2>Your Email</h2>
+                <input type="text">
+                <h2>Your Phone</h2>
+                <input type="text">
+            </div>
+            <button><a href="#">Send</a></button>
         </div>
     </div>
-
 </body>
 
 
@@ -378,4 +669,3 @@
 
 
 
-    

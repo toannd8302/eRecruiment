@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
-   html {
+    html {
         font-size: 62.5%;
         font-family: 'Poppins', sans-serif;
     }
@@ -111,11 +111,10 @@
     .view-favour-right{
         float: right;
         width: 80%;
-        margin-top: 5rem;
     }
 
     .view-favour-right h1{
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
 
     .table{
@@ -134,6 +133,10 @@
     .table tbody tr td button{
         font-size: 1.5rem;
     }
+    .table tbody tr td button a{
+        text-decoration: none;
+        color: #fff;
+    }
 </style>
 
 
@@ -146,10 +149,9 @@
         <li>
             <a href="<c:url value="/"/>" class="logo">
                 <img
-                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
                     alt="Monke Tech"
                     />
-                <span class="nav-item">User</span>
             </a>
         </li>
         <li>
@@ -188,15 +190,18 @@
         //HANDLE VẤN ĐỀ TRÙNG THÌ DÙNG SET HOẶC IF
 %>
 <div class="view-favour-right">
-    <h1>Favourite Jobs</h1>
+    <div class="create-post-head" style="display: flex; justify-content: space-around">
+        <h1 style="display: flex; flex-direction: column-reverse;">Favourite Jobs</h1>
+        <h1 class="nav-item" style="padding-bottom: 2rem; color: red;">Welcome, ${sessionScope.user.getName()}</h1>
+    </div>
     <hr>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Job Title</th>
+                <th>Job Position</th>
                 <th>Welfare</th>
-                <th>Department</th>
+<!--                <th>Department</th>-->
                 <th>Location</th>
                 <th>Salary</th>
             </tr>
@@ -210,10 +215,10 @@
                 <td><%= count++%></td>
                 <td><%= j.getJobPosition().getJobName()%></td>
                 <td><%= j.getWelfare()%></td>
-                <td><%= j.getJobPosition().getDepartment().getDepartmentName()%></td>
+               <%-- <td><%= j.getJobPosition().getDepartment().getDepartmentName()%></td> --%>
                 <td><%= j.getLocations()%></td>
                 <td><%= j.getSalary()%></td>
-                <td><button class="btn btn-success detail-toggle">Apply Now</button></td>
+                <td><button class="btn btn-success detail-toggle"> <a href="http://localhost:8080/WebProject/job/application?data=<%=j.getPostId()%>"/>Apply Now</a></button></td>
                 <td><button class="btn btn-danger detail-toggle" style="height: 5.2rem;">
                         <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>" style="text-decoration: none; color: #fff; ">Unsave</a>
                     </button></td>
@@ -225,7 +230,7 @@
 
     <% } else {
     %>
-    <h1 style="color: red; font-family: serif; float: right; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)">NO RESULT</h1>
+    <h1 style="color: red; font-family: serif; float: right; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)">Your WishList is empty</h1>
     <%
         }
     %> 
