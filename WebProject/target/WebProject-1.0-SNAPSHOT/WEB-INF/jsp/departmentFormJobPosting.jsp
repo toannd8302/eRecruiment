@@ -310,7 +310,6 @@
 
     </head>
     <body>
-
         <%
             String msg = (String) session.getAttribute("ERROR");
             if (msg != null) {
@@ -319,29 +318,17 @@
         <%
             }
         %>
-
-
-
-
-
-
         <h1>Create a Job Posting</h1>
-
         <h2>*Job Position</h2>     
         <c:url value="/createjobposting" var="action" />
-        <form:form method="post" modelAttribute="jobPosting" action="${action}" >
-
-
+        <form:form id="my-form" method="post" modelAttribute="jobPosting" action="${action}" >
             <form:select  path="jobPosition.jobId" required="true">
                 <form:option value="">-- Select Job Position --</form:option>
                 <form:options items="${joPositions}" itemValue="jobId" itemLabel="JobName"></form:options>
             </form:select>
             <h2><br />*General Information</h2>
-
             <h3>Salary</h3>
-            <form:input type="number" path="salary" required="true"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
-
-
+            <form:input type="number" path="salary" min = "0" required="true"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
             <%--<form:label path="level">Level</form:label>--%>
             <h3>Level</h3>
             <form:select  path="level" required="true">
@@ -352,24 +339,14 @@
                 <form:option value="Senior">Senior</form:option>
                 <%--<form:option value=""></form:option>--%>                                 
             </form:select>
-
-
-
-
             <h3>Type of Job</h3>
             <form:label path="typeOfWork">Full Time</form:label>                            
             <form:checkbox  path="typeOfWork" checked="true" value="1"/>
-
-
-
-
             <%--<form:label path="exprienceRequirement">Exprience Requirement</form:label>--%>
             <h3>Exprience Requirement</h3>
             <form:input type="number" path="exprienceRequirement" min="0" 
                         placeholder="Please input the number of Exprience year" /> (year/years)
-
             <h2><br />Detail Information</h2>
-
             <h3>Location</h3>
             <form:select  path="locations" required="true">
                 <form:option value="">-- Select Location --</form:option>
@@ -385,41 +362,61 @@
                 <form:option value="District 12">District 12</form:option>
                 <form:option value="Thu Duc City"> Thu Duc City </form:option>                             
             </form:select>
-
         </div>
-
-
-
-        <h3>Welfare</h3>
+        <div id="welfare-container">
+            <form:input type="text" path="welfare" class="item-text" placeholder="Enter a welfare benefit"/> 
+        </div>
+        <button type="button" onclick="addWelfare()">Add Welfare Benefit</button> <br/>
         <%--<form:input type="text" path="welfare" required="true" />--%>
-
+        <h3>Some default welfares</h3>
         <form:input type="text" path="welfare" class="item-text" value="A lot of Money if you deligent"  readonly="true"/>
-
-
         <form:input type="text" path="welfare" class="item-text" value="You can off 2 days per week"  readonly="true"/>
-
-
         <form:input type="text" path="welfare" class="item-text" value="Oversea traveling 1 time per year"  readonly="true"/>
-
         <form:input type="text" path="welfare" class="item-text" value="You get social insurance periodically "  readonly="true"/>
-        <h3>Picture</h3>
-        <form:input type="text" path="picture" />
-
         <h3>Description</h3>
         <%--<form:input type="text" path="descriptions" required="true"/>--%>
         <form:textarea cols="100" rows="10" path="descriptions"/> <br/>
-
-
         <label>Number of Rounds:</label>
-        <input type="number" name="numRounds" onclick="createRounds(this.value)"/><br/>
+        <input type="number" name="numRounds" min ="0" onchange="createRounds(this.value)"/><br/>
 
         <div id="rounds"></div>
 
         <br/><br/>
-        <button>Post</button>
+        <button id="confirm-post" onclick="confirmPost(event)">Post</button>
         <input type="reset" value="Reset" />
     </form:form>
     <script type="text/javascript">
+        function addWelfare() {
+            //Using JQuery
+            var welfareContainer = $("#welfare-container");
+            var input = $("<input>").attr({
+                type: "text",
+                class: "item-text",
+                placeholder: "Enter a welfare benefit"
+            });
+            welfareContainer.append(input);
+        }
+        function confirmPost(event) {
+            // Get a reference to the button element
+            var button = document.getElementById("confirm-post");
+
+            // Disable the button to prevent multiple submissions
+            button.disabled = true;
+
+            // Display a confirmation dialog box
+            var confirmed = confirm("Are you sure you want to post?");
+
+            // If the user confirms, submit the form
+            if (confirmed) {
+                // Submit the form or perform the desired action
+                // ...
+            } else {
+                event.preventDefault();
+            }
+
+            // Re-enable the button
+            button.disabled = false;
+        }
         function createRounds(numRounds) {
             var roundContentArray = [];
             var roundsDiv = document.getElementById("rounds");
@@ -467,5 +464,4 @@
         }
     </script>
 </body>
-
 </html>

@@ -116,7 +116,7 @@
         padding-left: 2rem;
         margin-top: 2rem;
         /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
-        
+
     }
 
     .post-list-right .table thead{
@@ -275,8 +275,10 @@
                     <td><%= typeOfWork%></td>
                     <td><%= jobposting.isApprovedStatus()%></td>
                     <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
-                    <td>
-                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/><i class="fa-solid fa-trash trash-bin"></i></a>
+                    <td >
+                        <a id="delete-post" onclick="deletePost(event)" 
+                           href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>
+                        <i class="fa-solid fa-trash trash-bin"></i></a>
                         <br>
                         <div class="blank">
                         </div>
@@ -290,7 +292,6 @@
 
                 %>
             <h2>Your Department has not created Job Posting before</h2>        
-
             <%                }
             %>
 
@@ -299,5 +300,19 @@
     </div>
 </div>
 
+<script>
+    function deletePost(event) {
+        // Get a reference to the button element
+        event.preventDefault();
+        var confirmed = confirm("Are you sure you want to delete?");
+        if (confirmed) {
+            // continue with the default action (i.e. follow the href link)
+            window.location.href = event.currentTarget.getAttribute("href");
+        } else {
+            //do nothing
+           
+        }
+    }
 
+</script>
 
