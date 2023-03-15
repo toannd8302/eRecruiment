@@ -311,7 +311,7 @@
     </head>
     <body>
         <%
-            String msg = (String) session.getAttribute("ERROR");
+            String msg = (String) request.getAttribute("ERROR");
             if (msg != null) {
         %>
         <h2><%= msg%></h2>
@@ -364,9 +364,10 @@
             </form:select>
         </div>
         <div id="welfare-container">
-            <form:input type="text" path="welfare" class="item-text" placeholder="Enter a welfare benefit"/> 
+           
         </div>
         <button type="button" onclick="addWelfare()">Add Welfare Benefit</button> <br/>
+
         <%--<form:input type="text" path="welfare" required="true" />--%>
         <h3>Some default welfares</h3>
         <form:input type="text" path="welfare" class="item-text" value="A lot of Money if you deligent"  readonly="true"/>
@@ -391,10 +392,15 @@
             var welfareContainer = $("#welfare-container");
             var input = $("<input>").attr({
                 type: "text",
+                name:"welfare",
                 class: "item-text",
                 placeholder: "Enter a welfare benefit"
             });
-            welfareContainer.append(input);
+            var deleteButton = $("<button>").text("X").click(function () {
+                $(this).parent().remove();
+            });
+            var div = $("<div>").append(input).append(deleteButton);
+            welfareContainer.append(div);
         }
         function confirmPost(event) {
             // Get a reference to the button element

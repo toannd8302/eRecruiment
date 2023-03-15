@@ -97,7 +97,7 @@ public class DepartmentController {
                 return "redirect:/department";
             }
         } else {
-            session.setAttribute("ERROR", "PLS INPUT JOBTITLE SUITABLY");
+            request.setAttribute("ERROR", "PLS INPUT JOBTITLE SUITABLY");
             List<jobPosition> jobPositions = jobPositionService.getAll();
             model.addAttribute("joPositions", jobPositions);
         }
