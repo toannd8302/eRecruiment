@@ -106,6 +106,8 @@
         color: rgb(171, 36, 36);
         font-weight: bold;
         font-family: 'IBM Plex Mono', monospace;
+        display: inline-block;
+        margin-left: 1rem;
     }
 
     #introduce #intro-body {

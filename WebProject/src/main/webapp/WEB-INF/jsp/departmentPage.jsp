@@ -35,51 +35,41 @@
         top: 0;
         bottom: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         /*background-color: rgb(172, 170, 170);*/
         background: #5c6664;
         overflow: hidden;
         transition: witdh 0.2s linear;
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
-
-
+        opacity: 0.8;
     }
-
     .post-list-left ul, li{
         padding-left: 0;
     }
-
     .logo img{
         width: 6rem;
         height: 6rem;
         background-color: rgb(43, 44, 44);
         border-radius: 50%;
-
     }
-
     .logo{
-        /* text-align: center; */
         display: flex;
         transition: all 0.5s ease;
     }
-
     .logo span{
         font-weight: bold;
         font-size: 2rem;
         text-transform: uppercase;
     }
-
     .post-list-left a{
         position: relative;
         color: white;
         font-size: 2rem;
         display: table;
-        width: 40rem;
+        width: 30rem;
         text-decoration: none;
         padding: 1.5rem;
     }
-
-
     .fa-solid{
         position: relative;
         width: 5rem;
@@ -88,28 +78,27 @@
         font-size: 2rem;
         text-align: center;
     }
-
     .nav-item{
         position: relative;
         top: 2rem;
         margin-left: 1.8rem;
     }
-
     .post-list-left a:hover{
         background: #eee;
         color: black;
     }
-
     nav:hover{
         width: 28rem;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease;
     }
-
+    nav:hover .logo{
+        transform: translateX(30%);
+        background: #5c6664;
+    }
     .logout{
         position: absolute;
         top: 90%;
         bottom: 0%;
-
     }
     .post-list-right{
         float: right;
@@ -117,7 +106,7 @@
         padding-left: 2rem;
         margin-top: 2rem;
         /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
-        
+
     }
 
     .post-list-right .table thead{
@@ -203,101 +192,117 @@
 
 %>
 
+<body style="background: #FAF0E6">
+    <nav class="post-list-left">
+        <ul>
+            <li>
+                <a href="<c:url value="/logout"/>" class="logo">
+                    <img
+                        src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
+                        alt="Monke Tech"
+                        />
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/department"/>">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="nav-item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/department" />">
+                    <i class="fa-solid fa-list"></i>
+                    <span class="nav-item">Job Posting List</span>
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/createjobposting" />">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    <span class="nav-item">Create a Job Posting</span>
+                </a>
+            </li>
 
-<nav class="post-list-left">
-    <ul>
-        <li>
-            <a href="<c:url value="/logout"/>" class="logo">
-                <img
-                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
-                    alt="Monke Tech"
-                    />
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/department"/>">
-                <i class="fa-solid fa-house"></i>
-                <span class="nav-item">Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/department" />">
-                <i class="fa-solid fa-list"></i>
-                <span class="nav-item">Job Posting List</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/createjobposting" />">
-                <i class="fa-solid fa-folder-plus"></i>
-                <span class="nav-item">Create a Job Posting</span>
-            </a>
-        </li>
+            <li class="logout">
+                <a href="<c:url value="/logout"/>">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-item ">Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="post-list-right">
+        <h1>Job Posting List of ${sessionScope.department.departmentName} Department</h1>
+        <hr>
+        <div class="container mt-3">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Job Position</th>
+                        <th>Level</th>
+                        <th>Created Date</th>
+                        <th>Type of Work</th>
+                        <th>Status</th>
+                        <th>View Detail</th>
+                        <th>Cancel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%                    for (jobPosting jobposting : jobPostings) {
+                            if (jobposting.getJobPosition().getDepartment().getDepartmentId().equals(department.getDepartmentId())) {
+                                if (jobposting.isTypeOfWork()) {
+                                    typeOfWork = "Full Time";
+                                } else {
+                                    typeOfWork = "Part Time";
+                                }
+                    %>
+                    <tr>
+                        <td><%= count++%></td>
+                        <td><%= jobposting.getJobPosition().getJobName()%></td>
+                        <td><%= jobposting.getLevel()%></td>
+                        <td> <fmt:formatDate value="<%= jobposting.getCreatedTime()%>"  pattern="dd/MM/yyyy"/></td>
+                        <td><%= typeOfWork%></td>
+                        <td><%= jobposting.isApprovedStatus()%></td>
+                        <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
+                        <td >
+                            <a id="delete-post" onclick="deletePost(event)" 
+                               href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>
+                            <i class="fa-solid fa-trash trash-bin"></i></a>
+                            <br>
+                            <div class="blank">
+                            </div>
+                        </td>
+                    </tr>   
 
-        <li class="logout">
-            <a href="<c:url value="/logout"/>">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="nav-item ">Log Out</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-<div class="post-list-right">
-    <h1>Job Posting List of ${sessionScope.department.departmentName} Department</h1>
-    <hr>
-    <div class="container mt-3">
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Job Position</th>
-                    <th>Level</th>
-                    <th>Created Date</th>
-                    <th>Type of Work</th>
-                    <th>Status</th>
-                    <th>View Detail</th>
-                    <th>Cancel</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%                    for (jobPosting jobposting : jobPostings) {
-                        if (jobposting.getJobPosition().getDepartment().getDepartmentId().equals(department.getDepartmentId())) {
-                            if (jobposting.isTypeOfWork()) {
-                                typeOfWork = "Full Time";
-                            } else {
-                                typeOfWork = "Part Time";
+                    <%
                             }
-                %>
-                <tr>
-                    <td><%= count++%></td>
-                    <td><%= jobposting.getJobPosition().getJobName()%></td>
-                    <td><%= jobposting.getLevel()%></td>
-                    <td> <fmt:formatDate value="<%= jobposting.getCreatedTime()%>"  pattern="dd/MM/yyyy"/></td>
-                    <td><%= typeOfWork%></td>
-                    <td><%= jobposting.isApprovedStatus()%></td>
-                    <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
-                    <td>
-                        <a href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/><i class="fa-solid fa-trash trash-bin"></i></a>
-                        <br>
-                        <div class="blank">
-                        </div>
-                    </td>
-                </tr>   
-
-                <%
                         }
-                    }
-                } else {
+                    } else {
 
+                    %>
+                <h2>Your Department has not created Job Posting before</h2>        
+                <%                }
                 %>
-            <h2>Your Department has not created Job Posting before</h2>        
 
-            <%                }
-            %>
-
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
+    <script>
+        function deletePost(event) {
+            // Get a reference to the button element
+            event.preventDefault();
+            var confirmed = confirm("Are you sure you want to delete?");
+            if (confirmed) {
+                // continue with the default action (i.e. follow the href link)
+                window.location.href = event.currentTarget.getAttribute("href");
+            } else {
+                //do nothing
 
+            }
+        }
 
+    </script>
+
+</body>

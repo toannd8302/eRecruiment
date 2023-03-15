@@ -22,7 +22,7 @@
     }
 
     body {
-        background-color: #343747;
+        background-color: #ddd;
     }
 
     #job-detail-head {
@@ -215,6 +215,8 @@
 
     #job-detail-body .info-list li {
         margin: 1rem;
+        font-size: 1.8rem;
+        font-weight: normal;
     }
 
     #job-detail-body .info-list li::before {
@@ -275,12 +277,12 @@
         text-align: center;
     }
 
-    
+
     #apply-link{
         text-decoration: none;
         color: white;
     }
-    
+
     #save-job-link{
         text-decoration: none;
         color: #00b14f;

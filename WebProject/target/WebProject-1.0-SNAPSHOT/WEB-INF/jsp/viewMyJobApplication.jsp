@@ -143,6 +143,11 @@
         transition: all 0.5s ease;
     }
 
+    nav:hover .logo{
+        transform: translateX(20%);
+        background-color: rgb(172, 170, 170);
+    }
+
     .logout{
         position: absolute;
         top: 90%;
@@ -290,8 +295,9 @@
                 <tr>
                     <th>No.</th>
                     <th>Job Position</th>
+                    <th>Salary</th>
+                    <th>Location</th>
                     <th>Apply Date</th>
-
                     <th>View Schedule</th>
                 </tr>
             </thead>
@@ -301,9 +307,11 @@
                     <tr>
                         <td>${counter.count}</td>
                         <td>${jobApplication.jobPosting.jobPosition.jobName}</td> 
+                        <td>${jobApplication.jobPosting.salary}</td> 
+                        <td>${jobApplication.jobPosting.locations}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
-<!--                        <td><button class="btn btn-danger">Cancel Application</button></td>-->
+                        <!--                        <td><button class="btn btn-danger">Cancel Application</button></td>-->
                     </tr>
 
                     <tr class="detail-row" style="display: none;">

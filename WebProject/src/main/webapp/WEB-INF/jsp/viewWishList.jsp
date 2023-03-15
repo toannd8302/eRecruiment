@@ -101,6 +101,11 @@
         transition: all 0.5s ease;
     }
 
+      nav:hover .logo{
+        transform: translateX(20%);
+        background-color: rgb(172, 170, 170);
+    }
+    
     .logout{
         position: absolute;
         top: 90%;

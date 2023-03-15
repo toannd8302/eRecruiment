@@ -29,7 +29,7 @@
 
     #job-detail-head {
         background-color: rgb(255, 255, 255);
-        margin-left: 36rem;
+        margin-left: 30rem;
         padding: 2rem;
         margin-top: 1rem;
     }
@@ -37,7 +37,7 @@
     #job-logo img {
         width: 20rem;
         height: 15rem;
-        background-color: #1d1f28;
+        /*background-color: #1d1f28;*/
     }
 
     #general-info {
@@ -105,7 +105,7 @@
 </style>
 
 
-<body style="background-color: #1d1f28;">
+<body style="background-color: #ddd;">
 
     <c:url value="/job/application" var="action"/>
     <form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
