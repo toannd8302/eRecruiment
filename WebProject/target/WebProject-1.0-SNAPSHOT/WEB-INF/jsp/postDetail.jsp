@@ -4,6 +4,7 @@
     Author     : KHOA
 --%>
 
+<%@page import="com.codeweb.pojos.candidate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -289,6 +290,10 @@
     }
 </style>
 
+<%
+    candidate candidate = (candidate) session.getAttribute("user");
+%>
+
 <div id="job-detail-head">
     <div id="job-head">
         <div id="job-logo">
@@ -303,8 +308,19 @@
     </div>
 
     <div id="apply-buton">
+        <%
+            if (candidate == null) {
+        %>
+        <p style="color: red">You must Login to apply or save job</p>
+        <%
+        } else {
+        %>
         <button><i class="fa-regular fa-paper-plane"></i><a id="apply-link" href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
-        <button><a id="save-job-link" href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <button style ="background-color: #00b14f"><a style="color: white" id="save-job-link" href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <%
+            }
+        %>
+
     </div>
 </div>
 
@@ -379,10 +395,20 @@
 
     <div id="job-apply">
         <h1>How to apply</h1>
+        <%
+            if (candidate == null) {
+        %>
+        <p style="color: red">You must Login to apply or save job</p>
+        <%
+        } else {
+        %>
         <p>Candidates apply online by clicking <a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">Apply now</a> below</p>
         <button class="apply-button"><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">APPLY NOW</a></button>
-        <button class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <button style ="background-color: #00b14f" class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>" style="color: whitesmoke">SAVE JOB</a></button>
         <P>Submission deadline: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></P>
+            <%
+                }
+            %>
     </div>
 </div>
 

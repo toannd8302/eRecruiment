@@ -165,13 +165,9 @@
                 background-color: rgb(206, 249, 238);
             }
             #Concak select{
-                -webkit-appearance:none;
-                -moz-appearance:none;
-                -ms-appearance:none;
-                appearance:none;
+
                 outline:0;
                 box-shadow:none;
-                border:0!important;
                 background-image: none;
                 flex: 1;
                 padding: 0 .5em;
@@ -183,15 +179,19 @@
                 width: 95%;
                 height: 3em;
                 line-height: 3;
-                background: #bcb88a;
+
                 overflow: hidden;
                 border-radius: .25em;
                 font-size: 1.8rem;
                 margin-top: 3rem;
             }
-            #Concak select option{
-                background: #e3dac9;
+            
+            #Concak select:after{
+                content: '&#60';
+                font-size: 5rem;
             }
+            
+
             #Concak select::-ms-expand{
                 display: none;
             }
@@ -205,6 +205,7 @@
             }
             #checkbox label{
                 font-size: 2rem;
+                font-family: 'Poppins', sans-serif;
             }
             #checkbox input{
                 height: 2rem;
@@ -241,6 +242,7 @@
             .create-job-post-right h3{
                 margin-bottom: 2rem;
                 font-size: 2.5rem;
+                font-family: 'Poppins', sans-serif;
             }
 
             .text-info select{
@@ -344,6 +346,7 @@
             .round label{
                 width: 9.3rem;
                 font-size: 1.5rem;
+                font-family: 'Poppins', sans-serif;
             }
 
             .round input{
@@ -393,17 +396,20 @@
             }
 
             .foot-btn{
-                margin-left: 30rem;
+                /*margin-left: 2rem;*/
             }
 
             .foot-btn button{
                 font-size: 2rem;
-                width: 25rem;
-                background: #EE0000;
+                width: 105rem;
+                background: #C60000;
                 color: #eee;
                 font-weight: bold;
                 border: none;
                 box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+                transition: 0.3s ease-in-out;
+                padding: 1rem 0;
+                margin-left: 5rem;
             }
 
             .foot-btn button:active{
@@ -412,19 +418,11 @@
 
             .foot-btn button:hover{
                 background: #CD0000;
+                background: #fff;
+                color: red;
+                border: 1px solid red;
             }
 
-            .foot-btn input{
-                font-size: 2rem;
-                width: 15rem;
-                margin-left: 15rem;
-                background: #367517;
-                color: #fff;
-                font-weight: bold;
-                border: none;
-                border-radius: 0.5rem;
-                box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-            }
         </style>
 
     </head>
@@ -470,20 +468,12 @@
                 </li>
             </ul>
         </nav>
-        <%
-            String msg = (String) request.getAttribute("ERROR");
-            if (msg != null) {
-        %>
-        <h2><%= msg%></h2>
-        <%
-            }
-        %>
 
 
         <div class="create-post-head">
             <div class="head-content">
                 <h1 style="font-weight: bold; font-size: 6rem; margin-top: 6rem; color:#fff;">Create a Job Posting</h1>
-                <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;" class="nav-item">${sessionScope.department.departmentName} Department</h1>
+                <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #FFD39B;" class="nav-item">${sessionScope.department.departmentName} Department</h1>
             </div>    
         </div>
 
@@ -537,9 +527,9 @@
                             </div>
                             <div class="text-info" style="margin-top: 4rem;">
                                 <%--<form:label path="exprienceRequirement">Exprience Requirement</form:label>--%>
-                                <h3>Exprience Requirement</h3>
+                                <h3>Year of Exprience Requirement</h3>
                                 <form:input type="number" path="exprienceRequirement" min="0" max="10" 
-                                            placeholder="Please input the number of Exprience year" /> (year/years)
+                                            placeholder="Please input the number of Exprience year" /> 
                             </div>
                         </div>
                     </div>
@@ -604,8 +594,6 @@
 
 
                     <button id="confirm-post" onclick="confirmPost(event)">Post</button>
-                    <br>
-                    <input type="reset" value="Reset" />
                 </div>
             </form:form>
         </div>

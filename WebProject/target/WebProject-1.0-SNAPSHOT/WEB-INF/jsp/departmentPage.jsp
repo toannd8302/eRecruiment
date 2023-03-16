@@ -179,11 +179,13 @@
         font-size: 2rem;
         font-weight: bold;
         padding: 2rem 3rem;
+        text-align: center;
     }
 
     .styled-table td {
         padding: 2rem 3rem;
         font-size: 1.5rem;
+        text-align: center;
     }
 
     .styled-table tbody tr {
@@ -266,7 +268,7 @@
     <div class="create-post-head">
         <div class="head-content">
             <h1 style="font-weight: bold; font-size: 6rem; margin-top: 6rem; color:#fff;">Job Post List</h1>
-            <h1 style="font-weight: bold; margin-left: 28rem;">${sessionScope.department.departmentName} Department</h1>
+            <h1 style="font-weight: bold; margin-left: 28rem; color: #FFD39B;">${sessionScope.department.departmentName} Department</h1>
         </div>    
     </div>
     <div class="post-list-right">
