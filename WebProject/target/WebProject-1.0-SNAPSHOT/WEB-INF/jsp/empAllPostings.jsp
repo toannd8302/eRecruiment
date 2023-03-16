@@ -319,33 +319,3 @@
         });
     });
 </script>
-
-
-<!--<h1>Job Postings List</h1>-->
-
-<!--<h3>Waiting For Approve</h3>-->
-<%--<c:forEach var="item" items="${PENDING}">
-    ==================================================================
-    <p>Job Name: ${item.jobPosition.jobName}</p>
-    <p>Location: ${item.getLocations()}</p>
-    <p>Salary: ${item.getSalary()}</p>
-    <p>Created date: <fmt:formatDate value="${item.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-    <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
-        <input type="hidden" name="postID" value="${item.getPostId()}">
-        <input type="submit" value="View Deatils"/>
-    </form>
-</c:forEach>--%>
-
-<!--<h3>On-Going Job Postings</h3>-->
-<%--<c:forEach var="item" items="${APPROVED}">
-    ==================================================================
-    <p>Job Name: ${item.jobPosition.jobName}</p>
-    <p>Location: ${item.getLocations()}</p>
-    <p>Salary: ${item.getSalary()}</p>
-    <p>Created date: <fmt:formatDate value="${item.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-    <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
-        <input type="hidden" name="postID" value="${item.getPostId()}">
-        <input type="submit" value="View Deatils"/>
-    </form>
-</c:forEach>--%>
-

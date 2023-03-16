@@ -45,6 +45,8 @@ com\codeweb\configs\SecurityWebAppInitializer.class
 com\codeweb\configs\WebSecurityConfig.class
 com\codeweb\pojos\candidate.class
 com\codeweb\service\implement\WishListImp.class
+com\codeweb\configs\MailSenderConfig.class
+com\codeweb\service\SendMailService.class
 com\codeweb\pojos\department.class
 com\codeweb\service\implement\SkillServiceImp.class
 com\codeweb\repository\ScheduleRepository.class
@@ -54,6 +56,7 @@ com\codeweb\service\DepartmentService.class
 com\codeweb\controllers\JobPostingController.class
 com\codeweb\service\implement\CandidateServiceImp.class
 com\codeweb\common\CustomUserDetails.class
+com\codeweb\service\implement\SendMailServiceImp.class
 com\codeweb\repository\JobPositionRepository.class
 com\codeweb\controllers\RoundController.class
 com\codeweb\configs\DispatcherServletInitializer.class

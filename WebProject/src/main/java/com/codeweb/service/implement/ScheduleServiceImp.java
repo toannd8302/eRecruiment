@@ -5,6 +5,8 @@
  */
 package com.codeweb.service.implement;
 
+import com.codeweb.pojos.employee;
+import com.codeweb.pojos.interviewerReasons;
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.pojos.round;
@@ -16,9 +18,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.codeweb.repository.ScheduleRepository;
+import com.codeweb.service.EmployeeService;
+import com.codeweb.service.InterviewReasonService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.ScheduleService;
-import java.util.ArrayList;
+import com.codeweb.service.SendMailService;
 
 /**
  *
@@ -26,46 +30,74 @@ import java.util.ArrayList;
  */
 @Service
 public class ScheduleServiceImp implements ScheduleService {
+    
+    @Autowired
+    private SendMailService sendMailService;
 
     @Autowired
     private RoundRepository roundRepository;
 
     @Autowired
     private ScheduleRepository scheduleRepository;
-    
+
     @Autowired
     private JobApplicationService jobApplicationService;
+
+    @Autowired
+    private InterviewReasonService interviewReasonService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @Override
     public boolean add(schedule schedule) {
         return this.scheduleRepository.add(schedule);
     }
-    
+
     @Override
-    public boolean update(schedule schedule, String action) {
-        if(action.equals("start")){
+    public boolean update(schedule schedule, String action, String[] selectedOptions) {
+        if (action.equals("start")) {
             schedule.setStatus("On Going");
+            
+            //Update jobApplication
             jobApplication jobApp = new jobApplication();
-            for(jobApplicationSchedule a : schedule.getjAS()){
+            for (jobApplicationSchedule a : schedule.getjAS()) {
                 jobApp = a.getJobApplication();
                 jobApp.setApplicationStatus("On Going");
-                if(this.jobApplicationService.update(jobApp) == false)
-                    return false;
+                if (this.jobApplicationService.update(jobApp) == true) {
+                    this.sendMailService.sendEmail(jobApp.getCandidate().getEmail(), "You have new interview schedule", "Please check and give us final decision soon.");
+                }
+            }
+            
+            //Add interviewerReasons
+            employee employee = new employee();
+            interviewerReasons irs = new interviewerReasons();
+            for (String interviewID : selectedOptions) {
+                employee = this.employeeService.findEmployeeByID(interviewID);
+                irs.setEmployeeId(interviewID);
+                irs.setScheduleId(schedule.getScheduleId());
+                irs.setStatus("Pending");
+                if (employee != null) {
+                    if (this.interviewReasonService.add(irs)) {
+                        this.sendMailService.sendEmail(employee.getEmail(), "You have new interview schedule", "Please check and make the final decision as quickly as possible.");
+                    }
+                }
             }
         }
         return this.scheduleRepository.update(schedule);
     }
-    
+
     @Override
     public schedule getCurrentScheduleOfJobApp(jobApplication jobApplication) {
         schedule schedule = new schedule();
         int roundNumber = jobApplication.getRoundNumber();
         String scheduleID = new String();
-        for(jobApplicationSchedule a : jobApplication.getJobApSche()){
-            if(!a.getStatus().equals("Rejected")){
+        for (jobApplicationSchedule a : jobApplication.getJobApSche()) {
+            if (!a.getStatus().equals("Rejected")) {
                 schedule = this.scheduleRepository.getScheduleByID(a.getScheduleId()).get(0);
-                if(schedule.getRound().getRoundNumber() == roundNumber)
+                if (schedule.getRound().getRoundNumber() == roundNumber) {
                     return schedule;
+                }
             }
         }
         return null;
@@ -78,11 +110,11 @@ public class ScheduleServiceImp implements ScheduleService {
         twoDimCollection.put("On Going", this.scheduleRepository.getScheduleByStatus("On Going"));
         return twoDimCollection;
     }
-    
+
     @Override
     public schedule getScheduleByID(String scheduleID) {
         List<schedule> schedules = this.scheduleRepository.getScheduleByID(scheduleID);
-        if(schedules.isEmpty()){
+        if (schedules.isEmpty()) {
             return null;
         }
         return schedules.get(0);
@@ -112,8 +144,7 @@ public class ScheduleServiceImp implements ScheduleService {
         }
         return schedule;
     }
-    
-    
+
     @Override
     public schedule createSchedule(String postID, int roundNumber) {
         try {
@@ -122,8 +153,9 @@ public class ScheduleServiceImp implements ScheduleService {
             newSchedule.setStatus("Pending");
             newSchedule.setTypeOfInterview(null);
             newSchedule.setRound(round);
-            if (this.add(newSchedule))
+            if (this.add(newSchedule)) {
                 return newSchedule;
+            }
         } catch (Exception e) {
             System.err.println("==CREATE SCHEDULE FAIL AT ScheduleServiceImp(Could be from get round)==" + e.getMessage());
         }
@@ -131,7 +163,13 @@ public class ScheduleServiceImp implements ScheduleService {
     }
 
     @Override
-    public List<schedule> getScheduleByInterviewerID(String interviewerID) {
-        return this.scheduleRepository.getScheduleByInterviewerID(interviewerID);
+    public Map<String, List<schedule>> getScheduleOfInterviewer(employee employee) {
+        String interviewerID = employee.getId();
+        Map<String, List<schedule>> twoDimCollection = new HashMap<>();
+        twoDimCollection.put("Pending", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, "On Going", "Pending"));
+        twoDimCollection.put("On Going", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, "On Going", "Approved"));
+        twoDimCollection.put("Finished", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, "Finished", null));
+        return twoDimCollection;
+//        return this.scheduleRepository.getScheduleByInterviewerID(interviewerID);
     }
 }

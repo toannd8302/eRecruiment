@@ -23,7 +23,6 @@
         List<jobPosting> jobpostings = ( List<jobPosting>)request.getAttribute("jobPostings");
          
         %>
-       <%= jobpostings.get(0).getPostId()%>
         <c:url value="/createround" var="action"/>
         <form:form method="post" action="${action}" modelAttribute="round">
             <div>

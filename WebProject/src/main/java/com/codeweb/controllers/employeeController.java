@@ -7,32 +7,24 @@ package com.codeweb.controllers;
 
 import com.codeweb.pojos.interviewerReasons;
 import com.codeweb.pojos.jobApplication;
-import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.pojos.jobPosting;
 import com.codeweb.pojos.schedule;
-import com.codeweb.repository.RoundRepository;
 import com.codeweb.service.EmployeeService;
-import com.codeweb.service.InterviewReasonService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
 import com.codeweb.service.ScheduleService;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -43,9 +35,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 public class employeeController {
 
-    @Autowired
-    private InterviewReasonService interviewReasonService;
-    
     @Autowired
     private JobPostingService jobPostingService;
 
@@ -157,7 +146,9 @@ public class employeeController {
             @RequestParam("jobAppID") String id) {
         jobApplication jobApp = this.jobApplicationService.getJobApplicationByID(id);
         model.addAttribute("jobApplication", jobApp);
-        model.addAttribute("scheduleID", this.scheduleService.getCurrentScheduleOfJobApp(jobApp).getScheduleId());
+        schedule schedule = this.scheduleService.getCurrentScheduleOfJobApp(jobApp);
+        if(schedule != null)
+            model.addAttribute("scheduleID", schedule.getScheduleId());
         return "view-application-details";
     }
     
@@ -169,9 +160,16 @@ public class employeeController {
         jobApplication jobApplication = this.jobApplicationService.getJobApplicationByID(id);
         if (action != null) {
             if (action.equals("accept")) {
-                this.jobApplicationService.updateAfterReview(jobApplication, true);
-            } else if (action.equals("reject")) {
-                this.jobApplicationService.updateAfterReview(jobApplication, false);
+                if(this.jobApplicationService.updateAfterReview(jobApplication, true) == false){
+                    model.addAttribute("MESSAGE", "Update CV Fail!!");
+                    return "redirect:/jobApps";
+                }
+            }
+            if (action.equals("reject")) {
+                if(this.jobApplicationService.updateAfterReview(jobApplication, false) == false){
+                    model.addAttribute("MESSAGE", "Update CV Fail!!");
+                    return "redirect:/jobApps";
+                }
             }
             model.addAttribute("MESSAGE", "Update CV Successfully");
         } else {
@@ -268,25 +266,17 @@ public class employeeController {
             HttpServletRequest request,
             @RequestParam("scheduleID") String id,
             @RequestParam("action") String action,
-            @RequestParam("Location") String location) {
+            @RequestParam("Location") String location,
+            @RequestParam("typeOfInterview") boolean typeOfInterview) {
         if (action.equals("start")) {
-            //Get schedule
-            schedule schedule = this.scheduleService.getScheduleByID(id);
-            
-            //Set location
-            schedule.setLocation(location);
-            
             //Get and set the list of interviewerReasons of schedule
             String[] selectedOptions = request.getParameterValues("interviewers");
-            for(String interviewID : selectedOptions){
-                interviewerReasons irs = new interviewerReasons();
-                irs.setEmployeeId(interviewID);
-                irs.setScheduleId(id);
-                irs.setStatus("Pending");
-                this.interviewReasonService.add(irs);
-            }
-            //InterviewDate InterviewTime
-            //Get date and time
+            //Get schedule
+            schedule schedule = this.scheduleService.getScheduleByID(id);
+            //Set location and type
+            schedule.setLocation(location);
+            schedule.setTypeOfInterview(typeOfInterview);
+            //Get and set date and time
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
             Date interviewDate = null;
@@ -306,12 +296,12 @@ public class employeeController {
                 java.sql.Time sqlTime = new java.sql.Time(interviewTime.getTime());
                 schedule.setScheduleTime(sqlTime);
             }
-            
             //Update schedule (new set of interviewerReasons, new date and time)
-            if(this.scheduleService.update(schedule,action))
+            if(this.scheduleService.update(schedule,action,selectedOptions))
                 model.addAttribute("MESSAGE","Update schedule successfully");
             else
                 model.addAttribute("MESSAGE","Update schedule fail!!!");
+            
         } else {
             model.addAttribute("MESSAGE", "No action supported!!!");
         }

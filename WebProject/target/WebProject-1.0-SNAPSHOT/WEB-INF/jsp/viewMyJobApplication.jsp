@@ -13,6 +13,7 @@
 <%@page import="com.codeweb.pojos.candidate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <script type="text/javascript">
     expandBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -52,7 +53,7 @@
             }
         });
     });
-</script>
+</script> 
 
 <style>
     html {
@@ -65,28 +66,95 @@
         padding: 0;
         margin: 0;
     }
-    .view-app-left{
-        float: left;
-        margin-top: 15rem;
-        width: 35%;
+     .post-list-left{
+        width: 8rem;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        background-color: rgb(172, 170, 170);
+        overflow: hidden;
+        transition: witdh 0.2s linear;
+        box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+
+
     }
 
-    .view-app-left a{
+    .post-list-left ul, li{
+        padding-left: 0;
+    }
+
+    .logo img{
+        width: 6rem;
+        height: 6rem;
+        background-color: rgb(43, 44, 44);
+        border-radius: 50%;
+
+    }
+
+    .logo{
+        /* text-align: center; */
+        display: flex;
+        transition: all 0.5s ease;
+    }
+
+    .logo span{
+        font-weight: bold;
         font-size: 2rem;
-        margin-left: 5rem;
-        text-decoration: none;
-        padding: 2rem;
-        display: inline-block;
+        text-transform: uppercase;
     }
 
-    .view-app-left i{
-        font-size: 3rem;
-        margin-right: 1.5rem;
+    .post-list-left a{
+        position: relative;
+        color: white;
+        font-size: 2rem;
+        display: table;
+        width: 40rem;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-height: 1rem;
+
+    }
+
+
+    .fa-solid{
+        position: relative;
+        width: 5rem;
+        height: 3rem;
+        top: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .nav-item{
+        position: relative;
+        top: 2rem;
+        margin-left: 1.8rem;
+    }
+
+    .post-list-left a:hover{
+        background: #eee;
+        color: black;
+    }
+
+    nav:hover{
+        width: 28rem;
+        transition: all 0.5s ease;
+    }
+
+    .logout{
+        position: absolute;
+        top: 90%;
+        bottom: 0%;
+
     }
 
 
     .view-app-right{
         margin-bottom: 5rem;
+        float: right;
+        width: 80%;
 
     }
 
@@ -98,9 +166,9 @@
 
 
     .table {
-        width: 65% !important;
+        width: 100%;
         background-color: white;
-        float: right;
+        
         margin-top: 5rem;
     }
 
@@ -173,11 +241,43 @@
 
 
 <body>
-    <div class="view-app-left">
-        <a href="<c:url value="/job/viewMyJob"/>"><i class="fa-solid fa-paper-plane"></i>My Applications</a>
-        <br>
-        <a href="<c:url value="/post-detail/view"/>"><i class="fa-solid fa-heart-circle-check"></i>Favourite Jobs</a>
-    </div>
+    <nav class="post-list-left">
+    <ul>
+        <li>
+            <a href="<c:url value="/"/>" class="logo">
+                <img
+                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                    alt="Monke Tech"
+                    />
+                <span class="nav-item">User</span>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/"/>">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-item">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/job/viewMyJob"/>">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span class="nav-item">My Applications</span>
+            </a>
+        </li>
+        <li>
+            <a href="<c:url value="/post-detail/view"/>">
+                <i class="fa-solid fa-heart-circle-check"></i>
+                <span class="nav-item">Favourite Jobs</span>
+            </a>
+        </li>
+        <li class="logout">
+            <a href="<c:url value="/logout"/>">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="nav-item ">Log Out</span>
+            </a>
+        </li>
+    </ul>
+</nav>
     <div class="view-app-right">
 
         <h1 id="applied-list">My Applications</h1>
@@ -194,9 +294,10 @@
             </thead>
             <c:forEach var="jobApplication" items="${JobApplications}" varStatus="counter">
                 <tbody>
+                   
                     <tr>
                         <td>${counter.count}</td>
-                        <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
+                        <td>${jobApplication.jobPosting.jobPosition.jobName}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
                         <td><button class="btn btn-danger">Cancel Application</button></td>
@@ -216,10 +317,7 @@
                                     </li>
                                     <li><!--In lịch ngay đây, thêm pojo schedule, 1 job application có nhiều schedule-->
                                         <c:forEach var="schedule" items="${jobApplication.getJobApSche()}">
-                                            <c:if test="${schedule.getStatus() == 'On Going'}">
-                                                Schedule date: <fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/>
-                                                Status: ${schedule.getStatus()} 
-                                            </c:if>
+                                            Schedule ID: ${schedule.getScheduleId()}
                                         </c:forEach> </li>
                                 </ul>
                                 <p><strong><a href="<c:url value="/post-detail/${jobApplication.jobPosting.getPostId()}"/>">Link to Job Posting</a></strong></p>
@@ -229,35 +327,8 @@
                 </tbody>
             </c:forEach>
         </table>
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item "><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
     </div>
 
-
-    <%--
-        <h1 >Welcome <%= candidate.getName()%></h2>
-        <h2><c:forEach var="jobApplication" items="${JobApplications}">
-                Cho 1 link dan sang post-detail page
-                <a href="<c:url value="/post-detail/${jobApplication.jobPosting.getPostId()}"/>"/><h2>Job Name: ${jobApplication.jobPosting.jobPosition.jobName}</h2></a>
-                <h2>Apply Date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></h2>
-                <c:forEach var="round" items="${jobApplication.jobPosting.getRounds()}">
-
-                Round ${round.getRoundNumber()}: ${round.getContent()}
-            </c:forEach>
-        </h2>
-        In lịch ngay đây, thêm pojo schedule, 1 job application có nhiều schedule
-        <h2><c:forEach var="schedule" items="${jobApplication.getJobApSche()}">
-                Schedule date: <fmt:formatDate value="${schedule.schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/>
-                <h2>Status: ${schedule.schedule.getStatus()} </h2>
-                <h2>------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h2>
-            </c:forEach></h2> 
-
-    </c:forEach></h2>--%>
 
     <script>
         $(document).ready(function () {

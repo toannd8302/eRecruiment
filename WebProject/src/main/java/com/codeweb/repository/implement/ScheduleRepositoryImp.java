@@ -48,7 +48,7 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
         }
         return false;
     }
-    
+
     @Override
     public boolean update(schedule schedule) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
@@ -61,18 +61,28 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
         }
         return false;
     }
-    
+
     @Override
-    public List<schedule> getScheduleByInterviewerID(String interviewerID) {
+    public List<schedule> getScheduleByStatusAndID(String interviewerID, String scheduleStatus, String interviewScheduleStatus) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<schedule> query = builder.createQuery(schedule.class);
         Root<schedule> root = query.from(schedule.class);
-        Join<schedule,interviewerReasons> interviewReasonJoin = root.join("iRS", JoinType.LEFT);
-        
-        Predicate p = builder.equal(interviewReasonJoin.get("employeeId").as(String.class),interviewerID);
-        query = query.where(p);
-        
+        Join<schedule, interviewerReasons> interviewReasonJoin = root.join("iRS", JoinType.LEFT);
+
+        if (interviewerID != null) {
+            Predicate p3 = builder.equal(root.get("status").as(String.class), scheduleStatus);
+            query = query.where(p3);
+        }
+        if (interviewerID != null) {
+            Predicate p1 = builder.equal(interviewReasonJoin.get("employeeId").as(String.class), interviewerID);
+            query = query.where(p1);
+        }
+        if (interviewScheduleStatus != null) {
+            Predicate p2 = builder.equal(interviewReasonJoin.get("status").as(String.class), interviewScheduleStatus);
+            query = query.where(p2);
+        }
+
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
     }
@@ -83,9 +93,9 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<schedule> query = builder.createQuery(schedule.class);
         Root<schedule> root = query.from(schedule.class);
-        
-        if(!scheduleID.isEmpty() && scheduleID!=null){
-            Predicate p = builder.like(root.get("scheduleId").as(String.class),scheduleID);
+
+        if (!scheduleID.isEmpty() && scheduleID != null) {
+            Predicate p = builder.like(root.get("scheduleId").as(String.class), scheduleID);
             query = query.where(p);
         }
         Query q = session.createQuery(query.distinct(true));

@@ -40,7 +40,7 @@ public class InterviewerController {
     @GetMapping("/interview/schedules")
     public String viewMySchedules(Model model, HttpSession session) {
         employee employee = (employee) session.getAttribute("user");
-        model.addAttribute("SCHEDULES",this.scheduleService.getScheduleByInterviewerID(employee.getId()));
+        model.addAttribute("SCHEDULES",this.scheduleService.getScheduleOfInterviewer(employee));
         return "view-my-schedules";
     }
 }
