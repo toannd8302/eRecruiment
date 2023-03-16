@@ -4,7 +4,7 @@
     Author     : KHOA
 --%>
 
-<%@page import="com.codeweb.pojos.department"%>
+<%@page import="com.codeweb.pojos.candidate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -23,7 +23,7 @@
     }
 
     body {
-        background-color: #343747;
+        background-color: #ddd;
     }
 
     #job-detail-head {
@@ -91,12 +91,20 @@
         text-transform: uppercase;
     }
 
-    #job-detail-head #apply-buton button a {
+    #job-detail-head #apply-buton .apply-buton button a {
         text-decoration: none;
         color: white;
         font-weight: bold;
         font-size: 1.5rem;
 
+    }
+
+
+    #job-detail-head #save-job-button button a{
+        text-decoration: none;
+        color: #00b14f !important;
+        font-weight: bold;
+        font-size: 1.5rem;
     }
 
     #job-detail-head #apply-buton button i:first-child {
@@ -208,6 +216,8 @@
 
     #job-detail-body .info-list li {
         margin: 1rem;
+        font-size: 1.8rem;
+        font-weight: normal;
     }
 
     #job-detail-body .info-list li::before {
@@ -232,15 +242,6 @@
         text-decoration: none;
         color: #00b14f;
     }
-
-    /* #job-detail-body #job-apply button{
-        padding: 9px 25px;
-        background-color: #00b14f;
-        color: white;
-        border-radius: 3px;
-        border: 1px solid #00b14f;
-        font-weight: bold;
-    } */
 
     #job-detail-body #job-apply p,
     button {
@@ -277,7 +278,21 @@
         text-align: center;
     }
 
+
+    #apply-link{
+        text-decoration: none;
+        color: white;
+    }
+
+    #save-job-link{
+        text-decoration: none;
+        color: #00b14f;
+    }
 </style>
+
+<%
+    candidate candidate = (candidate) session.getAttribute("user");
+%>
 
 <div id="job-detail-head">
     <div id="job-head">
@@ -288,15 +303,24 @@
         <div id="general-info">
             <h1>${jobPosting.jobPosition.jobName}</h1>
             <h2>Công ty phần mềm Monke Tech</h2> 
-      
             <p><i class="fa-regular fa-clock"></i>Expired time: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></p>
         </div>
     </div>
 
     <div id="apply-buton">
-        <button class="apply-button"><i class="fa-regular fa-paper-plane"></i><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
-<!--        <button class="save-job-button" value="<c:url value="/post-detail/save/${jobPosting.postId}"/>"v><i class="fa-regular fa-heart"></i>save job</button>-->
-        <button class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <%
+            if (candidate == null) {
+        %>
+        <p style="color: red">You must Login to apply or save job</p>
+        <%
+        } else {
+        %>
+        <button><i class="fa-regular fa-paper-plane"></i><a id="apply-link" href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
+        <button style ="background-color: #00b14f"><a style="color: white" id="save-job-link" href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <%
+            }
+        %>
+
     </div>
 </div>
 
@@ -371,9 +395,19 @@
 
     <div id="job-apply">
         <h1>How to apply</h1>
+        <%
+            if (candidate == null) {
+        %>
+        <p style="color: red">You must Login to apply or save job</p>
+        <%
+        } else {
+        %>
         <p>Candidates apply online by clicking <a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">Apply now</a> below</p>
         <button class="apply-button"><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">APPLY NOW</a></button>
-        <button class="save-job-button">SAVE JOB</button>
+        <button style ="background-color: #00b14f" class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>" style="color: whitesmoke">SAVE JOB</a></button>
         <P>Submission deadline: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></P>
+            <%
+                }
+            %>
     </div>
 </div>

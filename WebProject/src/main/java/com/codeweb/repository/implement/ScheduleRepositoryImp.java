@@ -70,17 +70,16 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
         Root<schedule> root = query.from(schedule.class);
         Join<schedule, interviewerReasons> interviewReasonJoin = root.join("iRS", JoinType.LEFT);
 
-        if (interviewerID != null) {
-            Predicate p3 = builder.equal(root.get("status").as(String.class), scheduleStatus);
-            query = query.where(p3);
-        }
-        if (interviewerID != null) {
+        if (interviewerID != null && interviewerID != null && interviewScheduleStatus != null) {
             Predicate p1 = builder.equal(interviewReasonJoin.get("employeeId").as(String.class), interviewerID);
-            query = query.where(p1);
+            Predicate p2 = builder.equal(root.get("status").as(String.class), scheduleStatus);
+            Predicate p3 = builder.equal(interviewReasonJoin.get("status").as(String.class), interviewScheduleStatus);
+            query = query.where(builder.and(p1,p2,p3));
         }
-        if (interviewScheduleStatus != null) {
-            Predicate p2 = builder.equal(interviewReasonJoin.get("status").as(String.class), interviewScheduleStatus);
-            query = query.where(p2);
+        if (interviewerID != null && interviewerID != null && interviewScheduleStatus == null) {
+            Predicate p1 = builder.equal(interviewReasonJoin.get("employeeId").as(String.class), interviewerID);
+            Predicate p2 = builder.equal(root.get("status").as(String.class), scheduleStatus);
+            query = query.where(builder.and(p1,p2));
         }
 
         Query q = session.createQuery(query.distinct(true));

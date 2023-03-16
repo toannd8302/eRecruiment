@@ -62,11 +62,6 @@ public class AccountController {
         return "redirect:/";
     }
     
-    @GetMapping("/employee")
-    public String loginSuccessfully2(){
-        return "employee-page";
-    }
-    
     @GetMapping("/interviewer")
     public String loginSuccessfully3(){
         return "interviewer-page";

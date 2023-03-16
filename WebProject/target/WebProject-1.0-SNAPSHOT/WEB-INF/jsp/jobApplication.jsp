@@ -29,15 +29,15 @@
 
     #job-detail-head {
         background-color: rgb(255, 255, 255);
-        margin-left: 40rem;
+        margin-left: 30rem;
         padding: 2rem;
         margin-top: 1rem;
     }
 
     #job-logo img {
-        width: 15rem;
+        width: 20rem;
         height: 15rem;
-        background-color: #1d1f28;
+        /*background-color: #1d1f28;*/
     }
 
     #general-info {
@@ -105,21 +105,21 @@
 </style>
 
 
-<body style="background-color: #1d1f28;">
+<body style="background-color: #ddd;">
 
     <c:url value="/job/application" var="action"/>
     <form:form method="post" action="${action}" modelAttribute="application" enctype="multipart/form-data">
         <div id="apply-job-page">
             <div id="job-detail-head">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div id="job-logo">
-                            <img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/logo-removebg-preview.png?raw=true" alt="Back-end">
+                            <img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Removed-bg-logo-comp.png?raw=true" alt="Back-end">
                         </div>
                     </div>
                     <div class="col-sm-5">
                         <div id="general-info">
-                            <h1>Lập trình viên .NET</h1>
+                            <h1>${jobPost.getJobPosition().getJobName()}</h1>
                             <h2>Công ty phần mềm Monke Tech</h2>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                     <input type="submit" class="btn btn-danger" value="Send CV"/>
                 </div>
             </div>
-            <input type="hidden" name="postID" value="${postID}">
+            <input type="hidden" name="postID" value="${jobPost.getPostId()}">
         </div>
     </form:form>
 </body>
