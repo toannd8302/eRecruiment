@@ -5,16 +5,246 @@
     <title>Interview Schedule</title>
     <link rel="stylesheet" type="text/css" href="ScheduleDetail.css">
   </head>
+  <style>
+	body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.title-pen h1 {
+  margin: 0;
+}
+
+.section-pen {
+  margin: 20px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+.interview-table-pen {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.interview-table-pen th {
+  text-align: left;
+  padding: 10px;
+  background-color: #444343;
+  border-bottom: 2px solid #ccc;
+}
+
+.interview-table-pen td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+}
+
+.interview-table-pen th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+.interview-table-pen th {
+  background-color: #333;
+  color: #fff;
+}
+.interviewer-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.interviewer-table thead th {
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+}
+
+.interviewer-table tbody td, .interviewer-table tbody th {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.interviewer-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.interviewer-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.interviewer-table tbody td:first-child, .interviewer-table thead th:first-child {
+  width: 10%;
+}
+
+.interviewer-table tbody td:nth-child(2), .interviewer-table thead th:nth-child(2) {
+  width: 20%;
+}
+
+.interviewer-table tbody td:nth-child(3), .interviewer-table thead th:nth-child(3) {
+  width: 40%;
+}
+
+.interviewer-table tbody td:last-child, .interviewer-table thead th:last-child {
+  width: 30%;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.box {
+  width: 600px;
+  height: 220px;
+  background-color: lightgray;
+  border: 2px solid black;
+  padding: 10px;
+}
+.question {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.option {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f7f7f7;
+  color: #444;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px #6cb2eb;
+  background-color: #fff;
+}
+
+.submit {
+  margin-top: 20px;
+  background-color: #6cb2eb;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit:hover {
+  background-color: #fff;
+  color: #6cb2eb;
+  cursor: pointer;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.number-inter {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.start-btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.start-btn:hover {
+  background-color: #3e8e41; /* Dark green */
+}
+label {
+  display:flex;
+}
+.input-container {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-container input[type="text"], .input-container select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.input-container select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10.72l4.36-4.35.28-.29a1.12 1.12 0 000-1.58l-.43-.43a1.12 1.12 0 00-1.57 0L8 7.59l-2.64-2.64a1.12 1.12 0 00-1.57 0l-.43.43a1.12 1.12 0 000 1.58l.28.29L8 10.72z' fill='%23000000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+input[type="checkbox"] {
+  margin-right: 5px;
+  font-size: 10px;
+ }
+ .multiple-checkbox h2{
+  font-size: 17px;
+  margin-bottom: 10px;
+ }
+  </style>
   <body>
-    <header>
+    <header class="title-pen">
       <h1>Interview Schedule Detail</h1>
     </header>
-	<section>
+	<section class="section-pen">
 		<h2>Pending</h2>
 	</section>
 	<hr>
     <section>
-		<table class="interview-table">
+		<table class="interview-table-pen">
 			<thead>
 			  <tr>
 				<th>Job Name</th>
@@ -35,6 +265,37 @@
 			</tbody>
 		  </table>
 	  </section>
+    <div class="number-inter">Number of Interviewer</div>
+    <table class="interviewer-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>I0001</td>
+          <td>Lo Quang T</td>
+          <td>loquangt@gmail.com</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>I0002</td>
+          <td>Nguyen Duc T</td>
+          <td>nguyenduct@gmail.com</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>I0003</td>
+          <td>Le Quang P</td>
+          <td>lequangp@gmail.com</td>
+        </tr>
+      </tbody>
+    </table>
     <section>
       <h2>Interviewer & Date and Time</h2>
 	  <div class="box-container">
@@ -46,27 +307,25 @@
 		</div>
 		<div class="box">
 			<h4>Interviewer</h4>
-			<p>- Choose the number of interview for this schedule</p>
-			<label for="quantity">Number of Interview:</label>
-			<input type="number" id="quantity" name="quantity" min="1" max="3" step="1">
+			<p>- Choose the interviewer for this schedule</p>
 			<div class="question">- Interviewer:</div>
 				<div class="label">
 				  <label class="multiple-checkbox">
 					<input type="checkbox" name="fruit" value="apple">
-					Email: TranVanC@gmail.com;
-					Full Name: Tran Van C;
+					Email: loquangt@gmail.com;
+					Full Name: Lo Quang T;
 					Role: Manager
 				  </label>
 				  <label>
 					<input type="checkbox" name="fruit" value="banana">						
-					Email: TranVanC@gmail.com;
-					Full Name: Tran Van C;
+					Email: nguyenduct@gmail.com;
+					Full Name: Nguyen Duc T;
 					Role: Manager
 				  </label>
 				  <label>
 					<input type="checkbox" name="fruit" value="banana">						
-					Email: TranVanC@gmail.com;
-					Full Name: Tran Van C;
+					Email: lequangp@gmail.com;
+					Full Name: Le Quang P;
 					Role: Manager
 				  </label>
 
@@ -75,6 +334,18 @@
 		</div>
 	  </div>
     </section>
+    <div class="input-container">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location">
+    </div>
+    
+    <div class="input-container">
+      <label for="interview-type">Interview Type:</label>
+      <select id="interview-type" name="interview-type">
+        <option value="online">Online</option>
+        <option value="offline">Offline</option>
+      </select>
+    </div>
 	<div class="center">
 		<button class="start-btn">Start</button>
 	  </div>
