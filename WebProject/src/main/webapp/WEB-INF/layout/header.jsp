@@ -88,7 +88,7 @@
 
             #account {
                 margin-left: 10rem;
-                margin-top: 2.5rem;
+                margin-top: 1.5rem;
                 position: relative;
                 height: 6.5rem;
             }

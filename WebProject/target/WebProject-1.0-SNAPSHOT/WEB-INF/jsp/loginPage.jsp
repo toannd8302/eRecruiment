@@ -197,10 +197,10 @@
             <div class="login-with-google">
                 <sec:authorize access="!isAuthenticated()">
                     <div class="left"><h3>A Candidate?</h3>
-                        <a href="<c:url value="/oauth2/authorization/google-candidate"/>"><i class="fa-brands fa-google-plus-g"></i></a></div>
+                        <a href="<c:url value="/oauth2/authorization/google-candidate"/>"><i class="fa-brands fa-google"></i></a></div>
 
-                    <div class="right"><h3>A Employee?</h3>
-                        <a href="<c:url value="/oauth2/authorization/google-employee"/>"><i class="fa-brands fa-google-plus-g"></i></a></div>
+                    <div class="right"><h3>A HR Employee?</h3>
+                        <a href="<c:url value="/oauth2/authorization/google-employee"/>"><i class="fa-brands fa-google"></i></a></div>
                         </sec:authorize>
                 
                 

@@ -66,6 +66,33 @@
         padding: 0;
         margin: 0;
     }
+
+    .head-content{
+        background: #00AE72;
+        height: 10.6rem;
+    }
+
+
+    #page-name{
+        margin-left: 29.5rem;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 5rem;
+        background: #fff;
+        color: #FF0000;
+        display: inline-block;
+        padding: 2rem 3.4rem;
+        border-radius: 1rem;
+    }
+
+
+    #user-name{
+        padding-bottom: 2rem;
+        color: #eee;
+        margin-top: 7rem;
+        margin-left: 1rem;
+    }
+
     .post-list-left{
         width: 8rem;
         position: fixed;
@@ -73,12 +100,11 @@
         bottom: 0;
         left: 0;
         height: 100%;
-        background-color: rgb(172, 170, 170);
+        background: rgb(172, 170, 170);
         overflow: hidden;
         transition: witdh 0.2s linear;
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
-
-
+        opacity: 0.9;
     }
 
     .post-list-left ul, li{
@@ -116,20 +142,29 @@
         text-height: 1rem;
 
     }
+    
+    .post-list-left .nav-body{
+        margin-top: 10rem;
+    }
 
 
-    .fa-solid{
+    .post-list-left .nav-body li{
+        margin-top: 4rem;
+    }
+    
+    
+    .post-list-left .fa-solid{
         position: relative;
         width: 5rem;
         height: 3rem;
-        top: 2rem;
+        top: 0.2rem;
         font-size: 2rem;
         text-align: center;
     }
 
     .nav-item{
         position: relative;
-        top: 2rem;
+        top: 0.2rem;
         margin-left: 1.8rem;
     }
 
@@ -158,23 +193,20 @@
 
     .view-app-right{
         margin-bottom: 5rem;
-        float: right;
+        position: absolute;
+        top: 11%;
+        left: 20%;
         width: 80%;
-
+        margin-top: 2.5rem;
+        background: #fff;
+        border-bottom-left-radius: 1rem;
     }
-
-    #applied-list{
-        margin-top: 5rem;
-        font-weight: bold;
-        font-size: 5rem;
-    }
-
 
     .table {
         width: 100%;
         background-color: white;
 
-        margin-top: 5rem;
+        margin-top: 2rem;
     }
 
 
@@ -183,14 +215,15 @@
     }
 
     .table tr th{
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: bold;
     }
 
     .table th,
     td {
         color: black;
-        font-size: 1.3rem;
+        font-size: 1.8rem;
+        text-align: center;
     }
 
     .table .row {
@@ -206,8 +239,12 @@
     }
 
     .table button {
-        padding: 1rem 3rem;
-        font-size: 1.2rem;
+        padding: 0.7rem 2rem;
+        font-size: 1.5rem;
+    }
+
+    .detail-info{
+        text-align: initial;
     }
 
     .detail-info a {
@@ -220,7 +257,7 @@
     }
 
     .detail-info li {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
 
@@ -236,6 +273,8 @@
     }
 
 
+
+
 </style>
 
 <%
@@ -245,7 +284,7 @@
 %>
 
 
-<body>
+<body style="background: #FAF0E6">
     <nav class="post-list-left">
         <ul>
             <li>
@@ -256,24 +295,26 @@
                         />
                 </a>
             </li>
-            <li>
-                <a href="<c:url value="/"/>">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="nav-item">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="<c:url value="/job/viewMyJob"/>">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span class="nav-item">My Applications</span>
-                </a>
-            </li>
-            <li>
-                <a href="<c:url value="/post-detail/view"/>">
-                    <i class="fa-solid fa-heart-circle-check"></i>
-                    <span class="nav-item">Favourite Jobs</span>
-                </a>
-            </li>
+            <div class="nav-body">
+                <li>
+                    <a href="<c:url value="/"/>">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/job/viewMyJob"/>">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span class="nav-item">My Applications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/post-detail/view"/>">
+                        <i class="fa-solid fa-heart-circle-check"></i>
+                        <span class="nav-item">Favourite Jobs</span>
+                    </a>
+                </li>
+            </div>
             <li class="logout">
                 <a href="<c:url value="/logout"/>">
                     <i class="fa-solid fa-right-from-bracket"></i>
@@ -282,15 +323,16 @@
             </li>
         </ul>
     </nav>
-    <div class="view-app-right">
 
-        <div class="create-post-head" style="display: flex; justify-content: space-around">
-            <h1 style="display: flex; flex-direction: column-reverse;">My Applications</h1>
-            <h1 class="nav-item" style="padding-bottom: 2rem; color: red;">Welcome, ${sessionScope.user.getName()}</h1>
+    <div class="head-content">
+        <div class="create-post-head" style="display: flex; justify-content: space-between;">
+            <h1 id="page-name">My Applications</h1>
+            <h1 id="user-name">Welcome, ${sessionScope.user.getName()}</h1>
         </div>
-        <hr/>
-        <table class="table table-striped">
+    </div>          
 
+    <div class="view-app-right">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>No.</th>

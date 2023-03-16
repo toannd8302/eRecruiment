@@ -150,6 +150,7 @@
         color: rgb(171, 36, 36);
         font-weight: bold;
         font-family: 'IBM Plex Mono', monospace;
+        margin-right: 3rem;
     }
     .hot-jobs {
         margin-left: 13rem;
@@ -214,7 +215,7 @@
 
     .product-area-list {
         padding-top: 5rem;
-        margin-left: 6rem;
+        margin-left: 4rem;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding-bottom: 10rem;
@@ -235,6 +236,7 @@
 
     .product-area-list .product h1 {
         font-size: 3.5rem;
+
     }
 
     .product-area-list .product h1 a{
@@ -267,6 +269,19 @@
         color: rgb(243, 20, 243);
         transform: scale(1.1);
     }
+
+    .product-area-list .product .welfare{
+        width: 33rem;
+        overflow: hidden;
+        text-align: center;
+        margin-left: 3rem;
+        max-height: 9rem;
+    }
+
+    .product-area-list .product .welfare::after{
+        content: '...';
+    }
+
 
 
     #seek-job{
@@ -382,6 +397,7 @@
 
     .search-result .result-post p{
         font-size: 1.5rem;
+        margin-left: 1rem;
     }
 
     .search-result .result-post i{
@@ -395,12 +411,13 @@
         background-color: white;
         border: 2px solid white;
         border-radius: 0.5rem;
+        display: flex;
     }
 
-    .search-result .result-post .post-down p{
-        margin-bottom: 0%;
+    .search-result .result-post .post-down .skill-lists{
+        display: flex;
     }
-
+    
     .search-result .result-post .result-post-right{
         display: flex;
         flex-direction: column;
@@ -556,7 +573,7 @@
                 <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
                 <p>${item.salary} $</p>
                 <!--<p>Assurance, Oversea traveling, Team building, Professional workplace welfare</p>-->
-                <p>${item.welfare}</p>
+                <p class="welfare">${item.welfare}</p>
                 <a href="<c:url value="/post-detail/${item.postId}"/>">See more<i class="fa-solid fa-chevron-right"></i></a>
             </div>
 
@@ -577,74 +594,47 @@
     </form>
     <div class="search-result">
         <h2 style="margin-left: 2rem">Found 6969 works</h2>
-        <div class="result-post">
-            <div class="result-post-left">
-                <div class="container mt-3">
-                    <div class="d-flex p-3">
-                        <div class="p-2">
-                            <a href="#"
-                               ><img
-                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Removed-bg-logo-comp.png?raw=true"
-                                    alt=""
-                                    /></a>
-                        </div>
-                        <div class="p-2">
-                            <h2><a href="#"> BrSE</a></h2>
-                            <p>MT Company</p>
-                            <p>
-                                <i class="fa-solid fa-location-dot"></i>1 distrcit, Ho Chi
-                                Minh city
-                            </p>
-                            <p class="salary">
-                                <i class="fa-sharp fa-solid fa-money-bill"></i>1000$
-                            </p>
-                            <div class="post-down">
-                                <p>Japanese</p>
+        <c:forEach var="item" items="${list}">
+            <div class="result-post">
+                <div class="result-post-left">
+                    <div class="container mt-3">
+                        <div class="d-flex p-3">
+                            <div class="p-2">
+                                <a href="<c:url value="/post-detail/${item.postId}"/>"
+                                   ><img
+                                        src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Removed-bg-logo-comp.png?raw=true"
+                                        alt=""
+                                        /></a>
                             </div>
-                        </div>
-                    </div>           
+                            <div class="p-2">
+                                <h2><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h2>
+                                <p>MT Company</p>
+                                <p>
+                                    <i class="fa-solid fa-location-dot"></i>${item.locations}
+                                </p>
+                                <p class="salary">
+                                    <i class="fa-sharp fa-solid fa-money-bill"></i>${item.salary}
+                                </p>
+                                <div class="post-down">
+                                    <c:forEach var="skill" items="${item.jobPosition.skills}">
+                                        <li class="skill-lists">
+                                            <p style="margin-bottom: 0;">${skill.skillName}</p>
+                                        </li> 
+                                    </c:forEach>
+                                    
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                </div>
+                <div class="result-post-right">
+                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></a>
+                    
+                    <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
+                    <p>4 hours ago</p>
                 </div>
             </div>
-            <div class="result-post-right">
-                <i class="fa-regular fa-bookmark"></i>
-                <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
-                <p>4 hours ago</p>
-            </div>
-        </div>
-        <div class="result-post">
-            <div class="result-post-left">
-                <div class="container mt-3">
-                    <div class="d-flex p-3">
-                        <div class="p-2">
-                            <a href="#"
-                               ><img
-                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Removed-bg-logo-comp.png?raw=true"
-                                    alt=""
-                                    /></a>
-                        </div>
-                        <div class="p-2">
-                            <h2><a href="#"> BrSE</a></h2>
-                            <p>MT Company</p>
-                            <p>
-                                <i class="fa-solid fa-location-dot"></i>1 distrcit, Ho Chi
-                                Minh city
-                            </p>
-                            <p class="salary">
-                                <i class="fa-sharp fa-solid fa-money-bill"></i>1000$
-                            </p>
-                            <div class="post-down">
-                                <p>Japanese</p>
-                            </div>
-                        </div>
-                    </div>           
-                </div>
-            </div>
-            <div class="result-post-right">
-                <i class="fa-regular fa-bookmark"></i>
-                <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
-                <p>4 hours ago</p>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 
     <div id="contact" class="contact-us">

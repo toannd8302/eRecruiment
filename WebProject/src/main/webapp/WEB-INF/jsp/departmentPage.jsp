@@ -18,6 +18,7 @@
 
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;600;800&display=swap');
     html {
         font-size: 62.5%;
         font-family: Arial, Helvetica, sans-serif;
@@ -43,6 +44,15 @@
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
         opacity: 0.8;
     }
+    
+    .post-list-left .nav-body{
+        margin-top: 12rem;
+    }
+    
+    .post-list-left .nav-body li{
+        margin-top: 2rem;
+    }
+    
     .post-list-left ul, li{
         padding-left: 0;
     }
@@ -70,17 +80,17 @@
         text-decoration: none;
         padding: 1.5rem;
     }
-    .fa-solid{
+    .post-list-left .fa-solid{
         position: relative;
         width: 5rem;
         height: 3rem;
-        top: 2rem;
+        top: 0.2rem;
         font-size: 2rem;
         text-align: center;
     }
     .nav-item{
         position: relative;
-        top: 2rem;
+        top: 0.2rem;
         margin-left: 1.8rem;
     }
     .post-list-left a:hover{
@@ -100,12 +110,33 @@
         top: 90%;
         bottom: 0%;
     }
+
+    .create-post-head{
+        background: #00AE72;
+        height: 25rem;
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    .head-content{
+        margin-left: 30rem;
+        display: flex;
+        justify-content: space-around;
+        color: #CD2626;
+
+    }
+
+
     .post-list-right{
-        float: right;
+        left: 20%;
         width: 80%;
         padding-left: 2rem;
         margin-top: 2rem;
+        position:absolute;
+        top: 18%;
+        background-color: #fff;
         /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
+        border-top-left-radius: 1rem;
 
     }
 
@@ -203,25 +234,26 @@
                         />
                 </a>
             </li>
-            <li>
-                <a href="<c:url value="/department"/>">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="nav-item">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="<c:url value="/department" />">
-                    <i class="fa-solid fa-list"></i>
-                    <span class="nav-item">Job Posting List</span>
-                </a>
-            </li>
-            <li>
-                <a href="<c:url value="/createjobposting" />">
-                    <i class="fa-solid fa-folder-plus"></i>
-                    <span class="nav-item">Create a Job Posting</span>
-                </a>
-            </li>
-
+            <div class="nav-body">
+                <li>
+                    <a href="<c:url value="/department"/>">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/department" />">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="nav-item">Job Posting List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/createjobposting" />">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        <span class="nav-item">Create a Job Posting</span>
+                    </a>
+                </li>
+            </div>
             <li class="logout">
                 <a href="<c:url value="/logout"/>">
                     <i class="fa-solid fa-right-from-bracket"></i>
@@ -230,9 +262,14 @@
             </li>
         </ul>
     </nav>
+
+    <div class="create-post-head">
+        <div class="head-content">
+            <h1 style="font-weight: bold; font-size: 6rem; margin-top: 6rem; color:#fff;">Job Post List</h1>
+            <h1 style="font-weight: bold; margin-left: 28rem;">${sessionScope.department.departmentName} Department</h1>
+        </div>    
+    </div>
     <div class="post-list-right">
-        <h1>Job Posting List of ${sessionScope.department.departmentName} Department</h1>
-        <hr>
         <div class="container mt-3">
             <table class="styled-table">
                 <thead>
@@ -268,9 +305,7 @@
                             <a id="delete-post" onclick="deletePost(event)" 
                                href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>
                             <i class="fa-solid fa-trash trash-bin"></i></a>
-                            <br>
-                            <div class="blank">
-                            </div>
+                            <!--                            <br>-->
                         </td>
                     </tr>   
 

@@ -43,6 +43,15 @@
                 box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
                 opacity: 0.8;
             }
+
+            .post-list-left .nav-body{
+                margin-top: 12rem;
+            }
+
+            .post-list-left .nav-body li{
+                margin-top: 2rem;
+            }
+
             .post-list-left ul, li{
                 padding-left: 0;
             }
@@ -70,17 +79,17 @@
                 text-decoration: none;
                 padding: 1.5rem;
             }
-            .fa-solid{
+            .post-list-left .fa-solid{
                 position: relative;
                 width: 5rem;
                 height: 3rem;
-                top: 2rem;
+                top: 0.2rem;
                 font-size: 2rem;
                 text-align: center;
             }
             .nav-item{
                 position: relative;
-                top: 2rem;
+                top: 0.2rem;
                 margin-left: 1.8rem;
             }
             .post-list-left a:hover{
@@ -292,11 +301,11 @@
 
 
             #location-list select option{
-                background: #e3dac9;           
+                background: #e3dac9;
             }
 
             .create-post-head{
-                background: #99CC66;
+                background: #00AE72;
                 height: 25rem;
                 font-family: 'Poppins', sans-serif;
 
@@ -307,7 +316,7 @@
                 display: flex;
                 justify-content: space-around;
                 color: #CD2626;
-                
+
             }
 
             .post-step{
@@ -336,7 +345,7 @@
                 width: 9.3rem;
                 font-size: 1.5rem;
             }
-            
+
             .round input{
                 border: none;
                 border-bottom: 2px solid silver;
@@ -345,7 +354,7 @@
             .welfare{
                 margin-top: 4rem;
             }
-            
+
             .welfare .muted-text{
                 color: #828282;
             }
@@ -371,7 +380,7 @@
                 border-radius: 50%;
                 background-color: #008B00;
                 color: #fff;
-                display: inline; 
+                display: inline;
             }
 
             #welfare-container button{
@@ -382,11 +391,11 @@
                 transform: translateX(-5rem);
 
             }
-            
+
             .foot-btn{
                 margin-left: 30rem;
             }
-            
+
             .foot-btn button{
                 font-size: 2rem;
                 width: 25rem;
@@ -396,15 +405,15 @@
                 border: none;
                 box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
             }
-            
+
             .foot-btn button:active{
                 transform: translateY(0.3rem);
             }
-            
+
             .foot-btn button:hover{
                 background: #CD0000;
             }
-            
+
             .foot-btn input{
                 font-size: 2rem;
                 width: 15rem;
@@ -431,25 +440,28 @@
                             />                     
                     </a>
                 </li>
-                <li>
-                    <a href="<c:url value="/"/>">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="nav-item">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/department" />">
-                        <i class="fa-solid fa-list"></i>
-                        <span class="nav-item">Job Posting List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-folder-plus"></i>
-                        <span class="nav-item">Create a Job Posting</span>
-                    </a>
-                </li>
+                <div class="nav-body">
 
+
+                    <li>
+                        <a href="<c:url value="/"/>">
+                            <i class="fa-solid fa-house"></i>
+                            <span class="nav-item">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/department" />">
+                            <i class="fa-solid fa-list"></i>
+                            <span class="nav-item">Job Posting List</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-folder-plus"></i>
+                            <span class="nav-item">Create a Job Posting</span>
+                        </a>
+                    </li>
+                </div>
                 <li class="logout">
                     <a href="<c:url value="/logout"/>">
                         <i class="fa-solid fa-right-from-bracket"></i>
@@ -483,7 +495,7 @@
             </div>
 
             <c:url value="/createjobposting" var="action" />
-            <form:form id="my-form" method="post" modelAttribute="jobPosting" action="${action}" >
+            <form:form id="my-form" method="post" modelAttribute="jobPosting" action="${action}">
                 <div id="Concak">   
                     <form:select  path="jobPosition.jobId" required="true">
                         <form:option value="">-- Select Job Position --</form:option>
@@ -502,7 +514,7 @@
                             <div class="text-info">
 
                                 <h3>Salary</h3>
-                                <form:input type="number" path="salary" min = "0" required="true"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
+                                <form:input type="number"  path="salary" min = "0" required="true"/> <i class="fa-solid fa-dollar-sign dollar" style="top: 0;"></i>
                             </div>
                             <%--<form:label path="level">Level</form:label>--%>
                             <div class="text-info">
@@ -575,25 +587,25 @@
                             <div class="text-info">
                                 <h3>Description</h3>
                                 <%--<form:input type="text" path="descriptions" required="true"/>--%>
-                                <form:textarea cols="100" rows="10" path="descriptions"/> <br/>
+                                <form:textarea cols="100" rows="10" path="descriptions" required="true" /> <br/>
                             </div>
 
                             <div class="round">
 
 
                                 <label style="margin-bottom: 3rem;">Number of Rounds:</label>
-                                <input style=" text-align: center; font-size: 2rem;"t type="number" name="numRounds" min ="0" onchange="createRounds(this.value)"/><br/>
+                                <input style=" text-align: center; font-size: 2rem;" type="number" name="numRounds" min ="0" onchange="createRounds(this.value)"/><br/>
                                 <div id="rounds"></div>
                             </div>
                         </div>
                     </div>                 
                 </div>
-                            <div class="foot-btn">
-                                
-                            
-                <button id="confirm-post" onclick="confirmPost(event)">Post</button>
-                <br>
-                <input type="reset" value="Reset" />
+                <div class="foot-btn">
+
+
+                    <button id="confirm-post" onclick="confirmPost(event)">Post</button>
+                    <br>
+                    <input type="reset" value="Reset" />
                 </div>
             </form:form>
         </div>
@@ -614,6 +626,18 @@
                 welfareContainer.append(div);
             }
             function confirmPost(event) {
+                var salaryInput = document.querySelector('input[name="salary"]');
+                var expInput = document.querySelector('input[name="exprienceRequirement"]');
+                var roundsInput = document.querySelector('input[name="numRounds"]');
+
+                // Check for empty values
+                if (salaryInput.value === "" || expInput.value === "" || roundsInput.value === "") {
+                    alert("Please fill in all fields");
+                    event.preventDefault();
+                    return false;
+                }
+
+
                 // Get a reference to the button element
                 var button = document.getElementById("confirm-post");
 
@@ -642,6 +666,7 @@
                     roundsDiv.removeChild(roundsDiv.firstChild);
                 }
 
+
                 for (var i = 1; i <= numRoundsInt; i++) {
                     var roundDiv = document.createElement("div");
                     var roundNumberLabel = document.createElement("label");
@@ -656,6 +681,7 @@
                     var contentInput = document.createElement("input");
                     contentInput.type = "text";
                     contentInput.name = "jobPosting.rounds[" + (i - 1) + "].content";
+                    contentInput.required = true;
                     contentInput.oninput = function () {
                         // Lưu giá trị của input vào mảng roundContentArray
                         var currentRound = parseInt(this.name.match(/\[(.*?)\]/)[1]);
@@ -679,6 +705,8 @@
                 roundContentInput.name = "roundContentArray";
                 roundsDiv.appendChild(roundContentInput);
             }
+
+
         </script>
     </body>
 </html>

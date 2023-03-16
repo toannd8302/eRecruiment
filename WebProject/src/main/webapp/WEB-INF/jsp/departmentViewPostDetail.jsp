@@ -10,7 +10,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     html {
         font-size: 62.5%;
@@ -60,59 +60,22 @@
         margin-right: 5px;
     }
 
-    #job-detail-head #apply-buton button:first-child {
-        margin-top: 2rem;
-        padding: 1rem;
-        border-radius: 5px;
-        background-color: #00b14f;
-        border: 3px solid #00b14f;
-        margin-right: 1rem;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-
+      #return-btn{
+        margin: 3rem;  
+        
     }
-
-    #job-detail-head #apply-buton button:last-child {
-        margin-top: 2rem;
-        padding: 1rem;
-        border-radius: 5px;
-        background-color: #ffffff;
-        border: 3px solid #00b14f;
-        margin-right: 1rem;
-        color: #00b14f;
-        font-weight: bold;
-        font-size: 1.5rem;
-        text-align: center;
-
-    }
-
-    #job-detail-head #apply-buton button{
-        text-transform: uppercase;
-    }
-
-    #job-detail-head #apply-buton button a {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-
-    }
-
-    #job-detail-head #apply-buton button i:first-child {
+    
+    #return-btn a{
+        color: #000;
         font-size: 2rem;
-        color: #ffffff;
-        margin-right: 1rem;
+        padding: 0.8rem 1rem;
+        background: #ccc;
+        border-radius: 50%;
     }
 
-    #job-detail-head #apply-buton button i:last-child {
-        font-size: 2rem;
-        color: #00b14f;
-        margin-right: 1rem;
+    #return-btn a:hover{
+        background: #aaa;
     }
-
-
-
 
     /* CSS for recruit detail  */
 
@@ -163,6 +126,10 @@
         margin-left: 3.5rem;
     }
 
+    
+    
+
+    
 
 
     /* CSS for Job Location */
@@ -298,7 +265,10 @@
             <p><i class="fa-regular fa-clock"></i>Create Time: <fmt:formatDate value="${jobPosting.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
         </div>
     </div>
-
+        <div id="return-btn">
+            <a href="<c:url value="/department"/>"><i class="fa-solid fa-house"></i></a>
+            
+        </div>
 
 </div>
 
