@@ -1,7 +1,8 @@
+var list_view = document.getElementById(".list-view");
+var grid_view = document.getElementById(".grid-view");
+
 var li_links = document.querySelectorAll(".links ul li");
 var view_wraps = document.querySelectorAll(".view_wrap");
-var list_view = document.querySelector(".list-view");
-var grid_view = document.querySelector(".grid-view");
 
 li_links.forEach(function(link){
 	link.addEventListener("click", function(){
