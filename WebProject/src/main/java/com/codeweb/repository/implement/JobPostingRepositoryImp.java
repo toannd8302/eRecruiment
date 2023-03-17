@@ -26,6 +26,7 @@ import java.util.Set;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.ListJoin;
 import javax.persistence.criteria.Subquery;
 
@@ -59,8 +60,11 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
         Root<jobPosting> root = query.from(jobPosting.class);
-        Join<jobPosting, jobPosition> position = root.join("jobPosition");
-        Join<jobPosition, skill> skill = position.join("skills");
+        Join<jobPosting, jobPosition> position = root.join("jobPosition", JoinType.LEFT);
+        Join<jobPosition, skill> skill = position.join("skills", JoinType.LEFT);
+
+        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class), "Approved");
+        query = query.where(p3);
 
         if (!kw.isEmpty() && kw != null) {
             Predicate p1 = builder.like(position.get("jobName").as(String.class),
@@ -70,12 +74,8 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
             query = query.where(builder.or(p1, p2));
         }
 
-        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class), "Approved");
-        query = query.where(builder.and(p3));
-
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
-
 //        Query q = session.createQuery("SELECT DISTINCT p FROM jobPosting p JOIN p.jobPosition j JOIN j.skills s"
 //                + " WHERE j.jobName LIKE :kw"
 //                + " OR s.skillName LIKE :kw");

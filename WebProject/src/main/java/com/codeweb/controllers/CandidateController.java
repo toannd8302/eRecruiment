@@ -40,7 +40,7 @@ public class CandidateController {
     public String Job(Model model,
             @RequestParam("data") String postID) {
         model.addAttribute("application", new jobApplication());
-        model.addAttribute("postID", postID);
+        model.addAttribute("jobPost", this.jobPostingService.getPostByID(postID));
         return "apply-job";
     }
 

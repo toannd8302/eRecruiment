@@ -27,6 +27,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
 
         <style>
+            @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=Noto+Sans+Lepcha&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&display=swap");
             html {
                 font-size: 62.5%;
                 font-family: Arial, Helvetica, sans-serif;
@@ -37,6 +40,9 @@
                 margin: 0;
             }
 
+            body {
+                /* background-color: #FFEFD5; */
+            }
 
             .container-fluid {
                 padding: 0%;
@@ -44,27 +50,27 @@
             }
 
             #header {
-                background-color: #161718;
+                background-color: #efefef;
                 width: 100%;
                 height: 10rem;
                 position: relative;
             }
 
             #logo img {
-                width: 15rem;
-                height: 12rem;
+                width: 18rem;
+                height: 10rem;
             }
 
             #main-info {
                 list-style: none;
                 font-size: 2rem;
-                margin-top: 4rem;
+                margin-top: 3rem;
                 position: relative;
             }
 
             #main-info a {
                 text-decoration: none;
-                color: white;
+                color: crimson;
             }
 
             #main-info .dropdown-menu {
@@ -82,7 +88,7 @@
 
             #account {
                 margin-left: 10rem;
-                margin-top: 2.5rem;
+                margin-top: 1.5rem;
                 position: relative;
                 height: 6.5rem;
             }
@@ -96,12 +102,13 @@
 
             #account h2,
             li {
-                font-size: 2rem;
+                font-size: 2.5rem;
                 list-style: none;
+                font-weight: bold;
             }
 
             #account li a {
-                color: white;
+                /* color: white; */
             }
 
             #account ul {
@@ -110,7 +117,7 @@
 
             #my-account {
                 margin-left: 1.5rem;
-                margin-top: 1.5rem;
+                margin-top: 1rem;
             }
 
             #my-account .dropdown-menu {
@@ -119,40 +126,46 @@
 
             #my-account .dropdown-item {
                 background-color: #161718;
+                color: white;
             }
 
             #my-account .dropdown-item:hover {
                 background-color: #393a3a;
             }
 
-
             /* CSS for login link */
-            #login{
+            #login {
                 margin-left: 10rem;
-                margin-top: 4rem;
-
+                margin-top: 3rem;
+                transition: 0.3s ease-in-out;
             }
 
-            #login a{
+            #login:hover{
+                transform: scale(1.2);
+            }
+            
+            #login a {
                 font-size: 2rem;
                 text-decoration: none;
-                color: rgb(125, 123, 123);
+                color: rgb(77, 77, 77);
             }
 
-
-            #for-department{
-                margin-top: 4rem;
+            #for-department {
+                margin-top: 3rem;
                 display: inline-block;
                 text-decoration: none;
                 font-size: 2rem;
                 color: rgb(228, 36, 75);
+                transition: 0.3s ease-in-out;
             }
 
-            #for-department:hover{
-                color: rgb(196, 32, 64);
+            #for-department:hover {
+                color: rgb(162, 30, 57);
+                transform: scale(1.1);
+                
             }
 
-            #for-department i{
+            #for-department i {
                 margin-right: 1rem;
             }
         </style>
@@ -166,7 +179,7 @@
                         <div id="logo">
 
                             <a href="<c:url value="/"/>"><img
-                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/MonkeTech_Logo_PNG.png?raw=true"
+                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
                                     alt="Monke Tech"></a>
                         </div>
                     </div>
@@ -181,7 +194,7 @@
                                         <li><a href="#introduce">About</a></li>
                                     </div>
                                     <div class="col-sm">
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="#contact">Contact</a></li>
                                     </div>
                                 </div>
                             </ul>
@@ -213,7 +226,7 @@
                                             <ul>
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                       data-bs-toggle="dropdown">My Account</a>
+                                                       data-bs-toggle="dropdown" style="color: crimson">My Account</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="<c:url value="/account"/>">My Profile</a></li>
                                                         <li><a class="dropdown-item" href="<c:url value="/job/viewMyJob"/>">View My Applications</a></li>
@@ -232,7 +245,6 @@
         </div>
     </body>
 </html>
-
 
 
 

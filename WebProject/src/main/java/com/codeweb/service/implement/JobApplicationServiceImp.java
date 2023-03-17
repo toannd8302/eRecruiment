@@ -10,6 +10,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.JobApplicationRepository;
 import com.codeweb.service.JobApplicationService;
+import com.codeweb.service.SendMailService;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -28,15 +29,11 @@ chịu trách nhiệm cho việc xử lý các nghiệp vụ của ứng dụng
  */
 @Service
 public class JobApplicationServiceImp implements JobApplicationService {
-
-//    private final Cloudinary cloudinary;
-//
-//    @Autowired
-//    public JobApplicationServiceImpl(Cloudinary cloudinary) {
-//        this.cloudinary = cloudinary;
-//    }
     @Autowired
     private Cloudinary cloudinary;
+    
+    @Autowired
+    private SendMailService sendMailService;
 
     @Autowired
     private JobApplicationRepository jobApplicationRepository;
@@ -69,15 +66,24 @@ public class JobApplicationServiceImp implements JobApplicationService {
 
     @Override
     public boolean updateAfterReview(jobApplication jobApplication, boolean result) {
+        String title;
+        String content;
         try {
             if (result) {
                 jobApplication.setCvStatus("Approved");
                 jobApplication.setApplicationStatus("Scheduling");
+                title = "Results of CV assessment for " + jobApplication.getJobPosting().getJobPosition().getJobName() + " application";
+                content = "Congratulation, your CV passes.\nWe will send you schedule interview in next email.";
             } else {
                 jobApplication.setCvStatus("Rejected");
                 jobApplication.setApplicationStatus("Fail");
+                title = "Results of CV assessment for " + jobApplication.getJobPosting().getJobPosition().getJobName() + " application";;
+                content = "We are sorry to inform that your CV does not meet recruitment requirements.\nGood luck on next time!!";
             }
-            return this.jobApplicationRepository.update(jobApplication);
+            if(this.jobApplicationRepository.update(jobApplication)){
+                this.sendMailService.sendEmail(jobApplication.getCandidate().getEmail(), title, content);
+                return true;
+            }
         } catch (Exception e) {
             System.err.println("==UPDATE APPLICATION==" + e.getMessage());
         }
