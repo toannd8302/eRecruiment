@@ -72,6 +72,7 @@
 
     td {
         padding: 6px 10px;
+        text-align: center;
     }
 
     th {
@@ -226,7 +227,7 @@
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
                         </form>
@@ -256,7 +257,7 @@
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                                 <td><a href="#">Cancel</a></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
@@ -286,7 +287,7 @@
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                                 <td><a href="#">Cancel</a></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>

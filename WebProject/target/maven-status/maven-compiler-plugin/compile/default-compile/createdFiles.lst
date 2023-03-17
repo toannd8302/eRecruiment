@@ -78,6 +78,7 @@ com\codeweb\pojos\jobApplicationSchedule.class
 com\codeweb\repository\DepartmentRepository.class
 com\codeweb\repository\ReportRepository.class
 com\codeweb\service\JobPositionService.class
+com\codeweb\controllers\DepartmentController$1.class
 com\codeweb\repository\implement\SkillRepositoryImp.class
 com\codeweb\pojos\report.class
 com\codeweb\service\ReportService.class

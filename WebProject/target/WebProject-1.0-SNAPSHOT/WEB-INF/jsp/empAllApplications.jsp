@@ -71,6 +71,7 @@
 
     td {
         padding: 6px 10px;
+        text-align: center;
     }
 
     th {

@@ -152,7 +152,6 @@
     #job-detail-head {
         margin-left: 20rem;
     }
-
     #job-detail-head #apply-buton button:first-child {
         margin-top: 2rem;
         padding: 1rem;
@@ -166,7 +165,8 @@
     }
 
     #job-detail-head #apply-buton button:first-child:hover {
-        background-color: #e74c3c;
+        background-color: #fff;
+        color: #00b14f;
     }
 
     #job-detail-head #apply-buton button:last-child {
@@ -183,7 +183,8 @@
     }
 
     #job-detail-head #apply-buton button:last-child:hover {
-        background-color: #e74c3c;
+        background-color: #00b14f;
+        color: #fff;
     }
 
     #job-detail-head #apply-buton button a {
@@ -197,6 +198,7 @@
         font-size: 2rem;
         color: #ffffff;
         margin-right: 1rem;
+ 
     }
 
     #job-detail-head #apply-buton button i:last-child {
@@ -310,8 +312,8 @@
     #footer {
         background-color: #161718;
     }
-    .review input{
-
+    .apply-button{
+        width: auto;
     }
 </style>
 
@@ -366,6 +368,7 @@
             </div>
         </div>
         <div class="col-sm-2">
+
             <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
                 <div class="review">
                     <form method="post" action="<c:url value="/jobApps/job-application-details/review-app"/>">
@@ -399,8 +402,12 @@
             <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduled'}">
                 <div class="scheduled">
                     <form method="get" action="<c:url value="/schedules/schedule-details"/>">
-                        <input type="hidden" name="scheduleID" value="${scheduleID}">
-                        <button name="action" value="View Schedule">View Schedule</button>
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <input type="hidden" name="scheduleID" value="${scheduleID}">
+                                <button name="action" value="View Schedule">View Schedule</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </c:if>
@@ -408,8 +415,12 @@
             <c:if test="${jobApplication.getApplicationStatus() eq 'On Going'}">
                 <div class="on-going">
                     <form method="get" action="<c:url value="/schedules/schedule-details"/>">
-                        <input type="hidden" name="scheduleID" value="${scheduleID}">
-                        <button name="action" value="View Schedule">View Schedule</button>
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <input type="hidden" name="scheduleID" value="${scheduleID}">
+                                <button name="action" value="View Schedule">View Schedule</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </c:if>

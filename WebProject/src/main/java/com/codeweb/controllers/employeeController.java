@@ -56,7 +56,7 @@ public class employeeController {
         model.addAttribute("REJECTED", jobPostingMap.get("Rejected"));
         return "view-all-postings";
     }
-    
+
     @GetMapping("/jobPostings/job-posting-details")
     public String viewJobPostingDetails(Model model,
             @RequestParam("postID") String id) {
@@ -64,7 +64,7 @@ public class employeeController {
         return "view-posting-details";
     }
 
-    //DECIDE POST
+    //DECIDE POST, ACCEPT/REJECT
     @PostMapping("/jobPostings/job-posting-details/evaluate-post")
     public String decidePost(Model model, HttpServletRequest request,
             @RequestParam("postID") String id,
@@ -72,19 +72,27 @@ public class employeeController {
         jobPosting jobPosting = this.jobPostingService.getPostByID(id);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date expiredDate = null;
-        try {
-            expiredDate = dateFormat.parse(request.getParameter("expiredDate"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if (expiredDate != null) {
-            jobPosting.setExpiredTime(expiredDate);
-        }
         if (action != null) {
-            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
-                model.addAttribute("MESSAGE", "Accept POSTING Successfully");
-            } else {
-                model.addAttribute("MESSAGE", "Accept POSTING Fail");
+            if (action.equals("accept")) {
+                try {
+                    expiredDate = dateFormat.parse(request.getParameter("expiredDate"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if (expiredDate != null) {
+                    jobPosting.setExpiredTime(expiredDate);
+                }
+                if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+                    model.addAttribute("MESSAGE", "Accept POSTING Successfully");
+                } else {
+                    model.addAttribute("MESSAGE", "Accept POSTING Fail");
+                }
+            } else if (action.equals("reject")) {
+                if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+                    model.addAttribute("MESSAGE", "Reject POSTING Successfully");
+                } else {
+                    model.addAttribute("MESSAGE", "Reject POSTING Fail");
+                }
             }
         } else {
             model.addAttribute("MESSAGE", "No action supported!!!");
@@ -92,23 +100,23 @@ public class employeeController {
         return "redirect:/jobPostings";
     }
 
-    //Reject Post
-    @PostMapping("/jobPostings/job-posting-details/reject-post")
-    public String rejectPost(Model model,
-            @RequestParam("postID") String id,
-            @RequestParam("action") String action) {
-        jobPosting jobPosting = this.jobPostingService.getPostByID(id);
-        if (action != null) {
-            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
-                model.addAttribute("MESSAGE", "Reject POSTING Successfully");
-            } else {
-                model.addAttribute("MESSAGE", "Reject POSTING Fail");
-            }
-        } else {
-            model.addAttribute("MESSAGE", "No action supported!!!");
-        }
-        return "redirect:/jobPostings";
-    }
+//    //Reject Post
+//    @PostMapping("/jobPostings/job-posting-details/reject-post")
+//    public String rejectPost(Model model,
+//            @RequestParam("postID") String id,
+//            @RequestParam("action") String action) {
+//        jobPosting jobPosting = this.jobPostingService.getPostByID(id);
+//        if (action != null) {
+//            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+//                model.addAttribute("MESSAGE", "Reject POSTING Successfully");
+//            } else {
+//                model.addAttribute("MESSAGE", "Reject POSTING Fail");
+//            }
+//        } else {
+//            model.addAttribute("MESSAGE", "No action supported!!!");
+//        }
+//        return "redirect:/jobPostings";
+//    }
 
     //End Post
     @PostMapping("/jobPostings/job-posting-details/end-post")
@@ -127,9 +135,8 @@ public class employeeController {
         }
         return "redirect:/jobPostings";
     }
-    
+
     //=================JOB APPLICATION HERE=======================//
-    
     @GetMapping("/jobApps")
     public String viewApplication(Model model) {
         Map<String, List<jobApplication>> jobApplicationMap = this.jobApplicationService.getApplicationByStatus();
@@ -140,18 +147,19 @@ public class employeeController {
         model.addAttribute("REJECT", jobApplicationMap.get("Fail"));
         return "view-all-apps";
     }
-    
+
     @GetMapping("/jobApps/job-application-details")
     public String viewJobAppDetails(Model model,
             @RequestParam("jobAppID") String id) {
         jobApplication jobApp = this.jobApplicationService.getJobApplicationByID(id);
         model.addAttribute("jobApplication", jobApp);
         schedule schedule = this.scheduleService.getCurrentScheduleOfJobApp(jobApp);
-        if(schedule != null)
+        if (schedule != null) {
             model.addAttribute("scheduleID", schedule.getScheduleId());
+        }
         return "view-application-details";
     }
-    
+
     //REVIEWING CV
     @PostMapping("/jobApps/job-application-details/review-app")
     public String reviewJobApp(Model model,
@@ -160,13 +168,13 @@ public class employeeController {
         jobApplication jobApplication = this.jobApplicationService.getJobApplicationByID(id);
         if (action != null) {
             if (action.equals("accept")) {
-                if(this.jobApplicationService.updateAfterReview(jobApplication, true) == false){
+                if (this.jobApplicationService.updateAfterReview(jobApplication, true) == false) {
                     model.addAttribute("MESSAGE", "Update CV Fail!!");
                     return "redirect:/jobApps";
                 }
             }
             if (action.equals("reject")) {
-                if(this.jobApplicationService.updateAfterReview(jobApplication, false) == false){
+                if (this.jobApplicationService.updateAfterReview(jobApplication, false) == false) {
                     model.addAttribute("MESSAGE", "Update CV Fail!!");
                     return "redirect:/jobApps";
                 }
@@ -177,7 +185,7 @@ public class employeeController {
         }
         return "redirect:/jobApps";
     }
-    
+
     //AUTOMATICALLY OR MANUALLY SCHEDULNG
     @PostMapping("/jobApps/job-application-details/schedule-app")
     public String schedulingJobApp(Model model,
@@ -207,7 +215,7 @@ public class employeeController {
         }
         return "redirect:/employee";
     }
-    
+
     //MANUALLY - CRETAE NEW SCHEDULE
     @PostMapping("/schedule-app/create-new-schedule")
     public String createNewSchedule(Model model,
@@ -225,7 +233,7 @@ public class employeeController {
         model.addAttribute("ScheduleList", this.scheduleService.getSuitableListOfSchedule(postID, roundNumber));
         return "scheduling-job-application";
     }
-    
+
     //MANUALLY SCHEDULING WITH A CHOOSED SCHEDULE
     @PostMapping("/schedule-app/choosed-schedule")
     public String chooseSchedule(Model model,
@@ -235,9 +243,8 @@ public class employeeController {
         model.addAttribute("MESSAGE", message);
         return "redirect:/jobApps";
     }
-    
+
     //=================SCHEDULES HERE=======================//
-    
     @GetMapping("/schedules")
     public String viewSchedules(Model model) {
         Map<String, List<Object[]>> scheduleMap = this.scheduleService.getScheduleByStatusV2();
@@ -245,13 +252,13 @@ public class employeeController {
         model.addAttribute("ON_GOING", scheduleMap.get("On Going"));
         return "view-all-schedules";
     }
-    
+
     @GetMapping("/schedules/schedule-details")
     public String viewScheduleDetails(Model model,
             @RequestParam("scheduleID") String id) {
         schedule schedule = this.scheduleService.getScheduleByID(id);
         String stringMatch = new String();
-        for(interviewerReasons i : schedule.getiRS()){
+        for (interviewerReasons i : schedule.getiRS()) {
             stringMatch += new String(i.getEmployeeId() + ", ");
         }
         model.addAttribute("stringMatch", stringMatch);
@@ -289,24 +296,23 @@ public class employeeController {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            if(interviewDate != null){
+            if (interviewDate != null) {
                 schedule.setScheduleDate(interviewDate);
             }
-            if(interviewTime != null){
+            if (interviewTime != null) {
                 java.sql.Time sqlTime = new java.sql.Time(interviewTime.getTime());
                 schedule.setScheduleTime(sqlTime);
             }
             //Update schedule (new set of interviewerReasons, new date and time)
-            if(this.scheduleService.update(schedule,action,selectedOptions))
-                model.addAttribute("MESSAGE","Update schedule successfully");
-            else
-                model.addAttribute("MESSAGE","Update schedule fail!!!");
-            
+            if (this.scheduleService.update(schedule, action, selectedOptions)) {
+                model.addAttribute("MESSAGE", "Update schedule successfully");
+            } else {
+                model.addAttribute("MESSAGE", "Update schedule fail!!!");
+            }
+
         } else {
             model.addAttribute("MESSAGE", "No action supported!!!");
         }
         return "redirect:/schedules";
     }
 }
-
-
