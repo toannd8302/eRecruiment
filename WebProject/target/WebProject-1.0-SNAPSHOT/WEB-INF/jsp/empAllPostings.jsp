@@ -15,26 +15,21 @@
     html {
         font-family: Arial, Helvetica, sans-serif;
     }
-
     body {
         font-size: 16px;
     }
-
     #wrapper {
         margin: 0px auto;
         margin-left: 3rem;
     }
-
     #wrapper h1 {
         margin-left: 20rem;
     }
-
     /* Style nav tabs */
     .tabs {
         border-bottom: 1px solid #f5f5f5;
         margin-left: 20rem;
     }
-
     .nav-tabs {
         display: flex;
         list-style: none;
@@ -42,11 +37,9 @@
         padding: 0;
         border-bottom: 3px solid #ddd;
     }
-
     .nav-tabs li {
         margin-right: 10px;
     }
-
     .nav-tabs li a {
         display: block;
         padding: 6px 10px;
@@ -54,7 +47,6 @@
         position: relative;
         color: black;
     }
-
     .nav-tabs li a:after {
         content: "";
         height: 3px;
@@ -64,26 +56,22 @@
         bottom: -3px;
         background-color: transparent;
     }
-
     .nav-tabs li.active a::after,
     .nav-tabs li:hover a::after {
         background: #e74c3c;
     }
-
     td {
         padding: 6px 10px;
+        text-align: center;
     }
-
     th {
         padding: 6px 10px;
         text-align: center;
     }
-
     /* Style tab-content */
     .tab-content {
         padding: 20px, 0px;
     }
-
     /* Sidebar */
     .sidebar {
         background-color: #baa9a3;
@@ -95,74 +83,59 @@
         left: 0;
         overflow-x: hidden;
     }
-
     .sidebar h1 {
         text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
     }
-
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
         color: black;
         padding: 10px;
         text-decoration: none;
     }
-
     .sidebar a:hover {
         background-color: #1abc9c;
     }
-
     .sidebar a.active {
         background-color: #1abc9c;
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
     }
-
     #account h2,
     li {
         font-size: 2rem;
         list-style: none;
     }
-
     #account li a {
         color: black;
     }
-
     #account ul {
         padding-left: 0%;
     }
-
     #my-account {
         margin-left: 1.5rem;
         margin-top: 1.5rem;
     }
-
     #my-account .dropdown-menu {
         padding: 0%;
         background-color: #1abc9c;
     }
-
     #my-account .dropdown-item {
         background-color: #1abc9c;
     }
-
     #my-account .dropdown-item:hover {
         background-color: #1abc9c;
     }
@@ -226,7 +199,7 @@
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
                         </form>
@@ -256,7 +229,7 @@
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                                 <td><a href="#">Cancel</a></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
@@ -286,7 +259,7 @@
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                                 <td><a href="#">Cancel</a></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
@@ -309,7 +282,6 @@
             //Active nav tabs
             $('.nav-tabs li').removeClass('active');
             $(this).addClass('active');
-
             //Show tab-content item
             let id_tab_content = $(this).children('a').attr('href');
             // alert(id_tab_content);

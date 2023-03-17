@@ -16,6 +16,7 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
+        width: 100%;
     }
 
     header {
@@ -25,35 +26,32 @@
         padding: 20px;
     }
 
-    h1 {
+    .title-pen h1 {
         margin: 0;
     }
 
-    section {
+    .section-pen {
         margin: 20px;
     }
 
-    h2 {
+    .section h2 {
         margin-bottom: 10px;
         font-size: 25px;
     }
-    h3{
-        font-size: 20px;
-    }
-    .interview-table {
+    .interview-table-pen {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 20px;
     }
 
-    .interview-table th {
+    .interview-table-pen th {
         text-align: left;
         padding: 10px;
         background-color: #444343;
         border-bottom: 2px solid #ccc;
     }
 
-    .interview-table td {
+    .interview-table-pen td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
     }
@@ -63,16 +61,57 @@
         background-color: #fff;
     }
 
-    th, td {
+    .interview-table-pen th, td {
         text-align: left;
         padding: 8px;
     }
 
-    th {
+    .interview-table-pen th {
         background-color: #333;
         color: #fff;
     }
+    .interviewer-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
 
+    .interviewer-table thead th {
+        background-color: #333;
+        color: #fff;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .interviewer-table tbody td, .interviewer-table tbody th {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .interviewer-table tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .interviewer-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .interviewer-table tbody td:first-child, .interviewer-table thead th:first-child {
+        width: 10%;
+    }
+
+    .interviewer-table tbody td:nth-child(2), .interviewer-table thead th:nth-child(2) {
+        width: 20%;
+    }
+
+    .interviewer-table tbody td:nth-child(3), .interviewer-table thead th:nth-child(3) {
+        width: 40%;
+    }
+
+    .interviewer-table tbody td:last-child, .interviewer-table thead th:last-child {
+        width: 30%;
+    }
     tr:nth-child(even) {
         background-color: #f2f2f2;
     }
@@ -84,7 +123,7 @@
 
     .box {
         width: 600px;
-        height: 270px;
+        height: 220px;
         background-color: lightgray;
         border: 2px solid black;
         padding: 10px;
@@ -93,9 +132,7 @@
         font-size: 17px;
         margin-bottom: 10px;
     }
-    .container{
-        margin-left:20rem;
-    }
+
     .option {
         font-size: 16px;
         margin-bottom: 5px;
@@ -138,6 +175,12 @@
         justify-content: center;
         align-items: center;
     }
+    .number-inter {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
 
     .start-btn {
         background-color: #4CAF50; /* Green */
@@ -160,7 +203,37 @@
     label {
         display:flex;
     }
+    .input-container {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+    }
 
+    .input-container label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .input-container input[type="text"], .input-container select {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    .input-container select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10.72l4.36-4.35.28-.29a1.12 1.12 0 000-1.58l-.43-.43a1.12 1.12 0 00-1.57 0L8 7.59l-2.64-2.64a1.12 1.12 0 00-1.57 0l-.43.43a1.12 1.12 0 000 1.58l.28.29L8 10.72z' fill='%23000000'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 20px;
+        padding-right: 40px;
+    }
     input[type="checkbox"] {
         margin-right: 5px;
         font-size: 10px;
@@ -301,7 +374,18 @@
         text-align: center;
         padding-top: 20px;
     }
+    h1 {
+        margin: 0;
+    }
 
+    h2 {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+    h3{
+        font-size: 26px;
+        margin-bottom: 40px;
+    }
     .info-candidate{
         text-align: center;
         font-weight: bold;
@@ -377,7 +461,7 @@
         margin-right: 10px;
         border-radius: 50%;
     }
-    .interview-table {
+    .interview-table1 {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 20px;
@@ -386,7 +470,7 @@
         margin-left: 280px;
     }
 
-    .interview-table th {
+    .interview-table1 th {
         text-align: left;
         padding: 10px;
         background-color: #cdcbcb;
@@ -394,9 +478,18 @@
         color: #040404;
     }
 
-    .interview-table td {
+    .interview-table1 td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
+    }
+    a {
+        text-decoration: none;
+    }
+
+    .body-pending{
+        position: absolute;
+        left: 11%;
+        width: 89%;
     }
 </style>
 
@@ -432,31 +525,30 @@
 
 
 <c:if test="${schedule.getStatus() eq 'Pending'}">
-    <div class="container">
+    <div class="body-pending">
         <header>
             <h1>Interview Schedule Detail</h1>
         </header>
-        <section>
+        <section class="section-pen">
             <h2>Pending</h2>
         </section>
         <hr>
         <section>
-            <table class="interview-table">
+            <table class="interview-table-pen">
                 <thead>
                     <tr>
                         <th>Job Name</th>
                         <th>Schedule ID</th>
-                        <th>Round</th>
+                        <th>Round ${schedule.getRound().getRoundNumber()}</th>
                         <th>Type of interview</th>
                         <th>Number of candidate</th>
-                        <th>Number of interviewer</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
                         <td>${schedule.getScheduleId()}</td>
-                        <td>${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
+                        <td>${schedule.getRound().getContent()}</td>
                         <td>
                             <c:if test="${schedule.isTypeOfInterview() == true}">
                                 Offline
@@ -469,33 +561,45 @@
                             </c:if>
                         </td>
                         <td>${schedule.getjAS().size()}/10</td>
-                        <td>${schedule.getiRS().size()}</td>
                     </tr>
                 </tbody>
             </table>
         </section>
+        <div class="number-inter">Number of Interviewer</div>
+        <table class="interviewer-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="item" items="${schedule.getiRS()}" varStatus="counter">
+                    <tr>
+                        <td>${counter.count}</td>
+                        <td>${item.getEmployee().getName()}</td>
+                        <td>${item.getEmployee().getEmail()}</td>
+                    </tr>
+                </c:forEach>
 
+            </tbody>
+        </table>
         <form method="post" action="<c:url value="/schedules/schedule-details/start-schedule"/>">
-            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
-            <h4>Number of interviewers: ${schedule.getiRS().size()}</h4>
-            <c:forEach var="item" items="${schedule.getiRS()}" varStatus="counter">
-                <p>Count: ${counter.count}</p>
-                <p>Interviewer: ${item.getEmployee().getEmail()}</p>
-            </c:forEach>
             <section>
                 <h2>Interviewer & Date and Time</h2>
                 <div class="box-container">
                     <div class="box">
                         <h4>Day and Time Interview</h4>
                         <p>- Setup day and time of interview schedule</p>
-                        <!--                        <label for="datetime">- Select date and time:</label>
-                                                <input type="datetime-local" id="datetime" name="datetime" required="true">-->
+                        <label for="datetime">- Select date and time:</label>
                         Date: <input type="date" name="InterviewDate" required="true"/>
                         Time: <input type="time" min="08:00" max="17:00" name="InterviewTime"  required="true"/>
+                        <!--<input type="datetime-local" id="datetime" name="datetime">-->
                     </div>
                     <div class="box">
                         <h4>Interviewer</h4>
-                        <p>- Choose the number of interview for this schedule</p>
+                        <p>- Choose the interviewer for this schedule</p>
                         <div class="question">- Interviewer:</div>
                         <select id="interviewers" name="interviewers" multiple>
                             <c:forEach var="item" items="${listInterviewers}">
@@ -506,100 +610,124 @@
                                 </c:if>
                             </c:forEach>
                         </select>
+                        <!--                <div class="label">
+                                            <label class="multiple-checkbox">
+                                                <input type="checkbox" name="fruit" value="apple">
+                                                Email: loquangt@gmail.com;
+                                                Full Name: Lo Quang T;
+                                                Role: Manager
+                                            </label>
+                                        </div>-->
                     </div>
                 </div>
-
-                <h3>Choose location and type of interview</h3>
-                Location: <input type="text" name="Location" required="true"/>
-                Offline <input type="checkbox" name="typeOfInterview" checked="true" value="1"/>
-
             </section>
+            <div class="input-container">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="Location" required="true"/>
+            </div>
+
+            <div class="input-container">
+                <label for="interview-type">Interview Type:</label>
+                Offline <input type="checkbox" name="typeOfInterview" checked="true" value="1"/>
+            </div>
             <div class="center">
-                <input type="submit" name="action" value="start"/>
+                <button class="start-btn" name="action" value="start">Start</button>
             </div>
         </form>
     </div>
 </c:if>
 
+
+
+
+
+
+
 <c:if test="${schedule.getStatus() eq 'On Going'}">
-    <header>
-        <h1>Interview Schedule Detail</h1>
-    </header>
-    <div class="status on-going">Status: On Going</div>
-    <div class="schedule-detail">
-        <div class="info-col">
-            <div class="info-row">
-                <div class="label">Schedule ID:</div>
-                <div class="value">${schedule.getScheduleId()}</div>
-            </div>
-            <div class="info-row">
-                <div class="label">Job Name:</div>
-                <div class="value">${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</div>
-            </div>
-            <div class="info-row">
-                <div class="label">${schedule.getRound().getRoundNumber()}:</div>
-                <div class="value">${schedule.getRound().getContent()}</div>
-            </div>
-            <div class="info-row">
-                <div class="label">Type of Interview:</div>
-                <c:if test="${schedule.isTypeOfInterview() == true}">
-                    <div class="value">Offline</div>
-                </c:if>
-                <c:if test="${schedule.isTypeOfInterview() == false}">
-                    <div class="value">Online</div>
-                </c:if>
-                <c:if test="${schedule.isTypeOfInterview() == null}">
-                    <div class="value">Null</div>
-                </c:if>
-            </div>
-            <div class="info-row">
-                <div class="label">Interview Date:</div>
-                <div class="value"><fmt:formatDate value="${schedule.getScheduleDate()}" pattern="MM dd, yyyy"/></div>
-            </div>
-            <div class="info-row">
-                <div class="label">Interview Time:</div>
-                <div class="value"><fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></div>
+    <div class="body3">
+        <header>
+            <h1>Interview Schedule Detail</h1>
+        </header>
+        <div class="status on-going">Status: On Going</div>
+        <div class="schedule-detail">
+            <div class="info-col">
+                <div class="info-row">
+                    <div class="label">Schedule ID:</div>
+                    <div class="value">${schedule.getScheduleId()}</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">Job Name:</div>
+                    <div class="value">${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">Round ${schedule.getRound().getRoundNumber()}:</div>
+                    <div class="value">${schedule.getRound().getContent()}</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">Type of Interview:</div>
+                    <c:if test="${schedule.isTypeOfInterview() == true}">
+                        <div class="value">Offline</div>
+                    </c:if>
+                    <c:if test="${schedule.isTypeOfInterview() == false}">
+                        <div class="value">Online</div>
+                    </c:if>
+                    <c:if test="${schedule.isTypeOfInterview() == null}">
+                        <div class="value">Null</div>
+                    </c:if>
+                </div>
+                <div class="info-row">
+                    <div class="label">Interview Date:</div>
+                    <div class="value"><fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/></div>
+                </div>
+                <div class="info-row">
+                    <div class="label">Interview Time:</div>
+                    <div class="value"><fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></div>
+                </div>
             </div>
         </div>
+        <table class="interview-table1">
+            <div class="info-candidate">Candidate information</div>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>CV Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="item" items="${schedule.getjAS()}" varStatus="counter">
+                    <tr>
+                        <td>${counter.count}</td>
+                        <td>${item.getJobApplication().getCandidate().getName()}</td>
+                        <td>${item.getJobApplication().getCandidate().getEmail()}</td>
+                        <td><a href="#">View Details</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        <table class="interview-table1">
+            <div class="info-candidate">Interviewer information</div>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="item" items="${schedule.getiRS()}" varStatus="counter">
+                    <tr>
+                        <td>${counter.count}</td>
+                        <td>${item.getEmployee().getName()}</td>
+                        <td>${item.getEmployee().getEmail()}</td>
+                        <td><a href="#">View</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
     </div>
-    <table class="interview-table">
-        <div class="info-candidate">Infomation Candidate</div>
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>C01</td>
-                <td>Tran Van A</td>
-                <td>tranvana@gmail.com</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="interview-table">
-        <div class="info-candidate">Infomation Interviewer</div>
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>I01</td>
-                <td>Lo Quang B</td>
-                <td>loquangb@gmail.com</td>
-            </tr>
-        </tbody>
-    </table>
 </c:if>
 
 

@@ -165,12 +165,7 @@
         text-decoration: none;
         color: black;
     }
-    .hot-jobs .hot-post img {
-        width: 15rem;
-        height: 14rem;
-        margin-left: 10rem;
-        display: inline-block;
-    }
+  
 
     .hot-jobs .hot-post h3 {
         font-weight: bold;
@@ -214,7 +209,7 @@
 
     .product-area-list {
         padding-top: 5rem;
-        margin-left: 4rem;
+        margin-left: 5.8rem;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding-bottom: 10rem;
@@ -507,6 +502,34 @@
     .contact-form button:hover{
         background: linear-gradient(150deg,#153e68,#196c79);
     }
+    
+    
+     .modal-btn{
+        background:linear-gradient(transparent, transparent);
+        border: none;
+    }
+    
+    .modal .modal-content .modal-header h2{
+        margin-left: 11.5rem;
+        font-weight: bold;
+    }
+    
+    .modal .modal-content .modal-body i{
+        display: inline-block;
+        font-size: 3.5rem;
+        padding: 0.3rem 0.5rem;
+        background: #006400;
+        color: #fff;
+        border-radius: 50%;
+        
+        margin-left: 21.5rem;
+    }
+    
+    .modal .modal-content .modal-footer{
+        margin-right: 22.5rem;
+        border-top: o;
+        font-size: 2rem;
+    }
 </style>
 
 <!-- Header here -->
@@ -626,7 +649,7 @@
                     </div>
                 </div>
                 <div class="result-post-right">
-                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></a>
+                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><button class="modal-btn" data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fa-regular fa-bookmark"></i></button></a>
                     
                     <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
                     <p>4 hours ago</p>
@@ -635,6 +658,32 @@
         </c:forEach>
     </div>
 
+                
+                   <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+          <h2 class="modal-title">Saved Job Successfully</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <i class="fa-sharp fa-solid fa-check"></i>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+                
     <div id="contact" class="contact-us">
         <div class="contact-form">
             <h1>Contact us</h1>
