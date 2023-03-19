@@ -13,6 +13,7 @@ import java.util.List;
  * @author KHOA
  */
 public interface ReportService {
+    report getReportByReportID(String reportID);
     List<report> getReportByInterviewerID(String interviewerID);
     List<report> getReportByJobAppID(String jobAppID);
 }

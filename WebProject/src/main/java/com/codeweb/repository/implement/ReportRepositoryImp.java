@@ -46,5 +46,17 @@ public class ReportRepositoryImp implements ReportRepository{
     public List<report> getReportByJobAppID(String jobAppID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<report> getReportByReportID(String reportID) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<report> query = builder.createQuery(report.class);
+        Root<report> root = query.from(report.class);
+        Predicate p = builder.equal(root.get("reportId").as(String.class),reportID);
+        query = query.where(p);
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
     
 }

@@ -33,6 +33,35 @@
     .view-toggle{
         text-align: center;
     }
+    .view-toggle button {
+  display: inline-block;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+
+.view-toggle button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.view-toggle button i {
+  margin-right: 5px;
+}
+
+.view-toggle #list-view i {
+  color: #f1c40f;
+}
+
+.view-toggle #grid-view i {
+  color: #3498db;
+}
     .interview-list .interview-item {
         background-color: #8a8a8a;
         border-radius: 10px;
@@ -261,9 +290,15 @@
         <h3>Interview Schedule</h3>s
     </div>
     <hr>
-    <div class="view-toggle">
-        <button class="active" id="list-view">Pending</button>
-        <button id="grid-view">On Going</button>
+ <div class="view-toggle">
+      <button id="list-view">
+        <i class="fas fa-clock"></i>
+        <span>Pending</span>
+      </button>
+      <button id="grid-view">
+        <i class="fas fa-spinner"></i>
+        <span>On Going</span>
+      </button>
     </div>
     <div class="interview-list">
         <ul>
@@ -325,4 +360,3 @@
         interviewList.style.display = 'none';
     })
 </script>
-

@@ -65,7 +65,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/schedule-app/create-new-schedule", "/schedule-app/choosed-schedule",
                             "/jobPostings/job-posting-details/evaluate-post", "/jobPostings/job-posting-details/reject-post", "/jobPostings/job-posting-details/end-post",
                             "/schedules/schedule-details/start-schedule").hasRole("EMPLOYEE")
-                    .antMatchers("/interviewer","/interview/schedules","/interview/reports").hasRole("INTERVIEWER")
+                    .antMatchers("/interviewer/schedules","/interviewer/reports",
+                            "/interviewer/schedules/schedule-detail", "/interviewer/reports/report-detail",
+                            "/interviewer/schedules/schedule-detail/decision", "/interviewer/schedules/schedule-detail/reject").hasRole("INTERVIEWER")
                     .antMatchers("/manager").hasRole("MANAGER")
                     .antMatchers("/department",
                             "/createjobposting","/createround","/view-post-detail/**",

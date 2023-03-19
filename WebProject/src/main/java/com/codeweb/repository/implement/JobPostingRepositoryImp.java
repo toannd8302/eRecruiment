@@ -164,4 +164,16 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
 
         session.createQuery(deleteJobPostingCriteria).executeUpdate();
     }
+
+    @Override
+    public List<jobPosting> getAllHotJob() {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
+        Root<jobPosting> root = query.from(jobPosting.class);
+        Predicate p = builder.equal(root.get("hotJob").as(boolean.class),true);
+        query = query.where(p);
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
 }

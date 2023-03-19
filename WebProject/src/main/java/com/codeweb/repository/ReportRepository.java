@@ -14,6 +14,7 @@ import java.util.List;
  * @author KHOA
  */
 public interface ReportRepository {
+    List<report> getReportByReportID(String reportID);
     List<report> getReportByInterviewerID(String interviewerId);
     List<report> getReportByJobAppID(String jobAppID);
 }

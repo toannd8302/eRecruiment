@@ -5,9 +5,14 @@
  */
 package com.codeweb.service.implement;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.codeweb.pojos.interviewerReasons;
 import com.codeweb.repository.InterviewReasonRepository;
 import com.codeweb.service.InterviewReasonService;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +23,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class InterviewReasonServiceImp implements InterviewReasonService{
 
+    @Autowired
+    private Cloudinary cloudinary;
+    
     @Autowired
     private InterviewReasonRepository interviewReasonRepository;
             
@@ -30,5 +38,34 @@ public class InterviewReasonServiceImp implements InterviewReasonService{
     public boolean update(interviewerReasons irs) {
         return this.interviewReasonRepository.update(irs);
     }
-    
+
+    @Override
+    public boolean acceptSchedule(String scheduleId, String userID) {
+        List<interviewerReasons> irsList = this.getIRsByID(scheduleId, userID);
+        if(!irsList.isEmpty()){
+            interviewerReasons irs = irsList.get(0);
+            irs.setStatus("Approved");
+            return this.update(irs);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean rejectSchedule(interviewerReasons irs) {
+        try {
+                Map r = this.cloudinary.uploader().upload(irs.getFile().getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                irs.setFilepath((String) r.get("secure_url"));
+                irs.setStatus("Rejected");
+                return this.update(irs);
+            } catch (IOException e) {
+                System.err.println("==ERROR WHEN REJECT SCHEDULE AT INTERVIEWREASONSERVICE==" + e.getMessage());
+            }
+        return false;
+    }
+
+    @Override
+    public List<interviewerReasons> getIRsByID(String scheduleId, String userID) {
+        return this.interviewReasonRepository.getIRsByID(scheduleId, userID);
+    }
 }

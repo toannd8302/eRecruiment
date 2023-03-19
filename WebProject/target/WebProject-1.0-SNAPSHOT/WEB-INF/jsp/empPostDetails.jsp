@@ -417,6 +417,7 @@
                         <h2>Software company Monke Tech</h2>
                         <p>Created date: <fmt:formatDate value="${jobPosting.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
                         <p><i class="fa-regular fa-clock"></i>Expired date: <input type="date" name="expiredDate" id="expiredDate" value=""/></p>
+                        <p>Hot Job <input type="checkbox" name="isHotJob" checked="true" value="0"/></p>
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -431,7 +432,7 @@
     </form>
 </c:if>
 
-<form method="post" action="<c:url value="/jobPostings/job-posting-details/reject-post"/>"></form>
+<!--<form method="post" action="<c:url value="/jobPostings/job-posting-details/reject-post"/>"></form>-->
 
 <c:if test="${jobPosting.isApprovedStatus() eq 'Approved'}">
     <div id="job-detail-head">

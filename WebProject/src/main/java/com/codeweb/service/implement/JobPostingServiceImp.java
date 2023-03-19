@@ -67,6 +67,7 @@ public class JobPostingServiceImp implements JobPostingService {
                 jobPosting.setApprovedStatus("Rejected");
             } else if (action.equals("end")) {
                 jobPosting.setApprovedStatus("End");
+            } else if (action.equals("update wishList")) {
             } else {
                 return false;
             }
@@ -86,28 +87,11 @@ public class JobPostingServiceImp implements JobPostingService {
     public boolean createJobPosting(jobPosting jobPosting) {
         boolean result = false;
         try {
-
             jobPosting.setApprovedStatus("Pending");
-//            jobPosting.setDescriptions(jobPosting.getDescriptions());
-//            jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
-//            jobPosting.setLocations(jobPosting.getLocations());
-//            jobPosting.setSalary(jobPosting.getSalary());
-//            jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
-//            jobPosting.setWelfare(jobPosting.getWelfare());
-//            jobPosting.setLevel(jobPosting.getLevel());
-
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
             jobPosting.setCreatedTime(date);
-
-//            Date expiredTime = jobPosting.getExpiredTime();
-//            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
-//            jobPosting.setExpiredTime(sqlExpiredTime);
-
-            
-
             result = this.jobPostingRepository.createJobPosting(jobPosting);
-            
         } catch (Exception e) {
             System.err.println("==CREATE JOB POSTING==" + e.getMessage());
         }
@@ -117,6 +101,11 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public void deleteJobPosting(String id) {
         this.jobPostingRepository.deleteJobPosting(id);
+    }
+
+    @Override
+    public List<jobPosting> getAllHotJob() {
+        return this.jobPostingRepository.getAllHotJob();
     }
 
 }

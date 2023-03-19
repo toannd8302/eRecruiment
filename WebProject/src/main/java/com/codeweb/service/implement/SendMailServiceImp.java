@@ -7,18 +7,15 @@ package com.codeweb.service.implement;
 
 import com.codeweb.service.SendMailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author KHOA
  */
 @Service
-@Transactional
 public class SendMailServiceImp implements SendMailService {
 
     @Autowired

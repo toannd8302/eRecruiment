@@ -6,6 +6,7 @@
 package com.codeweb.repository;
 
 import com.codeweb.pojos.interviewerReasons;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,5 @@ import com.codeweb.pojos.interviewerReasons;
 public interface InterviewReasonRepository {
     boolean add(interviewerReasons irs);
     boolean update(interviewerReasons irs);
+    List<interviewerReasons> getIRsByID(String scheduleId, String userID);
 }

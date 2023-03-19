@@ -30,6 +30,7 @@ com\codeweb\repository\implement\RoundRepositoryImp.class
 com\codeweb\service\implement\CustomUserDetailService.class
 com\codeweb\service\implement\ReportServiceImp.class
 com\codeweb\service\ScheduleService.class
+com\codeweb\service\WishListService.class
 com\codeweb\service\implement\DepartmentServiceImp.class
 com\codeweb\configs\TilesConfig.class
 com\codeweb\configs\HibernateConfig.class
@@ -44,7 +45,6 @@ com\codeweb\pojos\interviewerReasons.class
 com\codeweb\configs\SecurityWebAppInitializer.class
 com\codeweb\configs\WebSecurityConfig.class
 com\codeweb\pojos\candidate.class
-com\codeweb\service\implement\WishListImp.class
 com\codeweb\configs\MailSenderConfig.class
 com\codeweb\service\SendMailService.class
 com\codeweb\pojos\department.class
@@ -59,6 +59,7 @@ com\codeweb\common\CustomUserDetails.class
 com\codeweb\service\implement\SendMailServiceImp.class
 com\codeweb\repository\JobPositionRepository.class
 com\codeweb\controllers\RoundController.class
+com\codeweb\service\implement\WishListServiceImp.class
 com\codeweb\configs\DispatcherServletInitializer.class
 com\codeweb\controllers\DepartmentController.class
 com\codeweb\configs\GoogleClientRegistration.class

@@ -31,7 +31,7 @@ public class interviewerReasons implements Serializable{
     private String employeeId ;
     
     @Column(name = "Reason_content")
-    private String Reason_content;
+    private String reasonContent;
     
     @Column(name = "File_path")
     private String filepath;
@@ -98,14 +98,6 @@ public class interviewerReasons implements Serializable{
         this.employeeId = employeeId;
     }
 
-    public String getReason_content() {
-        return Reason_content;
-    }
-
-    public void setReason_content(String Reason_content) {
-        this.Reason_content = Reason_content;
-    }
-
     public String getFilepath() {
         return filepath;
     }
@@ -121,6 +113,13 @@ public class interviewerReasons implements Serializable{
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-    
+
+    public String getReasonContent() {
+        return reasonContent;
+    }
+
+    public void setReasonContent(String reasonContent) {
+        this.reasonContent = reasonContent;
+    }
     
 }

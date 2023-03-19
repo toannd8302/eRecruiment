@@ -79,6 +79,7 @@ CREATE TABLE Job_postings
 	Level nvarchar(50) NULL,
 	Picture nvarchar(max) NULL,
 	Job_id nvarchar(36) NOT NULL,
+	Hot_job bit default 0
 )
 
 Create TABLE Job_Applications
@@ -174,6 +175,13 @@ CREATE TABLE Interviewer_Reasons
 	CONSTRAINT PKReasons PRIMARY KEY (Schedule_id,Employee_id),
 )
 
+CREATE TABLE Wish_List
+(
+    Candidate_id nvarchar(30) NOT NULL,
+	Post_id nvarchar(36) NOT NULL,
+	CONSTRAINT PKWish_List PRIMARY KEY (Candidate_id,Post_id)
+)
+
 --Insert Candidate
 INSERT Candidates(Candidate_id, FullName, Given_Name, Family_Name,  Email, DOB, Phone, Address, Avatar, Role, Job_Name, Experience, Blocked_status) 
 	   VALUES(N'CA0001', N'Luong Nhu H', N'Nhu H', N'Luong', N'LuongH@gmail.com', NULL, NULL, NULL, NULL, N'ROLE_CANDIDATE', NULL, NULL, 0)
@@ -262,9 +270,9 @@ INSERT Job_positions(Job_id, JobName, Department_id)
 
 
 --Insert Job_postings (4-5)
-INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
+INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id, Hot_job)
 	VALUES(N'P0001', N'Participate in the software design phase;Analyze software functions as required by management or departments;Building and designing databases according to designs on SQL Server, programming Store procedures',
-	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-15', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png', 'J0001' )
+	'1', N'Q.4', N'15 annual days leave;13th bonus salary;Personal insurance for 2+ years staff;Provided with a Mac book and 2nd Monitoring','1200', N'2022-12-15', N'2022-12-24', N'2023-1-15',N'Approved',N'Mid', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png', 'J0001', 1)
 INSERT Job_postings(Post_id, Descriptions, Type_of_work, Locations, Welfare, Salary, Created_time, Posting_time, Expired_time, Approved_status, Level, Picture, Job_id)
 	VALUES(N'P0002', N'We will entrust you with the application development work of our marketing DX support service such as "AD EBiS" "AdRepo", "New Product", an advertising effectiveness measurement platform with the largest market share in the industry.', 
 	'0', N'Q.3',N'Tet gift / birthday gift;Sports activities (badminton,foofball,billiards etc.,);Regular health checkup (once a year)','1500', N'2022-9-10', N'2022-9-16', N'2023-7-15',N'Approved', N'Architect', N'https://dotnet.microsoft.com/static/images/redesign/social/square.png', 'J0002' )
@@ -499,4 +507,11 @@ ALTER TABLE Schedules ADD CONSTRAINT [FK_Schedules] FOREIGN KEY(Round_id)
 REFERENCES Rounds(Round_id)
 GO
 
+ALTER TABLE Wish_List ADD CONSTRAINT [FK_Wish_List1] FOREIGN KEY(Candidate_id)
+REFERENCES Candidates(Candidate_id)
+GO
+
+ALTER TABLE Wish_List ADD CONSTRAINT [FK_Wish_List2] FOREIGN KEY(Post_id)
+REFERENCES Job_postings(Post_id)
+GO
 

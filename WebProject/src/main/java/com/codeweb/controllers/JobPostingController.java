@@ -5,15 +5,20 @@
  */
 package com.codeweb.controllers;
 
+import com.codeweb.pojos.candidate;
+import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobPosting;
+import com.codeweb.service.CandidateService;
 import com.codeweb.service.JobPostingService;
-import com.codeweb.service.implement.WishListImp;
+import com.codeweb.service.WishListService;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +35,10 @@ public class JobPostingController {
     private JobPostingService jobPostingService;
     
     @Autowired
-    private WishListImp wishList;
+    private WishListService wishListService;
+    
+    @Autowired
+    private CandidateService candidateService;
     
     @GetMapping("/post-detail/{postID}")
     public String detailpage(Model model,
@@ -44,23 +52,32 @@ public class JobPostingController {
     public String saveJob(HttpSession session,
             @PathVariable(value = "postID") String postID) {
         //NÊN HIỂN THI NAME LÊN URL THÌ TỐT HƠN
-        jobPosting jobPostingSave = this.jobPostingService.getPostByID(postID);
-        wishList.addToWishList(jobPostingSave);
+        jobPosting jobPosting = this.jobPostingService.getPostByID(postID);
+        candidate candidate = (candidate) session.getAttribute("user");
+        this.wishListService.addToWishList(candidate, jobPosting);
         //VE HOMPAGE => DANG NHAP MOI XEM DC WISHLIST => WISHLIST NAM TRONG VIEWJOBAPPLICATION
         return "redirect:/";
     }
     
     @GetMapping("/post-detail/view")
     public String viewWishList(HttpSession session) {
-        Set<jobPosting> wishlist = wishList.getWishList();
-        session.setAttribute("wishList", wishlist);
+        candidate candidate = (candidate) session.getAttribute("user");
+        session.setAttribute("JobPostings", candidate.getJobPostings());
         return "viewWishList";
     }
     
     @GetMapping("/post-detail/view/delete/{postId}")
-    public String deleteJob(HttpSession session, @PathVariable(value = "postId") String postId) {
+    public String deleteJob(HttpSession session, Model model,
+            @PathVariable(value = "postId") String postId) {
         jobPosting jobPosting = this.jobPostingService.getPostByID(postId);
-        wishList.removeJobPosting(jobPosting);
+        candidate candidate = (candidate) session.getAttribute("user");
+        
+//        Set<jobPosting> set = candidate.getJobPostings();
+//        boolean result = set.remove(jobPosting);
+//        
+//        model.addAttribute("RESULT",result);
+//        return "viewWishList";
+        this.wishListService.removeJobPosting(candidate,jobPosting);
         return "redirect:/post-detail/view"; 
     }
 }

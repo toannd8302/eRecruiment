@@ -31,5 +31,14 @@ public class ReportServiceImp implements ReportService{
     public List<report> getReportByJobAppID(String jobAppID) {
         return this.reportRepository.getReportByJobAppID(jobAppID);
     }
+
+    @Override
+    public report getReportByReportID(String reportID) {
+        List<report> reports = this.reportRepository.getReportByReportID(reportID);
+        if(!reports.isEmpty())
+            return reports.get(0);
+        else
+            return null;
+    }
     
 }

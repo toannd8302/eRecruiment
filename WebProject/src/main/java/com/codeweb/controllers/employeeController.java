@@ -68,31 +68,31 @@ public class employeeController {
     @PostMapping("/jobPostings/job-posting-details/evaluate-post")
     public String decidePost(Model model, HttpServletRequest request,
             @RequestParam("postID") String id,
-            @RequestParam("action") String action) {
+            @RequestParam("action") String action,
+            @RequestParam("isHotJob") boolean isHotJob) {
         jobPosting jobPosting = this.jobPostingService.getPostByID(id);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date expiredDate = null;
-        if (action != null) {
-            if (action.equals("accept")) {
-                try {
-                    expiredDate = dateFormat.parse(request.getParameter("expiredDate"));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                if (expiredDate != null) {
-                    jobPosting.setExpiredTime(expiredDate);
-                }
-                if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
-                    model.addAttribute("MESSAGE", "Accept POSTING Successfully");
-                } else {
-                    model.addAttribute("MESSAGE", "Accept POSTING Fail");
-                }
-            } else if (action.equals("reject")) {
-                if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
-                    model.addAttribute("MESSAGE", "Reject POSTING Successfully");
-                } else {
-                    model.addAttribute("MESSAGE", "Reject POSTING Fail");
-                }
+        if (action.equals("accept")) {
+            try {
+                expiredDate = dateFormat.parse(request.getParameter("expiredDate"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (expiredDate != null) {
+                jobPosting.setExpiredTime(expiredDate);
+            }
+            jobPosting.setHotJob(isHotJob);
+            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+                model.addAttribute("MESSAGE", "Accept POSTING Successfully");
+            } else {
+                model.addAttribute("MESSAGE", "Accept POSTING Fail");
+            }
+        } else if (action.equals("reject")) {
+            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+                model.addAttribute("MESSAGE", "Reject POSTING Successfully");
+            } else {
+                model.addAttribute("MESSAGE", "Reject POSTING Fail");
             }
         } else {
             model.addAttribute("MESSAGE", "No action supported!!!");
@@ -117,7 +117,6 @@ public class employeeController {
 //        }
 //        return "redirect:/jobPostings";
 //    }
-
     //End Post
     @PostMapping("/jobPostings/job-posting-details/end-post")
     public String endPost(Model model,
@@ -274,7 +273,7 @@ public class employeeController {
             @RequestParam("scheduleID") String id,
             @RequestParam("action") String action,
             @RequestParam("Location") String location,
-            @RequestParam("typeOfInterview") boolean typeOfInterview) {
+            @RequestParam(name = "typeOfInterview", required = false, defaultValue = "false") boolean typeOfInterview) {
         if (action.equals("start")) {
             //Get and set the list of interviewerReasons of schedule
             String[] selectedOptions = request.getParameterValues("interviewers");

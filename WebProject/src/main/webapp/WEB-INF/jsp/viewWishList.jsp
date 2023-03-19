@@ -4,6 +4,7 @@
     Author     : loqua
 --%>
 
+<%@page import="com.codeweb.pojos.candidate"%>
 <%@page import="java.util.Set"%>
 <%@page import="com.codeweb.pojos.jobPosting"%>
 <%@page import="com.codeweb.pojos.jobPosting"%>
@@ -226,12 +227,9 @@
             </li>
         </ul>
     </nav>
-
     <%
-
-        //    List<jobPosting> wishList = (List<jobPosting>) session.getAttribute("List");
-        Set<jobPosting> wishList = (Set<jobPosting>) session.getAttribute("wishList");
-        //QUY ĐỊNH CHỈ ĐƯỢC 5 JOBPOSTINGS
+        //Get candidate
+        Set<jobPosting> wishList = (Set<jobPosting>) session.getAttribute("JobPostings");
         if (!wishList.isEmpty()) {
             //HANDLE VẤN ĐỀ TRÙNG THÌ DÙNG SET HOẶC IF
     %>
@@ -273,7 +271,7 @@
                         </button></td>
                 </tr>
                 <%
-                }%>
+                    }%>
             </tbody>
         </table>
 
@@ -284,7 +282,5 @@
             }
         %> 
     </div>
-
-
 </body>
 

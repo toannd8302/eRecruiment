@@ -54,7 +54,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
             jobApplication.setApplicationStatus("Review");
             return this.jobApplicationRepository.add(jobApplication);
         } catch (IOException e) {
-            System.err.println("==CREATE APPLICATION==" + e.getMessage());
+            System.err.println("==ERROR CREATE APPLICATION==" + e.getMessage());
         }
         return false;
     }

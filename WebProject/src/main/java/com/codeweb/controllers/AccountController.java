@@ -62,11 +62,6 @@ public class AccountController {
         return "redirect:/";
     }
     
-    @GetMapping("/interviewer")
-    public String loginSuccessfully3(){
-        return "interviewer-page";
-    }
-    
     @GetMapping("/department")
     public String loginSuccessfully1(Model model, HttpSession session){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -78,7 +73,7 @@ public class AccountController {
         model.addAttribute("jobPostings", this.jobPostingService.getAllJobPosting());
         return "department-Page";
     }
-
+    
     @GetMapping("/account")
     public String account(Model model) {
         return "account-information";
