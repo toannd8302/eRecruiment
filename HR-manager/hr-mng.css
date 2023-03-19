@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;500;600;800&display=swap');
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hr-mng-head{
+    background: #669999;
+}
+
+.hr-mng-head .head-content{
+    text-align: center;
+}
+
+.hr-mng-head .head-content h1{
+    background-color: #fff;    
+    display: inline-block;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    font-size: 4rem;
+    padding: 2rem 0;
+    margin-bottom: 0;
+    color: #FF3300;
+    margin-left: 6rem;
+}
+
+.hr-mng-body{
+    position: relative;
+    top: 12.3%;
+    left: 17%;
+    background: #fff;
+    width: 70%;
+    text-align: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 1rem;
+}
+
+.hr-mng-body table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.hr-mng-body thead tr{
+    font-size: 2rem;
+}
+
+.hr-mng-body tbody tr td{
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.hr-mng-body tbody tr:nth-child(odd){
+    background: #dddddd;
+}
+
+.hr-mng-body tbody tr button{
+    border: none;
+    border-radius: 0.5rem;
+}
+
+
+.open-modal-btn{
+    background: #3399CC;
+    font-size: 1.5rem;
+    color: #e7e7e7;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.acpt-btn{
+    background: #33CC66;
+    font-size: 1.5rem;
+    color: #e7e7e7;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.rej-btn{
+    background: #EE0000;
+    font-size: 1.5rem;
+    color: #e7e7e7;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.modal{
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;   
+}
+
+.modal .modal-inner{
+    width: 50%;
+    position: relative;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    animation: modalShow 0.1s linear;
+    /* height: 50rem; */
+}
+
+.modal .modal-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #669999;
+    color: #fff;
+}
+
+.modal .modal-header h1{
+    font-size: 3rem;
+}
+
+.modal .modal-header i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal .modal-body{
+    padding: 2rem;
+}
+
+.modal .modal-body h2{
+    margin: 1rem 0;
+}
+
+.modal .modal-footer{
+    padding: 1rem;
+    text-align: right;
+}
+
+.modal .modal-footer button{
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.5rem;
+    background: #669999;
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}
+
+@keyframes modalShow {
+    from{
+        left: 50%;
+        top: 0;
+    }
+
+    to{
+        top: 30%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.swal2-popup {
+    font-size: 1.6rem !important;
+    font-family: Georgia, serif;
+  }
+
+  .tabs {
+    display: flex;
+    position: relative;
+    background: #669999;
+  }
+  .tabs .line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 6px;
+    border-radius: 15px;
+    background-color: #669999;
+    transition: all 0.2s ease;
+  }
+
+  .tab-item {
+      padding: 1.5rem 1rem;
+      font-size: 2rem;
+      text-align: center;
+      color: #333;
+      /* background-color: #fff; */
+      /* opacity: 0.6; */
+      cursor: pointer;
+      transition: all 0.5s ease;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      
+    }
+
+  .tab-icon {
+    font-size: 24px;
+    width: 32px;
+    position: relative;
+    top: 2px;
+  }
+
+  .tab-item:hover {
+    opacity: 1;
+    background-color: rgba(194, 53, 100, 0.05);
+    border-color: rgba(194, 53, 100, 0.1);
+  }
+  .tab-item.active {
+    opacity: 1;
+    background-color: #fff;
+  }
+  .tab-content {
+    padding: 28px 0;
+  }
+  .tab-pane {
+    color: #333;
+    display: none;
+  }
+  .tab-pane.active {
+    display: block;
+  }
+  .tab-pane h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  

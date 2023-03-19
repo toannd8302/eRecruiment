@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="hr-mng.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"
+    />
+
+    <style>
+      .my-title-class {
+        font-size: 2rem;
+      }
+      .my-text-class {
+        font-size: 2rem;
+      }
+      .my-confirm-button-class {
+        font-size: 2rem;
+      }
+      .my-cancel-button-class {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body style="background: #eee">
+    <div class="hr-mng-head">
+      <div class="head-content">
+        <h1>HR Manager</h1>
+      </div>
+    </div>
+    <div class="hr-mng-body">
+      <div class="container mt-3">
+        <h1 style="color: #009966">Candidate List</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>View Report</th>
+              <th>Accept</th>
+              <th>Reject</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>John Doe</td>
+              <td>john@example.com</td>
+              <td>
+                <button class="open-modal-btn" onclick="viewReport()">
+                  View
+                </button>
+              </td>
+              <td>
+                <button class="acpt-btn" onclick="acceptCan()">Accept</button>
+              </td>
+              <td>
+                <button class="rej-btn" onclick="rejectCan()">Reject</button>
+              </td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Jane Doe</td>
+              <td>john@example.com</td>
+              <td>
+                <button class="open-modal-btn" onclick="viewReport()">
+                  View
+                </button>
+              </td>
+              <td>
+                <button class="acpt-btn" onclick="acceptCan()">
+                  <a href="#" style="text-decoration: none">Accept</a>
+                </button>
+              </td>
+              <td>
+                <button class="rej-btn" onclick="rejectCan()">Reject</button>
+              </td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>John Snow</td>
+              <td>john@example.com</td>
+              <td>
+                <button class="open-modal-btn" onclick="viewReport()">
+                  View
+                </button>
+              </td>
+              <td>
+                <button class="acpt-btn" onclick="acceptCan()">Accept</button>
+              </td>
+              <td>
+                <button class="rej-btn" onclick="rejectCan()">Reject</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal hide">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <h1>Grading Candiate Report</h1>
+          <i class="fa-solid fa-xmark close-modal"></i>
+        </div>
+        <div>
+          <!-- Tab items -->
+          <div class="tabs">
+            <div class="tab-item active">First Report</div>
+            <div class="tab-item">Second Report</div>
+            <div class="tab-item">Third Report</div>
+            <div class="line"></div>
+          </div>
+
+          <!-- Tab content -->
+          <div class="tab-content">
+            <div class="tab-pane active">
+              <div class="modal-body">
+                <h2>Point: 7.5</h2>
+                <h2>Evaluateing content:</h2>
+                <p>By John Doe, Information Technology Department</p>
+              </div>
+            </div>
+            <div class="tab-pane">
+              <div class="modal-body">
+                <h2>Point: 8.5</h2>
+                <h2>Evaluateing content:</h2>
+                <p>By Jane Doe, Information Technology Department</p>
+              </div>
+            </div>
+            <div class="tab-pane">
+              <div class="modal-body">
+                <h2>Point: 9.5</h2>
+                <h2>Evaluateing content:</h2>
+                <p>By John Snow, Information Technology Department</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="close-modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+  <script>
+    
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+
+    const tabs = $$(".tab-item");
+    const panes = $$(".tab-pane");
+
+    const tabActive = $(".tab-item.active");
+    const line = $(".tabs .line");
+
+    // SonDN fixed - Active size wrong size on first load.
+    // Original post: https://www.facebook.com/groups/649972919142215/?multi_permalinks=1175881616551340
+    requestIdleCallback(function () {
+      line.style.left = tabActive.offsetLeft + "px";
+      line.style.width = tabActive.offsetWidth + "px";
+    });
+
+    tabs.forEach((tab, index) => {
+      const pane = panes[index];
+
+      tab.onclick = function () {
+        $(".tab-item.active").classList.remove("active");
+        $(".tab-pane.active").classList.remove("active");
+
+        line.style.left = this.offsetLeft + "px";
+        line.style.width = this.offsetWidth + "px";
+
+        this.classList.add("active");
+        pane.classList.add("active");
+      };
+    });
+
+
+    function viewReport() {
+      const modal = document.querySelector(".modal");
+      const closeModalBtns = document.querySelectorAll(".close-modal");
+      
+      
+
+      modal.style.display = "block";
+
+      // Hide the modal when the icon or the close button is clicked
+      closeModalBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+      });
+
+      // Hide the modal when clicking outside of it
+      window.addEventListener("click", (event) => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+
+    
+    
+  </script>
+</html>
