@@ -5,6 +5,7 @@
  */
 package com.codeweb.service;
 
+import com.codeweb.pojos.employee;
 import com.codeweb.pojos.jobApplication;
 import java.util.List;
 import java.util.Map;

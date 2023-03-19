@@ -266,10 +266,10 @@
                     <td style="width: 50rem;"><%= j.getWelfare()%></td>
                     <%-- <td><%= j.getJobPosition().getDepartment().getDepartmentName()%></td> --%>
                     <td style="width: 10rem;"><%= j.getLocations()%></td>
-                    <td style="width: 8rem;"><%= j.getSalary()%></td>
+                    <td style="width: 9rem;"><%= j.getSalary()%></td>
                     <td><button class="btn btn-success detail-toggle"> <a href="http://localhost:8080/WebProject/job/application?data=<%=j.getPostId()%>"/>Apply Now</a></button></td>
                     <td><button class="btn btn-danger detail-toggle" style="height: 3.2rem;">
-                            <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>" style="text-decoration: none; color: #fff; ">Unsave</a>
+                            <a href="http://localhost:8080/WebProject/post-detail/view/delete/<%=j.getPostId()%>" onclick="deletePost(event)" style="text-decoration: none; color: #fff; ">Unsave</a>
                         </button></td>
                 </tr>
                 <%
@@ -285,7 +285,22 @@
         %> 
     </div>
 
+    <script>
+
+                                function deletePost(event) {
+                                    // Get a reference to the button element
+                                    event.preventDefault();
+                                    var confirmed = confirm("Are you sure you want to unasve?");
+                                    if (confirmed) {
+                                        // continue with the default action (i.e. follow the href link)
+                                        window.location.href = event.currentTarget.getAttribute("href");
+                                    } else {
+                                        //do nothing
+                                    }
+
+                                }
+
+    </script>
 
 </body>
-
 

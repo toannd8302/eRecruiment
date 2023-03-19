@@ -177,24 +177,3 @@
 
 
 
-
-<p>${user.email}</p>
-
-<p><fmt:formatDate value="${user.getDob()}" pattern="dd/MM/yyyy"/></p>
-
-<p>${user.phone}</p>
-
-<p>${user.address}</p>
-
-<h2>Introduction</h2>
-
-<p>Job: ${user.jobName}</p>
-
-<p>Experience year: ${user.experience}</p>
-
-<h2>Skill:</h2>
-<c:forEach var="skill" items="${user.getSkills()}">
-    <li>
-        ${skill.skillName}
-    </li>
-</c:forEach>

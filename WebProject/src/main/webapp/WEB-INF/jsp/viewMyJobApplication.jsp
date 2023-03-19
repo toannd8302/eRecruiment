@@ -331,6 +331,7 @@
         </div>
     </div>          
 
+        
     <div class="view-app-right">
         <table class="table table-striped">
             <thead>
@@ -353,9 +354,8 @@
                         <td>${jobApplication.jobPosting.locations}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
-                        <!--                        <td><button class="btn btn-danger">Cancel Application</button></td>-->
                     </tr>
-
+                    
                     <tr class="detail-row" style="display: none;">
                         <td colspan="3">
                             <div class="detail-info">
@@ -369,9 +369,9 @@
                                         </c:forEach>
                                     </li>
                                     <li><!--In lịch ngay đây, thêm pojo schedule, 1 job application có nhiều schedule-->
-                                        <c:forEach var="schedule" items="${jobApplication.getJobApSche()}">
-                                            Schedule date: <fmt:formatDate value="${schedule.schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/>
-                                            Status: ${schedule.schedule.getStatus()} 
+                                        <c:forEach var="jobAppSchedule" items="${jobApplication.getJobApSche()}">
+                                            Schedule date: <fmt:formatDate value="${jobAppSchedule.getApplicationSchedule().getScheduleDate()}" pattern="dd/MM/yyyy"/>
+                                            Status: ${jobAppSchedule.getApplicationSchedule().getStatus()} 
                                         </c:forEach> </li>
 
                                 </ul>

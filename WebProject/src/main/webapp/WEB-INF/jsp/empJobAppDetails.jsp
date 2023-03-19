@@ -15,19 +15,14 @@
         font-size: 62.5%;
         font-family: Arial, Helvetica, sans-serif;
     }
-
     * {
         box-sizing: border-box;
         margin: 0;
-
     }
-
-
     .container-fluid {
         padding: 0%;
         margin: 0%;
     }
-
     /* Sidebar */
     .sidebar {
         height: 100vh;
@@ -39,120 +34,93 @@
         overflow-x: hidden;
         background-color: #baa9a3;
     }
-
     .sidebar h1 {
         text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
     }
-
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
         color: black;
         padding: 10px;
         text-decoration: none;
     }
-
     .sidebar a:hover {
         background-color: #1abc9c;
     }
-
     .sidebar a.active {
         background-color: #1abc9c;
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 2rem;
         margin-right: 1.5rem;
     }
-
     #account h2,
     li {
         font-size: 2rem;
         list-style: none;
     }
-
     #account li a {
         color: black;
     }
-
     #account ul {
         padding-left: 0%;
     }
-
     #my-account {
         margin-left: 1.5rem;
         margin-top: 1.5rem;
     }
-
     #my-account .dropdown-menu {
         padding: 0%;
         background-color: #1abc9c;
     }
-
     #my-account .dropdown-item {
         background-color: #1abc9c;
     }
-
     #my-account .dropdown-item:hover {
         background-color: #1abc9c;
     }
-
-
-
     /* CSS for login link */
-
     #job-detail-head {
         background-color: white;
         width: 85%;
         margin-left: 10%;
         padding: 2rem;
     }
-
     #job-logo img {
         width: 15rem;
         height: 15rem;
     }
-
     #general-info {
         margin-top: 2rem;
     }
-
     #general-info h1 {
         font-size: 3rem;
     }
-
     #general-info h2 {
         font-size: 2.5rem;
     }
-
     #general-info p {
         margin-top: 1rem;
         font-size: 1.5rem;
     }
-
     #general-info p i {
         margin-right: 1rem;
     }
-
     /* CSS for Job posting */
     #job-detail-head {
         margin-left: 20rem;
     }
-
     #job-detail-head #apply-buton button:first-child {
         margin-top: 2rem;
         padding: 1rem;
@@ -164,11 +132,10 @@
         font-weight: bold;
         font-size: 1.5rem;
     }
-
     #job-detail-head #apply-buton button:first-child:hover {
-        background-color: #e74c3c;
+        background-color: #fff;
+        color: #00b14f;
     }
-
     #job-detail-head #apply-buton button:last-child {
         margin-top: 2rem;
         padding: 1rem;
@@ -181,134 +148,114 @@
         font-size: 1.5rem;
         text-align: center;
     }
-
     #job-detail-head #apply-buton button:last-child:hover {
-        background-color: #e74c3c;
+        background-color: #00b14f;
+        color: #fff;
     }
-
     #job-detail-head #apply-buton button a {
         text-decoration: none;
         color: white;
         font-weight: bold;
         font-size: 1.5rem;
     }
-
     #job-detail-head #apply-buton button i:first-child {
         font-size: 2rem;
         color: #ffffff;
         margin-right: 1rem;
+ 
     }
-
     #job-detail-head #apply-buton button i:last-child {
         font-size: 2rem;
         color: #00b14f;
         margin-right: 1rem;
     }
-
     /* CSS for recruit detail  */
-
     #job-detail-body {
         background-color: white;
         width: 85%;
         margin-left: 20rem;
         padding: 2rem;
     }
-
     #job-detail-body #job-general-info {
         margin-top: 2rem;
         background-color: #d4f2e1;
         padding: 2rem;
     }
-
     #job-detail-body #job-general-info h1 {
         margin-bottom: 1rem;
         text-decoration: none;
     }
-
     #job-detail-body #job-general-info .general-info-list {
         list-style: none;
     }
-
     #job-detail-body #job-general-info .general-info-list li {
         font-weight: bold;
         font-size: 2rem;
         color: rgb(244, 131, 131);
     }
-
     #job-detail-body #job-general-info .general-info-list li p {
         color: initial;
         font-weight: normal;
         font-size: 2rem;
     }
-
     #job-detail-body #job-general-info .general-info-list i {
         margin-right: 1rem;
         font-size: 2rem;
         margin-top: 2rem;
         display: inline-block;
     }
-
     #job-detail-body #job-general-info .general-info-list p {
         margin-left: 3.5rem;
     }
-
     /* CSS for Application Detail */
-
     #job-detail-body #application-general-info {
         margin-top: 2rem;
         background-color: #d4f2e1;
         padding: 2rem;
     }
-
     #job-detail-body #application-general-info h1 {
         margin-bottom: 1rem;
         text-decoration: none;
     }
-
     #job-detail-body #application-general-info .application-info-list {
         list-style: none;
     }
-
     #job-detail-body #application-general-info .application-info-list li {
         font-weight: bold;
         font-size: 2rem;
         color: rgb(244, 131, 131);
     }
-
     #job-detail-body #application-general-info .application-info-list li p {
         color: initial;
         font-weight: normal;
         font-size: 2rem;
     }
-
     #job-detail-body #application-general-info .application-info-list i {
         margin-right: 1rem;
         font-size: 2rem;
         margin-top: 2rem;
         display: inline-block;
     }
-
     #job-detail-body #application-general-info .application-info-list p {
         margin-left: 3.5rem;
     }
-
     .general-info-list a {
         text-decoration: none;
         color: rgb(244, 131, 131);
     }
-
     .application-info-list a {
         text-decoration: none;
         color: rgb(244, 131, 131);
     }
-
     #general-info .apply-time {
         margin-left: 48 rem;
         font-size: 2rem;
     }
-
     #footer {
         background-color: #161718;
+    }
+    .apply-button{
+        width: auto;
     }
 </style>
 
@@ -362,31 +309,64 @@
                 <h2 class="apply-time">Apply time: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></h2>
             </div>
         </div>
-        <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
-            <form method="post" action="<c:url value="/review-app"/>">
-                <div class="col-sm-2">
-                    <div id="apply-buton">
-                        <input type="submit" name="action" value="accept"/>
-                        <input type="submit" name="action" value="reject"/>
-                        <!--                <button class="apply-button"><i class="fa-solid fa-check-double"></i><a href="#">Approve</a></button>
-                                        <button class="save-job-button"><i class="fa-regular fa-circle-xmark"></i>Reject</button>-->
-                    </div>
-                </div>
-                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-            </form>
-        </c:if>
+        <div class="col-sm-2">
 
-        <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
-            <form method="post" action="<c:url value="/schedule-app"/>">
-                <div class="col-sm-2">
-                    <div id="apply-buton">
-                        <input type="submit" name="action" value="auto schedule"/>
-                        <input type="submit" name="action" value="manually schedule"/>
-                    </div>
+            <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
+                <div class="review">
+                    <form method="post" action="<c:url value="/jobApps/job-application-details/review-app"/>">
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <!--                                <input type="submit" name="action" value="accept"/>
+                                                                <input type="submit" name="action" value="reject"/>-->
+                                <button class="apply-button" name="action" value="accept"><i class="fa-solid fa-check-double"></i>Approve</a></button>
+                                <button class="save-job-button" name="action" value="reject"><i class="fa-regular fa-circle-xmark"></i>Reject</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                    </form>
                 </div>
-                <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-            </form>
-        </c:if>
+            </c:if>
+
+            <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
+                <div class="scheduling">
+                    <form method="post" action="<c:url value="/jobApps/job-application-details/schedule-app"/>">
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <button class="apply-button" name="action" value="auto schedule">Auto schedule</button>
+                                <button class="save-job-button" name="action" value="manually schedule">Manually schedule</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
+                    </form>
+                </div>
+            </c:if>
+
+            <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduled'}">
+                <div class="scheduled">
+                    <form method="get" action="<c:url value="/schedules/schedule-details"/>">
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <input type="hidden" name="scheduleID" value="${scheduleID}">
+                                <button name="action" value="View Schedule">View Schedule</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </c:if>
+
+            <c:if test="${jobApplication.getApplicationStatus() eq 'On Going'}">
+                <div class="on-going">
+                    <form method="get" action="<c:url value="/schedules/schedule-details"/>">
+                        <div class="col-sm-2">
+                            <div id="apply-buton">
+                                <input type="hidden" name="scheduleID" value="${scheduleID}">
+                                <button name="action" value="View Schedule">View Schedule</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </c:if>
+        </div>
     </div>
 </div>
 
@@ -441,65 +421,3 @@
         </ul>
     </div>
 </div>
-
-
-
-
-
-
-
-
-<!--<h1>Job Application Details</h1>
-<h2>Candidate</h2>
-<img src="<c:url value="${jobApplication.getCandidate().getPicture()}"/>"/>
-<p>${jobApplication.getCandidate().getName()}</p>
-
-<h2>Introduction</h2>
-<p>${jobApplication.getIntroduction()}</p>
-
-<h2>Job</h2>
-<p>Job Post ID: ${jobApplication.getJobPosting().getPostId()}</p>
-<p>Job Name: ${jobApplication.getJobPosting().getJobPosition().getJobName()}</p>
-<h3>Required Skill</h3>-->
-<%--<c:forEach var="item" items="${jobApplication.getJobPosting().getJobPosition().getSkills()}">
-    <p>${item.getSkillName()}</p>
-</c:forEach>
-
-<h2>All Round</h2>
-<c:forEach var="item" items="${jobApplication.getJobPosting().getRounds()}">
-    <p>${item.getRoundNumber()}</p>
-</c:forEach>--%>
-
-<!--<h2>CV</h2>
-<p>Created date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-<p>CV: ${jobApplication.getCv()}</p>
-
-<p>Round: ${jobApplication.getRoundNumber()}</p>-->
-
-<%--<c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
-    <form method="post" action="<c:url value="/review-app"/>">
-        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-        <input type="submit" name="action" value="accept"/>
-        <input type="submit" name="action" value="reject"/>
-    </form>
-</c:if>
-
-<c:if test="${jobApplication.getApplicationStatus() eq 'SCHEDULING'}">
-    <form method="post" action="<c:url value="/schedule-app"/>">
-        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-        <input type="submit" name="action" value="auto schedule"/>
-        <input type="submit" name="action" value="manually schedule"/>
-    </form>
-</c:if>
-
-<c:if test="${jobApplication.getApplicationStatus() eq ''}">
-    <form method="post" action="<c:url value="/review-job"/>">
-        <h2>No action support</h2>
-    </form>
-</c:if>--%>
-
-<%--<c:if test="${jobApplication.getApplicationStatus() eq 'On '}">
-    <form method="post" action="<c:url value="/review-job"/>">
-        <h2>No action support</h2>
-    </form>
-</c:if>--%>

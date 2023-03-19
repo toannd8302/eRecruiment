@@ -40,9 +40,8 @@ public class RoundController {
     @PostMapping(value = "/viewround")
     public String showFormCreateRound(Model model) {
         model.addAttribute("round", new round());
-        
         model.addAttribute("jobPostings", this.JobPostingService.getAllJobPosting());
-        return "createRound";
+        return "departmentCreateRound";
     }
     
     @PostMapping(value = "/createround")

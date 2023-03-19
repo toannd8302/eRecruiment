@@ -14,26 +14,21 @@
     html {
         font-family: Arial, Helvetica, sans-serif;
     }
-
     body {
         font-size: 16px;
     }
-
     #wrapper {
         margin: 0px auto;
         margin-left: 3rem;
     }
-
     #wrapper h1 {
         margin-left: 20rem;
     }
-
     /* Style nav tabs */
     .tabs {
         border-bottom: 1px solid #f5f5f5;
         margin-left: 20rem;
     }
-
     .nav-tabs {
         display: flex;
         list-style: none;
@@ -41,11 +36,9 @@
         padding: 0;
         border-bottom: 3px solid #ddd;
     }
-
     .nav-tabs li {
         margin-right: 10px;
     }
-
     .nav-tabs li a {
         display: block;
         padding: 6px 10px;
@@ -53,7 +46,6 @@
         position: relative;
         color: black;
     }
-
     .nav-tabs li a:after {
         content: "";
         height: 3px;
@@ -63,26 +55,22 @@
         bottom: -3px;
         background-color: transparent;
     }
-
     .nav-tabs li.active a::after,
     .nav-tabs li:hover a::after {
         background: #e74c3c;
     }
-
     td {
         padding: 6px 10px;
+        text-align: center;
     }
-
     th {
         padding: 6px 10px;
         text-align: center;
     }
-
     /* Style tab-content */
     .tab-content {
         padding: 20px, 0px;
     }
-
     /* Sidebar */
     .sidebar {
         height: 100vh;
@@ -94,74 +82,59 @@
         overflow-x: hidden;
         background-color: #baa9a3;
     }
-
     .sidebar h1 {
         text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
     }
-
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
         color: black;
         padding: 10px;
         text-decoration: none;
     }
-
     .sidebar a:hover {
         background-color: #1abc9c;
     }
-
     .sidebar a.active {
         background-color: #1abc9c;
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
     }
-
     #account h2,
     li {
         font-size: 2rem;
         list-style: none;
     }
-
     #account li a {
         color: black;
     }
-
     #account ul {
         padding-left: 0%;
     }
-
     #my-account {
         margin-left: 1.5rem;
         margin-top: 1.5rem;
     }
-
     #my-account .dropdown-menu {
         padding: 0%;
         background-color: #1abc9c;
     }
-
     #my-account .dropdown-item {
         background-color: #1abc9c;
     }
-
     #my-account .dropdown-item:hover {
         background-color: #1abc9c;
     }
@@ -204,7 +177,7 @@
     <h1>Job Application List</h1>
     <div class="tabs">
         <ul class="nav-tabs">
-            <li class="active"><a href="#pending">Pending</a></li>
+            <li class="active"><a href="#pending">Review</a></li>
             <li><a href="#scheduling">Scheduling</a></li>
             <li><a href="#scheduled">Scheduled</a></li>
             <li><a href="#on-going">On-going</a></li>
@@ -240,7 +213,7 @@
                                     </c:if>
                                 </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                                 <!--                            <td><a href="jobapplicationdetail.html">View Details</a></td>-->
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             </tr>
@@ -271,9 +244,16 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
                             </tr>
@@ -304,9 +284,16 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
                             </tr>
@@ -337,9 +324,16 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
                             </tr>
@@ -369,9 +363,16 @@
                                 <td>${jobApplication.getApplicationId()}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
-                                <td>${jobApplication.getCandidate().getPhone()}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
-                                <td><input type="submit" value="View Deatils"/></td>
+                                <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             </tr>
                         </form>
@@ -393,7 +394,6 @@
             //Active nav tabs
             $('.nav-tabs li').removeClass('active');
             $(this).addClass('active');
-
             //Show tab-content item
             let id_tab_content = $(this).children('a').attr('href');
             // alert(id_tab_content);
@@ -403,68 +403,3 @@
         });
     });
 </script>
-
-
-<!--
-<h1>MESSAGE: ${MESSAGE}</h1>
-
-<h1>Job Application List</h1>
-
-<h3>Waiting For Review</h3>
-<c:forEach var="jobApplication" items="${REVIEW}">
-    ==================================================================
-    <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
-        <p>Application ID: ${jobApplication.getApplicationId()}</p>
-        <p>Picture: ${jobApplication.getCandidate().getPicture()}</p>
-        <p>Candidate Name: ${jobApplication.getCandidate().getName()}</p>
-        <p>Job Name: ${jobApplication.jobPosting.jobPosition.jobName}</p>
-        <p>Created date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-        <input type="submit" value="View Deatils"/>
-    </form>
-</c:forEach>
-
-<h3>Waiting For Scheduling</h3>
-<c:forEach var="jobApplication" items="${SCHEDULING}">
-    ==================================================================
-    <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
-        <p>Application ID: ${jobApplication.getApplicationId()}</p>
-        <p>Picture: ${jobApplication.getCandidate().getPicture()}</p>
-        <p>Candidate Name: ${jobApplication.getCandidate().getName()}</p>
-        <p>Job Name: ${jobApplication.jobPosting.jobPosition.jobName}</p>
-        <p>Created date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-        <input type="submit" value="View Deatils"/>
-    </form>
-</c:forEach>
-
-<h3>Is scheduled</h3>
-<c:forEach var="jobApplication" items="${SCHEDULED}">
-    ==================================================================
-    <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
-        <p>Application ID: ${jobApplication.getApplicationId()}</p>
-        <p>Picture: ${jobApplication.getCandidate().getPicture()}</p>
-        <p>Candidate Name: ${jobApplication.getCandidate().getName()}</p>
-        <p>Job Name: ${jobApplication.jobPosting.jobPosition.jobName}</p>
-        <p>Created date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-        <input type="submit" value="View Deatils"/>
-    </form>
-</c:forEach>
-
-<h3>On Going</h3>
-<c:forEach var="jobApplication" items="${ON_GOING}">
-    ==================================================================
-    <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
-        <p>Application ID: ${jobApplication.getApplicationId()}</p>
-        <p>Picture: ${jobApplication.getCandidate().getPicture()}</p>
-        <p>Candidate Name: ${jobApplication.getCandidate().getName()}</p>
-        <p>Job Name: ${jobApplication.jobPosting.jobPosition.jobName}</p>
-        <p>Created date: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
-        <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-        <input type="submit" value="View Deatils"/>
-    </form>
-</c:forEach>
-
-
--->

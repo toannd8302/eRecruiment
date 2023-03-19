@@ -34,12 +34,8 @@ public class WishListImp {
 
     }
 
-    public void removeJobPosting(jobPosting joP) {
-        if (wishListCount < MAX_WISHLIST_SIZE) {
-            wishListCount++;
+    public void removeJobPosting(jobPosting joP) {  
             wishList.remove(joP);
-        }
-
     }
 
     public Set<jobPosting> getWishList() {

@@ -4,6 +4,14 @@
     Author     : KHOA
 --%>
 
+
+
+<%-- 
+    Document   : homePage
+    Created on : Feb 6, 2023, 9:51:54 AM
+    Author     : KHOA
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -15,15 +23,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
-
-<!-- Bootstrap here -->
-<!--<link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" integrity="sha256-sWZjHQiY9fvheUAOoxrszw9Wphl3zqfVaz1kZKEvot8=" crossorigin="anonymous">
 
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
@@ -166,12 +166,7 @@
         text-decoration: none;
         color: black;
     }
-    .hot-jobs .hot-post img {
-        width: 15rem;
-        height: 14rem;
-        margin-left: 10rem;
-        display: inline-block;
-    }
+
 
     .hot-jobs .hot-post h3 {
         font-weight: bold;
@@ -215,7 +210,7 @@
 
     .product-area-list {
         padding-top: 5rem;
-        margin-left: 4rem;
+        margin-left: 5.8rem;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding-bottom: 10rem;
@@ -417,7 +412,7 @@
     .search-result .result-post .post-down .skill-lists{
         display: flex;
     }
-    
+
     .search-result .result-post .result-post-right{
         display: flex;
         flex-direction: column;
@@ -508,6 +503,34 @@
     .contact-form button:hover{
         background: linear-gradient(150deg,#153e68,#196c79);
     }
+
+
+    .modal-btn{
+        background:linear-gradient(transparent, transparent);
+        border: none;
+    }
+
+    .modal .modal-content .modal-header h2{
+        margin-left: 11.5rem;
+        font-weight: bold;
+    }
+
+    .modal .modal-content .modal-body i{
+        display: inline-block;
+        font-size: 3.5rem;
+        padding: 0.3rem 0.5rem;
+        background: #006400;
+        color: #fff;
+        border-radius: 50%;
+
+        margin-left: 21.5rem;
+    }
+
+    .modal .modal-content .modal-footer{
+        margin-right: 22.5rem;
+        border-top: o;
+        font-size: 2rem;
+    }
 </style>
 
 <!-- Header here -->
@@ -567,7 +590,7 @@
     <!-- Hot job here -->
     <h1 id="job-post-title">Today Hotjobs</h1>
     <div class="product-area-list">
-        <c:forEach var="item" items="${list}">
+        <c:forEach var="item" items="${listOfJobPosting}">
             <div class="product">
                 <i class="fa-solid fa-chevron-down"></i>
                 <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
@@ -576,7 +599,6 @@
                 <p class="welfare">${item.welfare}</p>
                 <a href="<c:url value="/post-detail/${item.postId}"/>">See more<i class="fa-solid fa-chevron-right"></i></a>
             </div>
-
         </c:forEach>
     </div>    
 
@@ -594,7 +616,7 @@
     </form>
     <div class="search-result">
         <h2 style="margin-left: 2rem">Found 6969 works</h2>
-        <c:forEach var="item" items="${list}">
+        <c:forEach var="item" items="${listOfJobPosting}">
             <div class="result-post">
                 <div class="result-post-left">
                     <div class="container mt-3">
@@ -621,21 +643,23 @@
                                             <p style="margin-bottom: 0;">${skill.skillName}</p>
                                         </li> 
                                     </c:forEach>
-                                    
+
                                 </div>
                             </div>
                         </div>           
                     </div>
                 </div>
                 <div class="result-post-right">
-                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><i class="fa-regular fa-bookmark"></i></a>
-                    
+                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><button class="modal-btn" onclick="saveJob()"> <i class="fa-regular fa-bookmark"></i></button></a>
+
                     <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
                     <p>4 hours ago</p>
                 </div>
             </div>
         </c:forEach>
     </div>
+
+
 
     <div id="contact" class="contact-us">
         <div class="contact-form">
@@ -651,13 +675,18 @@
             <button><a href="#">Send</a></button>
         </div>
     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function saveJob() {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    </script>
 </body>
-
-
-
-
-
-
-
-
-

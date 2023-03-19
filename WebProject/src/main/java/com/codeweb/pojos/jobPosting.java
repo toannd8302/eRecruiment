@@ -41,6 +41,7 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @Column(name = "Post_id", columnDefinition = "NVARCHAR(6)")
     private String postId;
     
+    
     @Column(name = "Descriptions")
     private String descriptions;
     
@@ -84,7 +85,7 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
-    @OneToMany (mappedBy = "jobPoting", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
+      @OneToMany (mappedBy = "jobPoting", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER) //ko co la ko insert dc
     private Set<round> rounds;
     
     @OneToMany(mappedBy = "jobPosting")

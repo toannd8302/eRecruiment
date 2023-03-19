@@ -49,15 +49,6 @@ public class round implements Serializable{
     @OneToMany (mappedBy = "round", fetch = FetchType.EAGER)
     private Set<schedule> schedule;
 
-    public round() {
-    }
-
-    public round( Integer roundNumber, String content) {
-        
-        this.roundNumber = roundNumber;
-        this.content = content;
-    }
-
     public Set<schedule> getSchedule() {
         return schedule;
     }

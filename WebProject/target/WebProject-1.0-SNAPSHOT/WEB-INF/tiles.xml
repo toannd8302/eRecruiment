@@ -37,7 +37,6 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
     <definition name="apply-job" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>
         <put-attribute name="content" value="/WEB-INF/jsp/jobApplication.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/layout/departmentFooter.jsp"/>
     </definition>
     <definition name="account-information" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>
@@ -70,10 +69,6 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
     </definition>
 
     <!--ALl tiles for Employee role-->
-    <definition name="employee-page" extends="baseLayoutEmployee">
-        <put-attribute name="title" value="Job Application"/>
-        <put-attribute name="content" value="/WEB-INF/jsp/empHomePage.jsp" />
-    </definition>
     <definition name="view-all-postings" extends="baseLayoutEmployee">
         <put-attribute name="title" value="Job Application"/>
         <put-attribute name="content" value="/WEB-INF/jsp/empAllPostings.jsp" />
@@ -102,5 +97,20 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value="Job Application"/>
         <put-attribute name="content" value="/WEB-INF/jsp/empSchedulingJobApp.jsp" />
     </definition>
+    
+    <!--ALl tiles for Interviewer role-->
+    <definition name="interviewer-page" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="Employee Homepage"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/intHomePage.jsp" />
+    </definition>
+    <definition name="view-my-schedules" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View My Schedules"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/intAllSchedules.jsp" />
+    </definition>
+    <definition name="view-all-reports" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View All Reports"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/intAllReports.jsp" />
+    </definition>
+    
 </tiles-definitions>    
     

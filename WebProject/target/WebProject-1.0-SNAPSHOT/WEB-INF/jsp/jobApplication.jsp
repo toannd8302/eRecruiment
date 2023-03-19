@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-sm-5">
                         <div id="general-info">
-                            <h1>Lập trình viên .NET</h1>
+                            <h1>${jobPost.getJobPosition().getJobName()}</h1>
                             <h2>Công ty phần mềm Monke Tech</h2>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                     <input type="submit" class="btn btn-danger" value="Send CV"/>
                 </div>
             </div>
-            <input type="hidden" name="postID" value="${postID}">
+            <input type="hidden" name="postID" value="${jobPost.getPostId()}">
         </div>
     </form:form>
 </body>

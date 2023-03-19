@@ -10,149 +10,81 @@
     Author     : KHOA
 --%>
 
-<!DOCTYPE html>
-<%--<html lang="en">--%>
-
-
-<!-- Bootstrap here -->
-<!--<link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
-
 
 
 <style>
-    html {
-        font-size: 62.5%;
-        font-family: Arial, Helvetica, sans-serif;
+    .footer{
+        padding-left: 0;
+        background-color: #efefef;
+        padding: 5rem;
+        text-align: center;
     }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    /* CSS for footer */
-    #footer {
-        margin-top: 4rem;
-        background-color: #161718;
-        clear: both;
-    }
-
-    #footer .row {
-        margin-left: 20rem;
-    }
-
-    #footer ul {
-        list-style: none;
-        font-size: 2rem;
-        padding: 0%;
+    .footer .icon{
+        text-align: center;
+        font-size: 2.5rem;
 
     }
 
-    #footer h1 {
-        font-weight: bold;
-        color: white;
-        margin-top: 2rem;
+    .footer .icon a{
+        color: #fff;
     }
 
-    #footer ul li a {
-        text-decoration: none;
-        color: crimson;
+    .footer .icon a:hover{
+        color: #aaa;
     }
-</style>
-<!-- Footer here -->
 
-<div id="footer">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="Company">
-                <h1>Monke Company</h1>
-                <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Our Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="Help">
-                <h1>Get Help</h1>
-                <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Q&A</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="Social">
-                <h1>Social</h1>
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+    .footer .icon i{
+        margin: 0.5rem;
+        padding: 0.3rem 0.5rem;
+        border-radius: 30%;
+        background: #7c7c7c;
+    }
 
-
-
-
-
-
-
-
-
-
-
-<%--
-<title>Footer Design</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/footer.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
-<style>
-/*    .footer .container {
+    .footer .logo{
         display: flex;
-    }*/
+        text-align: center;
+        justify-content: center;
+        /* margin-top: 3rem; */
+    }
+
+    .footer .logo img{
+        height: 5rem;
+        width: 10rem;
+    }
+
+    .footer .logo img:hover{
+        opacity: 0.7;
+    }
+
+    .footer .logo h2{
+        display: flex;
+        align-items: center;
+    }
+
+
+    .footer .location p{ 
+        display: flex;
+        text-align: center;
+        font-size: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        color: #949494;
+    }
 </style>
 
 <div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <h4>Monke Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Get Help</h4>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Socials</h4>
-                <div class="Socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-google-plus"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
+    <div class="icon">
+        <a href="https://www.facebook.com/profile.php?id=100075837624349"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="logo">
+        <a href="#"><img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true" alt="Monke Tech"></a>    
+        <h2>Monke Tech</h2>
+    </div>
+    <div class="location">
+        <p>MonkeTech company
+            Address:  Z100 batch, 26 road, Long Thanh My District, Thu Duc City, Ho Chi Minh City</p>
     </div>
 </div>
---%>
