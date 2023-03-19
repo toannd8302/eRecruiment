@@ -26,23 +26,19 @@
         font-size: 62.5%;
     }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
-
     /* CSS for body */
     #job-detail-head {
         background-color: white;
-        width: 85%;
-        margin-left: 14%;
+        width: auto;
+        margin-left: 20rem;
         padding: 2rem;
-        margin-top: 3%;
+        background-color: rgb(208, 204, 204);
     }
 
     #job-logo img {
         width: 15rem;
         height: 15rem;
+        border-radius: 50%;
     }
 
     #general-info {
@@ -56,24 +52,32 @@
     #general-info h2,
     p {
         margin-top: 1rem;
-        font-size: 1.5rem;
+        font-size: 3rem;
     }
 
     #general-info p i {
         margin-right: 1rem;
     }
 
+    #job-detail-head #apply-buton button {
+        height: 75px;
+        width: 150px;
+        font-size: 2rem;
+    }
+
     #job-detail-head #apply-buton button:first-child {
-        margin-top: 2rem;
         padding: 1rem;
         border-radius: 1rem;
         background-color: #00b14f;
         border: 0.2rem solid #00b14f;
         margin-right: 1rem;
-        color: white;
+        color: #fff;
         font-weight: bold;
-        font-size: 1.5rem;
+    }
 
+    #job-detail-head #apply-buton button:first-child:hover {
+        background-color: #fff;
+        color: #00b14f;
     }
 
     #job-detail-head #apply-buton button:last-child {
@@ -85,16 +89,22 @@
         margin-right: 1rem;
         color: #00b14f;
         font-weight: bold;
-        font-size: 1.5rem;
         text-align: center;
+    }
 
+    #job-detail-head #apply-buton button:last-child:hover {
+        background-color: #00b14f;
+        color: #fff;
     }
 
     #job-detail-head #apply-buton button a {
         text-decoration: none;
-        color: white;
+        color: #fff;
         font-weight: bold;
-        font-size: 1.5rem;
+    }
+
+    #job-detail-head #apply-buton button a:hover {
+        color: #00b14f;
     }
 
     #job-detail-head #apply-buton button i:first-child {
@@ -109,9 +119,6 @@
         margin-right: 1rem;
     }
 
-
-
-
     /* CSS for recruit detail  */
 
     #job-detail-body {
@@ -119,7 +126,7 @@
         width: 85%;
         margin-left: 14%;
         padding: 2rem;
-        margin-top: 3%;
+        margin-top: 1.5rem;
     }
 
     #job-detail-body #job-general-info {
@@ -130,7 +137,6 @@
 
     #job-detail-body #job-general-info h1 {
         margin-bottom: 1rem;
-        text-decoration: underline;
     }
 
     #job-detail-body #job-general-info .general-info-list {
@@ -168,11 +174,6 @@
         margin-top: 1rem;
         padding: 2rem;
     }
-
-    #job-detail-body #job-location h1 {
-        text-decoration: underline;
-    }
-
 
     /* CSS for Job Describe */
     #job-detail-body #job-describe {
@@ -269,24 +270,25 @@
     .sidebar {
         height: 100vh;
         width: 200px;
-        color: black;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
-        font-size: 20px;
+        font-weight: bold;
     }
 
     .sidebar h1 {
-        text-align: center;
         margin-bottom: 30px;
     }
 
     .sidebar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
+    }
+
+    .sidebar .action {
+        margin-top: 2rem;
     }
 
     .sidebar li {
@@ -295,17 +297,18 @@
 
     .sidebar a {
         display: block;
-        color: black;
-        padding: 10px;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         text-decoration: none;
     }
 
     .sidebar a:hover {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
 
     .sidebar a.active {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
 
     /* Account */
@@ -315,135 +318,138 @@
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+        border-radius: 50%;
+    }
+
+    #account h2,
+    li {
+        font-size: 2rem;
+        list-style: none;
+    }
+
+    #account li a {
+        color: black;
+    }
+
+    #account ul {
+        padding-left: 0%;
+    }
+
+    #my-account {
+        margin-left: 1.5rem;
+        margin-top: 1.5rem;
     }
 </style>
 
-<body>
-    <!-- Sidebar here -->
-    <div class="sidebar">
-        <div class="row">
-            <div>
-                <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
-            </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="#">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="#">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<!-- Sidebar Here -->
+<div class="sidebar">
+    <div class="row">
+        <div>
+            <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
         </div>
+    </div>
+    <div class="action">
         <ul>
-            <li><a href="jobapplication.html">Application List</a></li>
-            <li><a href="jobposting.html">Job Postings List</a></li>
+            <li><a href="jobapplication.html"><i class="fa-solid fa-list"></i> Applications List</a></li>
+            <li><a href="jobposting.html"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
+            <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
         </ul>
     </div>
-    <!-- Body Here -->
-    <div id="job-detail-head">
-        <div class="row">
-            <div class="col-sm-2">
-                <div id="job-logo">
-                    <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="Back-end">
-                </div>
+</div>
+<!-- Body Here -->
+<div id="job-detail-head">
+    <div class="row">
+        <div class="col-sm-2">
+            <div id="job-logo">
+                <img src="https://dotnet.microsoft.com/static/images/redesign/social/square.png" alt="Back-end">
             </div>
-            <div class="col-sm-8">
-                <div id="general-info">
-                    <h1>Lập trình viên .NET</h1>
-                    <h2>Công ty phần mềm Monke Tech</h2>
-                    <p><i class="fa-regular fa-clock"></i>Hạn nộp hồ sơ: 30/4/2023</p>
-                </div>
+        </div>
+        <div class="col-sm-8">
+            <div id="general-info">
+                <h1>Lập trình viên .NET</h1>
+                <h2>Công ty phần mềm Monke Tech</h2>
+                <p><i class="fa-regular fa-clock"></i>Hạn nộp hồ sơ: 30/4/2023</p>
             </div>
-            <div class="col-sm-2">
-                <div id="apply-buton">
-                    <button class="apply-button"><i class="fa-solid fa-check-double"></i><a
-                            href="#">Approve</a></button>
-                    <button class="save-job-button"><i class="fa-regular fa-circle-xmark"></i>Reject</button>
-                </div>
+        </div>
+        <div class="col-sm-2">
+            <div id="apply-buton">
+                <button class="apply-button">Approve</a></button>
+                <button class="save-job-button">Reject</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="job-detail-body">
-        <div id="recrui-detail">
-            <h1>Chi tiết tuyển dụng</h1>
-            <div id="job-general-info">
-                <h1>Thông tin chung</h1>
-                <ul class="general-info-list">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <li><i class="fa-solid fa-money-bill"></i>
-                                Mức lương
-                                <p>16-21 triệu</p>
-                            </li>
+<div id="job-detail-body">
+    <div id="recrui-detail">
+        <h1>Chi tiết tuyển dụng</h1>
+        <div id="job-general-info">
+            <h1>Thông tin chung</h1>
+            <ul class="general-info-list">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <li><i class="fa-solid fa-money-bill"></i>
+                            Mức lương
+                            <p>16-21 triệu</p>
+                        </li>
 
-                            <li><i class="fa-sharp fa-solid fa-suitcase"></i>Hình thức làm việc<p>Toàn thời gian</p>
-                            </li>
+                        <li><i class="fa-sharp fa-solid fa-suitcase"></i>Hình thức làm việc<p>Toàn thời gian</p>
+                        </li>
 
-                            <li><br><i class="fa-solid fa-venus-mars"></i>Giới tính<p>Nam</p>
-                            </li>
-                        </div>
-                        <div class="col-sm-6">
-                            <li><i class="fa-sharp fa-solid fa-people-group"></i>Số lượng tuyển<p>2 người </p>
-                            </li>
-
-                            <li><br><i class="fa-solid fa-ranking-star"></i>Cấp bậc<p>Nhân viên</p>
-                            </li>
-
-                            <li><br><i class="fa-brands fa-black-tie"></i>Kinh nghiệm<p>Dưới 1 năm</p>
-                            </li>
-                        </div>
+                        <li><br><i class="fa-solid fa-venus-mars"></i>Giới tính<p>Nam</p>
+                        </li>
                     </div>
-                </ul>
-            </div>
-        </div>
+                    <div class="col-sm-6">
+                        <li><i class="fa-sharp fa-solid fa-people-group"></i>Số lượng tuyển<p>2 người </p>
+                        </li>
 
-        <div id="job-location">
-            <h1>Địa điểm làm việc</h1>
-            <ul class="info-list">
-                <li>
-                    Hồ Chí Minh:313/15A Phan Ích Huy, P.14, Q.Gò Vấp, Hồ Chí Minh
-                </li>
+                        <li><br><i class="fa-solid fa-ranking-star"></i>Cấp bậc<p>Nhân viên</p>
+                        </li>
+
+                        <li><br><i class="fa-brands fa-black-tie"></i>Kinh nghiệm<p>Dưới 1 năm</p>
+                        </li>
+                    </div>
+                </div>
             </ul>
         </div>
+    </div>
 
-        <div id="job-describe">
-            <h1>Mô tả công việc</h1>
-            <ul class="info-list">
-                <li>Tham gia vào giai đoạn thiết kế phần mềm</li>
-                <li>Phân tích các chức năng phần mềm theo yêu cầu từ cấp quản lý hoặc các phòng ban</li>
-                <li>Xây dựng, thiết kế cơ sở dữ liệu theo thiết kế trên SQL Server, lập trình Store procedure</li>
-            </ul>
-        </div>
+    <div id="job-location">
+        <h1>Địa điểm làm việc</h1>
+        <ul class="info-list">
+            <li>
+                Hồ Chí Minh:313/15A Phan Ích Huy, P.14, Q.Gò Vấp, Hồ Chí Minh
+            </li>
+        </ul>
+    </div>
 
-        <div id="job-require">
-            <h1>Yêu cầu ứng viên</h1>
-            <ul class="info-list">
-                <li>Yêu cầu tối thiểu 6 tháng kinh nghiệm lập trình trên .NET</li>
-                <li>Kỹ năng lập trình</li>
-                <li>Chịu áp lực công việc cao</li>
-                <li>Tiếng anh trình độ A</li>
-            </ul>
-        </div>
+    <div id="job-describe">
+        <h1>Mô tả công việc</h1>
+        <ul class="info-list">
+            <li>Tham gia vào giai đoạn thiết kế phần mềm</li>
+            <li>Phân tích các chức năng phần mềm theo yêu cầu từ cấp quản lý hoặc các phòng ban</li>
+            <li>Xây dựng, thiết kế cơ sở dữ liệu theo thiết kế trên SQL Server, lập trình Store procedure</li>
+        </ul>
+    </div>
 
-        <div id="job-welfare">
-            <h1>Quyền lợi</h1>
-            <ul class="info-list">
-                <li>Thưởng lễ, tết, sinh nhật, lương tháng 13, phép năm</li>
-                <li>Tham gia các hoạt động teambuilding, du lịch, tất niên</li>
-                <li>Xét tăng lương định kỳ 1 lần/năm</li>
-                <li>Yoga miễn phí</li>
-            </ul>
-        </div>
+    <div id="job-require">
+        <h1>Yêu cầu ứng viên</h1>
+        <ul class="info-list">
+            <li>Yêu cầu tối thiểu 6 tháng kinh nghiệm lập trình trên .NET</li>
+            <li>Kỹ năng lập trình</li>
+            <li>Chịu áp lực công việc cao</li>
+            <li>Tiếng anh trình độ A</li>
+        </ul>
+    </div>
 
-
-
-</body>
+    <div id="job-welfare">
+        <h1>Quyền lợi</h1>
+        <ul class="info-list">
+            <li>Thưởng lễ, tết, sinh nhật, lương tháng 13, phép năm</li>
+            <li>Tham gia các hoạt động teambuilding, du lịch, tất niên</li>
+            <li>Xét tăng lương định kỳ 1 lần/năm</li>
+            <li>Yoga miễn phí</li>
+        </ul>
+    </div>
 
 </html>

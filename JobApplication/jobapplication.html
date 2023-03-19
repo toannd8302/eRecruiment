@@ -24,342 +24,330 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <style>
-        html {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<style>
+    html {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        body {
-            font-size: 16px;
-        }
+    body {
+        font-size: 16px;
+    }
 
-        #wrapper {
-            margin: 0px auto;
-            margin-left: 3rem;
-        }
+    #wrapper {
+        margin: 0px auto;
+        margin-left: 3rem;
+    }
 
-        #wrapper h1 {
-            margin-left: 20rem;
-        }
+    #wrapper h1 {
+        margin-left: 20rem;
+        width: 100%;
+        text-align: center;
+        padding: auto;
 
-        /* Style nav tabs */
-        .tabs {
-            border-bottom: 1px solid #f5f5f5;
-            margin-left: 20rem;
-        }
+    }
 
-        .nav-tabs {
-            display: flex;
-            list-style: none;
-            margin: 0px;
-            padding: 0;
-            border-bottom: 3px solid #ddd;
-        }
+    .header {
+        display: flex;
+        background-color: rgb(208, 204, 204);
+        margin-bottom: 2rem;
+        height: 8.5rem;
+    }
 
-        .nav-tabs li {
-            margin-right: 10px;
-        }
+    /* Style nav tabs */
+    .tabs {
+        border-bottom: 1px solid #f5f5f5;
+        margin-left: 20rem;
+    }
 
-        .nav-tabs li a {
-            display: block;
-            padding: 6px 10px;
-            text-decoration: none;
-            position: relative;
-            color: black;
-        }
+    .nav-tabs {
+        display: flex;
+        list-style: none;
+        margin: 0px;
+        padding: 0;
+        border-bottom: 3px solid #ddd;
+        font-weight: bold;
+    }
 
-        .nav-tabs li a:after {
-            content: "";
-            height: 3px;
-            width: 100%;
-            position: absolute;
-            left: 0px;
-            bottom: -3px;
-            background-color: transparent;
-        }
+    .nav-tabs li {
+        margin-right: 10px;
+    }
 
-        .nav-tabs li.active a::after,
-        .nav-tabs li:hover a::after {
-            background: #e74c3c;
-        }
+    .nav-tabs li a {
+        display: block;
+        padding: 6px 10px;
+        text-decoration: none;
+        position: relative;
+        color: black;
+    }
 
-        td {
-            padding: 6px 10px;
-        }
+    .nav-tabs li a:after {
+        content: "";
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        bottom: -3px;
+        background-color: transparent;
+    }
 
-        th {
-            padding: 6px 10px;
-            text-align: center;
-        }
+    .nav-tabs li.active a::after,
+    .nav-tabs li:hover a::after {
+        background: #e74c3c;
+    }
 
-        /* Style tab-content */
-        .tab-content {
-            padding: 20px, 0px;
-        }
+    td {
+        padding: 6px 10px;
+        text-align: center;
+    }
 
-        /* Sidebar */
-        .sidebar {
-            height: 100vh;
-            width: 200px;
-            color: black;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            background-color: #baa9a3;
-        }
+    th {
+        padding: 6px 10px;
+        text-align: center;
+    }
 
-        .sidebar h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    /* Style tab-content */
+    .tab-content {
+        padding: 20px, 0px;
+    }
 
-        .sidebar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+    /* Sidebar */
+    .sidebar {
+        height: 100vh;
+        width: 200px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        background-color: #baa9a3;
+        font-weight: bold;
+    }
 
-        .sidebar li {
-            margin-bottom: 5px;
-        }
+    .sidebar h1 {
+        margin-bottom: 30px;
+    }
 
-        .sidebar a {
-            display: block;
-            color: black;
-            padding: 10px;
-            text-decoration: none;
-        }
+    .sidebar ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
 
-        .sidebar a:hover {
-            background-color: #1abc9c;
-        }
+    .sidebar .action {
+        margin-top: 2rem;
+    }
 
-        .sidebar a.active {
-            background-color: #1abc9c;
-        }
+    .sidebar li {
+        margin-bottom: 5px;
+    }
 
-        /* Account */
+    .sidebar a {
+        display: block;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        text-decoration: none;
+    }
 
-        .sidebar img {
-            width: 13.5rem;
-            height: 13.5rem;
-            margin-left: 3rem;
-            margin-right: 3rem;
-        }
+    .sidebar a:hover {
+        background-color: rgb(208, 204, 204);
+    }
 
-        #account h2,
-        li {
-            font-size: 2rem;
-            list-style: none;
-        }
+    .sidebar a.active {
+        background-color: rgb(208, 204, 204);
+    }
 
-        #account li a {
-            color: black;
-        }
+    /* Account */
 
-        #account ul {
-            padding-left: 0%;
-        }
+    .sidebar img {
+        width: 13.5rem;
+        height: 13.5rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+        border-radius: 50%;
+    }
 
-        #my-account {
-            margin-left: 1.5rem;
-            margin-top: 1.5rem;
-        }
+    #account h2,
+    li {
+        font-size: 2rem;
+        list-style: none;
+    }
 
-        #my-account .dropdown-menu {
-            padding: 0%;
-            background-color: #1abc9c;
-        }
+    #account li a {
+        color: black;
+    }
 
-        #my-account .dropdown-item {
-            background-color: #1abc9c;
-        }
-
-        #my-account .dropdown-item:hover {
-            background-color: #1abc9c;
-        }
-    </style>
-    <!-- Sidebar Here -->
-    <div class="sidebar">
-        <div class="row">
-            <div>
-                <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
-            </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="#">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="#">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    #account ul {
+        padding-left: 0%;
+    }
+</style>
+<!-- Sidebar Here -->
+<div class="sidebar">
+    <div class="row">
+        <div>
+            <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
         </div>
+    </div>
+    <div class="action">
         <ul>
-            <li><a class="active" href="">Application List</a></li>
-            <li><a href="jobposting.html">Job Postings List</a></li>
+            <li><a class="active" href=""><i class="fa-solid fa-list"></i> Applications List</a></li>
+            <li><a href="jobposting.html"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
+            <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
         </ul>
     </div>
-    <div id="wrapper">
+</div>
+<div id="wrapper">
+    <div class="header">
+        <h1>Job Applications List</h1>
         <h1>Welcome HR Employee</h1>
-        <h1>Job Application List</h1>
-        <div class="tabs">
-            <ul class="nav-tabs">
-                <li class="active"><a href="#pending">Pending</a></li>
-                <li><a href="#scheduling">Scheduling</a></li>
-                <li><a href="#on-going">On-going</a></li>
-                <li><a href="#rejected">Rejected</a></li>
-            </ul>
-            <div class="tab-content">
-                <div id="pending" class="tab-content-item">
-                    <h2>Pending</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Candidate</th>
-                                <th>Job Apply</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>View Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>slkjfsjlkdfsjlkfdsjklsdfkjlsdfjklsdfklsdasd-13129839898da</td>
-                                <td>Triển Chiêu</td>
-                                <td>Back-end Developer</td>
-                                <td>09113</td>
-                                <td>trienchieuvjppr0@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>efoyiwotu34593rjklsajdlsakdnmsadlnsakldsandlkajcxlnc23113</td>
-                                <td>Bao Chửng</td>
-                                <td>Front-end Developer</td>
-                                <td>08115</td>
-                                <td>ba0chungthebest@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="scheduling" class="tab-content-item">
-                    <h2>Scheduling</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Candidate</th>
-                                <th>Job Apply</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>View Details</th>
-                                <th>Cancel</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>slkjfsjlkdfsjlkfdsjklsdfkjlsdfjklsdfklsdasd-13129839898da</td>
-                                <td>Triển Chiêu</td>
-                                <td>Back-end Developer</td>
-                                <td>09113</td>
-                                <td>trienchieuvjppr0@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                                <td><a href="#">Cancel</a></td>
-                            </tr>
-                            <tr>
-                                <td>efoyiwotu34593rjklsajdlsakdnmsadlnsakldsandlkajcxlnc23113</td>
-                                <td>Bao Chửng</td>
-                                <td>Front-end Developer</td>
-                                <td>08115</td>
-                                <td>ba0chungthebest@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                                <td><a href="#">Cancel</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="on-going" class="tab-content-item">
-                    <h2>On-going</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Candidate</th>
-                                <th>Job Apply</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>View Details</th>
-                                <th>Cancel</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>J0001</td>
-                                <td>Nguyễn Đức Toàn</td>
-                                <td>Back-end Developer</td>
-                                <td>114</td>
-                                <td>toandeptraiso1@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                                <td><a href="#">Cancel</a></td>
-                            </tr>
-                            <tr>
-                                <td>J0002</td>
-                                <td>Lồ Quang Thắng</td>
-                                <td>Front-end Developer</td>
-                                <td>09666</td>
-                                <td>quangthanglor@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                                <td><a href="#">Cancel</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="rejected" class="tab-content-item">
-                    <h2>Rejected</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Candidate</th>
-                                <th>Job Apply</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>View Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>J0001</td>
-                                <td>Lê Quang Phú</td>
-                                <td>Front-end Developer</td>
-                                <td>114123</td>
-                                <td>phucobolanhat@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>J0002</td>
-                                <td>Anh Là Nhất</td>
-                                <td>Back-end Developer</td>
-                                <td>999</td>
-                                <td>anhlanhatroi123@gmail.com</td>
-                                <td><a href="jobapplicationdetail.html">View Details</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    </div>
+    <div class="tabs">
+        <ul class="nav-tabs">
+            <li class="active"><a href="#pending">Pending</a></li>
+            <li><a href="#scheduling">Scheduling</a></li>
+            <li><a href="#on-going">On-going</a></li>
+            <li><a href="#rejected">Rejected</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="pending" class="tab-content-item">
+                <h2>Pending</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Candidate</th>
+                            <th>Job Apply</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>slkjfsjlkdfsjlkfdsjklsdfkjlsdfjklsdfklsdasd-13129839898da</td>
+                            <td>Triển Chiêu</td>
+                            <td>Back-end Developer</td>
+                            <td>09113</td>
+                            <td>trienchieuvjppr0@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>efoyiwotu34593rjklsajdlsakdnmsadlnsakldsandlkajcxlnc23113</td>
+                            <td>Bao Chửng</td>
+                            <td>Front-end Developer</td>
+                            <td>08115</td>
+                            <td>ba0chungthebest@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="scheduling" class="tab-content-item">
+                <h2>Scheduling</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Candidate</th>
+                            <th>Job Apply</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>View Details</th>
+                            <th>Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>slkjfsjlkdfsjlkfdsjklsdfkjlsdfjklsdfklsdasd-13129839898da</td>
+                            <td>Triển Chiêu</td>
+                            <td>Back-end Developer</td>
+                            <td>09113</td>
+                            <td>trienchieuvjppr0@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                            <td><a href="#">Cancel</a></td>
+                        </tr>
+                        <tr>
+                            <td>efoyiwotu34593rjklsajdlsakdnmsadlnsakldsandlkajcxlnc23113</td>
+                            <td>Bao Chửng</td>
+                            <td>Front-end Developer</td>
+                            <td>08115</td>
+                            <td>ba0chungthebest@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                            <td><a href="#">Cancel</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="on-going" class="tab-content-item">
+                <h2>On-going</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Candidate</th>
+                            <th>Job Apply</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>View Details</th>
+                            <th>Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>J0001</td>
+                            <td>Nguyễn Đức Toàn</td>
+                            <td>Back-end Developer</td>
+                            <td>114</td>
+                            <td>toandeptraiso1@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                            <td><a href="#">Cancel</a></td>
+                        </tr>
+                        <tr>
+                            <td>J0002</td>
+                            <td>Lồ Quang Thắng</td>
+                            <td>Front-end Developer</td>
+                            <td>09666</td>
+                            <td>quangthanglor@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                            <td><a href="#">Cancel</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rejected" class="tab-content-item">
+                <h2>Rejected</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Candidate</th>
+                            <th>Job Apply</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>J0001</td>
+                            <td>Lê Quang Phú</td>
+                            <td>Front-end Developer</td>
+                            <td>114123</td>
+                            <td>phucobolanhat@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>J0002</td>
+                            <td>Anh Là Nhất</td>
+                            <td>Back-end Developer</td>
+                            <td>999</td>
+                            <td>anhlanhatroi123@gmail.com</td>
+                            <td><a href="jobapplicationdetail.html">View Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</body>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <script>

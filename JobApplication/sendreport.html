@@ -24,316 +24,264 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <style>
-        html {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<style>
+    html {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-        }
+    body {
+        font-size: 16px;
+    }
 
-        /* Sidebar */
-        .sidebar {
-            height: 100vh;
-            width: 200px;
-            color: rgb(165, 112, 94);
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            background-color: #5a3c30;
-        }
-
-        .sidebar h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .sidebar li {
-            margin-bottom: 5px;
-        }
-
-        .sidebar a {
-            display: block;
-            color: rgb(165, 112, 94);
-            padding: 10px;
-            text-decoration: none;
-        }
-
-        .sidebar a:hover {
-            background-color: rgb(211, 177, 166);
-        }
-
-        .sidebar a.active {
-            background-color: rgb(211, 177, 166);
-        }
-
-        /* Account */
-
-        .sidebar img {
-            width: 13.5rem;
-            height: 13.5rem;
-            margin-left: 3rem;
-            margin-right: 3rem;
-        }
-
-        #my-account h2,
-        li {
-            font-size: 2rem;
-            list-style: none;
-        }
-
-        #my-account ul {
-            padding-left: 0%;
-        }
-
-        #my-account {
-            margin-left: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        #my-account .dropdown-menu {
-            padding: 0%;
-            color: rgb(165, 112, 94);
-            background-color: rgb(211, 177, 166);
-        }
-
-        #my-account .dropdown-item {
-            color: rgb(165, 112, 94);
-            background-color: rgb(211, 177, 166);
-        }
-
-        #my-account .dropdown-item:hover {
-            color: rgb(165, 112, 94);
-            background-color: rgb(211, 177, 166);
-        }
-
-        /* CSS for login link */
-
-        #job-detail-head {
-            background-color: white;
-            width: 85%;
-            margin-left: 10%;
-            padding: 2rem;
-        }
-
-        #job-logo img {
-            width: 15rem;
-            height: 15rem;
-        }
-
-        #general-info {
-            margin-top: 2rem;
-        }
-
-        #general-info h1 {
-            font-size: 3rem;
-        }
-
-        #general-info h2 {
-            font-size: 2.5rem;
-        }
-
-        #general-info p {
-            margin-top: 1rem;
-            font-size: 1.5rem;
-        }
-
-        #general-info p i {
-            margin-right: 1rem;
-        }
-
-        /* CSS for Job posting */
-        #job-detail-head {
-            margin-left: 20rem;
-        }
-
-        #job-detail-head #apply-buton button:first-child {
-            margin-top: 2rem;
-            padding: 1rem;
-            border-radius: 1rem;
-            background-color: #00b14f;
-            border: 0.2rem solid #00b14f;
-            margin-right: 1rem;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        #job-detail-head #apply-buton button:first-child:hover {
-            background-color: #e74c3c;
-        }
-
-        #job-detail-head #apply-buton button:last-child {
-            margin-top: 2rem;
-            padding: 1rem;
-            border-radius: 1rem;
-            background-color: #ffffff;
-            border: 0.2rem solid #00b14f;
-            margin-right: 1rem;
-            color: #00b14f;
-            font-weight: bold;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-
-        #job-detail-head #apply-buton button:last-child:hover {
-            background-color: #e74c3c;
-        }
-
-        #job-detail-head #apply-buton button a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        #job-detail-head #apply-buton button i:first-child {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-right: 1rem;
-        }
-
-        #job-detail-head #apply-buton button i:last-child {
-            font-size: 2rem;
-            color: #00b14f;
-            margin-right: 1rem;
-        }
-
-        /* CSS for recruit detail  */
-
-        #job-detail-body {
-            background-color: white;
-            width: 85%;
-            margin-left: 20rem;
-            padding: 2rem;
-        }
+    .header {
+        background-color: rgb(208, 204, 204);
+        margin-bottom: 2rem;
+        height: 8.5rem;
+        text-align: center;
+    }
 
 
-        /* CSS for Application Detail */
+    /* Sidebar */
+    .sidebar {
+        height: 100vh;
+        width: 200px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        background-color: #baa9a3;
+        font-weight: bold;
+    }
 
-        #job-detail-body #application-general-info {
-            background-color: #d4f2e1;
-            padding: 2rem;
-        }
+    .sidebar h1 {
+        margin-bottom: 30px;
+    }
 
-        #job-detail-body #application-general-info h1 {
-            margin-bottom: 1rem;
-            text-decoration: none;
-        }
+    .sidebar ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
 
-        #job-detail-body #application-general-info .application-info-list {
-            list-style: none;
-        }
+    .sidebar .action {
+        margin-top: 2rem;
+    }
 
-        #job-detail-body #application-general-info .application-info-list li {
-            font-weight: bold;
-            font-size: 2rem;
-            color: rgb(244, 131, 131);
-        }
+    .sidebar li {
+        margin-bottom: 5px;
+    }
 
-        #job-detail-body #application-general-info .application-info-list li p {
-            color: initial;
-            font-weight: normal;
-            font-size: 2rem;
-        }
+    .sidebar a {
+        display: block;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        text-decoration: none;
+    }
 
-        #job-detail-body #application-general-info .application-info-list i {
-            margin-right: 1rem;
-            font-size: 2rem;
-            margin-top: 2rem;
-            display: inline-block;
-        }
+    .sidebar a:hover {
+        background-color: rgb(208, 204, 204);
+    }
 
-        #job-detail-body #application-general-info .application-info-list p {
-            margin-left: 3.5rem;
-        }
+    .sidebar a.active {
+        background-color: rgb(208, 204, 204);
+    }
 
-        .general-info-list a {
-            text-decoration: none;
-            color: rgb(244, 131, 131);
-        }
+    /* Account */
 
-        .application-info-list a {
-            text-decoration: none;
-            color: rgb(244, 131, 131);
-        }
+    .sidebar img {
+        width: 13.5rem;
+        height: 13.5rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+        border-radius: 50%;
+    }
 
-        #general-info .apply-time {
-            font-size: 2.5rem;
-        }
+    #account h2,
+    li {
+        font-size: 2rem;
+        list-style: none;
+    }
 
-        input[type=text], textarea {
-			width: 75%;
-			padding: 8px;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			box-sizing: border-box;
-			margin-bottom: 20px;
-		}
-		button[type=submit] {
-			background-color: #333;
-			color: #fff;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			font-size: 16px;
-            margin-right: 20rem;
-		}
-    </style>
+    #account li a {
+        color: black;
+    }
 
-    <!-- Sidebar Here -->
-    <div class="sidebar">
-        <div class="row">
-            <div>
-                <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
-            </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="#">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="#">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    #account ul {
+        padding-left: 0%;
+    }
+
+    /* CSS for login link */
+
+    #job-logo img {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+        margin-left: 4rem;
+    }
+
+    #general-info {
+        margin-top: 2rem;
+        margin-left: 3rem;
+        font-size: 2.5rem;
+    }
+
+
+    #general-info h1 {
+        font-size: 3rem;
+    }
+
+    #general-info h2 {
+        font-size: 2.5rem;
+    }
+
+    #general-info p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+
+    #general-info p i {
+        margin-right: 1rem;
+    }
+
+    /* CSS for Job posting */
+    #job-detail-head {
+        margin-left: 20rem;
+    }
+
+
+    #job-detail-head #apply-buton button:first-child:hover {
+        background-color: #e74c3c;
+    }
+
+    #job-detail-head #apply-buton button:last-child {
+        margin-top: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: #ffffff;
+        border: 0.2rem solid #00b14f;
+        margin-right: 1rem;
+        color: #00b14f;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    #job-detail-head #apply-buton button:last-child:hover {
+        background-color: #e74c3c;
+    }
+
+    #job-detail-head #apply-buton button a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    #job-detail-head #apply-buton button i:first-child {
+        font-size: 2rem;
+        color: #ffffff;
+        margin-right: 1rem;
+    }
+
+    #job-detail-head #apply-buton button i:last-child {
+        font-size: 2rem;
+        color: #00b14f;
+        margin-right: 1rem;
+    }
+
+
+    .general-info-list a {
+        text-decoration: none;
+        color: rgb(244, 131, 131);
+    }
+
+    .application-info-list a {
+        text-decoration: none;
+        color: rgb(244, 131, 131);
+    }
+
+    #general-info .apply-time {
+        font-size: 2.5rem;
+    }
+
+    input[type=text],
+    textarea {
+        width: 80%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    button[type=submit] {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 20rem;
+        font-weight: bold;
+    }
+
+    label {
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+    .send-report{
+        margin-top: 0px;
+        text-align: center;
+        padding-top: 2rem;
+    }
+</style>
+
+<!-- Sidebar Here -->
+<div class="sidebar">
+    <div class="row">
+        <div>
+            <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
         </div>
+    </div>
+    <div class="action">
         <ul>
-            <li><a class="active" href="interviewfinished.html">Schedule List</a></li>
+            <li><a href="interviewfinished.html"><i class="fa-solid fa-list"></i> Schedule List</a></li>
+            <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
         </ul>
     </div>
-    <!-- Body here -->
+</div>
+<!-- Body here -->
 
-    <div id="job-detail-head">
-        <div class="row">
-            <div class="col-sm-2">
-                <div id="job-logo">
-                    <img src="https://www.pngitem.com/pimgs/m/208-2088629_employee-png-free-employees-icon-png-transparent-png.png"
-                        alt="Back-end">
-                </div>
+<div id="job-detail-head">
+    <div class="header">
+        <h1 class="send-report">Send Report Page</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div id="job-logo">
+                <img src="https://www.pngitem.com/pimgs/m/208-2088629_employee-png-free-employees-icon-png-transparent-png.png"
+                    alt="Back-end">
             </div>
-            <div class="col-sm-8">
-                <div id="general-info">
-                    <h1>Triển Chiêu</h1>
-                    <h2><i class="fa-solid fa-envelope"></i> trienchieuvjppr0@gmail.com</h2>
-                    <h2><i class="fa-solid fa-phone"></i> 113</h2>
-                    <h2><i class="fa-solid fa-business-time"></i> 3 years</h2>
-                    <h2 class="apply-time"><i class="fa-regular fa-calendar"></i> Interview Date: 21/2/2013</h2>
+        </div>
+        <div class="col-sm-8">
+            <div id="general-info">
+                <div class="form-group">
+                    <label>Triển Chiêu</label>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-envelope"></i> trienchieuvjppr0@gmail.com</label>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-phone"></i> 113</label>
+                </div>
+                <div class="form-group">
+                    <label class="apply-time"><i class="fa-regular fa-calendar"></i> Interview Date:
+                        21/2/2013</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="typeNumber">Point</label>
+                    <input style="width: 20rem; height: 5rem; font-size: 2.5rem;"value="0" type="number" id="typeNumber" class="form-control" min="0" max="10"/>
+                </div>
+                <div class="form-group">
                     <form>
                         <h2><i class="fa-solid fa-comment"></i> Report</h2>
                         <textarea name="impression" rows="5" required></textarea>
@@ -343,5 +291,6 @@
             </div>
         </div>
     </div>
+</div>
 
 </html>

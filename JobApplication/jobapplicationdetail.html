@@ -27,39 +27,29 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-
-        }
-
-
-        .container-fluid {
-            padding: 0%;
-            margin: 0%;
-        }
-
         /* Sidebar */
         .sidebar {
             height: 100vh;
             width: 200px;
-            color: black;
             position: fixed;
             top: 0;
             left: 0;
             overflow-x: hidden;
             background-color: #baa9a3;
+            font-weight: bold;
         }
 
         .sidebar h1 {
-            text-align: center;
             margin-bottom: 30px;
         }
 
         .sidebar ul {
             list-style-type: none;
-            margin: 0;
-            padding: 0;
+            padding-left: 0;
+        }
+
+        .sidebar .action {
+            margin-top: 2rem;
         }
 
         .sidebar li {
@@ -68,17 +58,18 @@
 
         .sidebar a {
             display: block;
-            color: black;
-            padding: 10px;
+            color: rgb(69, 69, 69);
+            padding-top: 2rem;
+            padding-bottom: 2rem;
             text-decoration: none;
         }
 
         .sidebar a:hover {
-            background-color: #1abc9c;
+            background-color: rgb(208, 204, 204);
         }
 
         .sidebar a.active {
-            background-color: #1abc9c;
+            background-color: rgb(208, 204, 204);
         }
 
         /* Account */
@@ -86,8 +77,9 @@
         .sidebar img {
             width: 13.5rem;
             height: 13.5rem;
-            margin-left: 2rem;
-            margin-right: 1.5rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            border-radius: 50%;
         }
 
         #account h2,
@@ -109,33 +101,12 @@
             margin-top: 1.5rem;
         }
 
-        #my-account .dropdown-menu {
-            padding: 0%;
-            background-color: #1abc9c;
-        }
-
-        #my-account .dropdown-item {
-            background-color: #1abc9c;
-        }
-
-        #my-account .dropdown-item:hover {
-            background-color: #1abc9c;
-        }
-
-
-
         /* CSS for login link */
-
-        #job-detail-head {
-            background-color: white;
-            width: 85%;
-            margin-left: 10%;
-            padding: 2rem;
-        }
 
         #job-logo img {
             width: 15rem;
             height: 15rem;
+            border-radius: 50%;
         }
 
         #general-info {
@@ -160,24 +131,35 @@
         }
 
         /* CSS for Job posting */
+
         #job-detail-head {
+            background-color: white;
+            width: auto;
             margin-left: 20rem;
+            padding: 2rem;
+            background-color: rgb(208, 204, 204);
+        }
+
+        #job-detail-head #apply-buton button {
+            height: 75px;
+            width: 150px;
+            font-size: 2rem;
         }
 
         #job-detail-head #apply-buton button:first-child {
-            margin-top: 2rem;
             padding: 1rem;
             border-radius: 1rem;
             background-color: #00b14f;
             border: 0.2rem solid #00b14f;
             margin-right: 1rem;
-            color: white;
+            color: #fff;
             font-weight: bold;
-            font-size: 1.5rem;
+
         }
 
         #job-detail-head #apply-buton button:first-child:hover {
-            background-color: #e74c3c;
+            background-color: #fff;
+            color: #00b14f;
         }
 
         #job-detail-head #apply-buton button:last-child {
@@ -189,19 +171,22 @@
             margin-right: 1rem;
             color: #00b14f;
             font-weight: bold;
-            font-size: 1.5rem;
             text-align: center;
         }
 
         #job-detail-head #apply-buton button:last-child:hover {
-            background-color: #e74c3c;
+            background-color: #00b14f;
+            color: #fff;
         }
 
         #job-detail-head #apply-buton button a {
             text-decoration: none;
-            color: white;
+            color: #fff;
             font-weight: bold;
-            font-size: 1.5rem;
+        }
+
+        #job-detail-head #apply-buton button a:hover {
+            color: #00b14f;
         }
 
         #job-detail-head #apply-buton button i:first-child {
@@ -323,31 +308,20 @@
         }
     </style>
 </head>
-<!-- Sidebar here -->
+<!-- Sidebar Here -->
 <div class="sidebar">
     <div class="row">
         <div>
             <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
         </div>
-        <div>
-            <div id="my-account">
-                <ul>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                            Account</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="#">My Profile</a></li>
-                            <li><a class="dropdown-item active" href="#">Log Out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
-    <ul>
-        <li><a href="jobapplication.html">Application List</a></li>
-        <li><a href="jobposting.html">Job Postings List</a></li>
-    </ul>
+    <div class="action">
+        <ul>
+            <li><a href="jobapplication.html"><i class="fa-solid fa-list"></i> Applications List</a></li>
+            <li><a href="jobposting.html"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
+            <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+        </ul>
+    </div>
 </div>
 <!-- Body here -->
 
@@ -370,8 +344,8 @@
         </div>
         <div class="col-sm-2">
             <div id="apply-buton">
-                <button class="apply-button"><i class="fa-solid fa-check-double"></i><a href="#">Approve</a></button>
-                <button class="save-job-button"><i class="fa-regular fa-circle-xmark"></i>Reject</button>
+                <button class="apply-button">Approve</button>
+                <button class="save-job-button">Reject</button>
             </div>
         </div>
     </div>
