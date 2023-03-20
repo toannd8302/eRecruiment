@@ -7,13 +7,20 @@ package com.codeweb.service;
 
 import com.codeweb.pojos.jobPosting;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author KHOA
  */
 public interface JobPostingService {
-    List<jobPosting> getPostByKeyword(String kw);
+    boolean updateJobPosting(jobPosting jobPosting, String action);
+    boolean createJobPosting(jobPosting jobPosting);
+    void deleteJobPosting(String id);
     jobPosting getPostByID(String id);
+    List<jobPosting> getAllJobPosting();
+    List<jobPosting> getPostByKeyword(String kw);
     List<jobPosting> getPost(String id);
+    List<jobPosting> getAllHotJob();
+    Map<String,List<jobPosting>> getPostByStatus();
 }

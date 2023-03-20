@@ -38,7 +38,8 @@ public class HomeController {
     public String index(Model model,
             @RequestParam(required = false) Map<String,String> params,
             HttpSession session){
-        model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
+        model.addAttribute("listOfJobPosting", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
+        model.addAttribute("listOfHotJob", this.jobPostingService.getAllHotJob());
         return "homePage";
     }
 }

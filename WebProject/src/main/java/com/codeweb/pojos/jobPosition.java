@@ -14,12 +14,14 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -29,8 +31,11 @@ import javax.persistence.Table;
 @Table(name = "Job_positions")
 public class jobPosition {
     @Id
-    @Column(name = "Job_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Job_id", columnDefinition = "NVARCHAR(6)")
     private String jobId;
+    
     @Column(name = "JobName")
     private String jobName;
     

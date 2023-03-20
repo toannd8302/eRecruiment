@@ -11,17 +11,25 @@ package com.codeweb.pojos;
  */
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -29,23 +37,36 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "Job_postings")
-public class jobPosting implements Serializable { //Giup dong bo tren moi truong internet(Server)
+public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup dong bo tren moi truong internet(Server)
 
     @Id
-    @Column(name = "Post_id")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "Post_id", columnDefinition = "NVARCHAR(6)")
     private String postId;
+    
+    
     @Column(name = "Descriptions")
     private String descriptions;
+    
     @Column(name = "Type_of_work")
     private boolean typeOfWork;
+    
     @Column(nullable=true, name = "Experience_requirement")
     private Integer exprienceRequirement;
+    
     @Column(name = "Locations")
     private String locations;
+    
     @Column(name = "Welfare")
     private String welfare;
+    
     @Column(nullable=true, name = "Salary")
     private Integer salary;
+    
+    @Column(name = "Created_time")
+    @Temporal(TemporalType.DATE)
+    private Date CreatedTime;
     
     @Column(name = "Posting_time")
     @Temporal(TemporalType.DATE)
@@ -56,15 +77,75 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
     private Date ExpiredTime;
     
     @Column(name = "Approved_status")
-    private boolean ApprovedStatus;
+    private String ApprovedStatus;
+    
+    @Column(name = "Level")
+    private String level;
+    
+    @Column(name = "Picture")
+    private String picture;
+    
+    @Column(name = "Hot_job")
+    private boolean hotJob;
     
     @ManyToOne
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
-    @OneToMany (mappedBy = "jobPoting", fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<round> rounds;
+    
+    @OneToMany(mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<jobApplication> jobApplications;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Wish_List",
+            joinColumns = { @JoinColumn(name = "Post_id") },
+            inverseJoinColumns = { @JoinColumn(name = "Candidate_id") }
+    )
+    private Set<candidate> listCandidates = new HashSet<candidate>();
 
+    public Set<candidate> getCandidates() {
+        return listCandidates;
+    }
+
+    public void setCandidates(Set<candidate> candidates) {
+        this.listCandidates = candidates;
+    }
+    
+    public boolean isHotJob() {
+        return hotJob;
+    }
+
+    public void setHotJob(boolean hotJob) {
+        this.hotJob = hotJob;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Date getCreatedTime() {
+        return CreatedTime;
+    }
+
+    public void setCreatedTime(Date CreatedTime) {
+        this.CreatedTime = CreatedTime;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+    
     public String getPostId() {
         return postId;
     }
@@ -141,11 +222,11 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
         this.ExpiredTime = ExpiredTime;
     }
 
-    public boolean isApprovedStatus() {
+    public String isApprovedStatus() {
         return ApprovedStatus;
     }
 
-    public void setApprovedStatus(boolean ApprovedStatus) {
+    public void setApprovedStatus(String ApprovedStatus) {
         this.ApprovedStatus = ApprovedStatus;
     }
 
@@ -165,10 +246,35 @@ public class jobPosting implements Serializable { //Giup dong bo tren moi truong
         this.rounds = rounds;
     }
 
+    public Set<jobApplication> getJobApplications() {
+        return jobApplications;
+    }
+
+    public void setJobApplications(Set<jobApplication> jobApplications) {
+        this.jobApplications = jobApplications;
+    }
+
     @Override
     public String toString() {
         return "jobPosting{" + "postId=" + postId + ", descriptions=" + descriptions + ", typeOfWork=" + typeOfWork + ", exprienceRequirement=" + exprienceRequirement + ", locations=" + locations + ", welfare=" + welfare + ", salary=" + salary + ", PostingTime=" + PostingTime + ", ExpiredTime=" + ExpiredTime + ", ApprovedStatus=" + ApprovedStatus + '}';
     }
 
+    @Override
+    public int compareTo(jobPosting o) {
+        return this.getPostId().compareTo(o.getPostId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(postId);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof jobPosting)) return false;
+        jobPosting that = (jobPosting) o;
+        return Objects.equals(postId, that.postId);
+    }
     
 }

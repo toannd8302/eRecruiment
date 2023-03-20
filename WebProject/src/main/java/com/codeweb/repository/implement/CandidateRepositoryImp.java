@@ -25,22 +25,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class CandidateRepositoryImp implements CandidateRepository{
+public class CandidateRepositoryImp implements CandidateRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    
-    @Override
-    public List<candidate> getCandidateById(String id) {
-        Session session = sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
-        Root root = query.from(candidate.class);
-        query = query.select(root);
-        Predicate p1 = builder.like(root.get("id").as(String.class), id);
-        query = query.where(p1);
-        Query q = session.createQuery(query);
-        return q.getResultList();
-    }
 
     @Override
     public boolean addOrUpdate(candidate candidate) {
@@ -54,11 +42,58 @@ public class CandidateRepositoryImp implements CandidateRepository{
         }
         return false;
     }
+    
+    @Override
+    public boolean update(candidate candidate) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.update(candidate);
+            return true;
+        } catch (Exception e) {
+            System.err.println("ADD/UPDATE Candidate ERROR: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     @Override
     public List<candidate> getAll() {
         Session session = sessionFactory.getObject().getCurrentSession();
         Query q = session.createQuery("FROM candidate");
+        return q.getResultList();
+    }
+
+    @Override
+    public List<candidate> getCandidateById(String id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
+        Root root = query.from(candidate.class);
+        query = query.select(root);
+
+        if (!id.isEmpty()) {
+            Predicate p1 = builder.like(root.get("id").as(String.class), id.trim());
+            query = query.where(p1);
+        }
+
+        Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<candidate> getCandidateByEmail(String email) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<candidate> query = builder.createQuery(candidate.class);
+        Root root = query.from(candidate.class);
+        query = query.select(root);
+
+        if (!email.isEmpty()) {
+            Predicate p1 = builder.like(root.get("email").as(String.class), email.trim());
+            query = query.where(p1);
+        }
+
+        Query q = session.createQuery(query);
         return q.getResultList();
     }
 }

@@ -10,41 +10,81 @@
     Author     : KHOA
 --%>
 
-<!DOCTYPE html>
-<%--<html lang="en">--%>
-
-<title>Footer Design</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/footer.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 
-<footer>
-        <div class="footer">
-            <div class="Company">
-                <h1>Monke Company</h1>
-                    <ul>
-                        <li><a href="#">About u</a></li>
-                        <li><a href="#">Our Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-            </div>
-            <div class="Help">
-                <h1>Get Help</h1>
-                    <ul>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Q&A</a></li>
-                    </ul>
-            </div>
-            <div class="Social">
-                <h1>Social</h1>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-            </div>
-        </div>
-    </footer>
+<style>
+    .footer{
+        padding-left: 0;
+        background-color: #efefef;
+        padding: 5rem;
+        text-align: center;
+    }
+
+    .footer .icon{
+        text-align: center;
+        font-size: 2.5rem;
+
+    }
+
+    .footer .icon a{
+        color: #fff;
+    }
+
+    .footer .icon a:hover{
+        color: #aaa;
+    }
+
+    .footer .icon i{
+        margin: 0.5rem;
+        padding: 0.3rem 0.5rem;
+        border-radius: 30%;
+        background: #7c7c7c;
+    }
+
+    .footer .logo{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        /* margin-top: 3rem; */
+    }
+
+    .footer .logo img{
+        height: 5rem;
+        width: 10rem;
+    }
+
+    .footer .logo img:hover{
+        opacity: 0.7;
+    }
+
+    .footer .logo h2{
+        display: flex;
+        align-items: center;
+    }
+
+
+    .footer .location p{ 
+        display: flex;
+        text-align: center;
+        font-size: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        color: #949494;
+    }
+</style>
+
+<div class="footer">
+    <div class="icon">
+        <a href="https://www.facebook.com/profile.php?id=100075837624349"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="logo">
+        <a href="#"><img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true" alt="Monke Tech"></a>    
+        <h2>Monke Tech</h2>
+    </div>
+    <div class="location">
+        <p>MonkeTech company
+            Address:  Z100 batch, 26 road, Long Thanh My District, Thu Duc City, Ho Chi Minh City</p>
+    </div>
+</div>
