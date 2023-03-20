@@ -15,5 +15,6 @@ import java.util.List;
 public interface ReportService {
     report getReportByReportID(String reportID);
     List<report> getReportByInterviewerID(String interviewerID);
-    List<report> getReportByJobAppID(String jobAppID);
+    report getReportByIDs(String jobAppID, String scheduleID, String interviewerID);
+    boolean addOrUpdateReport(report report, String action);
 }

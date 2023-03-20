@@ -349,9 +349,9 @@
 
                     <tr>
                         <td>${counter.count}</td>
-                        <td>${jobApplication.jobPosting.jobPosition.jobName}</td> 
-                        <td>${jobApplication.jobPosting.salary}</td> 
-                        <td>${jobApplication.jobPosting.locations}</td> 
+                        <td>${jobApplication.getJobPosting().getJobPosition().jobName}</td> 
+                        <td>${jobApplication.getJobPosting().salary}</td> 
+                        <td>${jobApplication.getJobPosting().locations}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
                     </tr>
@@ -362,7 +362,7 @@
                                 <p><strong>Rounds:</strong></p>
                                 <ul>
                                     <li>
-                                        <c:forEach var="round" items="${jobApplication.jobPosting.getRounds()}">
+                                        <c:forEach var="round" items="${jobApplication.getJobPosting().getRounds()}">
                                             <ul>
                                                 <li>Round ${round.getRoundNumber()}: ${round.getContent()}</li>
                                             </ul>                                       
@@ -375,7 +375,7 @@
                                         </c:forEach> </li>
 
                                 </ul>
-                                <p><strong><a href="<c:url value="/post-detail/${jobApplication.jobPosting.getPostId()}"/>">Link to Job Posting</a></strong></p>
+                                <p><strong><a href="<c:url value="/post-detail/${jobApplication.getJobPosting().getPostId()}"/>">Link to Job Posting</a></strong></p>
                             </div>
                         </td>
                     </tr>

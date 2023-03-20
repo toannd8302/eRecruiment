@@ -193,7 +193,6 @@
     </sec:authorize>
     <ul>
         <li><a class="active" href="<c:url value="/interviewer/schedules"/>">Schedules List</a></li>
-        <li><a href="<c:url value="/interviewer/reports"/>">Reports List</a></li>
     </ul>
 </div>
 <div id="wrapper">
@@ -224,7 +223,7 @@
                         <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
                             <tr>
                                 <td>${counter.count}</td>
-                                <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
                                 <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
                                 <td>${schedule.getjAS().size()}/10</td>
                                 <td><input type="submit" value="View Details"/></td>
@@ -254,7 +253,7 @@
                         <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
                             <tr>
                                 <td>${counter.count}</td>
-                                <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
                                 <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
                                 <td>${schedule.getjAS().size()}/10</td>
                                 <td><input type="submit" value="View Details"/></td>
@@ -280,10 +279,10 @@
                     </thead>
                     <tbody>
                         <c:forEach var="schedule" items="${FINISHED}" varStatus="counter">
-                        <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
+                        <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
                             <tr>
                                 <td>${counter.count}</td>
-                                <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
                                 <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
                                 <td>${schedule.getjAS().size()}/10</td>
                                 <td><input type="submit" value="View Details"/></td>
@@ -309,10 +308,10 @@
                     </thead>
                     <tbody>
                         <c:forEach var="schedule" items="${REJECTED}" varStatus="counter">
-                        <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
+                        <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
                             <tr>
                                 <td>${counter.count}</td>
-                                <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
                                 <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
                                 <td>${schedule.getjAS().size()}/10</td>
                                 <td><input type="submit" value="View Details"/></td>
@@ -327,7 +326,6 @@
         </div>
     </div>
 </div>
-</body>
 
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <script>

@@ -42,8 +42,7 @@ public class JobPostingController {
     
     @GetMapping("/post-detail/{postID}")
     public String detailpage(Model model,
-            @PathVariable(value = "postID") String postID,
-            HttpSession session){
+            @PathVariable(value = "postID") String postID){
         model.addAttribute("jobPosting",this.jobPostingService.getPostByID(postID));
         return "post-detail-page";
     }

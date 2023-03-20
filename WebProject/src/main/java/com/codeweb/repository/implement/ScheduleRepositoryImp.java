@@ -141,7 +141,7 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
 
         Root<schedule> root = query.from(schedule.class);
         Join<schedule, round> roundSchedule = root.join("round", JoinType.LEFT);
-        Join<round, jobPosting> roundJobPosting = roundSchedule.join("jobPoting", JoinType.LEFT);
+        Join<round, jobPosting> roundJobPosting = roundSchedule.join("jobPosting", JoinType.LEFT);
 
         Predicate p1 = builder.equal(roundSchedule.get("roundNumber").as(Integer.class), roundNumber);
         Predicate p2 = builder.like(roundJobPosting.get("postId").as(String.class), postID);

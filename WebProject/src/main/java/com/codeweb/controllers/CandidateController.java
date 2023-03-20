@@ -8,6 +8,7 @@ package com.codeweb.controllers;
 import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobApplicationSchedule;
+import com.codeweb.service.CandidateService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
 import java.util.List;
@@ -53,7 +54,10 @@ public class CandidateController {
         jobApplication.setJobPosting(this.jobPostingService.getPostByID(postID));
         candidate candidate = (candidate) session.getAttribute("user");
         jobApplication.setCandidate(candidate);
-        boolean result = this.jobApplicationService.add(jobApplication);
+        if(this.jobApplicationService.add(jobApplication)){
+            candidate.getJobApplications().add(jobApplication);
+            session.setAttribute("user", candidate);
+        }
         return "redirect:/";
     }
 

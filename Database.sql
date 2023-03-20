@@ -167,6 +167,7 @@ CREATE TABLE Job_application_Schedule
 
 CREATE TABLE Interviewer_Reasons
 (
+    Rejection_date date NULL,
 	Reason_content nvarchar(max) NULL,
 	File_path nvarchar(max) NULL,
 	Status nvarchar(20) default N'Pending',

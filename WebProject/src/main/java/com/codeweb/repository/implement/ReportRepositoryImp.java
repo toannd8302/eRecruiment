@@ -25,10 +25,36 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class ReportRepositoryImp implements ReportRepository{
+public class ReportRepositoryImp implements ReportRepository {
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
+
+    @Override
+    public boolean add(report report) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.save(report);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== ADD REPORT ERROR AT ReportRepositoryImp ==" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(report report) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.update(report);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== UPDATE REPORT ERROR AT ReportRepositoryImp ==" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
     
     @Override
     public List<report> getReportByInterviewerID(String interviewerID) {
@@ -36,15 +62,10 @@ public class ReportRepositoryImp implements ReportRepository{
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<report> query = builder.createQuery(report.class);
         Root<report> root = query.from(report.class);
-        Predicate p = builder.equal(root.get("employee").get("id").as(String.class),interviewerID);
+        Predicate p = builder.equal(root.get("employee").get("id").as(String.class), interviewerID);
         query = query.where(p);
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
-    }
-
-    @Override
-    public List<report> getReportByJobAppID(String jobAppID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -53,10 +74,27 @@ public class ReportRepositoryImp implements ReportRepository{
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<report> query = builder.createQuery(report.class);
         Root<report> root = query.from(report.class);
-        Predicate p = builder.equal(root.get("reportId").as(String.class),reportID);
+        Predicate p = builder.equal(root.get("reportId").as(String.class), reportID);
         query = query.where(p);
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
     }
-    
+
+    @Override
+    public List<report> getReportByIDs(String jobAppID, String scheduleID, String interviewerID) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<report> query = builder.createQuery(report.class);
+        Root<report> root = query.from(report.class);
+
+        if (jobAppID != null && scheduleID != null && interviewerID != null) {
+            Predicate p1 = builder.equal(root.get("jobApplication").get("applicationId").as(String.class), jobAppID);
+            Predicate p2 = builder.equal(root.get("schedule").get("scheduleId").as(String.class), scheduleID);
+            Predicate p3 = builder.equal(root.get("employee").get("id").as(String.class), interviewerID);
+            query = query.where(builder.and(p1,p2,p3));
+        }
+
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
+    }
 }

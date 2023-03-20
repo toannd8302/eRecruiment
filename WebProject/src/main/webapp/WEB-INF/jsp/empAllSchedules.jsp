@@ -304,7 +304,7 @@
         <ul>
             <c:forEach var="schedule" items="${PENDING}">
                 <div class="interview-item">
-                    <h3>${schedule[0].getRound().getJobPoting().getJobPosition().getJobName()}</h3>
+                    <h3>${schedule[0].getRound().getJobPosting().getJobPosition().getJobName()}</h3>
                     <p>ID: ${schedule[0].getScheduleId()}</p>
                     <p>Round ${schedule[0].getRound().getRoundNumber()} - ${schedule[0].getRound().getContent()}</p>
                     <p>Number of candidate: ${schedule[1]}/10</p>
@@ -321,7 +321,7 @@
     <div class="interview-grid">
         <c:forEach var="schedule" items="${ON_GOING}">
             <div class="interview-item">
-                <h3>${schedule[0].getRound().getJobPoting().getJobPosition().getJobName()}</h3>
+                <h3>${schedule[0].getRound().getJobPosting().getJobPosition().getJobName()}</h3>
                 <p>ID: ${schedule[0].getScheduleId()}</p>
                 <p>Round ${schedule[0].getRound().getRoundNumber()} - ${schedule[0].getRound().getContent()}</p>
                 <p>Number of candidate: ${schedule[1]}/10</p>

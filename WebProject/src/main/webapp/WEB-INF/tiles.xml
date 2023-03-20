@@ -107,21 +107,17 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value="View My Schedules"/>
         <put-attribute name="content" value="/WEB-INF/jsp/intAllSchedules.jsp" />
     </definition>
-    <definition name="view-my-reports" extends="baseLayoutEmployee">
-        <put-attribute name="title" value="View All Reports"/>
-        <put-attribute name="content" value="/WEB-INF/jsp/intAllReports.jsp" />
-    </definition>
     <definition name="view-my-schedule-details" extends="baseLayoutEmployee">
         <put-attribute name="title" value="View My Schedules"/>
         <put-attribute name="content" value="/WEB-INF/jsp/intScheduleDetails.jsp" />
     </definition>
-    <definition name="view-my-report-details" extends="baseLayoutEmployee">
-        <put-attribute name="title" value="View My Schedules"/>
-        <put-attribute name="content" value="/WEB-INF/jsp/intReportDetails.jsp" />
-    </definition>
     <definition name="reject-schedule" extends="baseLayoutEmployee">
         <put-attribute name="title" value="View My Schedules"/>
         <put-attribute name="content" value="/WEB-INF/jsp/intRejectSchedule.jsp" />
+    </definition>
+    <definition name="create-report" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View All Reports"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/intCreateReport.jsp" />
     </definition>
     
 </tiles-definitions>    

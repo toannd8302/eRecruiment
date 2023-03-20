@@ -92,10 +92,10 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
-    @OneToMany (mappedBy = "jobPoting", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<round> rounds;
     
-    @OneToMany(mappedBy = "jobPosting")
+    @OneToMany(mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<jobApplication> jobApplications;
     
     @ManyToMany(fetch = FetchType.EAGER)

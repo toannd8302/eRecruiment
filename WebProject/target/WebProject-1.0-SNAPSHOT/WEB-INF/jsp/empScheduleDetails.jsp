@@ -546,7 +546,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
+                        <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
                         <td>${schedule.getScheduleId()}</td>
                         <td>${schedule.getRound().getContent()}</td>
                         <td>
@@ -565,13 +565,35 @@
                 </tbody>
             </table>
         </section>
-        <div class="number-inter">Number of Interviewer</div>
-        <table class="interviewer-table">
+        <table class="interview-table1">
+            <div class="info-candidate">Candidate information</div>
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th>Number</th>
                     <th>Full Name</th>
                     <th>Email</th>
+                    <th>CV Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="item" items="${schedule.getjAS()}" varStatus="counter">
+                    <tr>
+                        <td>${counter.count}</td>
+                        <td>${item.getJobApplication().getCandidate().getName()}</td>
+                        <td>${item.getJobApplication().getCandidate().getEmail()}</td>
+                        <td><a href="#">view</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        <table class="interview-table1">
+            <div class="info-candidate">Interviewer information</div>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Information</th>
                 </tr>
             </thead>
             <tbody>
@@ -580,9 +602,9 @@
                         <td>${counter.count}</td>
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
+                        <td><a href="#">view</a></td>
                     </tr>
                 </c:forEach>
-
             </tbody>
         </table>
         <form method="post" action="<c:url value="/schedules/schedule-details/start-schedule"/>">
@@ -650,7 +672,7 @@
                 </div>
                 <div class="info-row">
                     <div class="label">Job Name:</div>
-                    <div class="value">${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</div>
+                    <div class="value">${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</div>
                 </div>
                 <div class="info-row">
                     <div class="label">Round ${schedule.getRound().getRoundNumber()}:</div>
@@ -694,7 +716,7 @@
                         <td>${counter.count}</td>
                         <td>${item.getJobApplication().getCandidate().getName()}</td>
                         <td>${item.getJobApplication().getCandidate().getEmail()}</td>
-                        <td><a href="#">View Details</a></td>
+                        <td><a href="#">view</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -715,7 +737,7 @@
                         <td>${counter.count}</td>
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
-                        <td><a href="#">View</a></td>
+                        <td><a href="#">view</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

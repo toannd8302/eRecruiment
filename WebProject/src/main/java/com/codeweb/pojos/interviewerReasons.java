@@ -6,12 +6,15 @@
 package com.codeweb.pojos;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,6 +38,10 @@ public class interviewerReasons implements Serializable{
     
     @Column(name = "File_path")
     private String filepath;
+            
+    @Column(name = "Rejection_date")
+    @Temporal(TemporalType.DATE)
+    private Date rejectDate;
     
     @Column(name = "Status")
     private String status;
@@ -49,6 +56,14 @@ public class interviewerReasons implements Serializable{
     
     @Transient
     private MultipartFile file;
+
+    public Date getRejectDate() {
+        return rejectDate;
+    }
+
+    public void setRejectDate(Date rejectDate) {
+        this.rejectDate = rejectDate;
+    }
 
     public schedule getEmployeeSchedule() {
         return employeeSchedule;

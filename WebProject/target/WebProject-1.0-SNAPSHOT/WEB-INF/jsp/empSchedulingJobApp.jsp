@@ -14,7 +14,7 @@
     <c:forEach var="schedule" items="${ScheduleList}">
         ============================================
         Schedule ID: ${schedule.getScheduleId()}
-        <p>Job Name: ${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</p>
+        <p>Job Name: ${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</p>
         <p>Round: ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
         <p>
             <c:if test="${schedule.isTypeOfInterview() == true}">

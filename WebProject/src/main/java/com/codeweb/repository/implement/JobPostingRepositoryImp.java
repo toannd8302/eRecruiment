@@ -147,22 +147,14 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
     public void deleteJobPosting(String id) {
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaDelete<jobPosting> deleteJobPostingCriteria = builder.createCriteriaDelete(jobPosting.class);
-        Root<jobPosting> jobPostingRoot = deleteJobPostingCriteria.from(jobPosting.class);
-        deleteJobPostingCriteria.where(builder.equal(jobPostingRoot.get("postId"), id));
+        CriteriaDelete<round> deleteRound = builder.createCriteriaDelete(round.class);
+        Root<round> rootRound = deleteRound.from(round.class);
+        deleteRound.where(builder.equal(rootRound.get("jobPosting").get("postId"), id));
+        session.createQuery(deleteRound).executeUpdate();
 
-        Subquery<String> subquery = deleteJobPostingCriteria.subquery(String.class);
-        Root<round> roundRoot = subquery.from(round.class);
-//        subquery.select(roundRoot.get("",));
-        subquery.where(builder.equal(roundRoot.get("jobPosting"), jobPostingRoot));
-
-        deleteJobPostingCriteria.where(
-                builder.or(
-                        builder.equal(jobPostingRoot.get("postId"), id),
-                        builder.in(jobPostingRoot.get("rounds")).value(subquery)
-                ));
-
-        session.createQuery(deleteJobPostingCriteria).executeUpdate();
+        CriteriaDelete<jobPosting> deleteJobPosting = builder.createCriteriaDelete(jobPosting.class);
+        Root<jobPosting> rootJobPosting = deleteJobPosting.from(jobPosting.class);
+        deleteJobPosting.where(builder.equal(rootJobPosting.get("postId"), id));
     }
 
     @Override

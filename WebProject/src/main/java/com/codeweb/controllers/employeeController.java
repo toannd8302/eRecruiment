@@ -69,7 +69,7 @@ public class employeeController {
     public String decidePost(Model model, HttpServletRequest request,
             @RequestParam("postID") String id,
             @RequestParam("action") String action,
-            @RequestParam("isHotJob") boolean isHotJob) {
+            @RequestParam(name = "isHotJob", required = false, defaultValue = "false") boolean isHotJob) {
         jobPosting jobPosting = this.jobPostingService.getPostByID(id);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date expiredDate = null;

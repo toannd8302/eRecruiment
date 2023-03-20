@@ -5,26 +5,32 @@
  */
 package com.codeweb.controllers;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 import com.codeweb.pojos.employee;
 import com.codeweb.pojos.interviewerReasons;
+import com.codeweb.pojos.report;
 import com.codeweb.pojos.schedule;
 import com.codeweb.service.InterviewReasonService;
+import com.codeweb.service.JobApplicationService;
+import com.codeweb.service.JobPostingService;
 import com.codeweb.service.ReportService;
 import com.codeweb.service.ScheduleService;
-import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -36,6 +42,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class InterviewerController {
 
     @Autowired
+    private JobPostingService jobPostingService;
+    
+    @Autowired
+    private JobApplicationService jobApplicationService;
+    
+    @Autowired
     private ScheduleService scheduleService;
 
     @Autowired
@@ -43,20 +55,53 @@ public class InterviewerController {
 
     @Autowired
     private InterviewReasonService interviewReasonService;
-
+    
+    //=================VIEW POST DETAIL HERE=======================//
+    @GetMapping("/interviewer/view-post-detail/{postID}")
+    public String viewPostDetail(Model model,
+            @PathVariable(value = "postID") String postID) {
+        model.addAttribute("jobPosting",this.jobPostingService.getPostByID(postID));
+        return "intPostDetail";
+    }
+    
     //=================REPORT HERE=======================//
-    @GetMapping("/interviewer/reports")
-    public String viewReports(Model model, HttpSession session) {
+    @GetMapping("/interviewer/report")
+    public String viewReports(Model model, HttpSession session,
+            @RequestParam("scheduleID") String scheduleId,
+            @RequestParam("jobAppID") String jobAppId) {
         employee employee = (employee) session.getAttribute("user");
-        model.addAttribute("REPORTS", this.reportService.getReportByInterviewerID(employee.getId()));
-        return "view-my-reports";
+        report report = this.reportService.getReportByIDs(jobAppId, scheduleId, employee.getId());
+        if(report != null)
+            model.addAttribute("report", report);
+        else{
+            report newReport = new report();
+            newReport.setEmployee(employee);
+            newReport.setSchedule(this.scheduleService.getScheduleByID(scheduleId));
+            newReport.setJobApplication(this.jobApplicationService.getJobApplicationByID(jobAppId));
+            model.addAttribute("report", newReport);
+        }
+        return "create-report";
     }
 
-    @GetMapping("/interviewer/reports/report-detail")
-    public String viewReportDetail(Model model,
-            @RequestParam("reportID") String id) {
-        model.addAttribute("report", this.reportService.getReportByReportID(id));
-        return "view-my-report-details";
+    @RequestMapping( value = "/interviewer/report/update", method = RequestMethod.POST)
+    public String createUpdateReport(Model model,
+            HttpServletRequest request,
+            @ModelAttribute(value = "report") report report,
+            @RequestParam("action") String action) {
+        String scheduleID = report.getSchedule().getScheduleId();
+        String userID = report.getEmployee().getId();
+        if(action!=null){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = null;
+            try {
+                date = dateFormat.parse(request.getParameter("date"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }if(date != null)
+                report.setCreatedTime(date);
+            this.reportService.addOrUpdateReport(report, action);
+        }
+        return "redirect:/interviewer/schedules/schedule-detail?scheduleID=" + scheduleID + "&userID=" + userID;
     }
 
     //=================SCHEDULE HERE=======================//
