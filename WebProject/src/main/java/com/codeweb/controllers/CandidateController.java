@@ -9,6 +9,7 @@ import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.service.CandidateService;
+import com.codeweb.service.JobApplicationScheduleService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
 import java.util.List;
@@ -31,12 +32,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @ControllerAdvice
 public class CandidateController {
+    
+    @Autowired
+    private CandidateService candidateService;
+    
     @Autowired
     private JobPostingService jobPostingService;
+    
+    @Autowired
+    private JobApplicationScheduleService jobApplicationScheduleService;
 
     @Autowired
     private JobApplicationService jobApplicationService;
 
+    //=================APPLY JOB HERE=======================//
     @GetMapping("/job/application")
     public String Job(Model model,
             @RequestParam("data") String postID) {
@@ -61,14 +70,29 @@ public class CandidateController {
         return "redirect:/";
     }
 
+    //=================VIEW MY JOB HERE=======================//
+    
     @GetMapping("/job/viewMyJob")
     public String viewMyJobApplication(Model model,
             HttpSession session) {
         candidate candidate = (candidate) session.getAttribute("user");
-        model.addAttribute("JobApplications", candidate.getJobApplications());
+        model.addAttribute("JobApplications", this.candidateService.findCandidateByID(candidate.getId()).getJobApplications());
         return "view-JobApplication";
     }
-//THIS IS USING FOR TEST
+    
+    //=================MAKE A DECISION HERE=======================//
+    
+    @PostMapping("/job/viewMyJob/schedule-decision")
+    public String scheduleDecision(Model model,
+            @RequestParam Map<String,String> params) {
+        this.jobApplicationScheduleService.scheduleDecision(params.getOrDefault("applicationId", null), params.getOrDefault("scheduleId", null), params.getOrDefault("action", null));
+        return "redirect:/job/viewMyJob";
+    }
+    
+
+    
+    //=================VIEW MY JOB HERE=======================//
+    
     @GetMapping("/job/view")
     public String view(Model model) {
 

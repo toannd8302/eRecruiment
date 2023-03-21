@@ -336,6 +336,9 @@
                         </div>
                     </form>
                 </div>
+                <div>
+                    Status: ${status}
+                </div>
             </c:if>
         </div>
     </div>
@@ -345,7 +348,7 @@
     <div id="recrui-detail">
         <h1>General information</h1>
         <div id="application-general-info">
-            <h1>Candidate information</h1>
+            <h1>Job Application information</h1>
             <ul class="application-info-list">
                 <div class="row">
 

@@ -135,10 +135,10 @@
     </div>
     <div class="schedule-detail">
         <c:if test="${ScheduleList != null}">
-            <c:forEach var="schedule" items="${ScheduleList}">
-                <h2>Schedule ID: ${schedule.getScheduleId()}</h2>
+            <c:forEach var="schedule" items="${ScheduleList}" varStatus="counter">
+                <h2>NO: ${counter.count}</h2>
                 <p>Job Name: ${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</p>
-                <p>Round: </br>${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
+                <p>Round: ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
                 <p>
                     <c:if test="${schedule.isTypeOfInterview() == true}">
                         Type of Interview: Online
@@ -149,6 +149,7 @@
                 </p>
                 <p>Number of candidates: ${schedule.getjAS().size()}</p>
                 <p>Number of interviewers: ${schedule. getiRS().size()}</p>
+                <p>Status: ${schedule.getStatus()}</p>
 
                 <form method="post" action="<c:url value="/schedule-app/choosed-schedule"/>">
                     <input type="submit" value="Choose"/>
@@ -158,14 +159,13 @@
             </c:forEach>
         </c:if>
     </div>
+    <form method="post" action="<c:url value="/schedule-app/create-new-schedule"/>">
+        <input type="submit" value="Create new schedule"/>
+        <input type="hidden" name="jobAppID" value="${jobAppID}"/>
+        <input type="hidden" name="postID" value="${postID}"/>
+        <input type="hidden" name="roundNumber" value="${roundNumber}"/>
+    </form>
 </div>
-<c:if test="${ScheduleList == null}">
+<c:if test="${ScheduleList.isEmpty()}">
     <h2>No suitable schedule found</h2>
 </c:if>
-
-<form method="post" action="<c:url value="/schedule-app/create-new-schedule"/>">
-    <input type="submit" value="Create new schedule"/>
-    <input type="hidden" name="jobAppID" value="${jobAppID}"/>
-    <input type="hidden" name="postID" value="${postID}"/>
-    <input type="hidden" name="roundNumber" value="${roundNumber}"/>
-</form>

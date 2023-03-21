@@ -9,6 +9,7 @@ com\codeweb\controllers\employeeController.class
 com\codeweb\service\implement\ScheduleServiceImp.class
 com\codeweb\repository\implement\JobPositionRepositoryImp.class
 com\codeweb\configs\WebApplicationContextConfig.class
+com\codeweb\service\JobApplicationScheduleService.class
 com\codeweb\handler\CustomAuthenticationSuccessHandler.class
 com\codeweb\repository\implement\ScheduleRepositoryImp.class
 com\codeweb\service\implement\JobApplicationServiceImp.class
@@ -69,6 +70,7 @@ com\codeweb\pojos\employee.class
 com\codeweb\repository\JobAppScheduleRepository.class
 com\codeweb\service\CandidateService.class
 com\codeweb\pojos\round.class
+com\codeweb\service\implement\JobApplicationScheduleServiceImp.class
 com\codeweb\service\implement\CustomOAuth2UserService.class
 com\codeweb\service\implement\JobPostingServiceImp.class
 com\codeweb\service\implement\RoundServiceImp.class

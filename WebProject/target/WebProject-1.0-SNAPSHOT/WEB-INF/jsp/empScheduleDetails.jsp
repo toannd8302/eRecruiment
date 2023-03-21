@@ -502,7 +502,7 @@
                         <td>${counter.count}</td>
                         <td>${item.getJobApplication().getCandidate().getName()}</td>
                         <td>${item.getJobApplication().getCandidate().getEmail()}</td>
-                        <td><a href="#">view</a></td>
+                        <td><a href="${item.getJobApplication().getCv()}">view</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -629,6 +629,7 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>CV Information</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -637,7 +638,8 @@
                         <td>${counter.count}</td>
                         <td>${item.getJobApplication().getCandidate().getName()}</td>
                         <td>${item.getJobApplication().getCandidate().getEmail()}</td>
-                        <td><a href="#">view</a></td>
+                        <td><a href="${item.getJobApplication().getCv()}">view</a></td>
+                        <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -650,6 +652,7 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Information</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -659,6 +662,7 @@
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
                         <td><a href="#">view</a></td>
+                        <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>
             </tbody>

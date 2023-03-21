@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/", "/home/**", "/post-detail/{postID}", "/oauth2/**", "/loginPage", "/login").permitAll()
                     .antMatchers("/account", 
-                            "/job/application", "/job/viewMyJob", 
+                            "/job/application", "/job/viewMyJob", "/job/viewMyJob/schedule-decision",
                             "/post-detail/save/{postID}", "/post-detail/view", "/post-detail/view/delete/{postId}",
                             "/candidate").hasRole("CANDIDATE")
                     .antMatchers("/employee","/jobPostings","/jobApps","/schedules",

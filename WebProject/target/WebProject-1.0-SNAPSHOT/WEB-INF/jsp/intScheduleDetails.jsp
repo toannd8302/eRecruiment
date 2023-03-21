@@ -215,7 +215,7 @@
                     <td>${item.getJobApplication().getCandidate().getEmail()}</td>
                     <td><a href="${item.getJobApplication().getCv()}">View Details</a></td>
                     <td>
-                        <c:if test="${status.getStatus() eq 'Pending'}">
+                        <c:if test="${status.getStatus() eq 'Pending' or status.getStatus() eq 'Rejected'}">
                             No Action available
                         </c:if>
                         <c:if test="${status.getStatus() eq 'Approved' and schedule.getStatus() eq 'On Going'}">
@@ -225,7 +225,7 @@
                                 <button name="action">more action</button>
                             </form>
                         </c:if>
-                        <c:if test="${status.getStatus() eq 'Finished'}">
+                        <c:if test="${status.getStatus() eq 'Approved' and schedule.getStatus() eq 'Finished'}">
                             <form method="get" action="<c:url value="/interviewer/report"/>">
                                 <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
                                 <input type="hidden" name="jobAppID" value="${item.getJobApplication().getApplicationId()}"/>

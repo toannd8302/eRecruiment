@@ -318,6 +318,9 @@ INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_numbe
 INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
 	VALUES (N'A0005', N'2022-1-9', NULL, N'Rejected', Null, N'Fail', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
 	N'CA0003', N'P0001')
+INSERT Job_Applications(Application_id, Created_time, CV, CV_status, Round_number, Application_status, Introduction, Candidate_id, Post_id)
+	VALUES (N'A0006', N'2022-1-9', NULL, N'Approved', 2, N'Pass', N'I was a part of the SEO Marketing team at Leverage Edu for the last 2 years and before that, I worked for a year at Infinity Inc. I have a thorough knowledge of on-page and off-page SEO as well as content marketing tools.', 
+	N'CA0003', N'P0002')
 
 --Insert Schedules
 INSERT Schedules(Schedule_id, Schedule_date, Schedule_time, Location, Type_of_interview, Status, Round_id)
