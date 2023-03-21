@@ -131,7 +131,7 @@ public class InterviewerController {
     @PostMapping("/interviewer/schedules/schedule-detail/decision")
     public String scheduleDecision(Model model,
             @RequestParam("scheduleID") String scheduleId,
-            @RequestParam("userID") String userID,
+            @RequestParam(value = "userID", required = false) String userID,
             @RequestParam("action") String action) {
         if (action.equals("accept")) {
             if (this.interviewReasonService.acceptSchedule(scheduleId, userID)) {
@@ -144,7 +144,9 @@ public class InterviewerController {
             interviewerReasons irs = this.interviewReasonService.getIRsByID(scheduleId, userID).get(0);
             model.addAttribute("IRS", irs);
             return "reject-schedule";
-        } else {
+        } else if(action.equals("end")){
+            
+        }else {
             model.addAttribute("MESSAGE", "No action supported!!!");
         }
         return "redirect:/interviewer/schedules";

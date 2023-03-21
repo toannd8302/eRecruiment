@@ -173,4 +173,10 @@ public class ScheduleServiceImp implements ScheduleService {
         return twoDimCollection;
 //        return this.scheduleRepository.getScheduleByInterviewerID(interviewerID);
     }
+
+    @Override
+    public boolean endSchedule(schedule schedule) {
+        schedule.setStatus("Finished");
+        return this.scheduleRepository.update(schedule);
+    }
 }

@@ -256,7 +256,7 @@
             <button name="action" value="reject">Reject</button>
         </form>
     </c:if>
-    <c:if test="${status.getStatus() eq 'On Going'}">
+    <c:if test="${schedule.getStatus() eq 'On Going'}">
         <form method="post" action="<c:url value="/interviewer/schedules/schedule-detail/decision"/>">
             <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}">
             <button name="action" value="end">End</button>
