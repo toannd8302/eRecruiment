@@ -3,6 +3,8 @@
 * Maven
 * JavaScript
 * Spring mvc 
-* Hibernate 
+* Spring securirty
+* Spring email
+* Hibernate with criteria query API
 * SQL Server(Database)
 * Ojective: Manage recruitment process 
