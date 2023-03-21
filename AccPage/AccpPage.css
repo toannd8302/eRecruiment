@@ -1,41 +1,107 @@
-body{
-    margin-top: 20px;
-    background-color: lightgray;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.main{
-    padding: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
 }
-.topbar{
-    background-color: teal;
-    overflow:hidden;
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.topbar a{
-    float: right;
-    color:whitesmoke;
-    text-align: center;
-    padding: 20px 26px;
-    text-decoration: none;
-    font-size: 26px;
+
+.box {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
-.sidebar{
-    background-color:rgb(85, 85, 85);
-    color: rgb(255, 255, 255);
-    height: 100%;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-.sidebar a{
-    margin-left: 10px;
-    display: block;
-    color: white;
-    padding-bottom: 10px;
-    font-size: 30px;
-    text-decoration: none;
+
+.header h2 {
+  font-size: 18px;
 }
-.card{
-    position: relative;
-    display: flex;
-    flex-direction: column;
+
+.actions button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
-.content{
-    background-color: whitesmoke;
+
+.content {
+  padding: 10px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.save-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.save-button:hover {
+  background-color: #0069d9;
+}
+
+.edit-button {
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  color: #007bff;
+}
+
+.active {
+  background-color: #007bff;
+  color: #fff;
 }
