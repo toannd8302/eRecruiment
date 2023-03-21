@@ -11,7 +11,7 @@
 <style>
     #wrapper {
         margin: 0px auto;
-        margin-left: 3rem;
+        margin-left: 20rem;
     }
 
     #wrapper h1 {
@@ -85,103 +85,113 @@
 
     /* Sidebar */
     .sidebar {
-        background-color: #baa9a3;
         height: 100vh;
         width: 200px;
-        color: black;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
+        background-color: #baa9a3;
+        font-weight: bold;
     }
-
     .sidebar h1 {
-        text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
     }
-
+    .sidebar .action {
+        margin-top: 2rem;
+    }
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
-        color: black;
-        padding: 10px;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         text-decoration: none;
     }
-
     .sidebar a:hover {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
     .sidebar a.active {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+        border-radius: 50%;
     }
+    #account h2,
+    li {
+        font-size: 2rem;
+        list-style: none;
+    }
+    #account li a {
+        color: black;
+    }
+    #account ul {
+        padding-left: 0%;
+    }
+    .header{
+        background-color: rgb(208, 204, 204);
+        margin-bottom: 2rem;
+        height: auto;
+        padding-left: 2rem;
 
+    }
+    .header p{
+        font-size: 3rem;
+    }
+    .header h1{
+        font-weight: bold;
+        padding-left: 30rem;
+        margin-top: 0rem;
+    }
 </style>
 
-<!--<div class="sidebar">
+<!-- Sidebar Here -->
+<div class="sidebar">
     <sec:authorize access="isAuthenticated()">
         <div class="row">
             <div>
                 <img src="<c:url value="${sessionScope.user.getPicture()}"/>" />
             </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="<c:url value="/account"/>">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="<c:url value="/logout"/>">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        </div>
+        <div class="action">
+            <ul>
+                <li><a class="active" href="<c:url value="/interviewer/schedules"/>"><i class="fa-solid fa-list"></i> Schedules List</a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+            </ul>
         </div>
     </sec:authorize>
-    <ul>
-        <li><a class="active" href="<c:url value="/interviewer/schedules"/>">Schedules List</a></li>
-    </ul>
-</div>-->
+</div>
 
 <div id="wrapper">
-    <h1>Schedule Detail</h1>
-    <p>Schedule ID: ${schedule.getScheduleId()}</p>
-    <p>Job Name: ${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</p>
-    <p>
-        <c:if test="${schedule.isTypeOfInterview() == true}">
-            Type of interview: Offline
-        </c:if>
-        <c:if test="${schedule.isTypeOfInterview() == false}">
-            Type of interview: Online
-        </c:if>
-        <c:if test="${schedule.isTypeOfInterview() == null}">
-            Type of interview: Null
-        </c:if>
-    </p>
-    <p>Round: ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
-    <p>Schedule date: <fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/></p>
-    <p>Time: <fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></p>
-
+    <div class="header">
+        <h1>Schedule Detail</h1>
+        <p>Job Name: ${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</p>
+        <p>
+            <c:if test="${schedule.isTypeOfInterview() == true}">
+                Type of interview: Offline
+            </c:if>
+            <c:if test="${schedule.isTypeOfInterview() == false}">
+                Type of interview: Online
+            </c:if>
+            <c:if test="${schedule.isTypeOfInterview() == null}">
+                Type of interview: Null
+            </c:if>
+        </p>
+        <p>Round: ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
+        <p>Schedule date: <fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/></p>
+        <p>Time: <fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></p>
+    </div>
     <h2>
         <a href="<c:url value="/interviewer/view-post-detail/${schedule.getRound().getJobPosting().getPostId()}"/>">Link Post</a>
     </h2>
@@ -256,7 +266,7 @@
             <button name="action" value="reject">Reject</button>
         </form>
     </c:if>
-    <c:if test="${schedule.getStatus() eq 'On Going'}">
+    <c:if test="${schedule.getStatus() eq 'On Going' and status.getStatus() eq 'Approved'}">
         <form method="post" action="<c:url value="/interviewer/schedules/schedule-detail/decision"/>">
             <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}">
             <button name="action" value="end">End</button>

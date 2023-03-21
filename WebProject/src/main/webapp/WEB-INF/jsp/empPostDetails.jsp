@@ -16,53 +16,51 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: 62.5%;
     }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
-
     /* CSS for body */
     #job-detail-head {
         background-color: white;
-        width: 85%;
-        margin-left: 14%;
+        width: auto;
+        margin-left: 20rem;
         padding: 2rem;
-        margin-top: 3%;
+        background-color: rgb(208, 204, 204);
     }
-
     #job-logo img {
         width: 15rem;
         height: 15rem;
+        border-radius: 50%;
     }
-
     #general-info {
         margin-top: 2rem;
-        font-size: 2rem;
     }
-
+    #general-info h1 {
+        font-size: 3rem;
+    }
     #general-info h2,
     p {
         margin-top: 1rem;
+        font-size: 3rem;
     }
-
     #general-info p i {
         margin-right: 1rem;
     }
-
-    #job-detail-head #apply-buton button:first-child {
-        margin-top: 2rem;
+    #job-detail-head #apply-buton button {
+        height: 75px;
+        width: 150px;
+        font-size: 2rem;
+    }
+    #job-detail-head #apply-buton .apply-button {
         padding: 1rem;
         border-radius: 1rem;
         background-color: #00b14f;
         border: 0.2rem solid #00b14f;
         margin-right: 1rem;
-        color: white;
+        color: #fff;
         font-weight: bold;
-        font-size: 1.5rem;
-
     }
-
+    #job-detail-head #apply-buton .apply-button:hover {
+        background-color: #fff;
+        color: #00b14f;
+    }
     #job-detail-head #apply-buton button:last-child {
         margin-top: 2rem;
         padding: 1rem;
@@ -72,303 +70,159 @@
         margin-right: 1rem;
         color: #00b14f;
         font-weight: bold;
-        font-size: 1.5rem;
         text-align: center;
-
     }
-
+    #job-detail-head #apply-buton button:last-child:hover {
+        background-color: #00b14f;
+        color: #fff;
+    }
     #job-detail-head #apply-buton button a {
         text-decoration: none;
-        color: white;
+        color: #fff;
         font-weight: bold;
-        font-size: 1.5rem;
     }
-
-    #job-detail-head #apply-buton button i:first-child {
-        font-size: 2rem;
-        color: #ffffff;
-        margin-right: 1rem;
-    }
-
-    #job-detail-head #apply-buton button i:last-child {
-        font-size: 2rem;
+    #job-detail-head #apply-buton button a:hover {
         color: #00b14f;
-        margin-right: 1rem;
     }
-
-    .end-button{
-        width: 17rem;
-        height: 7rem;
-    }
-
-
     /* CSS for recruit detail  */
-
     #job-detail-body {
         background-color: white;
         width: 85%;
         margin-left: 14%;
         padding: 2rem;
-        margin-top: 3%;
+        margin-top: 1.5rem;
     }
-
     #job-detail-body #job-general-info {
         margin-top: 2rem;
         background-color: #d4f2e1;
         padding: 2rem;
     }
-
     #job-detail-body #job-general-info h1 {
         margin-bottom: 1rem;
-        text-decoration: underline;
     }
-
     #job-detail-body #job-general-info .general-info-list {
         list-style: none;
     }
-
     #job-detail-body #job-general-info .general-info-list li {
         font-weight: bold;
         font-size: 2rem;
         color: rgb(244, 131, 131);
     }
-
     #job-detail-body #job-general-info .general-info-list li p {
         color: initial;
         font-weight: normal;
         font-size: 2rem;
     }
-
     #job-detail-body #job-general-info .general-info-list i {
         margin-right: 1rem;
         font-size: 2rem;
         margin-top: 2rem;
         display: inline-block;
     }
-
     #job-detail-body #job-general-info .general-info-list p {
         margin-left: 3.5rem;
     }
-
-
-
     /* CSS for Job Location */
     #job-detail-body #job-location {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
-    #job-detail-body #job-location h1 {
-        text-decoration: underline;
-    }
-
-
     /* CSS for Job Describe */
     #job-detail-body #job-describe {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
-
     /* CSS for Job Require */
     #job-detail-body #job-require {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
-
     /* CSS for Job Welfare */
     #job-detail-body #job-welfare {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
     #job-detail-body .info-list {
         list-style-type: none;
         padding: 0%;
         font-size: 2rem;
     }
-
     #job-detail-body .info-list li {
         margin: 1rem;
     }
-
     #job-detail-body .info-list li::before {
         content: "\2013";
         /* Unicode character for an en dash */
         margin-right: 1rem;
     }
-
-
-
-
-    /* CSS for Job Apply */
-
-    #job-detail-body #job-apply {
-        background-color: #d4f2e1;
-        margin-top: 1rem;
-        padding: 2rem;
-    }
-
-    #job-detail-body #job-apply p a {
-        font-weight: bold;
-        text-decoration: none;
-        color: #00b14f;
-    }
-
-    #job-detail-body #job-apply p,
-    button {
-        margin: 0.5rem;
-    }
-
-    #job-detail-body #job-apply button a {
-        text-decoration: none;
-        color: white;
-
-    }
-
-
-    #job-detail-body .apply-button {
-        padding: 1rem;
-        border-radius: 1rem;
-        background-color: #00b14f;
-        border: 0.2rem solid #00b14f;
-        margin-right: 1rem;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
-    #job-detail-head {
-        margin-left: 20rem;
-    }
-    #job-detail-head #apply-buton .accept-button {
-        margin-top: 2rem;
-        padding: 1rem;
-        border-radius: 1rem;
-        background-color: #00b14f;
-        border: 0.2rem solid #00b14f;
-        margin-right: 1rem;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
-
-    #job-detail-head #apply-buton .accept-button:hover {
-        background-color: #ffffff;
-        color: #00b14f;
-    }
-
-    #job-detail-head #apply-buton button:last-child {
-        margin-top: 2rem;
-        padding: 1rem;
-        border-radius: 1rem;
-        background-color: #ffffff;
-        border: 0.2rem solid #00b14f;
-        margin-right: 1rem;
-        color: #00b14f;
-        font-weight: bold;
-        text-align: center;
-        font-size: 2rem;
-    }
-
-    #job-detail-head #apply-buton button:last-child:hover {
-        background-color: #00b14f;
-        color: #fff;
-    }
-
-    #job-detail-head #apply-buton button a {
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
-
-    #job-detail-head #apply-buton .accept-button {
-        font-size: 2rem;
-        color: #ffffff;
-        margin-right: 1rem;
-        width: 15rem;
-        height: 7rem;
-    }
-    #job-detail-head #apply-buton .reject-button {
-        font-size: 2rem;
-        margin-right: 1rem;
-        width: 15rem;
-        height: 7rem;
-    }
-    #job-detail-head #apply-buton button i:last-child {
-        font-size: 2rem;
-        color: #00b14f;
-        margin-right: 1rem;
-    }
-
-    #job-detail-body .save-job-button {
-        padding: 1rem;
-        border-radius: 1rem;
-        background-color: #ffffff;
-        border: 0.2rem solid #00b14f;
-        margin-right: 1rem;
-        color: #00b14f;
-        font-weight: bold;
-        font-size: 1.5rem;
-        text-align: center;
-    }
     /* Sidebar */
     .sidebar {
         height: 100vh;
         width: 200px;
-        color: black;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
-        font-size: 20px;
+        font-weight: bold;
     }
-
     .sidebar h1 {
-        text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
     }
-
+    .sidebar .action {
+        margin-top: 2rem;
+    }
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
-        color: black;
-        padding: 10px;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         text-decoration: none;
     }
-
     .sidebar a:hover {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
     .sidebar a.active {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+        border-radius: 50%;
     }
-
+    #account h2,
+    li {
+        font-size: 2rem;
+        list-style: none;
+    }
+    #account li a {
+        color: black;
+    }
+    #account ul {
+        padding-left: 0%;
+    }
+    #my-account {
+        margin-left: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    .hot-job-button{
+        width: 3rem;
+        height: 3rem;
+    }
 </style>
 
 <!-- Sidebar here -->
@@ -378,27 +232,16 @@
             <div>
                 <img src="<c:url value="${sessionScope.user.getPicture()}"/>" />
             </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="<c:url value="/account"/>">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="<c:url value="/logout"/>">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        </div>
+        <div class="action">
+            <ul>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
+                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+            </ul>
         </div>
     </sec:authorize>
-    <ul>
-        <li><a  href="<c:url value="/jobApps"/>">Application List</a></li>
-        <li><a  class="active" href="<c:url value="/jobPostings"/>">Job Postings List</a></li>
-        <li><a href="<c:url value="/schedules"/>">Schedule List</a></li>
-    </ul>
 </div>
 
 <!-- Body Here -->
@@ -417,13 +260,13 @@
                         <h2>Software company Monke Tech</h2>
                         <p>Created date: <fmt:formatDate value="${jobPosting.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
                         <p><i class="fa-regular fa-clock"></i>Expired date: <input type="date" name="expiredDate" id="expiredDate" value=""/></p>
-                        <p>Hot Job <input type="checkbox" name="isHotJob" checked="true" value="0"/></p>
+                        <p>Hot Job <input class="hot-job-button" type="checkbox" name="isHotJob" checked="true" value="0"/></p>
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div id="apply-buton">
                         <input type="hidden" name="postID" value="${jobPosting.getPostId()}">
-                        <button class="accept-button" name="action" onclick="validateForm(event)" value="accept">Accept</button>
+                        <button class="apply-button" name="action" onclick="validateForm(event)" value="accept">Accept</button>
                         <button class="reject-button" name="action" value="reject">Reject</button>
                     </div>
                 </div>

@@ -145,7 +145,7 @@ public class InterviewerController {
             model.addAttribute("IRS", irs);
             return "reject-schedule";
         } else if(action.equals("end")){
-            
+            this.scheduleService.endSchedule(this.scheduleService.getScheduleByID(scheduleId));
         }else {
             model.addAttribute("MESSAGE", "No action supported!!!");
         }
