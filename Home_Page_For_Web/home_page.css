@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=Noto+Sans+Lepcha&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;500;600;800&display=swap");
 html {
   font-size: 62.5%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 * {
@@ -11,177 +12,285 @@ html {
   margin: 0;
 }
 
-#banner {
+body {
   width: 100%;
-  /* height: 50vh; */
-  padding-top: 40%;
-  background: url("https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Blue%20Modern%20Tips%20Business%20Banner.png?raw=true")
-    top center / cover no-repeat;
+  min-height: 200vh;
+  background: #000;
 }
 
-#banner #search-box {
-  text-align: center;
-  position: absolute;
-  top: 100%;
-  right: 0%;
-  transform: translate(-50%, -50%);
-  color: white;
-  /* bottom: 50%; */
-  margin-top: 30rem;
-  color: #393a3a;
-
-  /* font-family: "Atkinson Hyperlegible", sans-serif;
-  font-family: "Climate Crisis", cursive; */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+  padding: 2rem 4rem;
+  z-index: 10000;
+  height: 10rem;
 }
 
-#banner #search-box h1:first-child {
-  font-family: "Noto Sans Lepcha", sans-serif;
-  font-size: 6rem;
-  margin-bottom: 3rem;
-  margin-top: 8rem;
+.navbar.sticky {
+  padding: 1rem 4rem;
+  background: #fff;
+  border-bottom: 3px solid silver;
 }
 
-#banner #search-box h1 {
-  font-family: "Noto Sans Lepcha", sans-serif;
-  text-transform: uppercase;
-  font-size: 6rem;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
-  margin-right: -10rem;
-  font-weight: bold;
+.navbar #logo a {
+  position: relative;
 }
 
-#banner #search-box p {
+.navbar #logo img {
+  margin-top: -1rem;
+}
+
+.navbar > .header-info > ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1rem;
+  width: 80rem;
+}
+
+.navbar .header-info ul li {
+  position: relative;
+  list-style: none;
+  margin: 0 1rem;
+}
+.navbar .header-info ul li a {
+  position: relative;
+  text-decoration: none;
+  margin: 0 2rem;
   font-size: 2rem;
-  margin-right: -50rem;
-  width: 42rem;
+  color: #fff;
 }
 
-/* CSS for introduce */
-#introduce {
-  /* height: 1000px; */
-  margin-top: 5rem;
-  margin-bottom: 10rem;
+.navbar .header-info ul li a::after {
+  content: "";
+  height: 0.3rem;
+  width: 0;
+  background: #009688;
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  transition: 0.5s;
 }
 
-#introduce .text-muted:first-child {
-  font-weight: bold;
+.navbar .header-info ul li a:hover::after {
+  width: 100%;
 }
 
-#introduce #intro-head {
-  margin-bottom: 5rem;
-  text-align: center;
-  font-size: 1.5rem;
+.navbar .header-info .account {
+  display: flex;
+  margin-top: 1rem;
 }
 
-#introduce #intro-head h1 {
-  font-family: "Noto Sans Lepcha", sans-serif;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  font-size: 4rem;
-  font-weight: b;
-}
-
-#introduce #intro-body {
-  margin-left: 5rem;
-  margin-right: 5rem;
-  font-size: 1.5rem;
-}
-
-#introduce #intro-body .intro-info {
-  width: 40rem;
-  text-align: center;
-}
-
-#intro-body .intro-info i {
-  margin-bottom: 2rem;
-  font-size: 5rem;
-  padding: 4rem;
+.navbar .header-info .account img {
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
-  background-color: rgb(238, 190, 58);
-  animation: rotate 3s infinite linear;
+  margin-top: -1rem;
 }
 
-#intro-body .intro-info i:hover {
-  /* transform: rotate3d(1,0,1,360deg); */
-  animation: rotate 1s infinite reverse;
+.navbar .header-info .account ul {
+  position: absolute;
+  left: 0;
+  width: 27rem;
+  padding: 2rem;
+  display: none;
 }
 
-@keyframes rotate {
-  to {
-    transform: rotateY(360deg);
-  }
+.navbar .header-info .account ul li {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  padding: 1rem;
 }
+
+.navbar .header-info ul li:hover > ul {
+  display: initial;
+  margin-top: 2rem;
+}
+
+.navbar.sticky ul li a {
+  color: #000;
+}
+
+.navbar.sticky ul li > ul li a {
+  color: #fff;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("https://images-ext-1.discordapp.net/external/YD6LN5qAdGqUhwI-L5aIvhTj7yn-u9CQkbIqDOF6uEw/https/static.wixstatic.com/media/ea71bb_370144e721bc43c289bfb35fed3376d1~mv2_d_4500_2124_s_2.jpg/v1/fill/w_1593%2Ch_668%2Cal_b%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_auto/ea71bb_370144e721bc43c289bfb35fed3376d1~mv2_d_4500_2124_s_2.jpg?width=1203&height=505");
+  background-size: cover;
+}
+
+.banner .banner-content {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  transform: translate(-50deg, -50deg);
+  color: #fff;
+}
+
+.banner .banner-content h1 {
+  font-size: 8rem;
+}
+
+.banner .banner-content p {
+  font-size: 2rem;
+  font-style: italic;
+  margin: 3rem 0;
+}
+
+.banner .banner-content button {
+  margin-left: 38rem;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  border: none;
+}
+
+.banner .banner-content button a {
+  text-decoration: none;
+  color: #fff;
+  padding: 1rem;
+}
+
+.banner .banner-content button:hover {
+  background: linear-gradient(rgba(40, 40, 40, 0.5), rgba(40, 40, 40, 0.5));
+}
+
+.banner .banner-content button:hover > a i {
+  opacity: 0.6;
+  color: red;
+}
+
+
+
+.service>h1{
+  text-align: center;
+  padding: 5rem 0;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #009688;
+  font-weight: bold;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+}
+
+.intro i{
+  font-size: 5rem;
+}
+
+.intro .suitable-job{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.intro .suitable-job i:hover{
+  color: rgb(243, 47, 51);
+}
+
+.intro .suitable-job h1{
+  font-size: 4rem;
+  text-transform: uppercase;
+  padding: 3rem 0;
+}
+
+.intro .suitable-job p{
+  margin-top: -3rem;
+  font-size: 2rem;
+  color: rgb(146, 146, 146);
+  font-style: italic;
+}
+
+
+
+
+
+.intro .developer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.intro .developer img{
+  width: 50rem;
+}
+
+.intro .developer > .text{
+  width: 48rem;
+}
+
+.intro .developer i:hover{
+  color: rgb(57, 221, 167);
+}
+
+.intro .developer h1{
+  font-size: 4rem;
+  text-transform: uppercase;
+  padding: 3rem 0;
+}
+
+.intro .developer p{
+  margin-top: -3rem;
+  font-size: 2rem;
+  color: rgb(146, 146, 146);
+  font-style: italic;
+}
+
+.intro .good-welfare{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.intro .good-welfare img{
+  width: 50rem;
+}
+
+.intro .good-welfare > .text{
+  width: 48rem;
+}
+
+.intro .good-welfare i:hover{
+  color: rgb(206, 206, 25);
+}
+
+.intro .good-welfare h1{
+  font-size: 4rem;
+  text-transform: uppercase;
+  padding: 3rem 0;
+}
+
+.intro .good-welfare p{
+  margin-top: -3rem;
+  font-size: 2rem;
+  color: rgb(146, 146, 146);
+  font-style: italic;
+}
+
+
 /* CSS for hot-jobs */
-
 #job-post-title {
   text-align: center;
   text-transform: uppercase;
   font-size: 4rem;
   margin-bottom: 2rem;
   color: rgb(171, 36, 36);
-    font-weight: bold;
-  font-family: 'IBM Plex Mono', monospace;
-}
-.hot-jobs {
-  margin-left: 13rem;
-}
-
-.hot-jobs .hot-post {
-  border: 1px solid black;
-  border-top: 5px solid rgb(94, 93, 93);
-  padding: 2rem;
-  margin: 2rem;
-}
-.hot-jobs .hot-post a {
-  text-decoration: none;
-  color: black;
-}
-.hot-jobs .hot-post img {
-  width: 15rem;
-  height: 14rem;
-  margin-left: 10rem;
-  display: inline-block;
-}
-
-.hot-jobs .hot-post h3 {
   font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-
-.hot-jobs .hot-post p {
-  font-size: 1.5rem;
-}
-
-.hot-jobs .hot-post .salary {
-  color: rgb(250, 31, 31);
-}
-.hot-jobs .hot-post .post-down i {
-  margin-right: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  width: 4rem;
-  display: block;
-  text-align: center;
-  padding: 1rem;
-  transition: 0.3s ease;
-}
-
-.hot-jobs .hot-post .post-down i:hover {
-  border-radius: 50%;
-  background-color: rgb(170, 249, 203);
-}
-
-.hot-jobs .hot-post .post-down i:active {
-  border-radius: 50%;
-  background-color: aquamarine;
-  transition: 0.3s ease;
-}
-
-.hot-jobs .hot-post .post-down {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 17rem;
 }
 
 .product-area-list {
@@ -203,6 +312,18 @@ html {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
   transform: scale(1.2);
   cursor: pointer;
+}
+
+.product-area-list .product .welfare{
+  width: 33rem;
+  overflow: hidden;
+  text-align: center;
+  margin-left: 3rem;
+  max-height: 9rem;
+}
+
+.product-area-list .product .welfare::after{
+  content: '...';
 }
 
 .product-area-list .product h1 {
@@ -240,59 +361,269 @@ html {
   transform: scale(1.1);
 }
 
-.contact-us{
-    background: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80')top center / cover no-repeat;
-    width: 100%;
-    height: 80vh;
+
+
+#seek-job{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  color: rgb(171, 36, 36);
+    font-weight: bold;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
-.contact-form h1{
-    border-bottom: 0.4rem solid black;
-    display: inline-block;
+.search-job{
+  width: 100%;
+  height: 30vh;
+  /* background: linear-gradient(#5e5e60,#3b3be0); */
+  display: flex;
+  align-items: center;
+}
+
+.search-job .search-bar{
+  width: 85%;
+  background: rgba(200, 200, 200, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  margin-left: 10rem;
+  opacity: 0.8;
+}
+
+.search-bar input{
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 1.5rem 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+}
+
+::placeholder{
+  color: #2e2e2e;
+}
+
+.search-bar button {
+  width: 5rem;
+  height: 5rem;
+  border: 0;
+  border-radius: 50%;
+  background: #58629b;
+  cursor: pointer;
+}
+
+.search-bar button i{
+  font-size: 2rem;
+}
+
+.search-bar button:hover{
+  background-color: #b8b8b8;
+}
+
+.search-result{
+  width: 85%;
+  border: #a8a8a8 1px solid;
+  margin-left: 10rem;
+  margin-bottom: 5rem
+}
+
+.search-result{
+  border-radius: 1rem;
+}
+.search-result .result-post{
+  border-top: #a8a8a8 1px solid;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s ease;  
+}
+
+.search-result .result-post:hover{
+  background-color: rgb(252, 222, 252);
+}
+
+.search-result .result-post:hover img{
+  opacity: 1;
+  background-color: white;
+}
+
+.search-result .result-post:hover .post-down {
+  opacity: 1;
+  background-color: white;
+}
+
+.search-result .result-post img{
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  height: 17rem;
+  width: 17rem;
+  transition: background-color 0.3s ease;
+  background-color: white;
+}
+
+.search-result .result-post h2{
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.search-result .result-post h2 a{
+  text-decoration: none;
+  color: black;
+}
+
+.search-result .result-post p{
+  font-size: 1.5rem;
+}
+
+.search-result .result-post i{
+  margin-right: 1rem;
+}
+
+.search-result .result-post .post-down{
+  padding: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+}
+
+.search-result .result-post .post-down p{
+  margin-bottom: 0%;
+}
+
+.search-result .result-post .result-post-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-result .result-post .result-post-right i{
+  margin-top: 2rem;
+  font-size: 3rem;
+  width: 5rem;
+  padding: 1rem;
+  text-align: center;
+  transition: 0.3s ease;
+ 
+}
+
+
+.search-result .result-post .result-post-right p{
+  margin-right: 1rem;
+  font-style: italic;
+  color: rgb(47, 47, 246);
+}
+
+.search-result .result-post .result-post-right i:hover{
+  background-color: rgb(246, 248, 114);
+  border-radius: 50%;
+}
+
+.search-result .result-post .result-post-right i:active{
+  background-color: aquamarine;
+  border-radius: 50%;
+}
+
+.contact{
+  margin-left: 30rem;
+  margin-bottom: 5rem;
+}
+
+.contact h1{
+  font-size: 3rem;
+}
+
+.contact input{
+  width: 90rem;
+  border-radius: 1rem;
+  height: 3rem;
+}
+
+.contact p{
+  font-size: 2rem;
+}
+
+.contact .name{
+  display: flex;
+}
+
+.contact .name input{
+  width: 44rem;
+  margin: 0.5rem;
+}
+
+.contact button{
+  margin-top: 2rem;
+  margin-left: 37rem;
+  font-size: 1.7rem;
+  border-radius: 2rem;
+  padding: 0.5rem 5rem;
+  border: none;
+  background: #ccc;
+}
+
+.contact button:hover{
+  background: #aaa;
+}
+
+.footer{
+  padding-left: 0;
+  background-color: #efefef;
+  padding: 5rem;
+  text-align: center;
+}
+
+.footer .icon{
     text-align: center;
-    margin-left: 65rem;
-    font-size: 4rem;
-    color: white;
-    padding-top: 2rem;
-}
-
-.contact-form .text-items{
-    display: flex;
-    flex-direction: column;
-    margin-left: 35rem;
-    margin-top: 5rem;
-}
-
-.contact-form .text-items h2{
-    margin: 2rem 0;
-    color: white;
-}
-
-.contact-form .text-items input{
-    width: 70%;
-    border-radius: 1rem;
-    height: 4rem;
-    font-size: 2rem;
-    opacity: 0.6;
-    background: linear-gradient(150deg,#64aef9,#fff);
-}
-
-.contact-form button{
-    width: 10rem;
-    border-radius: 0.5rem;
-    opacity: 0.8;
-    background: linear-gradient(150deg,#3c9eff,#196c79);
-    border: none;
-    margin-left: 68rem;
-    margin-top: 3rem;
-}
-
-.contact-form button a{
-    text-decoration: none;
     font-size: 2.5rem;
-    color: #fff;
+   
 }
 
-.contact-form button:hover{
-    background: linear-gradient(150deg,#153e68,#196c79);
+.footer .icon a{
+  color: #fff;
+}
+
+.footer .icon a:hover{
+  color: #aaa;
+}
+
+.footer .icon i{
+  margin: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 30%;
+  background: #7c7c7c;
+}
+
+.footer .logo{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  /* margin-top: 3rem; */
+}
+
+.footer .logo img{
+  height: 5rem;
+  width: 10rem;
+}
+
+.footer .logo img:hover{
+  opacity: 0.7;
+}
+
+.footer .logo h2{
+  display: flex;
+  align-items: center;
+}
+
+
+.footer .location p{ 
+  display: flex;
+  text-align: center;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  color: #949494;
 }
