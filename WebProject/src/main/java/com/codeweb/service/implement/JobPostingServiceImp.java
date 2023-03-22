@@ -67,6 +67,7 @@ public class JobPostingServiceImp implements JobPostingService {
                 jobPosting.setApprovedStatus("Rejected");
             } else if (action.equals("end")) {
                 jobPosting.setApprovedStatus("End");
+            } else if (action.equals("update wishList")) {
             } else {
                 return false;
             }
@@ -86,29 +87,11 @@ public class JobPostingServiceImp implements JobPostingService {
     public boolean createJobPosting(jobPosting jobPosting) {
         boolean result = false;
         try {
-            jobPosting.setDescriptions(jobPosting.getDescriptions());
-
-            jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
-
-            jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
-
-            jobPosting.setLocations(jobPosting.getLocations());
-
-            jobPosting.setWelfare(jobPosting.getWelfare());
-
-            jobPosting.setSalary(jobPosting.getSalary());
+            jobPosting.setApprovedStatus("Pending");
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
             jobPosting.setCreatedTime(date);
-            jobPosting.setPostingTime(null);
-//            Date expiredTime = jobPosting.getExpiredTime();
-//            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
-            jobPosting.setExpiredTime(null);
-            jobPosting.setApprovedStatus("Pending");
-            jobPosting.setLevel(jobPosting.getLevel());
-            jobPosting.setPicture(jobPosting.getPicture());
             result = this.jobPostingRepository.createJobPosting(jobPosting);
-
         } catch (Exception e) {
             System.err.println("==CREATE JOB POSTING==" + e.getMessage());
         }
@@ -118,6 +101,11 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public void deleteJobPosting(String id) {
         this.jobPostingRepository.deleteJobPosting(id);
+    }
+
+    @Override
+    public List<jobPosting> getAllHotJob() {
+        return this.jobPostingRepository.getAllHotJob();
     }
 
 }

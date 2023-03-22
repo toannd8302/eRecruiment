@@ -88,7 +88,7 @@ public class DepartmentController {
             round round = new round();
             round.setRoundNumber(i + 1);
             round.setContent(roundContentList.get(i));
-            round.setJobPoting(jobPosting);
+            round.setJobPosting(jobPosting);
             rounds.add(round);
         }
             jobPosting.setRounds(rounds);

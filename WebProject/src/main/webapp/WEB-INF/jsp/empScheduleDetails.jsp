@@ -13,27 +13,23 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <style>
-    body {
+     body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
         width: 100%;
     }
-
     header {
         background-color: #333;
         color: #fff;
         text-align: center;
         padding: 20px;
     }
-
     .title-pen h1 {
         margin: 0;
     }
-
     .section-pen {
         margin: 20px;
     }
-
     .section h2 {
         margin-bottom: 10px;
         font-size: 25px;
@@ -43,14 +39,12 @@
         border-collapse: collapse;
         margin-bottom: 20px;
     }
-
     .interview-table-pen th {
         text-align: left;
         padding: 10px;
         background-color: #444343;
         border-bottom: 2px solid #ccc;
     }
-
     .interview-table-pen td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
@@ -60,12 +54,10 @@
         width: 100%;
         background-color: #fff;
     }
-
     .interview-table-pen th, td {
         text-align: left;
         padding: 8px;
     }
-
     .interview-table-pen th {
         background-color: #333;
         color: #fff;
@@ -75,40 +67,32 @@
         width: 100%;
         margin-bottom: 20px;
     }
-
     .interviewer-table thead th {
         background-color: #333;
         color: #fff;
         text-align: left;
         padding: 10px;
     }
-
     .interviewer-table tbody td, .interviewer-table tbody th {
         border: 1px solid #ddd;
         padding: 10px;
         text-align: left;
     }
-
     .interviewer-table tbody tr:hover {
         background-color: #f5f5f5;
     }
-
     .interviewer-table tbody tr:nth-child(even) {
         background-color: #f2f2f2;
     }
-
     .interviewer-table tbody td:first-child, .interviewer-table thead th:first-child {
         width: 10%;
     }
-
     .interviewer-table tbody td:nth-child(2), .interviewer-table thead th:nth-child(2) {
         width: 20%;
     }
-
     .interviewer-table tbody td:nth-child(3), .interviewer-table thead th:nth-child(3) {
         width: 40%;
     }
-
     .interviewer-table tbody td:last-child, .interviewer-table thead th:last-child {
         width: 30%;
     }
@@ -120,7 +104,6 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
-
     .box {
         width: 600px;
         height: 220px;
@@ -132,12 +115,10 @@
         font-size: 17px;
         margin-bottom: 10px;
     }
-
     .option {
         font-size: 16px;
         margin-bottom: 5px;
     }
-
     select {
         padding: 10px;
         border-radius: 5px;
@@ -147,13 +128,11 @@
         font-size: 16px;
         transition: all 0.2s ease-in-out;
     }
-
     select:focus {
         outline: none;
         box-shadow: 0px 0px 5px #6cb2eb;
         background-color: #fff;
     }
-
     .submit {
         margin-top: 20px;
         background-color: #6cb2eb;
@@ -164,7 +143,6 @@
         font-size: 16px;
         transition: all 0.2s ease-in-out;
     }
-
     .submit:hover {
         background-color: #fff;
         color: #6cb2eb;
@@ -181,7 +159,6 @@
         margin-bottom: 10px;
         color: #333;
     }
-
     .start-btn {
         background-color: #4CAF50; /* Green */
         border: none;
@@ -196,7 +173,6 @@
         border-radius: 8px;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-
     .start-btn:hover {
         background-color: #3e8e41; /* Dark green */
     }
@@ -208,12 +184,10 @@
         vertical-align: top;
         margin-right: 20px;
     }
-
     .input-container label {
         display: block;
         margin-bottom: 5px;
     }
-
     .input-container input[type="text"], .input-container select {
         display: block;
         width: 100%;
@@ -223,7 +197,6 @@
         font-size: 16px;
         box-sizing: border-box;
     }
-
     .input-container select {
         appearance: none;
         -webkit-appearance: none;
@@ -242,88 +215,66 @@
         font-size: 17px;
         margin-bottom: 10px;
     }
+    /* Sidebar */
     .sidebar {
-        background-color: #baa9a3;
         height: 100vh;
         width: 200px;
-        color: black;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
+        background-color: #baa9a3;
+        font-weight: bold;
     }
-
     .sidebar h1 {
-        text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
     }
-
+    .sidebar .action {
+        margin-top: 2rem;
+    }
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
-        color: black;
-        padding: 10px;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         text-decoration: none;
     }
-
     .sidebar a:hover {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
-    .sidebar a.active1 {
-        background-color: #1abc9c;
+    .sidebar a.active {
+        background-color: rgb(208, 204, 204);
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+        border-radius: 50%;
     }
-
     #account h2,
     li {
         font-size: 2rem;
         list-style: none;
     }
-
     #account li a {
         color: black;
     }
-
     #account ul {
         padding-left: 0%;
     }
-
     #my-account {
         margin-left: 1.5rem;
         margin-top: 1.5rem;
     }
-
-    #my-account .dropdown-menu {
-        padding: 0%;
-        background-color: #1abc9c;
-    }
-
-    #my-account .dropdown-item {
-        background-color: #1abc9c;
-    }
-
-    #my-account .dropdown-item:hover {
-        background-color: #1abc9c;
-    }
-
     /*
     PHẦN SCHEDULE DETAIL CỦA ON GOING
     */
@@ -339,35 +290,29 @@
         justify-content: space-between;
         align-items: center;
     }
-
     .schedule-detail h2 {
         font-size: 30px;
         font-weight: bold;
         color: #333;
         margin-bottom: 20px;
     }
-
     .schedule-detail p {
         font-size: 18px;
         color: #555;
         margin: 10px 0;
         width: 100%;
     }
-
     .schedule-detail .label {
         font-size: 20px;
         font-weight: bold;
         color: #555;
         margin-right: 10px;
     }
-
     .schedule-detail .value {
         font-size: 20px;
         color: #333;
         margin-right: 20px;
     }
-
-
     .status.on-going {
         font-size: 20px;
         font-weight: bold;
@@ -377,7 +322,6 @@
     h1 {
         margin: 0;
     }
-
     h2 {
         font-size: 36px;
         margin-bottom: 40px;
@@ -391,7 +335,6 @@
         font-weight: bold;
         font-size: 20px;
     }
-
     .info-container {
         display: flex;
         flex-wrap: wrap;
@@ -405,7 +348,6 @@
         text-align: center;
         margin: 0 auto;
     }
-
     .info-row {
         display: flex;
         flex-wrap: wrap;
@@ -413,45 +355,37 @@
         align-items: center;
         margin: 20px 0;
     }
-
     .info-col {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 20px;
     }
-
     .info-item {
         display: flex;
         flex-direction: column;
     }
-
     .info-date,
     .info-time {
         grid-row: 2;
     }
-
     .info-label {
         font-size: 14px;
         font-weight: bold;
         color: #777;
         margin-bottom: 5px;
     }
-
     .info-value {
         font-size: 16px;
         color: #444;
         margin-bottom: 10px;
     }
-
     span {
         font-weight: bold;
         margin-right: 10px;
     }
-
     p {
         margin: 0;
     }
-
     .info-col p:before {
         content: "";
         display: inline-block;
@@ -469,7 +403,6 @@
         align-items: center;
         margin-left: 280px;
     }
-
     .interview-table1 th {
         text-align: left;
         padding: 10px;
@@ -477,7 +410,6 @@
         border-bottom: 2px solid #9b9b9b;
         color: #040404;
     }
-
     .interview-table1 td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
@@ -485,42 +417,31 @@
     a {
         text-decoration: none;
     }
-
     .body-pending{
         position: absolute;
-        left: 11%;
-        width: 89%;
+        left: 14%;
+        width: 80%;
     }
 </style>
 
 
+<!-- Sidebar here -->
 <div class="sidebar">
     <sec:authorize access="isAuthenticated()">
         <div class="row">
             <div>
                 <img src="<c:url value="${sessionScope.user.getPicture()}"/>" />
             </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="<c:url value="/account"/>">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="<c:url value="/logout"/>">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        </div>
+        <div class="action">
+            <ul>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
+                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+            </ul>
         </div>
     </sec:authorize>
-    <ul>
-        <li><a href="<c:url value="/jobApps"/>">Application List</a></li>
-        <li><a href="<c:url value="/jobPostings"/>">Job Postings List</a></li>
-        <li><a class="active1" href="<c:url value="/schedules"/>">Schedule List</a></li>
-    </ul>
 </div>
 
 
@@ -546,7 +467,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</td>
+                        <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
                         <td>${schedule.getScheduleId()}</td>
                         <td>${schedule.getRound().getContent()}</td>
                         <td>
@@ -565,13 +486,35 @@
                 </tbody>
             </table>
         </section>
-        <div class="number-inter">Number of Interviewer</div>
-        <table class="interviewer-table">
+        <table class="interview-table1">
+            <div class="info-candidate">Candidate information</div>
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th>Number</th>
                     <th>Full Name</th>
                     <th>Email</th>
+                    <th>CV Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="item" items="${schedule.getjAS()}" varStatus="counter">
+                    <tr>
+                        <td>${counter.count}</td>
+                        <td>${item.getJobApplication().getCandidate().getName()}</td>
+                        <td>${item.getJobApplication().getCandidate().getEmail()}</td>
+                        <td><a href="${item.getJobApplication().getCv()}">view</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        <table class="interview-table1">
+            <div class="info-candidate">Interviewer information</div>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Information</th>
                 </tr>
             </thead>
             <tbody>
@@ -580,9 +523,9 @@
                         <td>${counter.count}</td>
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
+                        <td><a href="#">view</a></td>
                     </tr>
                 </c:forEach>
-
             </tbody>
         </table>
         <form method="post" action="<c:url value="/schedules/schedule-details/start-schedule"/>">
@@ -610,14 +553,6 @@
                                 </c:if>
                             </c:forEach>
                         </select>
-                        <!--                <div class="label">
-                                            <label class="multiple-checkbox">
-                                                <input type="checkbox" name="fruit" value="apple">
-                                                Email: loquangt@gmail.com;
-                                                Full Name: Lo Quang T;
-                                                Role: Manager
-                                            </label>
-                                        </div>-->
                     </div>
                 </div>
             </section>
@@ -633,6 +568,7 @@
             <div class="center">
                 <button class="start-btn" name="action" value="start">Start</button>
             </div>
+            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
         </form>
     </div>
 </c:if>
@@ -657,7 +593,7 @@
                 </div>
                 <div class="info-row">
                     <div class="label">Job Name:</div>
-                    <div class="value">${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</div>
+                    <div class="value">${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</div>
                 </div>
                 <div class="info-row">
                     <div class="label">Round ${schedule.getRound().getRoundNumber()}:</div>
@@ -693,6 +629,7 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>CV Information</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -701,7 +638,8 @@
                         <td>${counter.count}</td>
                         <td>${item.getJobApplication().getCandidate().getName()}</td>
                         <td>${item.getJobApplication().getCandidate().getEmail()}</td>
-                        <td><a href="#">View Details</a></td>
+                        <td><a href="${item.getJobApplication().getCv()}">view</a></td>
+                        <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -714,6 +652,7 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Information</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -722,13 +661,13 @@
                         <td>${counter.count}</td>
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
-                        <td><a href="#">View</a></td>
+                        <td><a href="#">view</a></td>
+                        <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </div>
 </c:if>
-
 
 

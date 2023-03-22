@@ -279,7 +279,13 @@
             <ul class="general-info-list">
                 <li><i class="fa-solid fa-money-bill"></i>
                     Salary
-                    <p>${jobPosting.salary} $</p>
+                    <c:if test="${jobPosting.salary == 0}">
+                        <p>Negociating</p>
+                    </c:if>
+                         <c:if test="${jobPosting.salary != 0}">
+                         <p>${jobPosting.salary} $</p>
+                    </c:if>
+                   
                 </li>
 
                 <li><i class="fa-sharp fa-solid fa-suitcase"></i>Type of works

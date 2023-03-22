@@ -23,6 +23,15 @@
     }
     #wrapper h1 {
         margin-left: 20rem;
+        width: 100%;
+        text-align: center;
+        padding: auto;
+    }
+    .header {
+        display: flex;
+        background-color: rgb(208, 204, 204);
+        margin-bottom: 2rem;
+        height: 8.5rem;
     }
     /* Style nav tabs */
     .tabs {
@@ -35,6 +44,7 @@
         margin: 0px;
         padding: 0;
         border-bottom: 3px solid #ddd;
+        font-weight: bold;
     }
     .nav-tabs li {
         margin-right: 10px;
@@ -75,36 +85,38 @@
     .sidebar {
         height: 100vh;
         width: 200px;
-        color: black;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
+        font-weight: bold;
     }
     .sidebar h1 {
-        text-align: center;
         margin-bottom: 30px;
     }
     .sidebar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
+    }
+    .sidebar .action {
+        margin-top: 2rem;
     }
     .sidebar li {
         margin-bottom: 5px;
     }
     .sidebar a {
         display: block;
-        color: black;
-        padding: 10px;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         text-decoration: none;
     }
     .sidebar a:hover {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
     .sidebar a.active {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
     /* Account */
     .sidebar img {
@@ -112,6 +124,7 @@
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+        border-radius: 50%;
     }
     #account h2,
     li {
@@ -124,57 +137,35 @@
     #account ul {
         padding-left: 0%;
     }
-    #my-account {
-        margin-left: 1.5rem;
-        margin-top: 1.5rem;
-    }
-    #my-account .dropdown-menu {
-        padding: 0%;
-        background-color: #1abc9c;
-    }
-    #my-account .dropdown-item {
-        background-color: #1abc9c;
-    }
-    #my-account .dropdown-item:hover {
-        background-color: #1abc9c;
+    .cancel-button{
+        color: black;
     }
 </style>
-<!-- Sidebar Here -->
 
+<!-- Sidebar Here -->
 <div class="sidebar">
     <sec:authorize access="isAuthenticated()">
         <div class="row">
             <div>
                 <img src="<c:url value="${sessionScope.user.getPicture()}"/>" />
             </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="<c:url value="/account"/>">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="<c:url value="/logout"/>">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </sec:authorize>
-    </div>
-
-
-    <ul>
-        <li><a class="active" href="<c:url value="/jobApps"/>">Application List</a></li>
-        <li><a href="<c:url value="/jobPostings"/>">Job Postings List</a></li>
-        <li><a href="<c:url value="/schedules"/>">Schedule List</a></li>
-    </ul>
+        </div>
+        <div class="action">
+            <ul>
+                <li><a class="active" href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
+                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+            </ul>
+        </div>
+    </sec:authorize>
 </div>
 
 <div id="wrapper">
-    <h1>Welcome HR Employee</h1>
-    <h1>Job Application List</h1>
+    <div class="header">
+        <h1>Job Application List</h1>
+        <h1>Welcome HR Employee</h1>  
+    </div>
     <div class="tabs">
         <ul class="nav-tabs">
             <li class="active"><a href="#pending">Review</a></li>
@@ -189,7 +180,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Candidate</th>
                             <th>Job Apply</th>
                             <th>Phone</th>
@@ -198,10 +189,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="jobApplication" items="${REVIEW}">
+                        <c:forEach var="jobApplication" items="${REVIEW}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
                             <tr>
-                                <td>${jobApplication.getApplicationId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
                                 <td>
@@ -228,7 +219,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Candidate</th>
                             <th>Job Apply</th>
                             <th>Phone</th>
@@ -238,10 +229,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="jobApplication" items="${SCHEDULING}">
+                        <c:forEach var="jobApplication" items="${SCHEDULING}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
                             <tr>
-                                <td>${jobApplication.getApplicationId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
                                 <td>
@@ -268,7 +259,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Candidate</th>
                             <th>Job Apply</th>
                             <th>Phone</th>
@@ -278,10 +269,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="jobApplication" items="${SCHEDULED}">
+                        <c:forEach var="jobApplication" items="${SCHEDULED}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
                             <tr>
-                                <td>${jobApplication.getApplicationId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
                                 <td>
@@ -308,7 +299,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Candidate</th>
                             <th>Job Apply</th>
                             <th>Phone</th>
@@ -318,10 +309,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="jobApplication" items="${ON_GOING}">
+                        <c:forEach var="jobApplication" items="${ON_GOING}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
                             <tr>
-                                <td>${jobApplication.getApplicationId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
                                 <td>
@@ -348,7 +339,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Candidate</th>
                             <th>Job Apply</th>
                             <th>Phone</th>
@@ -357,10 +348,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="jobApplication" items="${REJECT}">
+                        <c:forEach var="jobApplication" items="${REJECT}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
                             <tr>
-                                <td>${jobApplication.getApplicationId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${jobApplication.getCandidate().getName()}</td>
                                 <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
                                 <td>
@@ -394,6 +385,7 @@
             //Active nav tabs
             $('.nav-tabs li').removeClass('active');
             $(this).addClass('active');
+
             //Show tab-content item
             let id_tab_content = $(this).children('a').attr('href');
             // alert(id_tab_content);

@@ -226,7 +226,7 @@
                                             <ul>
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                       data-bs-toggle="dropdown" style="color: crimson">My Account</a>
+                                                       data-bs-toggle="dropdown">My Account</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="<c:url value="/account"/>">My Profile</a></li>
                                                         <li><a class="dropdown-item" href="<c:url value="/job/viewMyJob"/>">View My Applications</a></li>

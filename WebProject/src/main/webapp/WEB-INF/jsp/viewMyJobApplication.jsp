@@ -142,7 +142,7 @@
         text-height: 1rem;
 
     }
-    
+
     .post-list-left .nav-body{
         margin-top: 10rem;
     }
@@ -151,8 +151,8 @@
     .post-list-left .nav-body li{
         margin-top: 4rem;
     }
-    
-    
+
+
     .post-list-left .fa-solid{
         position: relative;
         width: 5rem;
@@ -331,7 +331,7 @@
         </div>
     </div>          
 
-        
+
     <div class="view-app-right">
         <table class="table table-striped">
             <thead>
@@ -349,33 +349,69 @@
 
                     <tr>
                         <td>${counter.count}</td>
-                        <td>${jobApplication.jobPosting.jobPosition.jobName}</td> 
-                        <td>${jobApplication.jobPosting.salary}</td> 
-                        <td>${jobApplication.jobPosting.locations}</td> 
+                        <td>${jobApplication.getJobPosting().getJobPosition().jobName}</td> 
+                        <td>${jobApplication.getJobPosting().salary}</td> 
+                        <td>${jobApplication.getJobPosting().locations}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="btn btn-success detail-toggle">View Detail</button></td>
                     </tr>
-                    
+
                     <tr class="detail-row" style="display: none;">
                         <td colspan="3">
                             <div class="detail-info">
-                                <p><strong>Rounds:</strong></p>
+                                <p><strong><a href="<c:url value="/post-detail/${jobApplication.getJobPosting().getPostId()}"/>">Link to Job Posting</a></strong></p>
+                                <p><strong>Job Application Status  </strong> 
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Fail'}">
+                                        Fail
+                                    </c:if>
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
+                                        Waiting for review
+                                    </c:if>
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
+                                        Waiting for scheduling
+                                    </c:if>
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'On Going'}">
+                                        Waiting for interview
+                                    </c:if>
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'On Pass'}">
+                                        Pass
+                                    </c:if>
+                                </p>
+                                <p><strong>My Schedules</strong></p>
                                 <ul>
-                                    <li>
-                                        <c:forEach var="round" items="${jobApplication.jobPosting.getRounds()}">
-                                            <ul>
-                                                <li>Round ${round.getRoundNumber()}: ${round.getContent()}</li>
-                                            </ul>                                       
-                                        </c:forEach>
-                                    </li>
-                                    <li><!--In lịch ngay đây, thêm pojo schedule, 1 job application có nhiều schedule-->
-                                        <c:forEach var="jobAppSchedule" items="${jobApplication.getJobApSche()}">
-                                            Schedule date: <fmt:formatDate value="${jobAppSchedule.getApplicationSchedule().getScheduleDate()}" pattern="dd/MM/yyyy"/>
-                                            Status: ${jobAppSchedule.getApplicationSchedule().getStatus()} 
-                                        </c:forEach> </li>
-
+                                    <c:if test="${jobApplication.getJobApSche().isEmpty()}">
+                                        No Schedule available
+                                    </c:if>
+                                    <c:forEach var="jobAppSchedule" items="${jobApplication.getJobApSche()}" varStatus="counter">
+                                        <c:if test="${jobAppSchedule.getApplicationSchedule().getStatus() eq 'On Going' or jobAppSchedule.getApplicationSchedule().getStatus() eq 'Finished'}">
+                                            <li>
+                                                <ul>NO: ${counter.count}</ul>
+                                                <ul>Time: <fmt:formatDate value="${jobAppSchedule.getApplicationSchedule().getScheduleDate()}" pattern="dd/MM/yyyy"/> - <fmt:formatDate value="${jobAppSchedule.getApplicationSchedule().getScheduleTime()}" pattern="HH:mm:ss"/></ul>
+                                                <ul>Round: ${jobAppSchedule.getApplicationSchedule().getRound().getRoundNumber()} - ${jobAppSchedule.getApplicationSchedule().getRound().getContent()}</ul>
+                                                <ul>Status: 
+                                                    <c:if test="${jobAppSchedule.getStatus() eq 'Pending'}">
+                                                        Pending
+                                                        <form method="post" action="<c:url value="/job/viewMyJob/schedule-decision"/>">
+                                                            <input type="hidden" name="applicationId" value="${jobAppSchedule.getApplicationId()}"/>
+                                                            <input type="hidden" name="scheduleId" value="${jobAppSchedule.getScheduleId()}"/>
+                                                            <button name="action" value="accept">Accept</button>
+                                                            <button name="action" value="reject">Reject</button>
+                                                        </form>
+                                                    </c:if>
+                                                    <c:if test="${jobAppSchedule.getStatus() eq 'Approved'}">
+                                                        ${jobAppSchedule.getApplicationSchedule().getStatus()}
+                                                    </c:if>
+                                                    <c:if test="${jobAppSchedule.getStatus() eq 'Rejected'}">
+                                                        Rejected - No available
+                                                    </c:if>
+                                                </ul>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${jobAppSchedule.getApplicationSchedule().getStatus() eq 'Pending'}">
+                                            <c:set var = "counter" value="${counter - 1}"/>
+                                        </c:if>
+                                    </c:forEach> 
                                 </ul>
-                                <p><strong><a href="<c:url value="/post-detail/${jobApplication.jobPosting.getPostId()}"/>">Link to Job Posting</a></strong></p>
                             </div>
                         </td>
                     </tr>

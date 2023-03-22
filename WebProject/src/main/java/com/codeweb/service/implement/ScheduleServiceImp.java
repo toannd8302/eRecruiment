@@ -169,7 +169,14 @@ public class ScheduleServiceImp implements ScheduleService {
         twoDimCollection.put("Pending", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, "On Going", "Pending"));
         twoDimCollection.put("On Going", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, "On Going", "Approved"));
         twoDimCollection.put("Finished", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, "Finished", null));
+        twoDimCollection.put("Rejected", this.scheduleRepository.getScheduleByStatusAndID(interviewerID, null, "Rejected"));
         return twoDimCollection;
 //        return this.scheduleRepository.getScheduleByInterviewerID(interviewerID);
+    }
+
+    @Override
+    public boolean endSchedule(schedule schedule) {
+        schedule.setStatus("Finished");
+        return this.scheduleRepository.update(schedule);
     }
 }

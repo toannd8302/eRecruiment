@@ -41,7 +41,7 @@ public class RoundRepositoryImp implements RoundRepository{
 
         Root<round> root = query.from(round.class);
         
-        Join<round, jobPosting> roundWithPost = root.join("jobPoting", JoinType.LEFT);
+        Join<round, jobPosting> roundWithPost = root.join("jobPosting", JoinType.LEFT);
 
         Predicate p1 = builder.equal(root.get("roundNumber").as(Integer.class), roundNumber);
         Predicate p2 = builder.like(roundWithPost.get("postId").as(String.class), postID);

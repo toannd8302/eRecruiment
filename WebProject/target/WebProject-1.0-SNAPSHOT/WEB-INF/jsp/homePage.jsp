@@ -589,7 +589,7 @@
     <!-- Hot job here -->
     <h1 id="job-post-title">Today Hotjobs</h1>
     <div class="product-area-list">
-        <c:forEach var="item" items="${listOfJobPosting}">
+        <c:forEach var="item" items="${listOfHotJob}">
             <div class="product">
                 <i class="fa-solid fa-chevron-down"></i>
                 <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
@@ -614,7 +614,7 @@
         </div>
     </form>
     <div class="search-result">
-        <h2 style="margin-left: 2rem">Found 6969 works</h2>
+        <h2 style="margin-left: 2rem">Found ${listOfJobPosting.size()} works</h2>
         <c:forEach var="item" items="${listOfJobPosting}">
             <div class="result-post">
                 <div class="result-post-left">

@@ -53,10 +53,10 @@ public class RoundController {
             
             return "forward:/viewround";
         }
-       String PostId =  round.getJobPoting().getPostId();
+       String PostId =  round.getJobPosting().getPostId();
         round.setContent(round.getContent());
         round.setRoundNumber(round.getRoundNumber());
-        round.setJobPoting(this.JobPostingService.getPostByID(PostId));
+        round.setJobPosting(this.JobPostingService.getPostByID(PostId));
         this.RoundService.createRound(round);
         
         return "redirect:/createjobposting";

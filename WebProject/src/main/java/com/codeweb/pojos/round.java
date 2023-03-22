@@ -44,7 +44,7 @@ public class round implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "Post_id")
-    private jobPosting jobPoting;
+    private jobPosting jobPosting;
 
     @OneToMany (mappedBy = "round", fetch = FetchType.EAGER)
     private Set<schedule> schedule;
@@ -83,14 +83,14 @@ public class round implements Serializable{
         this.content = content;
     }
 
-    public jobPosting getJobPoting() {
-        return jobPoting;
+    public jobPosting getJobPosting() {
+        return jobPosting;
     }
 
-    public void setJobPoting(jobPosting jobPoting) {
-        this.jobPoting = jobPoting;
+    public void setJobPosting(jobPosting jobPosting) {
+        this.jobPosting = jobPosting;
     }
-
+    
     @Override
     public String toString() {
         return "round{" + "roundID=" + roundID + ", roundNumber=" + roundNumber + ", content=" + content + '}';

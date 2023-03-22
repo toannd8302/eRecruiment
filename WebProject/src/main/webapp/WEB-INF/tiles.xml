@@ -107,9 +107,27 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value="View My Schedules"/>
         <put-attribute name="content" value="/WEB-INF/jsp/intAllSchedules.jsp" />
     </definition>
-    <definition name="view-all-reports" extends="baseLayoutEmployee">
+    <definition name="view-my-schedule-details" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View My Schedules"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/intScheduleDetails.jsp" />
+    </definition>
+    <definition name="reject-schedule" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View My Schedules"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/intRejectSchedule.jsp" />
+    </definition>
+    <definition name="create-report" extends="baseLayoutEmployee">
         <put-attribute name="title" value="View All Reports"/>
-        <put-attribute name="content" value="/WEB-INF/jsp/intAllReports.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/intCreateReport.jsp" />
+    </definition>
+    <!-- HR Manager here -->
+     <definition name="view-all-finshed-job-app" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View All Job App"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/managerPage.jsp" />
+    </definition>
+    
+     <definition name="view-detail-job-app" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View Job App Detail"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/managerJobAppDetail.jsp" />
     </definition>
     
 </tiles-definitions>    

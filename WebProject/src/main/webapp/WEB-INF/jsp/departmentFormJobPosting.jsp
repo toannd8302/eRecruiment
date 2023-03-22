@@ -185,12 +185,12 @@
                 font-size: 1.8rem;
                 margin-top: 3rem;
             }
-            
+
             #Concak select:after{
                 content: '&#60';
                 font-size: 5rem;
             }
-            
+
 
             #Concak select::-ms-expand{
                 display: none;
@@ -617,10 +617,17 @@
                 var salaryInput = document.querySelector('input[name="salary"]');
                 var expInput = document.querySelector('input[name="exprienceRequirement"]');
                 var roundsInput = document.querySelector('input[name="numRounds"]');
-
                 // Check for empty values
-                if (salaryInput.value === "" || expInput.value === "" || roundsInput.value === "") {
-                    alert("Please fill in all fields");
+                if (salaryInput.value === "") {
+                    alert("Please fill in Salary");
+                    event.preventDefault();
+                    return false;
+                } else if (expInput.value === "") {
+                    alert("Please fill in Experience");
+                    event.preventDefault();
+                    return false;
+                } else if (roundsInput.value === "") {
+                    alert("Please fill in Round");
                     event.preventDefault();
                     return false;
                 }
@@ -693,6 +700,7 @@
                 roundContentInput.name = "roundContentArray";
                 roundsDiv.appendChild(roundContentInput);
             }
+
 
         </script>
     </body>

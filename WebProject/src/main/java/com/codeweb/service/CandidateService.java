@@ -14,10 +14,10 @@ import java.util.List;
  * @author KHOA
  */
 public interface CandidateService {
-    List<candidate> getAll();
     boolean addOrUpdate(candidate candidate);
+    boolean update(candidate candidate);
+    List<candidate> getAll();
     candidate findCandidateByID(String id);
     candidate findCandidateByEmail(String email);
-
-    public candidate processOAuthPostLogin(CustomOAuth2User oauthUser);
+    candidate processOAuthPostLogin(CustomOAuth2User oauthUser);
 }

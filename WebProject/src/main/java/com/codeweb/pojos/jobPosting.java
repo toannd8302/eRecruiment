@@ -11,6 +11,8 @@ package com.codeweb.pojos;
  */
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +21,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -81,15 +85,42 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @Column(name = "Picture")
     private String picture;
     
+    @Column(name = "Hot_job")
+    private boolean hotJob;
+    
     @ManyToOne
     @JoinColumn(name = "Job_id")
     private jobPosition jobPosition;
     
-      @OneToMany (mappedBy = "jobPoting", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER) //ko co la ko insert dc
+    @OneToMany (mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<round> rounds;
     
-    @OneToMany(mappedBy = "jobPosting")
+    @OneToMany(mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<jobApplication> jobApplications;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Wish_List",
+            joinColumns = { @JoinColumn(name = "Post_id") },
+            inverseJoinColumns = { @JoinColumn(name = "Candidate_id") }
+    )
+    private Set<candidate> listCandidates = new HashSet<candidate>();
+
+    public Set<candidate> getCandidates() {
+        return listCandidates;
+    }
+
+    public void setCandidates(Set<candidate> candidates) {
+        this.listCandidates = candidates;
+    }
+    
+    public boolean isHotJob() {
+        return hotJob;
+    }
+
+    public void setHotJob(boolean hotJob) {
+        this.hotJob = hotJob;
+    }
 
     public String getPicture() {
         return picture;
@@ -233,5 +264,17 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
         return this.getPostId().compareTo(o.getPostId());
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(postId);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof jobPosting)) return false;
+        jobPosting that = (jobPosting) o;
+        return Objects.equals(postId, that.postId);
+    }
     
 }

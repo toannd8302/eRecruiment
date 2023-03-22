@@ -31,7 +31,7 @@ public class AccountController {
 
     @Autowired
     private JobPostingService jobPostingService;
-    
+
     @Autowired
     private DepartmentService departmentService;
 
@@ -54,26 +54,21 @@ public class AccountController {
 //    public String loginDepartment() {
 //        return "loginDepartment";
 //    }
-
     @GetMapping("/candidate")
     public String loginSuccessfully(Model model,
             @RequestParam(required = false) Map<String, String> params) throws IOException {
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
         return "redirect:/";
     }
-    
-    @GetMapping("/interviewer")
-    public String loginSuccessfully3(){
-        return "interviewer-page";
-    }
-    
+
     @GetMapping("/department")
-    public String loginSuccessfully1(Model model, HttpSession session){
+    public String loginSuccessfully1(Model model, HttpSession session) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         department department = this.departmentService.getDepartment(email);
-        if(department == null)
+        if (department == null) {
             model.addAttribute("ERROR", "No department found");
+        }
         session.setAttribute("department", department);
         model.addAttribute("jobPostings", this.jobPostingService.getAllJobPosting());
         return "department-Page";
@@ -83,4 +78,6 @@ public class AccountController {
     public String account(Model model) {
         return "account-information";
     }
+
+ 
 }

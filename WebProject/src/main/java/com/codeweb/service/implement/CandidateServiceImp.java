@@ -29,6 +29,11 @@ public class CandidateServiceImp implements CandidateService {
     }
     
     @Override
+    public boolean update(candidate candidate) {
+        return this.candidateRepository.update(candidate);
+    }
+    
+    @Override
     public List<candidate> getAll() {
         return this.candidateRepository.getAll();
     }

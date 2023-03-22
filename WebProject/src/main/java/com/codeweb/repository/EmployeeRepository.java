@@ -5,9 +5,7 @@
  */
 package com.codeweb.repository;
 
-import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.employee;
-import com.codeweb.pojos.jobApplication;
 import java.util.List;
 
 /**
