@@ -371,11 +371,14 @@
                                         Waiting for scheduling
                                     </c:if>
                                     <c:if test="${jobApplication.getApplicationStatus() eq 'On Going'}">
-                                        Waiting for interview
+                                        Waiting for interviewing
                                     </c:if>
-                                    <c:if test="${jobApplication.getApplicationStatus() eq 'On Pass'}">
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Pass'}">
                                         Pass
                                     </c:if>
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Finished'}">
+                                        Waiting for final evaluate
+                                    </c:if> 
                                 </p>
                                 <p><strong>My Schedules</strong></p>
                                 <ul>
@@ -410,7 +413,7 @@
                                         <c:if test="${jobAppSchedule.getApplicationSchedule().getStatus() eq 'Pending'}">
                                             <c:set var = "counter" value="${counter - 1}"/>
                                         </c:if>
-                                    </c:forEach> 
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </td>

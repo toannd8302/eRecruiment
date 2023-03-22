@@ -98,7 +98,7 @@ public class jobPosting implements Serializable, Comparable<jobPosting> { //Giup
     @OneToMany(mappedBy = "jobPosting", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<jobApplication> jobApplications;
     
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "Wish_List",
             joinColumns = { @JoinColumn(name = "Post_id") },

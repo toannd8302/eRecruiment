@@ -174,8 +174,27 @@ public class ScheduleServiceImp implements ScheduleService {
 //        return this.scheduleRepository.getScheduleByInterviewerID(interviewerID);
     }
 
+    //CHƯA THỂ UPDATE ĐC
     @Override
     public boolean endSchedule(schedule schedule) {
+        int roundNumber = schedule.getRound().getRoundNumber();
+        if(roundNumber == schedule.getRound().getJobPosting().getRounds().size()){
+            for(jobApplicationSchedule jobAppSchedule : schedule.getjAS()){
+                if(jobAppSchedule.getStatus().equals("Approved")){
+                    jobAppSchedule.getJobApplication().setApplicationStatus("Finished");
+                } else
+                    jobAppSchedule.getJobApplication().setApplicationStatus("Scheduling");
+//                this.jobApplicationService.update(jobAppSchedule.getJobApplication());
+            }
+        } else{
+            for(jobApplicationSchedule jobAppSchedule : schedule.getjAS()){
+                jobAppSchedule.getJobApplication().setApplicationStatus("Scheduling");
+                if(jobAppSchedule.getStatus().equals("Approved")){
+                    jobAppSchedule.getJobApplication().setRoundNumber(roundNumber + 1);
+                }
+//                this.jobApplicationService.update(jobAppSchedule.getJobApplication());
+            }
+        }
         schedule.setStatus("Finished");
         return this.scheduleRepository.update(schedule);
     }

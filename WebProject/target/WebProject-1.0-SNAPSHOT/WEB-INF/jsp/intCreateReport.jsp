@@ -19,7 +19,9 @@
 
     Point:
     <form:input type="number" path="point" value="${report.getPoint()}"/>
-
+    
+    <%--<form:hidden path="createdTime" value="${report.getCreatedTime()}"/>--%>
+    
     <form:hidden path="employee.id" value="${report.getEmployee().id}"/>
     <form:hidden path="jobApplication.applicationId" value="${report.getJobApplication().applicationId}"/>
     <form:hidden path="schedule.scheduleId" value="${report.getSchedule().scheduleId}"/>
@@ -30,7 +32,7 @@
         
     <c:if test="${report.getReportId() != null}">
         <form:hidden path="reportId" value="${report.getReportId()}"/>
-        <input type="hidden" name="date" value="${report.getCreatedTime().toString()}"/>
+        <input type="hidden" name="date" value="${report.getCreatedTime()}"/>
         <button name="action" value="update">Update report</button>
         <a href="#">Back</a>
     </c:if>

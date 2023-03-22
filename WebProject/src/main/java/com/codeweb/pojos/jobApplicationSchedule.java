@@ -5,15 +5,14 @@
 package com.codeweb.pojos;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -41,11 +40,11 @@ public class jobApplicationSchedule implements Serializable{
     @Column(name = "Status")
     private String status;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Application_id", insertable = false, updatable = false)
     private jobApplication jobApplication;
     
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Schedule_id", insertable = false, updatable = false)
     private schedule applicationSchedule;
     

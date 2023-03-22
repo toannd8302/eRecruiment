@@ -118,68 +118,93 @@
         background-color: #007bff;
         color: #fff;
     }
+
+    #welfare-container button{
+        margin-left: 0;
+        border: none;
+        font-weight: bold;
+        background: linear-gradient(transparent,transparent);
+        transform: translateX(-5rem);
+
+    }
 </style>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <div class="container">
-    <div class="box">
-      <div class="header">
-        <h2>Account Information</h2>
-        <div class="actions">
-          <button class="edit-button"><i class="fa-solid fa-user-pen"></i></button>
+    <c:url value="/account/update-information" var="action" />
+    <form:form method="post" modelAttribute="user" action="${action}">
+        <div class="container">
+            <div class="box">
+                <div class="header">
+                    <h2>Account Information</h2>
+                    <div class="actions">
+                        <button class="edit-button"><i class="fa-solid fa-user-pen"></i></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <form:input type="text" id="full-name" path="name" value="${user.getName()}" readonly="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <form:input type="email" id="email" path="email" value="${user.getEmail()}" readonly="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <form:input type="tel" id="phone" path="phone" value="${user.getPhone()}" readonly="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <form:textarea id="address" path="address" value="${user.getAddress()}" readonly="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="header">
+                    <h2>Job Information</h2>
+                    <div class="actions">
+                        <button class="edit-button"><i class="fas fa-edit"></i></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="form-group">
+                        <label for="job-name">Job Name</label>
+                        <form:input type="text" id="job-name" path="jobName" value="${user.getJobName()}" readonly="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill">Skill</label>
+                        <c:forEach var="item" items="${user.getSkillList()}">
+                            ${item}
+                        </c:forEach>
+                        <%--
+                        <!--<input type="text" id="skill" value="HTML, CSS, JavaScript" readonly>-->
+                        <div id="welfare-container">
+                            <form:select path="skillList" required="false">
+                                <form:options items="${skillList}" itemValue="skillId" itemLabel="skillName" required="false"></form:options>
+                            </form:select>
+                        </div>
+                        <div>
+                            <button type="button" onclick="addWelfare()"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        --%>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Experience Year</label>
+                        <form:input type="number" id="experience" path="experience" value="${user.getExperience()}" readonly="true"/>
+                    </div>
+                </div>
+            </div>
+            <!--<button class="save-button" name="action" value="save"><i class="fas fa-save"></i> Save</button>-->
+            <button name="action" value="save">Save</button>
         </div>
-      </div>
-      <div class="content">
-        <div class="form-group">
-          <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" value="Le Quang Phu" readonly>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" value="lequangphu@example.com" readonly>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" value="(123) 456-7890" readonly>
-        </div>
-        <div class="form-group">
-          <label for="address">Address</label>
-          <textarea id="address" readonly>HCM city, VietNam</textarea>
-        </div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="header">
-        <h2>Job Information</h2>
-        <div class="actions">
-          <button class="edit-button"><i class="fas fa-edit"></i></button>
-        </div>
-      </div>
-      <div class="content">
-        <div class="form-group">
-          <label for="job-name">Job Name</label>
-          <input type="text" id="job-name" value="Web Developer" readonly>
-        </div>
-        <div class="form-group">
-          <label for="skill">Skill</label>
-          <input type="text" id="skill" value="HTML, CSS, JavaScript" readonly>
-        </div>
-        <div class="form-group">
-          <label for="experience">Experience Year</label>
-          <input type="number" id="experience" value="5" readonly>
-        </div>
-      </div>
-    </div>
-    <button class="save-button"><i class="fas fa-save"></i> Save</button>
-  </div>
-
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </form:form>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 
 <script>
@@ -262,6 +287,22 @@
                 }
             });
         });
+    }
+
+    function addWelfare() {
+        //Using JQuery
+        var welfareContainer = $("#welfare-container");
+        var input = $("<input>").attr({
+            type: "text",
+            name: "welfare",
+            class: "item-text",
+            placeholder: "Enter a welfare benefit"
+        });
+        var deleteButton = $("<button>").text("X").click(function () {
+            $(this).parent().remove();
+        });
+        var div = $("<div>").append(input).append(deleteButton);
+        welfareContainer.append(div);
     }
 </script>
 

@@ -91,14 +91,6 @@ public class InterviewerController {
         String scheduleID = report.getSchedule().getScheduleId();
         String userID = report.getEmployee().getId();
         if(action!=null){
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = null;
-            try {
-                date = dateFormat.parse(request.getParameter("date"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }if(date != null)
-                report.setCreatedTime(date);
             this.reportService.addOrUpdateReport(report, action);
         }
         return "redirect:/interviewer/schedules/schedule-detail?scheduleID=" + scheduleID + "&userID=" + userID;

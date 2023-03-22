@@ -64,8 +64,9 @@ public class CandidateController {
         candidate candidate = (candidate) session.getAttribute("user");
         jobApplication.setCandidate(candidate);
         if(this.jobApplicationService.add(jobApplication)){
-            candidate.getJobApplications().add(jobApplication);
-            session.setAttribute("user", candidate);
+//            candidate.getJobApplications().add(jobApplication);
+//            session.setAttribute("user", candidate);
+//Show result of update
         }
         return "redirect:/";
     }

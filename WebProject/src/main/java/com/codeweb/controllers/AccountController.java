@@ -5,10 +5,12 @@
  */
 package com.codeweb.controllers;
 
+import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.department;
 import com.codeweb.service.CandidateService;
 import com.codeweb.service.DepartmentService;
 import com.codeweb.service.JobPostingService;
+import com.codeweb.service.SkillService;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
@@ -29,6 +31,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 public class AccountController {
 
+    @Autowired
+    SkillService skillService;
+    
     @Autowired
     private JobPostingService jobPostingService;
     
@@ -75,7 +80,11 @@ public class AccountController {
     }
     
     @GetMapping("/account")
-    public String account(Model model) {
+    public String account(Model model, HttpSession session) {
+        candidate candidate = (candidate) session.getAttribute("user");
+        if(candidate != null)
+            model.addAttribute("user", candidate);
+        model.addAttribute("skillList", this.skillService.getAllSkills());
         return "account-information";
     }
 }

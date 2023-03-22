@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -78,8 +79,19 @@ public class candidate implements Serializable{
     @OneToMany(mappedBy = "candidate",fetch = FetchType.EAGER)
     private Set<jobApplication> jobApplications;
 
-    @ManyToMany(mappedBy = "listCandidates", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "listCandidates", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<jobPosting>jobPostings = new HashSet<jobPosting>();
+    
+    @Transient
+    private Set<String> skillList;
+
+    public Set<String> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(Set<String> skillList) {
+        this.skillList = skillList;
+    }
     
     public Set<jobPosting> getJobPostings() {
         return jobPostings;

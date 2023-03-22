@@ -147,6 +147,7 @@ public class employeeController {
         model.addAttribute("SCHEDULING", jobApplicationMap.get("Scheduling"));
         model.addAttribute("SCHEDULED", jobApplicationMap.get("Scheduled"));
         model.addAttribute("ON_GOING", jobApplicationMap.get("On Going"));
+        model.addAttribute("FINISHED", jobApplicationMap.get("Finished"));
         model.addAttribute("REJECT", jobApplicationMap.get("Fail"));
         return "view-all-apps";
     }

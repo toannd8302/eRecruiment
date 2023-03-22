@@ -282,7 +282,12 @@
         <div class="row">
             <div class="col-sm-2">
                 <div id="job-logo">
-                    <img src="<c:url value="${jobPosting.getPicture()}"/>" alt="Back-end">
+                    <c:if test="${jobPosting.getPicture() != null}">
+                        <img src="<c:url value="${jobPosting.getPicture()}"/>" alt="${jobPosting.getJobPosition().getJobName()}">
+                    </c:if>
+                    <c:if test="${jobPosting.getPicture() == null}">
+                        <img src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true" alt="${jobPosting.getJobPosition().getJobName()}">
+                    </c:if>
                 </div>
             </div>
             <div class="col-sm-8">

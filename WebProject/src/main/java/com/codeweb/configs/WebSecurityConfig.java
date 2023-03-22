@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/account", 
                             "/job/application", "/job/viewMyJob", "/job/viewMyJob/schedule-decision",
                             "/post-detail/save/{postID}", "/post-detail/view", "/post-detail/view/delete/{postId}",
-                            "/candidate").hasRole("CANDIDATE")
+                            "/candidate", "/account/update-information").hasRole("CANDIDATE")
                     .antMatchers("/employee","/jobPostings","/jobApps","/schedules",
                             "/jobApps/job-application-details","/jobPostings/job-posting-details","/schedules/schedule-details",
                             "/jobApps/job-application-details/review-app","/jobApps/job-application-details/schedule-app",
