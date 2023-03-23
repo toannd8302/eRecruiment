@@ -155,6 +155,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         CriteriaDelete<jobPosting> deleteJobPosting = builder.createCriteriaDelete(jobPosting.class);
         Root<jobPosting> rootJobPosting = deleteJobPosting.from(jobPosting.class);
         deleteJobPosting.where(builder.equal(rootJobPosting.get("postId"), id));
+        session.createQuery(deleteJobPosting).executeUpdate();
     }
 
     @Override

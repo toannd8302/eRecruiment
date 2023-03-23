@@ -18,22 +18,18 @@
         background-color: #f2f2f2;
         width: 100%;
     }
-
     header {
         background-color: #333;
         color: #fff;
         text-align: center;
         padding: 20px;
     }
-
     .title-pen h1 {
         margin: 0;
     }
-
     .section-pen {
         margin: 20px;
     }
-
     .section h2 {
         margin-bottom: 10px;
         font-size: 25px;
@@ -43,14 +39,12 @@
         border-collapse: collapse;
         margin-bottom: 20px;
     }
-
     .interview-table-pen th {
         text-align: left;
         padding: 10px;
         background-color: #444343;
         border-bottom: 2px solid #ccc;
     }
-
     .interview-table-pen td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
@@ -60,12 +54,10 @@
         width: 100%;
         background-color: #fff;
     }
-
     .interview-table-pen th, td {
         text-align: left;
         padding: 8px;
     }
-
     .interview-table-pen th {
         background-color: #333;
         color: #fff;
@@ -75,40 +67,32 @@
         width: 100%;
         margin-bottom: 20px;
     }
-
     .interviewer-table thead th {
         background-color: #333;
         color: #fff;
         text-align: left;
         padding: 10px;
     }
-
     .interviewer-table tbody td, .interviewer-table tbody th {
         border: 1px solid #ddd;
         padding: 10px;
         text-align: left;
     }
-
     .interviewer-table tbody tr:hover {
         background-color: #f5f5f5;
     }
-
     .interviewer-table tbody tr:nth-child(even) {
         background-color: #f2f2f2;
     }
-
     .interviewer-table tbody td:first-child, .interviewer-table thead th:first-child {
         width: 10%;
     }
-
     .interviewer-table tbody td:nth-child(2), .interviewer-table thead th:nth-child(2) {
         width: 20%;
     }
-
     .interviewer-table tbody td:nth-child(3), .interviewer-table thead th:nth-child(3) {
         width: 40%;
     }
-
     .interviewer-table tbody td:last-child, .interviewer-table thead th:last-child {
         width: 30%;
     }
@@ -120,7 +104,6 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
-
     .box {
         width: 600px;
         height: 220px;
@@ -132,12 +115,10 @@
         font-size: 17px;
         margin-bottom: 10px;
     }
-
     .option {
         font-size: 16px;
         margin-bottom: 5px;
     }
-
     select {
         padding: 10px;
         border-radius: 5px;
@@ -147,13 +128,11 @@
         font-size: 16px;
         transition: all 0.2s ease-in-out;
     }
-
     select:focus {
         outline: none;
         box-shadow: 0px 0px 5px #6cb2eb;
         background-color: #fff;
     }
-
     .submit {
         margin-top: 20px;
         background-color: #6cb2eb;
@@ -164,7 +143,6 @@
         font-size: 16px;
         transition: all 0.2s ease-in-out;
     }
-
     .submit:hover {
         background-color: #fff;
         color: #6cb2eb;
@@ -181,7 +159,6 @@
         margin-bottom: 10px;
         color: #333;
     }
-
     .start-btn {
         background-color: #4CAF50; /* Green */
         border: none;
@@ -196,7 +173,6 @@
         border-radius: 8px;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-
     .start-btn:hover {
         background-color: #3e8e41; /* Dark green */
     }
@@ -208,12 +184,10 @@
         vertical-align: top;
         margin-right: 20px;
     }
-
     .input-container label {
         display: block;
         margin-bottom: 5px;
     }
-
     .input-container input[type="text"], .input-container select {
         display: block;
         width: 100%;
@@ -223,7 +197,6 @@
         font-size: 16px;
         box-sizing: border-box;
     }
-
     .input-container select {
         appearance: none;
         -webkit-appearance: none;
@@ -242,19 +215,26 @@
         font-size: 17px;
         margin-bottom: 10px;
     }
-
     /* Sidebar */
     .sidebar {
         height: 100vh;
-        width: 200px;
+        width: 50px;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
         font-weight: bold;
+        transition: 0.5s;
     }
 
+    .sidebar i{
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
+    .sidebar:hover{
+        width: 230px;
+    }
     .sidebar h1 {
         margin-bottom: 30px;
     }
@@ -262,6 +242,8 @@
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
+        position: absolute;
+        width: 50rem;
     }
 
     .sidebar .action {
@@ -270,16 +252,24 @@
 
     .sidebar li {
         margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
     }
 
     .sidebar a {
-        display: block;
         color: rgb(69, 69, 69);
         padding-top: 2rem;
         padding-bottom: 2rem;
         text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
     }
-
+    .sidebar span{
+        padding-left: 2.5rem;
+    }
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
     }
@@ -291,11 +281,12 @@
     /* Account */
 
     .sidebar img {
-        width: 13.5rem;
-        height: 13.5rem;
-        margin-left: 3rem;
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
         margin-right: 3rem;
         border-radius: 50%;
+        position: relative;
     }
 
     #account h2,
@@ -311,12 +302,6 @@
     #account ul {
         padding-left: 0%;
     }
-
-    #my-account {
-        margin-left: 1.5rem;
-        margin-top: 1.5rem;
-    }
-
     /*
     PHẦN SCHEDULE DETAIL CỦA ON GOING
     */
@@ -326,41 +311,36 @@
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         margin: 40px auto;
+        margin-left: 5rem;
         width: 80%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
     }
-
     .schedule-detail h2 {
         font-size: 30px;
         font-weight: bold;
         color: #333;
         margin-bottom: 20px;
     }
-
     .schedule-detail p {
         font-size: 18px;
         color: #555;
         margin: 10px 0;
         width: 100%;
     }
-
     .schedule-detail .label {
         font-size: 20px;
         font-weight: bold;
         color: #555;
         margin-right: 10px;
     }
-
     .schedule-detail .value {
         font-size: 20px;
         color: #333;
         margin-right: 20px;
     }
-
-
     .status.on-going {
         font-size: 20px;
         font-weight: bold;
@@ -370,7 +350,6 @@
     h1 {
         margin: 0;
     }
-
     h2 {
         font-size: 36px;
         margin-bottom: 40px;
@@ -384,7 +363,6 @@
         font-weight: bold;
         font-size: 20px;
     }
-
     .info-container {
         display: flex;
         flex-wrap: wrap;
@@ -398,7 +376,6 @@
         text-align: center;
         margin: 0 auto;
     }
-
     .info-row {
         display: flex;
         flex-wrap: wrap;
@@ -406,45 +383,37 @@
         align-items: center;
         margin: 20px 0;
     }
-
     .info-col {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 20px;
     }
-
     .info-item {
         display: flex;
         flex-direction: column;
     }
-
     .info-date,
     .info-time {
         grid-row: 2;
     }
-
     .info-label {
         font-size: 14px;
         font-weight: bold;
         color: #777;
         margin-bottom: 5px;
     }
-
     .info-value {
         font-size: 16px;
         color: #444;
         margin-bottom: 10px;
     }
-
     span {
         font-weight: bold;
         margin-right: 10px;
     }
-
     p {
         margin: 0;
     }
-
     .info-col p:before {
         content: "";
         display: inline-block;
@@ -460,9 +429,8 @@
         margin-bottom: 20px;
         width: 60%;
         align-items: center;
-        margin-left: 280px;
+        margin-left: 240px;
     }
-
     .interview-table1 th {
         text-align: left;
         padding: 10px;
@@ -470,7 +438,6 @@
         border-bottom: 2px solid #9b9b9b;
         color: #040404;
     }
-
     .interview-table1 td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
@@ -478,13 +445,12 @@
     a {
         text-decoration: none;
     }
-
     .body-pending{
-        position: absolute;
-        left: 14%;
+        margin-left: 23rem;
         width: 80%;
     }
 </style>
+
 
 <!-- Sidebar here -->
 <div class="sidebar">
@@ -496,10 +462,10 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
-                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
-                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
+                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
@@ -563,7 +529,7 @@
                         <td>${counter.count}</td>
                         <td>${item.getJobApplication().getCandidate().getName()}</td>
                         <td>${item.getJobApplication().getCandidate().getEmail()}</td>
-                        <td><a href="#">view</a></td>
+                        <td><a href="${item.getJobApplication().getCv()}">view</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -690,6 +656,7 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>CV Information</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -698,7 +665,8 @@
                         <td>${counter.count}</td>
                         <td>${item.getJobApplication().getCandidate().getName()}</td>
                         <td>${item.getJobApplication().getCandidate().getEmail()}</td>
-                        <td><a href="#">view</a></td>
+                        <td><a href="${item.getJobApplication().getCv()}">view</a></td>
+                        <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -711,6 +679,7 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Information</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -720,6 +689,7 @@
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
                         <td><a href="#">view</a></td>
+                        <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>
             </tbody>

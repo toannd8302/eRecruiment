@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -80,6 +81,7 @@ public class InterviewerController {
             newReport.setJobApplication(this.jobApplicationService.getJobApplicationByID(jobAppId));
             model.addAttribute("report", newReport);
         }
+        model.addAttribute("candidate", this.jobApplicationService.getJobApplicationByID(jobAppId).getCandidate());
         return "create-report";
     }
 
@@ -90,15 +92,20 @@ public class InterviewerController {
             @RequestParam("action") String action) {
         String scheduleID = report.getSchedule().getScheduleId();
         String userID = report.getEmployee().getId();
-        if(action!=null){
+        if(action.equals("update")){
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date date = null;
             try {
+                //Get date
                 date = dateFormat.parse(request.getParameter("date"));
             } catch (ParseException e) {
                 e.printStackTrace();
-            }if(date != null)
+            }
+            if(date!=null)
                 report.setCreatedTime(date);
+            this.reportService.addOrUpdateReport(report, action);
+        }
+        if(action.equals("create")){
             this.reportService.addOrUpdateReport(report, action);
         }
         return "redirect:/interviewer/schedules/schedule-detail?scheduleID=" + scheduleID + "&userID=" + userID;
@@ -131,7 +138,7 @@ public class InterviewerController {
     @PostMapping("/interviewer/schedules/schedule-detail/decision")
     public String scheduleDecision(Model model,
             @RequestParam("scheduleID") String scheduleId,
-            @RequestParam("userID") String userID,
+            @RequestParam(value = "userID", required = false) String userID,
             @RequestParam("action") String action) {
         if (action.equals("accept")) {
             if (this.interviewReasonService.acceptSchedule(scheduleId, userID)) {
@@ -144,7 +151,9 @@ public class InterviewerController {
             interviewerReasons irs = this.interviewReasonService.getIRsByID(scheduleId, userID).get(0);
             model.addAttribute("IRS", irs);
             return "reject-schedule";
-        } else {
+        } else if(action.equals("end")){
+            this.scheduleService.endSchedule(this.scheduleService.getScheduleByID(scheduleId));
+        }else {
             model.addAttribute("MESSAGE", "No action supported!!!");
         }
         return "redirect:/interviewer/schedules";

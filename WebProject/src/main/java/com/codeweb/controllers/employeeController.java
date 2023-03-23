@@ -10,6 +10,7 @@ import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobPosting;
 import com.codeweb.pojos.schedule;
 import com.codeweb.service.EmployeeService;
+import com.codeweb.service.JobApplicationScheduleService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
 import com.codeweb.service.ScheduleService;
@@ -35,6 +36,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 public class employeeController {
 
+    @Autowired
+    private JobApplicationScheduleService jobApplicationScheduleService;
+    
     @Autowired
     private JobPostingService jobPostingService;
 
@@ -143,6 +147,7 @@ public class employeeController {
         model.addAttribute("SCHEDULING", jobApplicationMap.get("Scheduling"));
         model.addAttribute("SCHEDULED", jobApplicationMap.get("Scheduled"));
         model.addAttribute("ON_GOING", jobApplicationMap.get("On Going"));
+        model.addAttribute("FINISHED", jobApplicationMap.get("Finished"));
         model.addAttribute("REJECT", jobApplicationMap.get("Fail"));
         return "view-all-apps";
     }
@@ -155,6 +160,7 @@ public class employeeController {
         schedule schedule = this.scheduleService.getCurrentScheduleOfJobApp(jobApp);
         if (schedule != null) {
             model.addAttribute("scheduleID", schedule.getScheduleId());
+            model.addAttribute("status", this.jobApplicationScheduleService.getByIDs(id, schedule.getScheduleId()).getStatus());
         }
         return "view-application-details";
     }

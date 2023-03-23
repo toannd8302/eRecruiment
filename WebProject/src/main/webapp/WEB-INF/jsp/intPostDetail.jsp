@@ -15,16 +15,13 @@
         font-size: 62.5%;
         font-family: Arial, Helvetica, sans-serif;
     }
-
     * {
         box-sizing: border-box;
         margin: 0;
     }
-
     body {
         background-color: #ddd;
     }
-
     #job-detail-head {
         background-color: white;
         width: 85%;
@@ -34,33 +31,26 @@
         display: flex;
         justify-content: space-between;
     }
-
     #job-head #job-logo img {
         width: 8rem;
         height: 8rem;
         border-radius: 50%;
     }
-
     #job-head {
         display: flex;
     }
-
     #general-info {
         margin-top: 10px;
     }
-
     #general-info h2,
     p {
         margin-top: 10px;
         font-size: 1.5rem;
     }
-
     #general-info p i {
         margin-right: 5px;
     }
-
     /* CSS for recruit detail  */
-
     #job-detail-body {
         background-color: white;
         width: 85%;
@@ -68,106 +58,87 @@
         padding: 2rem;
         margin-top: 3%;
     }
-
     #job-detail-body #job-general-info {
         margin-top: 10px;
         background-color: #d4f2e1;
         padding: 2rem;
     }
-
     #job-detail-body #job-general-info h1 {
         margin-bottom: 1rem;
         text-decoration: underline;
     }
-
     #job-detail-body #job-general-info .general-info-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
         list-style: none;
     }
-
     #job-detail-body #job-general-info .general-info-list li {
         font-weight: bold;
         font-size: 2rem;
         color: rgb(244, 131, 131);
     }
-
     #job-detail-body #job-general-info .general-info-list li p {
         color: initial;
         font-weight: normal;
     }
-
     #job-detail-body #job-general-info .general-info-list i {
         margin-right: 1rem;
         font-size: 2rem;
         margin-top: 2rem;
         display: inline-block;
     }
-
     #job-detail-body #job-general-info .general-info-list p {
         margin-left: 3.5rem;
     }
-
-
-
     /* CSS for Job Location */
     #job-detail-body #job-location {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
     #job-detail-body #job-location h1 {
         text-decoration: underline;
     }
-
-
     /* CSS for Job Describe */
     #job-detail-body #job-describe {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
-
     /* CSS for Job Require */
     #job-detail-body #job-require {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
-
+    /* CSS for round*/
+    #job-detail-body #job-rounds{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
     /* CSS for Job Welfare */
     #job-detail-body #job-welfare {
         background-color: #d4f2e1;
         margin-top: 1rem;
         padding: 2rem;
     }
-
     #job-detail-body .info-list {
         list-style-type: none;
         padding: 0%;
         font-size: 1.5rem;
     }
-
     #job-detail-body .info-list li {
         margin: 1rem;
         font-size: 1.8rem;
         font-weight: normal;
     }
-
     #job-detail-body .info-list li::before {
         content: "\2013";
         /* Unicode character for an en dash */
         margin-right: 5px;
     }
-
-
-
-
     /* CSS for Job Apply */
-
     #job-detail-body .apply-button {
         padding: 1rem;
         border-radius: 5px;
@@ -178,12 +149,10 @@
         font-weight: bold;
         font-size: 1.5rem;
     }
-
     #apply-link{
         text-decoration: none;
         color: white;
     }
-
     #save-job-link{
         text-decoration: none;
         color: #00b14f;
@@ -264,6 +233,17 @@
         </ul>
     </div>
 
+    <div id="job-rounds">
+        <h1>Interview Round</h1>
+        <ul class="info-list">
+            <c:forEach var="round" items="${jobPosting.rounds}">
+                <li>
+                    ${round.roundNumber} - ${round.content}
+                </li> 
+            </c:forEach>
+        </ul>
+    </div>
+
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
@@ -273,4 +253,3 @@
         </ul>
     </div>
 </div>
-

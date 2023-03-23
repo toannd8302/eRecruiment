@@ -21,15 +21,14 @@
     }
 
     #wrapper {
-        margin: 0px auto;
-        margin-left: 3rem;
+        width: 85%;
+        margin-left: 23rem;
     }
 
     #wrapper h1 {
         margin-left: 20rem;
         width: 100%;
         text-align: center;
-        padding: auto;
 
     }
 
@@ -43,16 +42,16 @@
     /* Style nav tabs */
     .tabs {
         border-bottom: 1px solid #f5f5f5;
-        margin-left: 20rem;
     }
-
+    .tab-content h2{
+        margin-left: 2rem;
+    }
     .nav-tabs {
         display: flex;
         list-style: none;
-        margin: 0px;
-        padding: 0;
         border-bottom: 3px solid #ddd;
         font-weight: bold;
+        position: relative;
     }
 
     .nav-tabs li {
@@ -70,16 +69,18 @@
     .nav-tabs li a:after {
         content: "";
         height: 3px;
-        width: 100%;
+        width: 0%;
         position: absolute;
         left: 0px;
         bottom: -3px;
         background-color: transparent;
+        transition: 0.5s;
     }
 
     .nav-tabs li.active a::after,
     .nav-tabs li:hover a::after {
         background: #e74c3c;
+        width: 100%;
     }
 
     td {
@@ -100,15 +101,23 @@
     /* Sidebar */
     .sidebar {
         height: 100vh;
-        width: 200px;
+        width: 50px;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
         font-weight: bold;
+        transition: 0.5s;
     }
 
+    .sidebar i{
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
+    .sidebar:hover{
+        width: 230px;
+    }
     .sidebar h1 {
         margin-bottom: 30px;
     }
@@ -116,6 +125,8 @@
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
+        position: absolute;
+        width: 50rem;
     }
 
     .sidebar .action {
@@ -124,16 +135,24 @@
 
     .sidebar li {
         margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
     }
 
     .sidebar a {
-        display: block;
         color: rgb(69, 69, 69);
         padding-top: 2rem;
         padding-bottom: 2rem;
         text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
     }
-
+    .sidebar span{
+        padding-left: 2.5rem;
+    }
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
     }
@@ -145,11 +164,12 @@
     /* Account */
 
     .sidebar img {
-        width: 13.5rem;
-        height: 13.5rem;
-        margin-left: 3rem;
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
         margin-right: 3rem;
         border-radius: 50%;
+        position: relative;
     }
 
     #account h2,
@@ -165,9 +185,6 @@
     #account ul {
         padding-left: 0%;
     }
-    .cancel-button{
-        color: black;
-    }
 </style>
 <!-- Sidebar Here -->
 <div class="sidebar">
@@ -179,15 +196,14 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
-                <li><a class="active"href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
-                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</span></a></li>
+                <li><a class="active" href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
+                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
 </div>
-
 <div id="wrapper">
     <div class="header">
         <h1>Job Posting List</h1>
@@ -205,7 +221,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Job Title</th>
                             <th>Department</th>
                             <th>Email</th>
@@ -213,10 +229,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="item" items="${PENDING}">
+                        <c:forEach var="item" items="${PENDING}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
                             <tr>
-                                <td>${item.getPostId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
@@ -234,7 +250,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Job Title</th>
                             <th>Department</th>
                             <th>Email</th>
@@ -243,15 +259,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="item" items="${APPROVED}">
+                        <c:forEach var="item" items="${APPROVED}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
                             <tr>
-                                <td>${item.getPostId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
                                 <td><input type="submit" value="View Details"/></td>
-                                <td><a class="cancel-button" href="#">Cancel</a></td>
+                                <td><a href="#">Cancel</a></td>
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
                         </form>
@@ -264,7 +280,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>NO</th>
                             <th>Job Title</th>
                             <th>Department</th>
                             <th>Phone</th>
@@ -273,10 +289,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="item" items="${REJECTED}">
+                        <c:forEach var="item" items="${REJECTED}" varStatus="counter">
                         <form method="get" action="<c:url value="/jobPostings/job-posting-details"/>">
                             <tr>
-                                <td>${item.getPostId()}</td>
+                                <td>${counter.count}</td>
                                 <td>${item.jobPosition.jobName}</td>
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>

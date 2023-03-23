@@ -27,15 +27,13 @@
         margin-left: 2.5rem;
         padding-right: 5rem;
         padding-left: 3rem;
-   }
+    }
     .schedule-title h3{
-
         color: rgb(106, 105, 105);
         text-align: center;
         font-size: 40px;
         font-family: Arial, sans-serif;
         text-shadow: 2px 2px 4px #000000;
-
     }
     .view-toggle .active{
         background-color: #00C6FF;
@@ -56,20 +54,16 @@
         text-transform: uppercase;
         transition: all 0.2s ease-in-out;
     }
-
     .view-toggle button:hover {
         background-color: #333;
         color: #fff;
     }
-
     .view-toggle button i {
         margin-right: 5px;
     }
-
     .view-toggle #list-view i {
         color: #f1c40f;
     }
-
     .view-toggle #grid-view i {
         color: #3498db;
     }
@@ -91,35 +85,29 @@
     .interview-schedule{
         margin-left: 17.5rem;
     }
-
     .interview-item:hover {
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
-
     .interview-item h3 {
         font-size: 24px;
         font-weight: bold;
         margin: 0;
         color: #fbfafa;
     }
-
     .interview-date, .interview-time {
         font-size: 16px;
         margin: 0;
         color: #00C6FF;
     }
-
     .interviewer {
         font-size: 18px;
         font-style: italic;
         color: #FF6B6B;
     }
-
     .interview-notes {
         font-size: 16px;
         color: #2EC4B6;
     }
-
     .interview-item .btn {
         padding: 10px 15px;
         border-radius: 5px;
@@ -130,34 +118,28 @@
         cursor: pointer;
         transition: all 0.2s ease-in-out;
     }
-
     .interview-item .btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
-
     .interview-item .edit-btn {
         background-color: #FFD23F;
         background-image: linear-gradient(45deg, #FFD23F 0%, #F9AE17 100%);
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-
     .interview-item .edit-btn:hover {
         background-color: #F9AE17;
         box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
-
     .interview-item .delete-btn {
         background-color: #EB5E28;
         background-image: linear-gradient(45deg, #EB5E28 0%, #CD3F0A 100%);
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-
     .interview-item .delete-btn:hover {
         background-color: #CD3F0A;
         box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
-
     /* Interview grid */
     .interview-grid {
         display: grid;
@@ -168,7 +150,6 @@
     .interview-grid .delete-interview{
         color: gray;
     }
-
     .interview-grid .interview-item {
         background-color: #8a8a8a;
         padding: 20px;
@@ -182,11 +163,9 @@
     .interview-grid .interview-item h3 {
         color: #efeded;
     }
-
     .interview-item:hover {
         box-shadow: 0 4
     }
-
     /* Sidebar */
     .sidebar {
         height: 100vh;
@@ -198,24 +177,19 @@
         background-color: #baa9a3;
         font-weight: bold;
     }
-
     .sidebar h1 {
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
     }
-
     .sidebar .action {
         margin-top: 2rem;
     }
-
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
         color: rgb(69, 69, 69);
@@ -223,17 +197,13 @@
         padding-bottom: 2rem;
         text-decoration: none;
     }
-
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
     }
-
     .sidebar a.active {
         background-color: rgb(208, 204, 204);
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
@@ -241,27 +211,23 @@
         margin-right: 3rem;
         border-radius: 50%;
     }
-
     #account h2,
     li {
         font-size: 2rem;
         list-style: none;
     }
-
     #account li a {
         color: black;
     }
-
     #account ul {
         padding-left: 0%;
     }
-
     #my-account {
         margin-left: 1.5rem;
         margin-top: 1.5rem;
     }
 </style>
-<!-- Sidebar Here -->
+
 <div class="sidebar">
     <sec:authorize access="isAuthenticated()">
         <div class="row">
@@ -298,10 +264,10 @@
     </div>
     <div class="interview-list">
         <ul>
-            <c:forEach var="schedule" items="${PENDING}">
+            <c:forEach var="schedule" items="${PENDING}" varStatus="counter">
                 <div class="interview-item">
                     <h3>${schedule[0].getRound().getJobPosting().getJobPosition().getJobName()}</h3>
-                    <p>ID: ${schedule[0].getScheduleId()}</p>
+                    <p>NO: ${counter.count}</p>
                     <p>Round ${schedule[0].getRound().getRoundNumber()} - ${schedule[0].getRound().getContent()}</p>
                     <p>Number of candidate: ${schedule[1]}/10</p>
                     <p>Number of interview: ${schedule[2]}</p>
@@ -315,10 +281,10 @@
     </div>
 
     <div class="interview-grid">
-        <c:forEach var="schedule" items="${ON_GOING}">
+        <c:forEach var="schedule" items="${ON_GOING}" varStatus="counter">
             <div class="interview-item">
                 <h3>${schedule[0].getRound().getJobPosting().getJobPosition().getJobName()}</h3>
-                <p>ID: ${schedule[0].getScheduleId()}</p>
+                <p>NO: ${counter.count}</p>
                 <p>Round ${schedule[0].getRound().getRoundNumber()} - ${schedule[0].getRound().getContent()}</p>
                 <p>Number of candidate: ${schedule[1]}/10</p>
                 <p>Number of interview: ${schedule[2]}</p>

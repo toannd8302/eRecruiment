@@ -45,7 +45,7 @@ public class HibernateConfig {
 
     public Properties hibernateProperties() {
         Properties pros = new Properties();
-        pros.setProperty(org.hibernate.cfg.Environment.SHOW_SQL, "true");
+        pros.setProperty(org.hibernate.cfg.Environment.SHOW_SQL, "false");
         pros.setProperty(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         return pros;
     }

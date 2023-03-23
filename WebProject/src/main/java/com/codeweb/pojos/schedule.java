@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.sql.Time;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,7 +52,7 @@ public class schedule implements Serializable{
     @Column(name = "Status")
     private String status;
     
-    @OneToMany(mappedBy = "applicationSchedule",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "applicationSchedule",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<jobApplicationSchedule>jAS;
     
     @OneToMany(mappedBy = "employeeSchedule",fetch = FetchType.EAGER)

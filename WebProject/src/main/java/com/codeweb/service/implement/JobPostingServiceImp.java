@@ -58,20 +58,24 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public boolean updateJobPosting(jobPosting jobPosting, String action) {
         try {
+            if(action.equals("update wishList")){
+                return this.jobPostingRepository.update(jobPosting);
+            }
             if (action.equals("accept")) {
                 long millis = System.currentTimeMillis();
                 java.sql.Date date = new java.sql.Date(millis);
                 jobPosting.setPostingTime(date);
                 jobPosting.setApprovedStatus("Approved");
-            } else if (action.equals("reject")) {
+                return this.jobPostingRepository.update(jobPosting);
+            } 
+            if (action.equals("reject")) {
                 jobPosting.setApprovedStatus("Rejected");
-            } else if (action.equals("end")) {
+                return this.jobPostingRepository.update(jobPosting);
+            } 
+            if (action.equals("end")) {
                 jobPosting.setApprovedStatus("End");
-            } else if (action.equals("update wishList")) {
-            } else {
-                return false;
+                return this.jobPostingRepository.update(jobPosting);
             }
-            return this.jobPostingRepository.update(jobPosting);
         } catch (Exception e) {
             System.err.println("UPDATE JOB POSTING ERROR AT JobPostingServiceImp");
         }

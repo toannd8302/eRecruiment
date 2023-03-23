@@ -5,6 +5,7 @@
  */
 package com.codeweb.repository;
 
+import java.util.List;
 import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.pojos.schedule;
 
@@ -14,4 +15,6 @@ import com.codeweb.pojos.schedule;
  */
 public interface JobAppScheduleRepository {
     boolean add(jobApplicationSchedule jobApplicationSchedule);
+    boolean update(jobApplicationSchedule jobApplicationSchedule);
+    List<jobApplicationSchedule> getJobAppScheduleByID(String applicationId, String scheduleId);
 }

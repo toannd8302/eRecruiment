@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class WishListServiceImp implements WishListService {
-   
+
     @Autowired
     private CandidateService candidateService;
 
@@ -31,20 +31,18 @@ public class WishListServiceImp implements WishListService {
 //    private static final int MAX_WISHLIST_SIZE = 5;
 //    private int wishListCount = 0;
     public void addToWishList(candidate candidate, jobPosting jobPosting) {
-        if (jobPosting != null && candidate != null) {
+        if (!candidate.getJobPostings().contains(jobPosting)) {
             candidate.getJobPostings().add(jobPosting);
             jobPosting.getCandidates().add(candidate);
-//            this.candidateService.update(candidate);
-            this.jobPostingService.updateJobPosting(jobPosting, "update wishList"); 
+            this.candidateService.update(candidate);
         }
     }
 
     public void removeJobPosting(candidate candidate, jobPosting jobPosting) {
-        if (jobPosting != null && candidate != null) {
-            candidate.getJobPostings().remove(jobPosting);
-            jobPosting.getCandidates().remove(candidate);
-//            this.candidateService.update(candidate);
-            this.jobPostingService.updateJobPosting(jobPosting, "update wishList"); 
-        }
+        candidate.getJobPostings().remove(jobPosting);
+        jobPosting.getCandidates().remove(candidate);
+//        this.candidateService.update(candidate);
+        this.jobPostingService.updateJobPosting(jobPosting,"update wishList");
+//            this.jobPostingService.updateJobPosting(jobPosting, "update wishList"); 
     }
 }

@@ -17,8 +17,11 @@ import java.util.Map;
 public interface JobApplicationService {
     boolean add(jobApplication jobApplication);
     boolean update(jobApplication jobApplication);
+    boolean applyJob(jobApplication jobApplication);
     boolean updateAfterReview(jobApplication jobApplication, boolean result);
+    boolean makeFinalDecision(String action, String jobAppID);
     List<jobApplication>jobApplicationList();
     Map<String,List<jobApplication>> getApplicationByStatus();
     jobApplication getJobApplicationByID(String id);
+    List<jobApplication> getAllFinishedJobApp();
 }

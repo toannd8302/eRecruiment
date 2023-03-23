@@ -12,289 +12,307 @@
 
 <style>
     html {
-            font-size: 62.5%;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+        font-size: 62.5%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        /* Sidebar */
-        .sidebar {
-            height: 100vh;
-            width: 200px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            background-color: #baa9a3;
-            font-weight: bold;
-        }
+    /* Sidebar */
+    .sidebar {
+        height: 100vh;
+        width: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        background-color: #baa9a3;
+        font-weight: bold;
+        transition: 0.5s;
+    }
 
-        .sidebar h1 {
-            margin-bottom: 30px;
-        }
+    .sidebar i {
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
 
-        .sidebar ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+    .sidebar:hover {
+        width: 230px;
+    }
 
-        .sidebar .action {
-            margin-top: 2rem;
-        }
+    .sidebar h1 {
+        margin-bottom: 30px;
+    }
 
-        .sidebar li {
-            margin-bottom: 5px;
-        }
+    .sidebar ul {
+        list-style-type: none;
+        padding-left: 0;
+        position: absolute;
+        width: 50rem;
+    }
 
-        .sidebar a {
-            display: block;
-            color: rgb(69, 69, 69);
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            text-decoration: none;
-        }
+    .sidebar .action {
+        margin-top: 2rem;
+    }
 
-        .sidebar a:hover {
-            background-color: rgb(208, 204, 204);
-        }
+    .sidebar li {
+        margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
+    }
 
-        .sidebar a.active {
-            background-color: rgb(208, 204, 204);
-        }
+    .sidebar a {
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
+    }
 
-        /* Account */
+    .sidebar span {
+        padding-left: 2.5rem;
+    }
 
-        .sidebar img {
-            width: 13.5rem;
-            height: 13.5rem;
-            margin-left: 3rem;
-            margin-right: 3rem;
-            border-radius: 50%;
-        }
+    .sidebar a:hover {
+        background-color: rgb(208, 204, 204);
+    }
 
-        #account h2,
-        li {
-            font-size: 2rem;
-            list-style: none;
-        }
+    .sidebar a.active {
+        background-color: rgb(208, 204, 204);
+    }
 
-        #account li a {
-            color: black;
-        }
+    /* Account */
 
-        #account ul {
-            padding-left: 0%;
-        }
+    .sidebar img {
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
+        margin-right: 3rem;
+        border-radius: 50%;
+        position: relative;
+    }
 
-        #my-account {
-            margin-left: 1.5rem;
-            margin-top: 1.5rem;
-        }
+    #account h2,
+    li {
+        font-size: 2rem;
+        list-style: none;
+    }
 
-        /* CSS for login link */
+    #account li a {
+        color: black;
+    }
 
-        #job-logo img {
-            width: 15rem;
-            height: 15rem;
-            border-radius: 50%;
-        }
+    #account ul {
+        padding-left: 0%;
+    }
 
-        #general-info {
-            margin-top: 2rem;
-        }
+    /* CSS for login link */
 
-        #general-info h1 {
-            font-size: 3rem;
-        }
+    #job-logo img {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+    }
 
-        #general-info h2 {
-            font-size: 2.5rem;
-        }
+    #general-info {
+        margin-top: 2rem;
+    }
 
-        #general-info p {
-            margin-top: 1rem;
-            font-size: 1.5rem;
-        }
+    #general-info h1 {
+        font-size: 3rem;
+    }
 
-        #general-info p i {
-            margin-right: 1rem;
-        }
+    #general-info h2 {
+        font-size: 2.5rem;
+    }
 
-        /* CSS for Job posting */
+    #general-info p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
 
-        #job-detail-head {
-            background-color: white;
-            width: auto;
-            margin-left: 20rem;
-            padding: 2rem;
-            background-color: rgb(208, 204, 204);
-        }
+    #general-info p i {
+        margin-right: 1rem;
+    }
 
-        #job-detail-head #apply-buton button {
-            height: 75px;
-            width: 150px;
-            font-size: 2rem;
-        }
+    /* CSS for Job posting */
 
-        #job-detail-head #apply-buton button:first-child {
-            padding: 1rem;
-            border-radius: 1rem;
-            background-color: #00b14f;
-            border: 0.2rem solid #00b14f;
-            margin-right: 1rem;
-            color: #fff;
-            font-weight: bold;
+    #job-detail-head {
+        background-color: white;
+        width: auto;
+        margin-left: 23rem;
+        padding: 2rem;
+        background-color: rgb(208, 204, 204);
+    }
 
-        }
+    #job-detail-head #apply-buton button {
+        height: 75px;
+        width: 150px;
+        font-size: 2rem;
+    }
 
-        #job-detail-head #apply-buton button:first-child:hover {
-            background-color: #fff;
-            color: #00b14f;
-        }
+    #job-detail-head #apply-buton button:first-child {
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: #00b14f;
+        border: 0.2rem solid #00b14f;
+        margin-right: 1rem;
+        color: #fff;
+        font-weight: bold;
 
-        #job-detail-head #apply-buton button:last-child {
-            margin-top: 2rem;
-            padding: 1rem;
-            border-radius: 1rem;
-            background-color: #ffffff;
-            border: 0.2rem solid #00b14f;
-            margin-right: 1rem;
-            color: #00b14f;
-            font-weight: bold;
-            text-align: center;
-        }
+    }
 
-        #job-detail-head #apply-buton button:last-child:hover {
-            background-color: #00b14f;
-            color: #fff;
-        }
+    #job-detail-head #apply-buton button:first-child:hover {
+        background-color: #fff;
+        color: #00b14f;
+    }
 
-        #job-detail-head #apply-buton button a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-        }
+    #job-detail-head #apply-buton button:last-child {
+        margin-top: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: #ffffff;
+        border: 0.2rem solid #00b14f;
+        margin-right: 1rem;
+        color: #00b14f;
+        font-weight: bold;
+        text-align: center;
+    }
 
-        #job-detail-head #apply-buton button a:hover {
-            color: #00b14f;
-        }
+    #job-detail-head #apply-buton button:last-child:hover {
+        background-color: #00b14f;
+        color: #fff;
+    }
 
-        #job-detail-head #apply-buton button i:first-child {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-right: 1rem;
-        }
+    #job-detail-head #apply-buton button a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
 
-        #job-detail-head #apply-buton button i:last-child {
-            font-size: 2rem;
-            color: #00b14f;
-            margin-right: 1rem;
-        }
+    #job-detail-head #apply-buton button a:hover {
+        color: #00b14f;
+    }
 
-        /* CSS for recruit detail  */
+    #job-detail-head #apply-buton button i:first-child {
+        font-size: 2rem;
+        color: #ffffff;
+        margin-right: 1rem;
+    }
 
-        #job-detail-body {
-            background-color: white;
-            width: 85%;
-            margin-left: 20rem;
-            padding: 2rem;
-        }
+    #job-detail-head #apply-buton button i:last-child {
+        font-size: 2rem;
+        color: #00b14f;
+        margin-right: 1rem;
+    }
 
-        #job-detail-body #job-general-info {
-            margin-top: 2rem;
-            background-color: #d4f2e1;
-            padding: 2rem;
-        }
+    /* CSS for recruit detail  */
 
-        #job-detail-body #job-general-info h1 {
-            margin-bottom: 1rem;
-            text-decoration: none;
-        }
+    #job-detail-body {
+        background-color: white;
+        width: 85%;
+        margin-left: 21rem;
+        padding: 2rem;
+    }
 
-        #job-detail-body #job-general-info .general-info-list {
-            list-style: none;
-        }
+    #job-detail-body #job-general-info {
+        margin-top: 2rem;
+        background-color: #d4f2e1;
+        padding: 2rem;
+    }
 
-        #job-detail-body #job-general-info .general-info-list li {
-            font-weight: bold;
-            font-size: 2rem;
-            color: rgb(244, 131, 131);
-        }
+    #job-detail-body #job-general-info h1 {
+        margin-bottom: 1rem;
+        text-decoration: none;
+    }
 
-        #job-detail-body #job-general-info .general-info-list li p {
-            color: initial;
-            font-weight: normal;
-            font-size: 2rem;
-        }
+    #job-detail-body #job-general-info .general-info-list {
+        list-style: none;
+    }
 
-        #job-detail-body #job-general-info .general-info-list i {
-            margin-right: 1rem;
-            font-size: 2rem;
-            margin-top: 2rem;
-            display: inline-block;
-        }
+    #job-detail-body #job-general-info .general-info-list li {
+        font-weight: bold;
+        font-size: 2rem;
+        color: rgb(244, 131, 131);
+    }
 
-        #job-detail-body #job-general-info .general-info-list p {
-            margin-left: 3.5rem;
-        }
+    #job-detail-body #job-general-info .general-info-list li p {
+        color: initial;
+        font-weight: normal;
+        font-size: 2rem;
+    }
 
-        /* CSS for Application Detail */
+    #job-detail-body #job-general-info .general-info-list i {
+        margin-right: 1rem;
+        font-size: 2rem;
+        margin-top: 2rem;
+        display: inline-block;
+    }
 
-        #job-detail-body #application-general-info {
-            margin-top: 2rem;
-            background-color: #d4f2e1;
-            padding: 2rem;
-        }
+    #job-detail-body #job-general-info .general-info-list p {
+        margin-left: 3.5rem;
+    }
 
-        #job-detail-body #application-general-info h1 {
-            margin-bottom: 1rem;
-            text-decoration: none;
-        }
+    /* CSS for Application Detail */
 
-        #job-detail-body #application-general-info .application-info-list {
-            list-style: none;
-        }
+    #job-detail-body #application-general-info {
+        margin-top: 2rem;
+        background-color: #d4f2e1;
+        padding: 2rem;
+    }
 
-        #job-detail-body #application-general-info .application-info-list li {
-            font-weight: bold;
-            font-size: 2rem;
-            color: rgb(244, 131, 131);
-        }
+    #job-detail-body #application-general-info h1 {
+        margin-bottom: 1rem;
+        text-decoration: none;
+    }
 
-        #job-detail-body #application-general-info .application-info-list li p {
-            color: initial;
-            font-weight: normal;
-            font-size: 2rem;
-        }
+    #job-detail-body #application-general-info .application-info-list {
+        list-style: none;
+    }
 
-        #job-detail-body #application-general-info .application-info-list i {
-            margin-right: 1rem;
-            font-size: 2rem;
-            margin-top: 2rem;
-            display: inline-block;
-        }
+    #job-detail-body #application-general-info .application-info-list li {
+        font-weight: bold;
+        font-size: 2rem;
+        color: rgb(244, 131, 131);
+    }
 
-        #job-detail-body #application-general-info .application-info-list p {
-            margin-left: 3.5rem;
-        }
+    #job-detail-body #application-general-info .application-info-list li p {
+        color: initial;
+        font-weight: normal;
+        font-size: 2rem;
+    }
 
-        .general-info-list a {
-            text-decoration: none;
-            color: rgb(244, 131, 131);
-        }
+    #job-detail-body #application-general-info .application-info-list i {
+        margin-right: 1rem;
+        font-size: 2rem;
+        margin-top: 2rem;
+        display: inline-block;
+    }
 
-        .application-info-list a {
-            text-decoration: none;
-            color: rgb(244, 131, 131);
-        }
+    #job-detail-body #application-general-info .application-info-list p {
+        margin-left: 3.5rem;
+    }
 
-        #general-info .apply-time {
-            margin-left: 48 rem;
-            font-size: 2rem;
-        }
+    .general-info-list a {
+        text-decoration: none;
+        color: rgb(244, 131, 131);
+    }
 
-        #footer {
-            background-color: #161718;
-        }
+    .application-info-list a {
+        text-decoration: none;
+        color: rgb(244, 131, 131);
+    }
+
+    #general-info .apply-time {
+        margin-left: 48rem;
+        font-size: 2rem;
+    }
+
+    #footer {
+        background-color: #161718;
+    }
 </style>
 
 <!-- Sidebar Here -->
@@ -307,10 +325,10 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
-                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
-                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</span></a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
+                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
@@ -390,6 +408,9 @@
                         </div>
                     </form>
                 </div>
+                <div>
+                    Status: ${status}
+                </div>
             </c:if>
         </div>
     </div>
@@ -399,7 +420,7 @@
     <div id="recrui-detail">
         <h1>General information</h1>
         <div id="application-general-info">
-            <h1>Candidate information</h1>
+            <h1>Job Application information</h1>
             <ul class="application-info-list">
                 <div class="row">
 

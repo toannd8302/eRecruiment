@@ -47,7 +47,7 @@ public class CandidateRepositoryImp implements CandidateRepository {
     public boolean update(candidate candidate) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try {
-            session.update(candidate);
+            session.merge(candidate);
             return true;
         } catch (Exception e) {
             System.err.println("ADD/UPDATE Candidate ERROR: " + e.getMessage());

@@ -40,7 +40,9 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
     </definition>
     <definition name="account-information" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/departmentFooter.jsp"/>
         <put-attribute name="content" value="/WEB-INF/jsp/account.jsp" />
+         <put-attribute name="footer" value="/WEB-INF/layout/departmentFooter.jsp"/>
     </definition>
     <definition name="view-JobApplication" extends="baseLayout">
         <put-attribute name="header" value="/WEB-INF/layout/departmentFooter.jsp"/>
@@ -120,5 +122,14 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/intCreateReport.jsp" />
     </definition>
     
+    <!--ALl tiles for manager role-->
+    <definition name="view-all-finshed-job-app" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View All Reports"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/managerAllApplications.jsp" />
+    </definition>
+    <definition name="view-detail-job-app" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View All Reports"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/managerJobAppDetails.jsp" />
+    </definition>
 </tiles-definitions>    
     

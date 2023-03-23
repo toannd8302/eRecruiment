@@ -12,7 +12,7 @@
 
 
 <style>
-    html {
+ html {
         font-family: Arial, Helvetica, sans-serif;
     }
 
@@ -21,38 +21,37 @@
     }
 
     #wrapper {
-        margin: 0px auto;
-        margin-left: 3rem;
+        width: 85%;
+        margin-left: 23rem;
     }
 
     #wrapper h1 {
-        margin-left: 20rem;
         width: 100%;
         text-align: center;
-        padding: auto;
-
+        margin-right: 10rem;
     }
 
     .header {
         display: flex;
         background-color: rgb(208, 204, 204);
         margin-bottom: 2rem;
-        height: 8.5rem;
+        height: 12rem;
+        padding-right: 5rem;
     }
 
     /* Style nav tabs */
     .tabs {
         border-bottom: 1px solid #f5f5f5;
-        margin-left: 20rem;
     }
-
-    .nav-tabs {
+    .tab-content h2{
+        margin-left: 2rem;
+    }
+    .nav-tabs { 
         display: flex;
         list-style: none;
-        margin: 0px;
-        padding: 0;
         border-bottom: 3px solid #ddd;
         font-weight: bold;
+        position: relative;
     }
 
     .nav-tabs li {
@@ -70,16 +69,18 @@
     .nav-tabs li a:after {
         content: "";
         height: 3px;
-        width: 100%;
+        width: 0%;
         position: absolute;
         left: 0px;
         bottom: -3px;
         background-color: transparent;
+        transition: 0.5s;
     }
 
     .nav-tabs li.active a::after,
     .nav-tabs li:hover a::after {
         background: #e74c3c;
+        width: 100%;
     }
 
     td {
@@ -100,15 +101,23 @@
     /* Sidebar */
     .sidebar {
         height: 100vh;
-        width: 200px;
+        width: 50px;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
         font-weight: bold;
+        transition: 0.5s;
     }
 
+    .sidebar i{
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
+    .sidebar:hover{
+        width: 230px;
+    }
     .sidebar h1 {
         margin-bottom: 30px;
     }
@@ -116,6 +125,8 @@
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
+        position: absolute;
+        width: 50rem;
     }
 
     .sidebar .action {
@@ -124,16 +135,24 @@
 
     .sidebar li {
         margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
     }
 
     .sidebar a {
-        display: block;
         color: rgb(69, 69, 69);
         padding-top: 2rem;
         padding-bottom: 2rem;
         text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
     }
-
+    .sidebar span{
+        padding-left: 2.5rem;
+    }
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
     }
@@ -145,11 +164,12 @@
     /* Account */
 
     .sidebar img {
-        width: 13.5rem;
-        height: 13.5rem;
-        margin-left: 3rem;
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
         margin-right: 3rem;
         border-radius: 50%;
+        position: relative;
     }
 
     #account h2,
@@ -167,7 +187,6 @@
     }
 </style>
 <!-- Sidebar Here -->
-<!-- Sidebar Here -->
 <div class="sidebar">
     <sec:authorize access="isAuthenticated()">
         <div class="row">
@@ -177,8 +196,8 @@
         </div>
         <div class="action">
             <ul>
-                <li><a class="active" href="<c:url value="/interviewer/schedules"/>"><i class="fa-solid fa-list"></i> Schedules List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a class="active" href="<c:url value="/interviewer/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedules List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
@@ -186,7 +205,7 @@
 <div id="wrapper">
     <div class="header">
         <h1>Schedule List</h1>
-        <h1>Welcome <c:url value="${sessionScope.user.getName()}"/></h1>
+        <h1 class="welcome-user">Welcome <c:url value="${sessionScope.user.getName()}"/></h1>
     </div>
     <div class="tabs">
         <ul class="nav-tabs">
