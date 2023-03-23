@@ -5,6 +5,7 @@ com\codeweb\repository\SkillRepository.class
 com\codeweb\repository\RoundRepository.class
 com\codeweb\service\EmployeeService.class
 com\codeweb\service\RoundService.class
+com\codeweb\controllers\employeeController.class
 com\codeweb\service\implement\ScheduleServiceImp.class
 com\codeweb\repository\implement\JobPositionRepositoryImp.class
 com\codeweb\configs\WebApplicationContextConfig.class
@@ -80,7 +81,6 @@ com\codeweb\repository\implement\InterviewReasonRepositoryImp.class
 com\codeweb\pojos\jobApplicationSchedule.class
 com\codeweb\repository\DepartmentRepository.class
 com\codeweb\repository\ReportRepository.class
-com\codeweb\controllers\EmployeeController.class
 com\codeweb\service\JobPositionService.class
 com\codeweb\controllers\DepartmentController$1.class
 com\codeweb\repository\implement\SkillRepositoryImp.class

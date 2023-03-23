@@ -191,7 +191,7 @@
                                 <img
                                     src="<c:url value="${sessionScope.user.getPicture()}"/>"
                                     alt="avatar"/>
-                                <a href="#">My Account</a>
+                                <a href="#">${sessionScope.user.name}</a>
                                 <ul>
                                     <li><a href="<c:url value="/account"/>">My Profile</a></li>
                                     <li><a href="<c:url value="/job/viewMyJob"/>">My Applications</a></li>

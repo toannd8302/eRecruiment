@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @ControllerAdvice
-public class EmployeeController {
+public class employeeController {
 
     @Autowired
     private JobApplicationScheduleService jobApplicationScheduleService;
