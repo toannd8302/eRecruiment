@@ -282,10 +282,23 @@
     }
 
     .table{
-        margin-top: 3rem;
+               border-collapse: collapse;
+        margin: 3rem 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
     }
 
+    .table thead tr{
+        background-color: #000;
+        color: #fff;
+        text-align: left;
+    }
+    
     .table thead tr th{
         font-size: 2rem;
         padding-bottom: 2rem;
@@ -301,6 +314,17 @@
     .table tbody tr td button a{
         text-decoration: none;
         color: #fff;
+    }
+    
+    #favor-list{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    #favor-list h1{
+        margin-top: 5rem;
+        font-weight: bold;
+        font-size: 4rem;
     }
 </style>
 
@@ -392,6 +416,9 @@
    
 
     <div class="view-favour-right">
+        <div id="favor-list">
+        <h1>Favourite Jobs</h1>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -401,6 +428,8 @@
                     <!--                <th>Department</th>-->
                     <th>Location</th>
                     <th>Salary</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

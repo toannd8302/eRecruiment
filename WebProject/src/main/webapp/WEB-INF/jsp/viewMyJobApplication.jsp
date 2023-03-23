@@ -283,16 +283,25 @@
         font-size: 4rem;
     }
     .table {
-        background-color: white;
-        margin-top: 5rem;
-        padding-left: 5rem;
+        border-collapse: collapse;
+        margin: 3rem 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
-    .table thead > tr {
-        border: 1rem solid white;
+    
+    .table thead tr{
+      background: #000;
+      
     }
+    
     .table tr th {
         font-size: 2rem;
         font-weight: bold;
+        color: #fff;
     }
     .table th,
     td {
