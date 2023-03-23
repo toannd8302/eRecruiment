@@ -5,10 +5,12 @@
  */
 package com.codeweb.controllers;
 
+import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.department;
 import com.codeweb.service.CandidateService;
 import com.codeweb.service.DepartmentService;
 import com.codeweb.service.JobPostingService;
+import com.codeweb.service.SkillService;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
@@ -30,8 +32,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AccountController {
 
     @Autowired
+    SkillService skillService;
+    
+    @Autowired
     private JobPostingService jobPostingService;
-
+    
     @Autowired
     private DepartmentService departmentService;
 
@@ -54,30 +59,32 @@ public class AccountController {
 //    public String loginDepartment() {
 //        return "loginDepartment";
 //    }
+
     @GetMapping("/candidate")
     public String loginSuccessfully(Model model,
             @RequestParam(required = false) Map<String, String> params) throws IOException {
         model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
         return "redirect:/";
     }
-
+    
     @GetMapping("/department")
-    public String loginSuccessfully1(Model model, HttpSession session) {
+    public String loginSuccessfully1(Model model, HttpSession session){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         department department = this.departmentService.getDepartment(email);
-        if (department == null) {
+        if(department == null)
             model.addAttribute("ERROR", "No department found");
-        }
         session.setAttribute("department", department);
         model.addAttribute("jobPostings", this.jobPostingService.getAllJobPosting());
         return "department-Page";
     }
-
+    
     @GetMapping("/account")
-    public String account(Model model) {
+    public String account(Model model, HttpSession session) {
+        candidate candidate = (candidate) session.getAttribute("user");
+        if(candidate != null)
+            model.addAttribute("user", candidate);
+        model.addAttribute("skillList", this.skillService.getAllSkills());
         return "account-information";
     }
-
- 
 }

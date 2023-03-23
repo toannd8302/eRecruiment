@@ -5,7 +5,6 @@ com\codeweb\repository\SkillRepository.class
 com\codeweb\repository\RoundRepository.class
 com\codeweb\service\EmployeeService.class
 com\codeweb\service\RoundService.class
-com\codeweb\controllers\employeeController.class
 com\codeweb\service\implement\ScheduleServiceImp.class
 com\codeweb\repository\implement\JobPositionRepositoryImp.class
 com\codeweb\configs\WebApplicationContextConfig.class

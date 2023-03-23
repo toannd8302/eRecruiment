@@ -172,6 +172,7 @@
             <li><a href="#scheduling">Scheduling</a></li>
             <li><a href="#scheduled">Scheduled</a></li>
             <li><a href="#on-going">On-going</a></li>
+            <li><a href="#finished">Finished</a></li>
             <li><a href="#rejected">Rejected</a></li>
         </ul>
         <div class="tab-content">
@@ -327,6 +328,44 @@
                                 <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             <td><a href="#">Cancel</a></td>
+                            </tr>
+                        </form>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="finished" class="tab-content-item">
+                <h2>Finished</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>Candidate</th>
+                            <th>Job Apply</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="jobApplication" items="${FINISHED}" varStatus="counter">
+                        <form method="get" action="<c:url value="/jobApps/job-application-details"/>">
+                            <tr>
+                                <td>${counter.count}</td>
+                                <td>${jobApplication.getCandidate().getName()}</td>
+                                <td>${jobApplication.jobPosting.jobPosition.jobName}</td>
+                                <td>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() == null}">
+                                        Null
+                                    </c:if>
+                                    <c:if test="${jobApplication.getCandidate().getPhone() != null}">
+                                        ${jobApplication.getCandidate().getPhone()}
+                                    </c:if>
+                                </td>
+                                <td>${jobApplication.getCandidate().getEmail()}</td>
+                                <td><input type="submit" value="View Details"/></td>
+                            <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
                             </tr>
                         </form>
                     </c:forEach>

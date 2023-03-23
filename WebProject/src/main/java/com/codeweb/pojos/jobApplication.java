@@ -43,10 +43,10 @@ public class jobApplication implements Serializable{
     @Column(name = "CV")
     private String cv;
     
-    @Column(nullable=true, name = "Round_number")
+    @Column(nullable=true, name = "Round_number", updatable = true)
     private Integer roundNumber;
     
-    @Column(name = "Application_status")
+    @Column(name = "Application_status", updatable = true)
     private String applicationStatus;
     
     @Column(name = "CV_status")

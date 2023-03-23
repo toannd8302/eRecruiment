@@ -102,6 +102,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
         twoDimCollection.put("Scheduling", this.jobApplicationRepository.getJobApplicationByStatus("Scheduling"));
         twoDimCollection.put("Scheduled", this.jobApplicationRepository.getJobApplicationByStatus("Scheduled"));
         twoDimCollection.put("On Going", this.jobApplicationRepository.getJobApplicationByStatus("On Going"));
+        twoDimCollection.put("Finished", this.jobApplicationRepository.getJobApplicationByStatus("Finished"));
         twoDimCollection.put("Fail", this.jobApplicationRepository.getJobApplicationByStatus("Fail"));
         return twoDimCollection;
     }

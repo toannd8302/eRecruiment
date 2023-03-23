@@ -21,5 +21,5 @@ public interface JobApplicationService {
     List<jobApplication>jobApplicationList();
     Map<String,List<jobApplication>> getApplicationByStatus();
     jobApplication getJobApplicationByID(String id);
-    List<jobApplication>getAllFinishedJobApp();
+    List<jobApplication> getAllFinishedJobApp();
 }

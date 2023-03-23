@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/account", 
                             "/job/application", "/job/viewMyJob", "/job/viewMyJob/schedule-decision",
                             "/post-detail/save/{postID}", "/post-detail/view", "/post-detail/view/delete/{postId}",
-                            "/candidate").hasRole("CANDIDATE")
+                            "/candidate", "/account/update-information", "/update").hasRole("CANDIDATE")
                     .antMatchers("/employee","/jobPostings","/jobApps","/schedules",
                             "/jobApps/job-application-details","/jobPostings/job-posting-details","/schedules/schedule-details",
                             "/jobApps/job-application-details/review-app","/jobApps/job-application-details/schedule-app",
@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/interviewer/schedules/schedule-detail", "/interviewer/view-post-detail/",
                             "/interviewer/schedules/schedule-detail/decision", "/interviewer/schedules/schedule-detail/reject",
                             "/interviewer/report", "/interviewer/report/update").hasRole("INTERVIEWER")
-                    .antMatchers("/manager/jobapps","/manager/jobapps/job-app-detail").hasRole("MANAGER")
+                    .antMatchers("/manager/jobapps", "/manager/jobapps/job-app-detail").hasRole("MANAGER")
                     .antMatchers("/department",
                             "/createjobposting","/createround",
                             "/view-post-detail/{postID}","/viewround",
