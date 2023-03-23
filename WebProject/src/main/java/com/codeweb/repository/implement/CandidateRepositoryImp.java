@@ -42,6 +42,19 @@ public class CandidateRepositoryImp implements CandidateRepository {
         }
         return false;
     }
+    
+    @Override
+    public boolean update(candidate candidate) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.merge(candidate);
+            return true;
+        } catch (Exception e) {
+            System.err.println("ADD/UPDATE Candidate ERROR: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     @Override
     public List<candidate> getAll() {
@@ -83,5 +96,4 @@ public class CandidateRepositoryImp implements CandidateRepository {
         Query q = session.createQuery(query);
         return q.getResultList();
     }
-
 }

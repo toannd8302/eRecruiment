@@ -7,7 +7,6 @@ package com.codeweb.repository.implement;
 
 import com.codeweb.pojos.jobApplication;
 import com.codeweb.repository.JobApplicationRepository;
-import com.codeweb.service.CandidateService;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;

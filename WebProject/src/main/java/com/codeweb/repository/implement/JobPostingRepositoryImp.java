@@ -53,27 +53,27 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         }
         return false;
     }
-
+    
     @Override
     public List<jobPosting> getPostByKeyword(String kw) {
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
         Root<jobPosting> root = query.from(jobPosting.class);
-        Join<jobPosting, jobPosition> position = root.join("jobPosition", JoinType.LEFT);
-        Join<jobPosition, skill> skill = position.join("skills", JoinType.LEFT);
-
-        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class), "Approved");
+        Join<jobPosting,jobPosition> position = root.join("jobPosition", JoinType.LEFT);
+        Join<jobPosition,skill> skill = position.join("skills", JoinType.LEFT);
+        
+        Predicate p3 = builder.equal(root.get("ApprovedStatus").as(String.class),"Approved");
         query = query.where(p3);
-
-        if (!kw.isEmpty() && kw != null) {
-            Predicate p1 = builder.like(position.get("jobName").as(String.class),
+        
+        if(!kw.isEmpty() && kw!=null){
+            Predicate p1 = builder.like(position.get("jobName").as(String.class), 
                     String.format("%%%s%%", kw));
-            Predicate p2 = builder.like(skill.get("skillName").as(String.class),
+            Predicate p2 = builder.like(skill.get("skillName").as(String.class), 
                     String.format("%%%s%%", kw));
-            query = query.where(builder.or(p1, p2));
+            query = query.where(builder.or(p1,p2));
         }
-
+          
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
 //        Query q = session.createQuery("SELECT DISTINCT p FROM jobPosting p JOIN p.jobPosition j JOIN j.skills s"
@@ -82,7 +82,9 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
 //        q.setParameter("kw", new String("%" + kw + "%"));
 //        return q.getResultList();
     }
-
+    
+    
+    
     @Override
     public List<jobPosting> getPostById(String id) {
         Session session = sessionFactory.getObject().getCurrentSession();
@@ -106,7 +108,7 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
         Root<jobPosting> root = query.from(jobPosting.class);
-        Predicate p = builder.equal(root.get("ApprovedStatus").as(String.class), status);
+        Predicate p = builder.equal(root.get("ApprovedStatus").as(String.class),status);
         query = query.where(p);
         Query q = session.createQuery(query.distinct(true));
         return q.getResultList();
@@ -147,12 +149,23 @@ public class JobPostingRepositoryImp implements JobPostingRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaDelete<round> deleteRound = builder.createCriteriaDelete(round.class);
         Root<round> rootRound = deleteRound.from(round.class);
-        deleteRound.where(builder.equal(rootRound.get("jobPoting").get("postId"), id));
+        deleteRound.where(builder.equal(rootRound.get("jobPosting").get("postId"), id));
         session.createQuery(deleteRound).executeUpdate();
 
         CriteriaDelete<jobPosting> deleteJobPosting = builder.createCriteriaDelete(jobPosting.class);
         Root<jobPosting> rootJobPosting = deleteJobPosting.from(jobPosting.class);
         deleteJobPosting.where(builder.equal(rootJobPosting.get("postId"), id));
-        session.createQuery(deleteJobPosting).executeUpdate();
+    }
+
+    @Override
+    public List<jobPosting> getAllHotJob() {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<jobPosting> query = builder.createQuery(jobPosting.class);
+        Root<jobPosting> root = query.from(jobPosting.class);
+        Predicate p = builder.equal(root.get("hotJob").as(boolean.class),true);
+        query = query.where(p);
+        Query q = session.createQuery(query.distinct(true));
+        return q.getResultList();
     }
 }

@@ -14,13 +14,13 @@ import java.util.Map;
  * @author KHOA
  */
 public interface JobPostingService {
-    List<jobPosting> getAllJobPosting();
+    boolean updateJobPosting(jobPosting jobPosting, String action);
     boolean createJobPosting(jobPosting jobPosting);
     void deleteJobPosting(String id);
-    
-    List<jobPosting> getPostByKeyword(String kw);
     jobPosting getPostByID(String id);
+    List<jobPosting> getAllJobPosting();
+    List<jobPosting> getPostByKeyword(String kw);
     List<jobPosting> getPost(String id);
+    List<jobPosting> getAllHotJob();
     Map<String,List<jobPosting>> getPostByStatus();
-    boolean updateJobPosting(jobPosting jobPosting, String action);
 }

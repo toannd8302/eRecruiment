@@ -10,42 +10,46 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 
+
 <style>
     html {
         font-family: Arial, Helvetica, sans-serif;
     }
-
     body {
         font-size: 16px;
     }
-
     #wrapper {
         margin: 0px auto;
         margin-left: 3rem;
     }
-
     #wrapper h1 {
         margin-left: 20rem;
+        width: 100%;
+        text-align: center;
+        padding: auto;
     }
-
+    .header {
+        display: flex;
+        background-color: rgb(208, 204, 204);
+        margin-bottom: 2rem;
+        height: 8.5rem;
+    }
     /* Style nav tabs */
     .tabs {
         border-bottom: 1px solid #f5f5f5;
         margin-left: 20rem;
     }
-
     .nav-tabs {
         display: flex;
         list-style: none;
         margin: 0px;
         padding: 0;
         border-bottom: 3px solid #ddd;
+        font-weight: bold;
     }
-
     .nav-tabs li {
         margin-right: 10px;
     }
-
     .nav-tabs li a {
         display: block;
         padding: 6px 10px;
@@ -53,7 +57,6 @@
         position: relative;
         color: black;
     }
-
     .nav-tabs li a:after {
         content: "";
         height: 3px;
@@ -63,283 +66,231 @@
         bottom: -3px;
         background-color: transparent;
     }
-
     .nav-tabs li.active a::after,
     .nav-tabs li:hover a::after {
         background: #e74c3c;
     }
-
     td {
         padding: 6px 10px;
+        text-align: center;
     }
-
     th {
         padding: 6px 10px;
         text-align: center;
     }
-
     /* Style tab-content */
     .tab-content {
         padding: 20px, 0px;
     }
-
     /* Sidebar */
     .sidebar {
         height: 100vh;
         width: 200px;
-        color: black;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
+        font-weight: bold;
     }
-
     .sidebar h1 {
-        text-align: center;
         margin-bottom: 30px;
     }
-
     .sidebar ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
     }
-
+    .sidebar .action {
+        margin-top: 2rem;
+    }
     .sidebar li {
         margin-bottom: 5px;
     }
-
     .sidebar a {
         display: block;
-        color: black;
-        padding: 10px;
+        color: rgb(69, 69, 69);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         text-decoration: none;
     }
-
     .sidebar a:hover {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
     .sidebar a.active {
-        background-color: #1abc9c;
+        background-color: rgb(208, 204, 204);
     }
-
     /* Account */
-
     .sidebar img {
         width: 13.5rem;
         height: 13.5rem;
         margin-left: 3rem;
         margin-right: 3rem;
+        border-radius: 50%;
     }
-
     #account h2,
     li {
         font-size: 2rem;
         list-style: none;
     }
-
     #account li a {
         color: black;
     }
-
     #account ul {
         padding-left: 0%;
     }
-
-    #my-account {
-        margin-left: 1.5rem;
-        margin-top: 1.5rem;
-    }
-
-    #my-account .dropdown-menu {
-        padding: 0%;
-        background-color: #1abc9c;
-    }
-
-    #my-account .dropdown-item {
-        background-color: #1abc9c;
-    }
-
-    #my-account .dropdown-item:hover {
-        background-color: #1abc9c;
-    }
-    
-    .interview-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .interview-list .interview-item {
-        background-color: #8a8a8a;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        color: #f7f2f2;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        margin: 40px auto;
-        width: 1200px;  
-    }
-    
-    .interview-item:hover {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .interview-item h3 {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 0;
-        color: #fbfafa;
-    }
-
-    .interview-date, .interview-time {
-        font-size: 16px;
-        margin: 0;
-        color: #00C6FF;
-    }
-    
-    .interview-item .btn {
-        padding: 10px 15px;
-        border-radius: 5px;
-        border: none;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .interview-item .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .interview-item .edit-btn {
-        background-color: #FFD23F;
-        background-image: linear-gradient(45deg, #FFD23F 0%, #F9AE17 100%);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .interview-item .edit-btn:hover {
-        background-color: #F9AE17;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-
-    .interview-item .delete-btn {
-        background-color: #EB5E28;
-        background-image: linear-gradient(45deg, #EB5E28 0%, #CD3F0A 100%);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .interview-item .delete-btn:hover {
-        background-color: #CD3F0A;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    .cancel-button{
+        color: black;
     }
 </style>
-
+<!-- Sidebar Here -->
 <div class="sidebar">
     <sec:authorize access="isAuthenticated()">
         <div class="row">
             <div>
                 <img src="<c:url value="${sessionScope.user.getPicture()}"/>" />
             </div>
-            <div>
-                <div id="my-account">
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My
-                                Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="<c:url value="/account"/>">My Profile</a></li>
-                                <li><a class="dropdown-item active" href="<c:url value="/logout"/>">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        </div>
+        <div class="action">
+            <ul>
+                <li><a class="active" href="<c:url value="/interviewer/schedules"/>"><i class="fa-solid fa-list"></i> Schedules List</a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+            </ul>
         </div>
     </sec:authorize>
-    <ul>
-        <li><a class="active1" href="<c:url value="/interview/schedules"/>">Schedule List</a></li>
-        <li><a href="<c:url value="/interview/reports"/>">Report List</a></li>
-    </ul>
 </div>
-
 <div id="wrapper">
-    <h1>Welcome Interviewer</h1>
-    <h1>Schedule List</h1>
+    <div class="header">
+        <h1>Schedule List</h1>
+        <h1>Welcome <c:url value="${sessionScope.user.getName()}"/></h1>
+    </div>
     <div class="tabs">
         <ul class="nav-tabs">
             <li class="active"><a href="#pending">Pending</a></li>
-            <li><a href="#scheduling">On-going</a></li>
-            <li><a href="#scheduled">Finished</a></li>
+            <li><a href="#on-going">On going</a></li>
+            <li><a href="#finished">Finished</a></li>
+            <li><a href="#rejected">Rejected</a></li>
         </ul>
-        <div class="interview-list">
-            <ul>
-                <c:forEach var="schedule" items="${PENDING}">
-                    <div class="interview-item">
-                        <h3>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</h3>
-                        <p>ID: ${schedule.getScheduleId()}</p>
-                        <p>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
-                        <p>Number of candidate: ${schedule.getjAS().size()}/10</p>
-                        <p>Number of interview: ${schedule.getiRS().size()}</p>
-                        <p>Date: <fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/></p>
-                        <p>Time: <fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></p>
-                        <form method="get" action="<c:url value="/schedules/schedule-details"/>">
-                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}">
-                            <button class="delete-interview">View Detail</button>
-                        </form>  
-                    </div>
-                </c:forEach>
-            </ul>
-        </div>
+        <div class="tab-content">
+            <div id="pending" class="tab-content-item">
+                <h2>Pending</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Job Name</th>
+                            <th>Round</th>
+                            <th>Number Of Candidates</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="schedule" items="${PENDING}" varStatus="counter">
+                        <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
+                            <tr>
+                                <td>${counter.count}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
+                                <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
+                                <td>${schedule.getjAS().size()}/10</td>
+                                <td><input type="submit" value="View Details"/></td>
+                            </tr>
+                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
+                            <input type="hidden" name="userID" value="${userID}"/>
+                        </form>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="interview-list">
-            <ul>
-                <c:forEach var="schedule" items="${ON_GOING}">
-                    <div class="interview-item">
-                        <h3>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</h3>
-                        <p>ID: ${schedule.getScheduleId()}</p>
-                        <p>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
-                        <p>Number of candidate: ${schedule.getjAS().size()}/10</p>
-                        <p>Number of interview: ${schedule.getiRS().size()}</p>
-                        <p>Date: <fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/></p>
-                        <p>Time: <fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></p>
-                        <form method="get" action="<c:url value="/schedules/schedule-details"/>">
-                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}">
-                            <button class="delete-interview">View Detail</button>
-                        </form>  
-                    </div>
-                </c:forEach>
-            </ul>
-        </div>
-
-        <div class="interview-list">
-            <ul>
-                <c:forEach var="schedule" items="${FINISHED}">
-                    <div class="interview-item">
-                        <h3>${schedule.getRound().getJobPoting().getJobPosition().getJobName()}</h3>
-                        <p>ID: ${schedule.getScheduleId()}</p>
-                        <p>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</p>
-                        <p>Number of candidate: ${schedule.getjAS().size()}/10</p>
-                        <p>Number of interview: ${schedule.getiRS().size()}</p>
-                        <p>Date: <fmt:formatDate value="${schedule.getScheduleDate()}" pattern="dd/MM/yyyy"/></p>
-                        <p>Time: <fmt:formatDate value="${schedule.getScheduleTime()}" pattern="HH:mm:ss"/></p>
-                        <form method="get" action="<c:url value="/schedules/schedule-details"/>">
-                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}">
-                            <button class="delete-interview">View Detail</button>
-                        </form>  
-                    </div>
-                </c:forEach>
-            </ul>
+            <div id="on-going" class="tab-content-item">
+                <h2>On-going</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Job Name</th>
+                            <th>Round</th>
+                            <th>Number Of Candidates</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="schedule" items="${ON_GOING}" varStatus="counter">
+                        <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
+                            <tr>
+                                <td>${counter.count}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
+                                <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
+                                <td>${schedule.getjAS().size()}/10</td>
+                                <td><input type="submit" value="View Details"/></td>
+                            </tr>
+                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
+                            <input type="hidden" name="userID" value="${userID}"/>
+                        </form>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div id="finished" class="tab-content-item">
+                <h2>Finished</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Job Name</th>
+                            <th>Round</th>
+                            <th>Number Of Candidates</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="schedule" items="${FINISHED}" varStatus="counter">
+                        <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
+                            <tr>
+                                <td>${counter.count}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
+                                <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
+                                <td>${schedule.getjAS().size()}/10</td>
+                                <td><input type="submit" value="View Details"/></td>
+                            </tr>
+                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
+                            <input type="hidden" name="userID" value="${userID}"/>
+                        </form>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rejected" class="tab-content-item">
+                <h2>Rejected Schedules</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Job Name</th>
+                            <th>Round</th>
+                            <th>Number Of Candidates</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="schedule" items="${REJECTED}" varStatus="counter">
+                        <form method="get" action="<c:url value="/interviewer/schedules/schedule-detail"/>">
+                            <tr>
+                                <td>${counter.count}</td>
+                                <td>${schedule.getRound().getJobPosting().getJobPosition().getJobName()}</td>
+                                <td>Round ${schedule.getRound().getRoundNumber()} - ${schedule.getRound().getContent()}</td>
+                                <td>${schedule.getjAS().size()}/10</td>
+                                <td><input type="submit" value="View Details"/></td>
+                            </tr>
+                            <input type="hidden" name="scheduleID" value="${schedule.getScheduleId()}"/>
+                            <input type="hidden" name="userID" value="${userID}"/>
+                        </form>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <script>
@@ -361,8 +312,7 @@
     });
 </script>
 
-
-
+<%--
 <h3>Pending</h3>
 <c:forEach var="schedule" items="${PENDING}">
     ==================================================================
@@ -410,3 +360,4 @@
         <input type="submit" value="View Deatils"/>
     </form>
 </c:forEach>
+--%>

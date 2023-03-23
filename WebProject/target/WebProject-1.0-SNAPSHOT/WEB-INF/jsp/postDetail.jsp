@@ -340,10 +340,6 @@
                     <c:if test="${jobPosting.typeOfWork == false}"><p>Hybrid</p></c:if>
                     </li>
 
-                    <li><br><i class="fa-solid fa-venus-mars"></i>Gender<p>No</p>
-                    </li>
-
-                    <li><br><i class="fa-sharp fa-solid fa-people-group"></i>Number of recruits<p>No</p>
                     </li>
 
                     <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.level}</p>

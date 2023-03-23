@@ -13,11 +13,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
-<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"/>-->
-
 <!--TẠI TRANG NÀY SẼ VIEW CÁC JOBPOSTING CỦA PHÒNG ĐANG ĐĂNG NHẬP VÀ TẠO MỚI 1 JOBPOSTING-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" integrity="sha256-sWZjHQiY9fvheUAOoxrszw9Wphl3zqfVaz1kZKEvot8=" crossorigin="anonymous">
+
 
 
 <style>
@@ -47,15 +44,15 @@
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
         opacity: 0.8;
     }
-
+    
     .post-list-left .nav-body{
         margin-top: 12rem;
     }
-
+    
     .post-list-left .nav-body li{
         margin-top: 2rem;
     }
-
+    
     .post-list-left ul, li{
         padding-left: 0;
     }
@@ -305,11 +302,11 @@
                         <td> <fmt:formatDate value="<%= jobposting.getCreatedTime()%>"  pattern="dd/MM/yyyy"/></td>
                         <td><%= typeOfWork%></td>
                         <td><%= jobposting.isApprovedStatus()%></td>
-                        <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
+                        <td><a href="http://localhost:8084/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
                         <td >
                             <a id="delete-post" onclick="deletePost(event)" 
-                               href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>">
-                                <i class="fa-solid fa-trash trash-bin"></i></a>
+                               href="http://localhost:8084/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>
+                            <i class="fa-solid fa-trash trash-bin"></i></a>
                             <!--                            <br>-->
                         </td>
                     </tr>   
@@ -329,21 +326,19 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <script>
+        function deletePost(event) {
+            // Get a reference to the button element
+            event.preventDefault();
+            var confirmed = confirm("Are you sure you want to delete?");
+            if (confirmed) {
+                // continue with the default action (i.e. follow the href link)
+                window.location.href = event.currentTarget.getAttribute("href");
+            } else {
+                //do nothing
 
-                                function deletePost(event) {
-                                    // Get a reference to the button element
-                                    event.preventDefault();
-                                    var confirmed = confirm("Are you sure you want to delete?");
-                                    if (confirmed) {
-                                        // continue with the default action (i.e. follow the href link)
-                                        window.location.href = event.currentTarget.getAttribute("href");
-                                    } else {
-                                        //do nothing
-                                    }
-
-                                }
+            }
+        }
 
     </script>
 

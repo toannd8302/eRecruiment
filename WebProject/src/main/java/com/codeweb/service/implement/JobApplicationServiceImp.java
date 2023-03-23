@@ -54,7 +54,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
             jobApplication.setApplicationStatus("Review");
             return this.jobApplicationRepository.add(jobApplication);
         } catch (IOException e) {
-            System.err.println("==CREATE APPLICATION==" + e.getMessage());
+            System.err.println("==ERROR CREATE APPLICATION==" + e.getMessage());
         }
         return false;
     }
@@ -102,6 +102,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
         twoDimCollection.put("Scheduling", this.jobApplicationRepository.getJobApplicationByStatus("Scheduling"));
         twoDimCollection.put("Scheduled", this.jobApplicationRepository.getJobApplicationByStatus("Scheduled"));
         twoDimCollection.put("On Going", this.jobApplicationRepository.getJobApplicationByStatus("On Going"));
+        twoDimCollection.put("Finished", this.jobApplicationRepository.getJobApplicationByStatus("Finished"));
         twoDimCollection.put("Fail", this.jobApplicationRepository.getJobApplicationByStatus("Fail"));
         return twoDimCollection;
     }
@@ -113,5 +114,10 @@ public class JobApplicationServiceImp implements JobApplicationService {
             return null;
         }
         return list.get(0);
+    }
+
+    @Override
+    public List<jobApplication> getAllFinishedJobApp() {
+        return this.jobApplicationRepository.getJobApplicationByStatus("Finished");
     }
 }

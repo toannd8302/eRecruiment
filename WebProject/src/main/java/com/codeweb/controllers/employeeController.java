@@ -10,6 +10,7 @@ import com.codeweb.pojos.jobApplication;
 import com.codeweb.pojos.jobPosting;
 import com.codeweb.pojos.schedule;
 import com.codeweb.service.EmployeeService;
+import com.codeweb.service.JobApplicationScheduleService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
 import com.codeweb.service.ScheduleService;
@@ -33,8 +34,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @ControllerAdvice
-public class employeeController {
+public class EmployeeController {
 
+    @Autowired
+    private JobApplicationScheduleService jobApplicationScheduleService;
+    
     @Autowired
     private JobPostingService jobPostingService;
 
@@ -68,31 +72,31 @@ public class employeeController {
     @PostMapping("/jobPostings/job-posting-details/evaluate-post")
     public String decidePost(Model model, HttpServletRequest request,
             @RequestParam("postID") String id,
-            @RequestParam("action") String action) {
+            @RequestParam("action") String action,
+            @RequestParam(name = "isHotJob", required = false, defaultValue = "false") boolean isHotJob) {
         jobPosting jobPosting = this.jobPostingService.getPostByID(id);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date expiredDate = null;
-        if (action != null) {
-            if (action.equals("accept")) {
-                try {
-                    expiredDate = dateFormat.parse(request.getParameter("expiredDate"));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                if (expiredDate != null) {
-                    jobPosting.setExpiredTime(expiredDate);
-                }
-                if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
-                    model.addAttribute("MESSAGE", "Accept POSTING Successfully");
-                } else {
-                    model.addAttribute("MESSAGE", "Accept POSTING Fail");
-                }
-            } else if (action.equals("reject")) {
-                if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
-                    model.addAttribute("MESSAGE", "Reject POSTING Successfully");
-                } else {
-                    model.addAttribute("MESSAGE", "Reject POSTING Fail");
-                }
+        if (action.equals("accept")) {
+            try {
+                expiredDate = dateFormat.parse(request.getParameter("expiredDate"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (expiredDate != null) {
+                jobPosting.setExpiredTime(expiredDate);
+            }
+            jobPosting.setHotJob(isHotJob);
+            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+                model.addAttribute("MESSAGE", "Accept POSTING Successfully");
+            } else {
+                model.addAttribute("MESSAGE", "Accept POSTING Fail");
+            }
+        } else if (action.equals("reject")) {
+            if (this.jobPostingService.updateJobPosting(jobPosting, action)) {
+                model.addAttribute("MESSAGE", "Reject POSTING Successfully");
+            } else {
+                model.addAttribute("MESSAGE", "Reject POSTING Fail");
             }
         } else {
             model.addAttribute("MESSAGE", "No action supported!!!");
@@ -117,7 +121,6 @@ public class employeeController {
 //        }
 //        return "redirect:/jobPostings";
 //    }
-
     //End Post
     @PostMapping("/jobPostings/job-posting-details/end-post")
     public String endPost(Model model,
@@ -144,6 +147,7 @@ public class employeeController {
         model.addAttribute("SCHEDULING", jobApplicationMap.get("Scheduling"));
         model.addAttribute("SCHEDULED", jobApplicationMap.get("Scheduled"));
         model.addAttribute("ON_GOING", jobApplicationMap.get("On Going"));
+        model.addAttribute("FINISHED", jobApplicationMap.get("Finished"));
         model.addAttribute("REJECT", jobApplicationMap.get("Fail"));
         return "view-all-apps";
     }
@@ -156,6 +160,7 @@ public class employeeController {
         schedule schedule = this.scheduleService.getCurrentScheduleOfJobApp(jobApp);
         if (schedule != null) {
             model.addAttribute("scheduleID", schedule.getScheduleId());
+            model.addAttribute("status", this.jobApplicationScheduleService.getByIDs(id, schedule.getScheduleId()).getStatus());
         }
         return "view-application-details";
     }
@@ -274,7 +279,7 @@ public class employeeController {
             @RequestParam("scheduleID") String id,
             @RequestParam("action") String action,
             @RequestParam("Location") String location,
-            @RequestParam("typeOfInterview") boolean typeOfInterview) {
+            @RequestParam(name = "typeOfInterview", required = false, defaultValue = "false") boolean typeOfInterview) {
         if (action.equals("start")) {
             //Get and set the list of interviewerReasons of schedule
             String[] selectedOptions = request.getParameterValues("interviewers");

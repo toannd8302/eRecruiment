@@ -58,19 +58,24 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public boolean updateJobPosting(jobPosting jobPosting, String action) {
         try {
+            if(action.equals("update wishList")){
+                return this.jobPostingRepository.update(jobPosting);
+            }
             if (action.equals("accept")) {
                 long millis = System.currentTimeMillis();
                 java.sql.Date date = new java.sql.Date(millis);
                 jobPosting.setPostingTime(date);
                 jobPosting.setApprovedStatus("Approved");
-            } else if (action.equals("reject")) {
+                return this.jobPostingRepository.update(jobPosting);
+            } 
+            if (action.equals("reject")) {
                 jobPosting.setApprovedStatus("Rejected");
-            } else if (action.equals("end")) {
+                return this.jobPostingRepository.update(jobPosting);
+            } 
+            if (action.equals("end")) {
                 jobPosting.setApprovedStatus("End");
-            } else {
-                return false;
+                return this.jobPostingRepository.update(jobPosting);
             }
-            return this.jobPostingRepository.update(jobPosting);
         } catch (Exception e) {
             System.err.println("UPDATE JOB POSTING ERROR AT JobPostingServiceImp");
         }
@@ -86,29 +91,11 @@ public class JobPostingServiceImp implements JobPostingService {
     public boolean createJobPosting(jobPosting jobPosting) {
         boolean result = false;
         try {
-            jobPosting.setDescriptions(jobPosting.getDescriptions());
-
-            jobPosting.setTypeOfWork(jobPosting.isTypeOfWork());
-
-            jobPosting.setExprienceRequirement(jobPosting.getExprienceRequirement());
-
-            jobPosting.setLocations(jobPosting.getLocations());
-
-            jobPosting.setWelfare(jobPosting.getWelfare());
-
-            jobPosting.setSalary(jobPosting.getSalary());
+            jobPosting.setApprovedStatus("Pending");
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
             jobPosting.setCreatedTime(date);
-            jobPosting.setPostingTime(null);
-//            Date expiredTime = jobPosting.getExpiredTime();
-//            java.sql.Date sqlExpiredTime = new java.sql.Date(expiredTime.getTime());
-            jobPosting.setExpiredTime(null);
-            jobPosting.setApprovedStatus("Pending");
-            jobPosting.setLevel(jobPosting.getLevel());
-            jobPosting.setPicture(jobPosting.getPicture());
             result = this.jobPostingRepository.createJobPosting(jobPosting);
-
         } catch (Exception e) {
             System.err.println("==CREATE JOB POSTING==" + e.getMessage());
         }
@@ -118,6 +105,11 @@ public class JobPostingServiceImp implements JobPostingService {
     @Override
     public void deleteJobPosting(String id) {
         this.jobPostingRepository.deleteJobPosting(id);
+    }
+
+    @Override
+    public List<jobPosting> getAllHotJob() {
+        return this.jobPostingRepository.getAllHotJob();
     }
 
 }

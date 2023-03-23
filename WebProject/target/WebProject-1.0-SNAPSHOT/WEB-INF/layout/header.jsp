@@ -26,13 +26,18 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
 
+        <script type="text/javascript">
+            window.addEventListener("scroll", function () {
+        var navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("sticky", window.scrollY > 0);
+      });
+        </script>
+        
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
-            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=Noto+Sans+Lepcha&display=swap");
-            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;500;600;800&display=swap");
             html {
                 font-size: 62.5%;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: "Poppins", sans-serif;
             }
 
             * {
@@ -41,210 +46,163 @@
             }
 
             body {
-                /* background-color: #FFEFD5; */
-            }
-
-            .container-fluid {
-                padding: 0%;
-                margin: 0%;
-            }
-
-            #header {
-                background-color: #efefef;
                 width: 100%;
+                min-height: 200vh;
+                /*background: #000;*/
+            }
+
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: 0.5s;
+                padding: 3rem 5rem;
+                z-index: 10000;
                 height: 10rem;
+            }
+
+            .navbar.sticky {
+                padding: 3rem 3rem;
+                background: #fff;
+                border-bottom: 3px solid silver;
+            }
+
+            .navbar #logo a {
                 position: relative;
-            }
-
-            #logo img {
-                width: 18rem;
-                height: 10rem;
-            }
-
-            #main-info {
-                list-style: none;
-                font-size: 2rem;
-                margin-top: 3rem;
-                position: relative;
-            }
-
-            #main-info a {
                 text-decoration: none;
-                color: crimson;
-            }
-
-            #main-info .dropdown-menu {
-                padding: 0%;
-            }
-
-            #main-info .dropdown-item {
-                color: white;
-                background-color: #161718;
-            }
-
-            #main-info .dropdown-item:hover {
-                background-color: #393a3a;
-            }
-
-            #account {
-                margin-left: 10rem;
-                margin-top: 1.5rem;
-                position: relative;
-                height: 6.5rem;
-            }
-
-            #account img {
-                width: 6.5rem;
-                height: 6.5rem;
-                border-radius: 50%;
-                margin-right: 3rem;
-            }
-
-            #account h2,
-            li {
-                font-size: 2.5rem;
-                list-style: none;
+                font-size: 3rem;
                 font-weight: bold;
+                color: #fff;
             }
 
-            #account li a {
-                /* color: white; */
+            .navbar #logo img {
+                margin-top: -1rem;
+                width: 12rem;
+                height: 6rem;
             }
 
-            #account ul {
-                padding-left: 0%;
+            .navbar > .header-info > ul {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: -1rem;
+                width: 80rem;
             }
 
-            #my-account {
-                margin-left: 1.5rem;
+            .navbar .header-info ul li {
+                position: relative;
+                list-style: none;
+                margin: 0 1rem;
+            }
+            .navbar .header-info ul li a {
+                position: relative;
+                text-decoration: none;
+                margin: 0 2rem;
+                font-size: 2rem;
+                color: #fff;
+            }
+
+            .navbar .header-info ul li a::after {
+                content: "";
+                height: 0.3rem;
+                width: 0;
+                background: #009688;
+                position: absolute;
+                left: 0;
+                bottom: -0.5rem;
+                transition: 0.5s;
+            }
+
+            .navbar .header-info ul li a:hover::after {
+                width: 100%;
+            }
+
+            .navbar .header-info .account {
+                display: flex;
                 margin-top: 1rem;
             }
 
-            #my-account .dropdown-menu {
-                padding: 0%;
+            .navbar .header-info .account img {
+                width: 5rem;
+                height: 5rem;
+                border-radius: 50%;
+                margin-top: -1rem;
             }
 
-            #my-account .dropdown-item {
-                background-color: #161718;
-                color: white;
+            .navbar .header-info .account ul {
+                position: absolute;
+                left: 0;
+                width: 27rem;
+                padding: 2rem;
+                display: none;
             }
 
-            #my-account .dropdown-item:hover {
-                background-color: #393a3a;
+            .navbar .header-info .account ul li {
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+                padding: 1rem;
             }
 
-            /* CSS for login link */
-            #login {
-                margin-left: 10rem;
-                margin-top: 3rem;
-                transition: 0.3s ease-in-out;
+            .navbar .header-info ul li:hover > ul {
+                display: initial;
+                margin-top: 2rem;
             }
 
-            #login:hover{
-                transform: scale(1.2);
+            .navbar.sticky ul li a {
+                color: #000;
+            }
+
+            .navbar.sticky ul li > ul li a {
+                color: #fff;
             }
             
-            #login a {
-                font-size: 2rem;
-                text-decoration: none;
-                color: rgb(77, 77, 77);
-            }
-
-            #for-department {
-                margin-top: 3rem;
-                display: inline-block;
-                text-decoration: none;
-                font-size: 2rem;
-                color: rgb(228, 36, 75);
-                transition: 0.3s ease-in-out;
-            }
-
-            #for-department:hover {
-                color: rgb(162, 30, 57);
-                transform: scale(1.1);
-                
-            }
-
-            #for-department i {
-                margin-right: 1rem;
+            .navbar.sticky #logo > a{
+                color: #000;
             }
         </style>
     </head>
     <body>
         <!-- Header here -->
-        <div class="container-fluid mt-3" style="margin-top: 0% !important; padding-left: 0%; padding-right: 0%;">
-            <div id="header">
-                <div class="row" style="margin: 0%;">
-                    <div class="col-sm-3">
-                        <div id="logo">
+        <div class="navbar" style="position: fixed">
+            <div id="logo">
+                <a href="<c:url value="/"/>"
+                   ><img
+                        src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
+                        alt="MonkeTech"
+                        />MonkeTech</a>
+            </div>
+            <div class="header-info">
+                <ul>
+                    <li><a href="<c:url value="/"/>">Home</a></li>
+                    <li><a href="#service">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <div class="account">
+                        <sec:authorize access="!isAuthenticated()">
+                            <li><a href="<c:url value="/login"/>">For Department</a></li>
+                            <li><a href="<c:url value="/loginPage"/>">Login</a></li>
+                            </sec:authorize>
 
-                            <a href="<c:url value="/"/>"><img
-                                    src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
-                                    alt="Monke Tech"></a>
-                        </div>
+                        <sec:authorize access="isAuthenticated()">
+                            <li>
+                                <img
+                                    src="<c:url value="${sessionScope.user.getPicture()}"/>"
+                                    alt="avatar"/>
+                                <a href="#">My Account</a>
+                                <ul>
+                                    <li><a href="<c:url value="/account"/>">My Profile</a></li>
+                                    <li><a href="<c:url value="/job/viewMyJob"/>">My Applications</a></li>
+                                    <li><a href="<c:url value="/logout"/>">Logout</a></li>
+                                </ul>
+                            </li>
+                        </sec:authorize>    
                     </div>
-                    <div class="col-sm-5">
-                        <div id="header-info">
-                            <ul id="main-info">
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <li><a href="<c:url value="/"/>">Home</a></li>
-                                    </div>
-                                    <div class="col-sm">
-                                        <li><a href="#introduce">About</a></li>
-                                    </div>
-                                    <div class="col-sm">
-                                        <li><a href="#contact">Contact</a></li>
-                                    </div>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <sec:authorize access="!isAuthenticated()">
-                        <div class="col-sm-2">
-                            <div>
-                                <a id="for-department" href="<c:url value="/login"/>"><i class="fa-solid fa-circle-chevron-right"></i>For Department</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div id="login">
-                                <a href="<c:url value="/loginPage"/>">Login</a>
-                            </div>
-                        </div>
-                    </sec:authorize>
-
-                    <sec:authorize access="isAuthenticated()">
-                        <div class="col-sm-4">
-                            <div id="account">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <img src="<c:url value="${sessionScope.user.getPicture()}"/>"/>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div id="my-account">
-                                            <ul>
-                                                <li class="nav-item dropdown">
-                                                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                       data-bs-toggle="dropdown" style="color: crimson">My Account</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="<c:url value="/account"/>">My Profile</a></li>
-                                                        <li><a class="dropdown-item" href="<c:url value="/job/viewMyJob"/>">View My Applications</a></li>
-                                                        <li><a class="dropdown-item" href="<c:url value="/logout"/>">Log Out</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </sec:authorize>    
-                </div>
+                </ul>
             </div>
         </div>
-    </body>
-</html>
-
 
 

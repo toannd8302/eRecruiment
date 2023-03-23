@@ -57,9 +57,9 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 if (employee.getRole().equals("ROLE_EMPLOYEE")) {
                     response.sendRedirect(request.getContextPath() + "/jobApps");
                 } else if (employee.getRole().equals("ROLE_INTERVIEWER")) {
-                    response.sendRedirect(request.getContextPath() + "/interview/schedules");
+                    response.sendRedirect(request.getContextPath() + "/interviewer/schedules");
                 } else if (employee.getRole().equals("ROLE_MANAGER")) {
-                    response.sendRedirect(request.getContextPath() + "/manager");
+                    response.sendRedirect(request.getContextPath() + "/manager/jobapps");
                 }
             } else {
                 SecurityContextHolder.getContext().setAuthentication(null);
