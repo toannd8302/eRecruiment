@@ -32,13 +32,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @ControllerAdvice
 public class CandidateController {
-    
+
     @Autowired
     private CandidateService candidateService;
-    
+
     @Autowired
     private JobPostingService jobPostingService;
-    
+
     @Autowired
     private JobApplicationScheduleService jobApplicationScheduleService;
 
@@ -58,21 +58,16 @@ public class CandidateController {
     public String applyJob(Model model,
             HttpSession session,
             @ModelAttribute(value = "application") jobApplication jobApplication,
-            @RequestParam(required = false) Map<String,String> params,
+            @RequestParam(required = false) Map<String, String> params,
             @RequestParam("postID") String postID) {
         jobApplication.setJobPosting(this.jobPostingService.getPostByID(postID));
         candidate candidate = (candidate) session.getAttribute("user");
         jobApplication.setCandidate(candidate);
-        if(this.jobApplicationService.add(jobApplication)){
-//            candidate.getJobApplications().add(jobApplication);
-//            session.setAttribute("user", candidate);
-//Show result of update
-        }
+        this.jobApplicationService.applyJob(jobApplication);
         return "redirect:/";
     }
 
     //=================VIEW MY JOB HERE=======================//
-    
     @GetMapping("/job/viewMyJob")
     public String viewMyJobApplication(Model model,
             HttpSession session) {
@@ -80,27 +75,25 @@ public class CandidateController {
         model.addAttribute("JobApplications", this.candidateService.findCandidateByID(candidate.getId()).getJobApplications());
         return "view-JobApplication";
     }
-    
+
     //=================MAKE A DECISION HERE=======================//
-    
     @PostMapping("/job/viewMyJob/schedule-decision")
     public String scheduleDecision(Model model,
-            @RequestParam Map<String,String> params) {
+            @RequestParam Map<String, String> params) {
         this.jobApplicationScheduleService.scheduleDecision(params.getOrDefault("applicationId", null), params.getOrDefault("scheduleId", null), params.getOrDefault("action", null));
         return "redirect:/job/viewMyJob";
     }
-    
 
-    
-    //=================VIEW MY JOB HERE=======================//
-    
-    @GetMapping("/job/view")
-    public String view(Model model) {
-        List<jobApplication> List = this.jobApplicationService.jobApplicationList();
-        jobApplication job = List.get(1);
-        model.addAttribute("list", List);
-        Set<jobApplicationSchedule> JAPS  = job.getJobApSche();
-        model.addAttribute("SSS", JAPS);
-        return "Test";
+    //================UPDATE INFO OF CANDIDATE HERE=======================//
+    @PostMapping("/update")
+    public String updateInfor(Model model, @ModelAttribute(value = "candidate") candidate candidate, HttpSession session) {
+        candidate candidateToUpdate = (candidate) session.getAttribute("user");
+        candidateToUpdate.setName(candidate.getName());
+        candidateToUpdate.setPhone(candidate.getPhone());
+        candidateToUpdate.setAddress(candidate.getAddress());
+        candidateToUpdate.setJobName(candidate.getJobName());
+        candidateToUpdate.setExperience(candidate.getExperience());
+        this.candidateService.update(candidateToUpdate);
+        return "redirect:/account";
     }
 }

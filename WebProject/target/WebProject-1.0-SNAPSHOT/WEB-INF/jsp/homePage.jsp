@@ -4,14 +4,6 @@
     Author     : KHOA
 --%>
 
-
-
-<%-- 
-    Document   : homePage
-    Created on : Feb 6, 2023, 9:51:54 AM
-    Author     : KHOA
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -23,6 +15,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" integrity="sha256-sWZjHQiY9fvheUAOoxrszw9Wphl3zqfVaz1kZKEvot8=" crossorigin="anonymous">
+
 
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
@@ -38,109 +32,164 @@
         margin: 0;
     }
 
-    #banner {
+    .banner {
+        position: relative;
         width: 100%;
-        /* height: 50vh; */
-        padding-top: 40%;
-        background: url("https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Blue%20Modern%20Tips%20Business%20Banner.png?raw=true")
-            top center / cover no-repeat;
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+            url("https://images-ext-1.discordapp.net/external/YD6LN5qAdGqUhwI-L5aIvhTj7yn-u9CQkbIqDOF6uEw/https/static.wixstatic.com/media/ea71bb_370144e721bc43c289bfb35fed3376d1~mv2_d_4500_2124_s_2.jpg/v1/fill/w_1593%2Ch_668%2Cal_b%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_auto/ea71bb_370144e721bc43c289bfb35fed3376d1~mv2_d_4500_2124_s_2.jpg?width=1203&height=505");
+        background-size: cover;
     }
 
-    #banner #search-box {
-        text-align: center;
+    .banner .banner-content {
         position: absolute;
-        top: 10%;
-        right: 0%;
-        transform: translate(-50%, -50%);
-        color: white;
-        /* bottom: 50%; */
-        margin-top: 30rem;
-        color: #393a3a;
-
-        /* font-family: "Atkinson Hyperlegible", sans-serif;
-        font-family: "Climate Crisis", cursive; */
+        top: 30%;
+        left: 25%;
+        transform: translate(-50deg, -50deg);
+        color: #fff;
     }
 
-    #banner #search-box h1:first-child {
-        font-family: "Noto Sans Lepcha", sans-serif;
-        font-size: 6rem;
-        margin-bottom: 3rem;
-        margin-top: 8rem;
+    .banner .banner-content h1 {
+        font-size: 8rem;
     }
 
-    #banner #search-box h1 {
-        font-family: "Noto Sans Lepcha", sans-serif;
-        text-transform: uppercase;
-        font-size: 6rem;
-        margin-bottom: 4rem;
-        margin-top: 4rem;
-        margin-right: -10rem;
-        font-weight: bold;
-    }
-
-    #banner #search-box p {
+    .banner .banner-content p {
         font-size: 2rem;
-        margin-right: -50rem;
-        width: 42rem;
+        font-style: italic;
+        margin: 3rem 0;
     }
+
+    .banner .banner-content button {
+        margin-left: 38rem;
+        font-size: 2rem;
+        border-radius: 0.5rem;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        border: none;
+    }
+
+    .banner .banner-content button a {
+        text-decoration: none;
+        color: #fff;
+        padding: 1rem;
+    }
+
+    .banner .banner-content button:hover {
+        background: linear-gradient(rgba(40, 40, 40, 0.5), rgba(40, 40, 40, 0.5));
+    }
+
+    .banner .banner-content button:hover > a i {
+        opacity: 0.6;
+        color: red;
+    }
+
 
     /* CSS for introduce */
-    #introduce {
-        /* height: 1000px; */
-        margin-top: 5rem;
-        margin-bottom: 10rem;
-    }
-
-    #introduce #intro-head {
-        margin-bottom: 5rem;
+    .service>h1{
         text-align: center;
-        font-size: 1.5rem;
-    }
-
-    #introduce #intro-head h1 {
-        text-align: center;
-        text-transform: uppercase;
+        padding: 5rem 0;
         font-size: 4rem;
-        margin-bottom: 2rem;
-        color: rgb(171, 36, 36);
+        font-weight: bold;
+        color: #009688;
         font-weight: bold;
         font-family: 'IBM Plex Mono', monospace;
-        display: inline-block;
-        margin-left: 1rem;
+        text-transform: uppercase;
     }
 
-    #introduce #intro-body {
-        margin-left: 5rem;
-        margin-right: 5rem;
-        font-size: 1.5rem;
+    .intro i{
+        font-size: 5rem;
     }
 
-    #introduce #intro-body .intro-info {
-        width: 40rem;
+    .intro .suitable-job{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         text-align: center;
     }
 
-    #intro-body .intro-info i {
-        margin-bottom: 2rem;
-        font-size: 5rem;
-        padding: 4rem;
-        border-radius: 50%;
-        background-color: rgb(238, 190, 58);
-        animation: rotate 3s infinite linear;
+    .intro .suitable-job i:hover{
+        color: rgb(243, 47, 51);
     }
 
-    #intro-body .intro-info i:hover {
-        /* transform: rotate3d(1,0,1,360deg); */
-        animation: rotate 1s infinite reverse;
+    .intro .suitable-job h1{
+        font-size: 4rem;
+        text-transform: uppercase;
+        padding: 3rem 0;
     }
 
-    @keyframes rotate {
-        to {
-            transform: rotateY(360deg);
-        }
+    .intro .suitable-job p{
+        margin-top: -3rem;
+        font-size: 2rem;
+        color: rgb(146, 146, 146);
+        font-style: italic;
     }
+
+    .intro .developer{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro .developer img{
+        width: 50rem;
+    }
+
+    .intro .developer > .text{
+        width: 48rem;
+    }
+
+    .intro .developer i:hover{
+        color: rgb(57, 221, 167);
+    }
+
+    .intro .developer h1{
+        font-size: 4rem;
+        text-transform: uppercase;
+        padding: 3rem 0;
+    }
+
+    .intro .developer p{
+        margin-top: -3rem;
+        font-size: 2rem;
+        color: rgb(146, 146, 146);
+        font-style: italic;
+    }
+
+    .intro .good-welfare{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro .good-welfare img{
+        width: 50rem;
+    }
+
+    .intro .good-welfare > .text{
+        width: 48rem;
+    }
+
+    .intro .good-welfare i:hover{
+        color: rgb(206, 206, 25);
+    }
+
+    .intro .good-welfare h1{
+        font-size: 4rem;
+        text-transform: uppercase;
+        padding: 3rem 0;
+    }
+
+    .intro .good-welfare p{
+        margin-top: -3rem;
+        font-size: 2rem;
+        color: rgb(146, 146, 146);
+        font-style: italic;
+    }
+
     /* CSS for hot-jobs */
 
+    /* CSS for hot-jobs */
     #job-post-title {
         text-align: center;
         text-transform: uppercase;
@@ -149,67 +198,12 @@
         color: rgb(171, 36, 36);
         font-weight: bold;
         font-family: 'IBM Plex Mono', monospace;
-        margin-right: 3rem;
-    }
-    .hot-jobs {
-        margin-left: 13rem;
-    }
-
-    .hot-jobs .hot-post {
-        border: 1px solid black;
-        border-top: 5px solid rgb(94, 93, 93);
-        padding: 2rem;
-        margin: 2rem;
-    }
-    .hot-jobs .hot-post a {
-        text-decoration: none;
-        color: black;
-    }
-  
-
-    .hot-jobs .hot-post h3 {
-        font-weight: bold;
-        margin-bottom: 1.5rem;
-    }
-
-    .hot-jobs .hot-post p {
-        font-size: 1.5rem;
-    }
-
-    .hot-jobs .hot-post .salary {
-        color: rgb(250, 31, 31);
-    }
-    .hot-jobs .hot-post .post-down i {
-        margin-right: 1rem;
-        font-size: 2rem;
-        cursor: pointer;
-        width: 4rem;
-        display: block;
-        text-align: center;
-        padding: 1rem;
-        transition: 0.3s ease;
-    }
-
-    .hot-jobs .hot-post .post-down i:hover {
-        border-radius: 50%;
-        background-color: rgb(170, 249, 203);
-    }
-
-    .hot-jobs .hot-post .post-down i:active {
-        border-radius: 50%;
-        background-color: aquamarine;
-        transition: 0.3s ease;
-    }
-
-    .hot-jobs .hot-post .post-down {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
+        margin-top: 17rem;
     }
 
     .product-area-list {
         padding-top: 5rem;
-        margin-left: 5.8rem;
+        margin-left: 6rem;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding-bottom: 10rem;
@@ -228,9 +222,20 @@
         cursor: pointer;
     }
 
+    .product-area-list .product .welfare{
+        width: 33rem;
+        overflow: hidden;
+        text-align: center;
+        margin-left: 3rem;
+        max-height: 9rem;
+    }
+
+    .product-area-list .product .welfare::after{
+        content: '...';
+    }
+
     .product-area-list .product h1 {
         font-size: 3.5rem;
-
     }
 
     .product-area-list .product h1 a{
@@ -262,18 +267,6 @@
     .product-area-list .product:hover i {
         color: rgb(243, 20, 243);
         transform: scale(1.1);
-    }
-
-    .product-area-list .product .welfare{
-        width: 33rem;
-        overflow: hidden;
-        text-align: center;
-        margin-left: 3rem;
-        max-height: 9rem;
-    }
-
-    .product-area-list .product .welfare::after{
-        content: '...';
     }
 
 
@@ -315,7 +308,7 @@
         outline: none;
         padding: 1.5rem 1.5rem;
         font-size: 2rem;
-        color: #000;
+        color: #fff;
     }
 
     ::placeholder{
@@ -338,7 +331,6 @@
     .search-bar button:hover{
         background-color: #b8b8b8;
     }
-
 
     .search-result{
         width: 85%;
@@ -391,7 +383,6 @@
 
     .search-result .result-post p{
         font-size: 1.5rem;
-        margin-left: 1rem;
     }
 
     .search-result .result-post i{
@@ -406,12 +397,14 @@
         border: 2px solid white;
         border-radius: 0.5rem;
         display: flex;
+    list-style: none;
     }
 
-    .search-result .result-post .post-down .skill-lists{
-        display: flex;
+    .search-result .result-post .post-down p{
+        margin-bottom: 0%;
+        margin-right: 0.5rem;
     }
-    
+
     .search-result .result-post .result-post-right{
         display: flex;
         flex-direction: column;
@@ -446,74 +439,61 @@
     }
 
 
-    .contact-us{
-        background: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80')top center / cover no-repeat;
-        width: 100%;
-        height: 80vh;
+
+    .contact{
+        margin-left: 30rem;
+        margin-bottom: 5rem;
     }
 
-    .contact-form h1{
-        border-bottom: 0.4rem solid black;
-        display: inline-block;
-        text-align: center;
-        margin-left: 65rem;
-        font-size: 4rem;
-        color: white;
-        padding-top: 2rem;
+    .contact h1{
+        font-size: 3rem;
     }
 
-    .contact-form .text-items{
-        display: flex;
-        flex-direction: column;
-        margin-left: 35rem;
-        margin-top: 5rem;
-    }
-
-    .contact-form .text-items h2{
-        margin: 2rem 0;
-        color: white;
-    }
-
-    .contact-form .text-items input{
-        width: 70%;
+    .contact input{
+        width: 90rem;
         border-radius: 1rem;
-        height: 4rem;
+        height: 3rem;
+    }
+
+    .contact p{
         font-size: 2rem;
-        opacity: 0.6;
-        background: linear-gradient(150deg,#64aef9,#fff);
     }
 
-    .contact-form button{
-        width: 10rem;
-        border-radius: 0.5rem;
-        opacity: 0.8;
-        background: linear-gradient(150deg,#3c9eff,#196c79);
+    .contact .name{
+        display: flex;
+    }
+
+    .contact .name input{
+        width: 44rem;
+        margin: 0.5rem;
+    }
+
+    .contact button{
+        margin-top: 2rem;
+        margin-left: 37rem;
+        font-size: 1.7rem;
+        border-radius: 2rem;
+        padding: 0.5rem 5rem;
         border: none;
-        margin-left: 68rem;
-        margin-top: 3rem;
+        background: #ccc;
     }
 
-    .contact-form button a{
-        text-decoration: none;
-        font-size: 2.5rem;
-        color: #fff;
+    .contact button:hover{
+        background: #aaa;
     }
 
-    .contact-form button:hover{
-        background: linear-gradient(150deg,#153e68,#196c79);
-    }
-    
-    
-     .modal-btn{
+
+
+    .modal-btn{
         background:linear-gradient(transparent, transparent);
         border: none;
     }
-    
+
     .modal .modal-content .modal-header h2{
         margin-left: 11.5rem;
         font-weight: bold;
     }
-    
+
     .modal .modal-content .modal-body i{
         display: inline-block;
         font-size: 3.5rem;
@@ -521,10 +501,10 @@
         background: #006400;
         color: #fff;
         border-radius: 50%;
-        
+
         margin-left: 21.5rem;
     }
-    
+
     .modal .modal-content .modal-footer{
         margin-right: 22.5rem;
         border-top: o;
@@ -535,51 +515,63 @@
 <!-- Header here -->
 
 <body>
-    <div id="banner">
-        <div id="search-box">
-            <h1>GROW YOUR</h1>
-            <h1>CARRER NOW</h1>
-            <p>We have been a software company since 2010. 
-                Let us help your problem in this digital age</p>
+    <section class="banner">
+        <div class="banner-content">
+            <h1>GROW UP YOUR CAREER</h1>
+            <p>
+                We have been a software company since 2010. Let us solve your problem
+                in this digital age.
+            </p>
+            <button>
+                <a href="#seek-job"
+                   >Get Started <i class="fa-solid fa-circle-chevron-right"></i
+                    ></a>
+            </button>
         </div>
+    </section>
 
-    </div>
 
-    <div id="introduce">
-        <div id="intro-head">
-            <h1>find your job and come to us</h1>
-            <p class="text-muted" style="font-weight: bold;">A wise man know where he belongs to</p>
-        </div>
-        <div id="intro-body">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="intro-info">
-                        <i class="fa-regular fa-heart"></i>
-                        <h1>SUITABLE JOBS</h1>
-                        <p class="text-muted">Find a job that suitable to your passion and inclination.</p>
-                    </div>
+    <div id="service" class="service">
+        <h1>Why choose us</h1>
+        <div class="intro">
+            <div class="suitable-job">
+                <div class="text">
+                    <i class="fa-regular fa-heart"></i>
+                    <h1>Suitable Jobs</h1>
+                    <p>Find a job that suitable to your passion and inclination.</p>
                 </div>
-                <div class="col-sm-4">
-                    <div class="intro-info">
-                        <i class="fa-sharp fa-solid fa-laptop"></i>
-                        <h1>DEVELOPER'S WORLD</h1>
-                        <p class="text-muted">As a technology company, we are seeking passionate developers and give
-                            them the best
-                            environment for them to work and become the best of version of themselves.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="intro-info">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <h1>GOOD WELFARE</h1>
-                        <p class="text-muted">If you work for us, you will&nbsp; not suffer any losses. You will enjoy
-                            the best
-                            perks and benefits we have for you.</p>
 
-                    </div>
+                <img src="https://images.unsplash.com/photo-1570126618953-d437176e8c79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=494&q=80"
+                     alt="suitable"
+                     />
+            </div>
+            <div class="developer">
+
+                <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                     alt="suitable"
+                     />
+
+                <div class="text">
+                    <i class="fa-sharp fa-solid fa-laptop"></i>
+                    <h1>Developer's World</h1>
+                    <p>As a technology company, we are seeking passionate developers and givethem the best 
+                        environment for them to work and become the best of version of themselves.</p>
                 </div>
             </div>
 
+            <div class="good-welfare">
+                <div class="text">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <h1>Competitive Welfare</h1>
+                    <p>If you work for us, you will not suffer any losses. You will enjoy
+                        the best
+                        perks and benefits we have for you.</p>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1661257454984-260701259b64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                     alt="suitable"
+                     />
+            </div>
         </div>
     </div>
 
@@ -642,60 +634,54 @@
                                             <p style="margin-bottom: 0;">${skill.skillName}</p>
                                         </li> 
                                     </c:forEach>
-                                    
+
                                 </div>
                             </div>
                         </div>           
                     </div>
                 </div>
                 <div class="result-post-right">
-                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><button class="modal-btn" data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fa-regular fa-bookmark"></i></button></a>
-                    
+                    <a href="<c:url value="/post-detail/save/${item.postId}"/>"><button class="modal-btn" onclick="saveJob()"> <i class="fa-regular fa-bookmark"></i></button></a>
+
                     <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
-                    <p>4 hours ago</p>
+                    <p>${item.getExpiredTime()}</p>
                 </div>
             </div>
         </c:forEach>
     </div>
 
-                
-                   <!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-          <h2 class="modal-title">Saved Job Successfully</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-          <i class="fa-sharp fa-solid fa-check"></i>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-                
-    <div id="contact" class="contact-us">
-        <div class="contact-form">
-            <h1>Contact us</h1>
-            <div class="text-items">
-                <h2>Your Name</h2>
-                <input type="text">
-                <h2>Your Email</h2>
-                <input type="text">
-                <h2>Your Phone</h2>
+        <div class="contact" id="contact">
+        <h1>Contact us</h1>
+        <div class="name">
+            <div class="first-name">
+                <p>First Name*</p>
                 <input type="text">
             </div>
-            <button><a href="#">Send</a></button>
+            <div class="last-name">
+                <p>Last Name*</p>
+                <input type="text">
+            </div>
         </div>
+        <div class="person-info">
+            <p>Email Address*</p>
+            <input type="text">
+            <p>Phone Number</p>
+            <input type="text">
+        </div>
+        <button>Send</button>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+                        function saveJob() {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+    </script>
 </body>

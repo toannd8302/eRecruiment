@@ -167,7 +167,7 @@
     </head>
     <body>
         <c:if test="${ERROR != null}">
-            <p>${ERROR}</p>
+            <h1>${ERROR}</h1>
         </c:if>
         <div class="login-form">
             <h1>LOGIN</h1>

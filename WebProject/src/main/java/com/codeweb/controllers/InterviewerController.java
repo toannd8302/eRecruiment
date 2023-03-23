@@ -81,6 +81,7 @@ public class InterviewerController {
             newReport.setJobApplication(this.jobApplicationService.getJobApplicationByID(jobAppId));
             model.addAttribute("report", newReport);
         }
+        model.addAttribute("candidate", this.jobApplicationService.getJobApplicationByID(jobAppId).getCandidate());
         return "create-report";
     }
 
@@ -91,7 +92,7 @@ public class InterviewerController {
             @RequestParam("action") String action) {
         String scheduleID = report.getSchedule().getScheduleId();
         String userID = report.getEmployee().getId();
-        if(action!=null){
+        if(action.equals("update")){
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date date = null;
             try {
@@ -102,6 +103,9 @@ public class InterviewerController {
             }
             if(date!=null)
                 report.setCreatedTime(date);
+            this.reportService.addOrUpdateReport(report, action);
+        }
+        if(action.equals("create")){
             this.reportService.addOrUpdateReport(report, action);
         }
         return "redirect:/interviewer/schedules/schedule-detail?scheduleID=" + scheduleID + "&userID=" + userID;

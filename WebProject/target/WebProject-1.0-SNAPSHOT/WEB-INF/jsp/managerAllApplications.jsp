@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 
 
@@ -37,15 +39,15 @@
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
         opacity: 0.8;
     }
-    
+
     .post-list-left .nav-body{
         margin-top: 12rem;
     }
-    
+
     .post-list-left .nav-body li{
         margin-top: 2rem;
     }
-    
+
     .post-list-left ul, li{
         padding-left: 0;
     }
@@ -245,6 +247,7 @@
         </ul>
     </nav>
 
+    <c:url value="/manager/jobapps/job-app-detail" var="action" />
     <div class="create-post-head">
         <div class="head-content">
             <h1 style="font-weight: bold; font-size: 6rem; margin-top: 6rem; color:#fff;">Job Application List</h1>
@@ -267,38 +270,22 @@
                 </thead>
                 <tbody>
                     <c:forEach var="item" varStatus="counter" items="${JobApps}">
-                    <form action="<c:url value="/manager/jobapps/job-app-detail" />" method="GET">
-                        <tr>
-                            <td>${counter.count}</td>
-                            <td>${item.getJobPosting().getJobPosition().getJobName()}</td>                          
-                            <td> <fmt:formatDate value="${item.getCreatedTime()}" pattern="dd-MM-yyyy"/></td>
-                            <td>${item. getCandidate().name}</td>
-                            <td>${item. getCandidate().email}</td>
-                            <td><input type="submit" value="View"/></td>
-                        <input type="hidden" name="jobAppId" value="${item.applicationId}" />             
-                        </tr>
-                    </form>                      
-                </c:forEach>
-
+                        <form:form action="${action}" method="GET" modelAttribute="JobApps">
+                            <tr>
+                                <td>${counter.count}</td>
+                                <td>${item.getJobPosting().getJobPosition().getJobName()}</td>                          
+                                <td> <fmt:formatDate value="${item.getCreatedTime()}" pattern="dd-MM-yyyy"/></td>
+                                <td>${item. getCandidate().name}</td>
+                                <td>${item. getCandidate().email}</td>
+                                <td><button>View</button></td>       
+                            </tr>
+                            <input type="hidden" name="jobAppId" value="${item.applicationId}" />   
+                        </form:form>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <script>
-        function deletePost(event) {
-            // Get a reference to the button element
-            event.preventDefault();
-            var confirmed = confirm("Are you sure you want to delete?");
-            if (confirmed) {
-                // continue with the default action (i.e. follow the href link)
-                window.location.href = event.currentTarget.getAttribute("href");
-            } else {
-                //do nothing
-
-            }
-        }
-
-    </script>
 
 </body>

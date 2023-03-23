@@ -129,5 +129,10 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
         <put-attribute name="title" value="View All Reports"/>
         <put-attribute name="content" value="/WEB-INF/jsp/managerJobAppDetails.jsp" />
     </definition>
+    <definition name="view-detail-job-post" extends="baseLayoutEmployee">
+        <put-attribute name="title" value="View All Reports"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/managerPostDetails.jsp" />
+    </definition>
+
 </tiles-definitions>    
     
