@@ -395,10 +395,17 @@
                         <td><%= jobposting.isApprovedStatus()%></td>
                         <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
                         <td >
+                            <%
+                                if (jobposting.isApprovedStatus().equals("Pending")) {
+                            %>
+
                             <a id="delete-post" onclick="deletePost(event)" 
                                href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>
                             <i class="fa-solid fa-trash trash-bin"></i></a>
                             <!--                            <br>-->
+                            <%
+                                }
+                            %>
                         </td>
                     </tr>   
 

@@ -63,11 +63,7 @@ public class CandidateController {
         jobApplication.setJobPosting(this.jobPostingService.getPostByID(postID));
         candidate candidate = (candidate) session.getAttribute("user");
         jobApplication.setCandidate(candidate);
-        if (this.jobApplicationService.add(jobApplication)) {
-//            candidate.getJobApplications().add(jobApplication);
-//            session.setAttribute("user", candidate);
-//Show result of update
-        }
+        this.jobApplicationService.applyJob(jobApplication);
         return "redirect:/";
     }
 
@@ -88,22 +84,10 @@ public class CandidateController {
         return "redirect:/job/viewMyJob";
     }
 
-    //=================VIEW MY JOB HERE=======================//
-    @GetMapping("/job/view")
-    public String view(Model model) {
-        List<jobApplication> List = this.jobApplicationService.jobApplicationList();
-        jobApplication job = List.get(1);
-        model.addAttribute("list", List);
-        Set<jobApplicationSchedule> JAPS = job.getJobApSche();
-        model.addAttribute("SSS", JAPS);
-        return "Test";
-    }
-
     //================UPDATE INFO OF CANDIDATE HERE=======================//
     @PostMapping("/update")
     public String updateInfor(Model model, @ModelAttribute(value = "candidate") candidate candidate, HttpSession session) {
         candidate candidateToUpdate = (candidate) session.getAttribute("user");
-
         candidateToUpdate.setName(candidate.getName());
         candidateToUpdate.setPhone(candidate.getPhone());
         candidateToUpdate.setAddress(candidate.getAddress());

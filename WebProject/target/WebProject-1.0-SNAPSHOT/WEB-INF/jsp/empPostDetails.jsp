@@ -134,6 +134,12 @@
         margin-top: 1rem;
         padding: 2rem;
     }
+    /* CSS for round*/
+    #job-detail-body #job-rounds{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
     /* CSS for Job Require */
     #job-detail-body #job-require {
         background-color: #d4f2e1;
@@ -385,6 +391,17 @@
         </ul>
     </div>
 
+    <div id="job-rounds">
+        <h1>Interview Round</h1>
+        <ul class="info-list">
+            <c:forEach var="round" items="${jobPosting.rounds}">
+                <li>
+                    ${round.roundNumber} - ${round.content}
+                </li> 
+            </c:forEach>
+        </ul>
+    </div>
+
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
@@ -401,7 +418,6 @@
     <script>
         function validateForm(event) {
             var expiredDate = document.getElementById("expiredDate");
-
             if (expiredDate.value === "") {
                 alert("Please enter an expired date.");
                 event.preventDefault();

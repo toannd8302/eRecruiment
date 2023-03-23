@@ -18,13 +18,10 @@
         font-size: 62.5%;
         font-family: Arial, Helvetica, sans-serif;
     }
-
     * {
         box-sizing: border-box;
         margin: 0;
     }
-
-
     .post-list-left{
         width: 8rem;
         position: fixed;
@@ -39,15 +36,12 @@
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
         opacity: 0.8;
     }
-
     .post-list-left .nav-body{
         margin-top: 12rem;
     }
-
     .post-list-left .nav-body li{
         margin-top: 2rem;
     }
-
     .post-list-left ul, li{
         padding-left: 0;
     }
@@ -105,23 +99,17 @@
         top: 90%;
         bottom: 0%;
     }
-
     .create-post-head{
         background: #00AE72;
         height: 25rem;
         font-family: 'Poppins', sans-serif;
-
     }
-
     .head-content{
         margin-left: 30rem;
         display: flex;
         justify-content: space-around;
         color: #CD2626;
-
     }
-
-
     .post-list-right{
         left: 20%;
         width: 80%;
@@ -132,26 +120,19 @@
         background-color: #fff;
         /*        VỪA MỚI THỆM VÀO LÚC 11H NGÀY 9/3/2023 BỞI TOÀN*/
         border-top-left-radius: 1rem;
-
     }
-
     .post-list-right .table thead{
         background-color: #00b14f;
         color: white;
-
     }
-
     .post-list-right h1{
         font-weight: bold;
         font-size: 3.5rem;
         color: orangered;
     }
-
     .trash-bin{
         cursor: pointer;
     }
-
-
     .styled-table {
         border-collapse: collapse;
         margin: 3rem 0;
@@ -163,34 +144,28 @@
         overflow: hidden;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
-
     .styled-table thead tr {
         background-color: #009879;
         color: #ffffff;
         text-align: left;
     }
-
     .styled-table th{
         font-size: 2rem;
         font-weight: bold;
         padding: 2rem 3rem;
         text-align: center;
     }
-
     .styled-table td {
         padding: 2rem 3rem;
         font-size: 1.5rem;
         text-align: center;
     }
-
     .styled-table tbody tr {
         border-bottom: 1px solid #dddddd;
     }
-
     .styled-table tbody tr:nth-of-type(even) {
         background-color: #f3f3f3;
     }
-
     .styled-table tbody tr:last-of-type {
         border-bottom: 2px solid #009879;
     }
@@ -247,6 +222,7 @@
         </ul>
     </nav>
 
+    <c:url value="/manager/jobapps/job-app-detail" var="action" />
     <div class="create-post-head">
         <div class="head-content">
             <h1 style="font-weight: bold; font-size: 6rem; margin-top: 6rem; color:#fff;">Job Application List</h1>
@@ -268,32 +244,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:url value="/manager/jobapps/job-app-detail" var="action" />
-                    <form:form action="${action}" method="POST" modelAttribute="JobApps">
-                        <c:forEach var="item" varStatus="counter" items="${JobApps}">
+                    <c:forEach var="item" varStatus="counter" items="${JobApps}">
+                        <form:form action="${action}" method="GET" modelAttribute="JobApps">
                             <tr>
                                 <td>${counter.count}</td>
                                 <td>${item.getJobPosting().getJobPosition().getJobName()}</td>                          
                                 <td> <fmt:formatDate value="${item.getCreatedTime()}" pattern="dd-MM-yyyy"/></td>
                                 <td>${item. getCandidate().name}</td>
                                 <td>${item. getCandidate().email}</td>
-                                <td><button>View</button></td>
-                                <td><button>View</button></td>
-                                <td><button>View</button></td>
-                        <input type="hidden" name="jobAppId" value="${item.applicationId}" />             
-                        </tr>           
-                </form:form>
-
-
-
-            </c:forEach>
-
-
-
-            </tbody>
-        </table>
+                                <td><button>View</button></td>       
+                            </tr>
+                            <input type="hidden" name="jobAppId" value="${item.applicationId}" />   
+                        </form:form>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 
 </body>

@@ -13,11 +13,9 @@
         margin: 0px auto;
         margin-left: 20rem;
     }
-
     #wrapper h1 {
         margin-left: 20rem;
     }
-
     .interview-table1 {
         width: 100%;
         border-collapse: collapse;
@@ -26,7 +24,6 @@
         align-items: center;
         margin-left: 280px;
     }
-
     .interview-table1 th {
         text-align: left;
         padding: 10px;
@@ -34,55 +31,44 @@
         border-bottom: 2px solid #9b9b9b;
         color: #040404;
     }
-
     .interview-table1 td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
     }
-
     .interviewer-table {
         border-collapse: collapse;
         width: 100%;
         margin-bottom: 20px;
     }
-
     .interviewer-table thead th {
         background-color: #333;
         color: #fff;
         text-align: left;
         padding: 10px;
     }
-
     .interviewer-table tbody td, .interviewer-table tbody th {
         border: 1px solid #ddd;
         padding: 10px;
         text-align: left;
     }
-
     .interviewer-table tbody tr:hover {
         background-color: #f5f5f5;
     }
-
     .interviewer-table tbody tr:nth-child(even) {
         background-color: #f2f2f2;
     }
-
     .interviewer-table tbody td:first-child, .interviewer-table thead th:first-child {
         width: 10%;
     }
-
     .interviewer-table tbody td:nth-child(2), .interviewer-table thead th:nth-child(2) {
         width: 20%;
     }
-
     .interviewer-table tbody td:nth-child(3), .interviewer-table thead th:nth-child(3) {
         width: 40%;
     }
-
     .interviewer-table tbody td:last-child, .interviewer-table thead th:last-child {
         width: 30%;
     }
-
     /* Sidebar */
     .sidebar {
         height: 100vh;
@@ -144,7 +130,6 @@
         margin-bottom: 2rem;
         height: auto;
         padding-left: 2rem;
-
     }
     .header p{
         font-size: 3rem;

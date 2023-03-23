@@ -19,10 +19,8 @@
         btn.addEventListener("click", () => {
             // Get the row that contains the clicked button
             const row = btn.parentNode.parentNode;
-
             // Check if the row is already expanded
             const isExpanded = row.nextElementSibling && row.nextElementSibling.classList.contains("expandable-row");
-
             // Toggle the visibility of the expandable row
             if (isExpanded) {
                 row.nextElementSibling.remove();
@@ -30,24 +28,19 @@
                 // Create a new row to hold the expanded content
                 const expandableRow = document.createElement("tr");
                 expandableRow.classList.add("expandable-row");
-
                 // Create a new table cell to hold the expanded content
                 const cell = document.createElement("td");
                 cell.setAttribute("colspan", "6");
-
                 // Create the expanded content
                 const content = `
         <h4>Details for ${row.cells[0].textContent}</h4>
         <p>Age: ${row.cells[1].textContent}</p>
         <p>Job Title: ${row.cells[2].textContent}</p>
       `;
-
                 // Set the innerHTML of the cell to the expanded content
                 cell.innerHTML = content;
-
                 // Append the cell to the expandable row
                 expandableRow.appendChild(cell);
-
                 // Insert the expandable row below the clicked row
                 table.tBodies[0].insertBefore(expandableRow, row.nextSibling);
             }
@@ -60,7 +53,6 @@
         font-size: 62.5%;
         font-family: 'Poppins', sans-serif;
     }
-
     * {
         box-sizing: border-box;
         padding: 0;
@@ -73,7 +65,6 @@
         background-size: cover;
         background-position: center;
     }
-
     .navbar {
         position: fixed;
         top: 0;
@@ -88,13 +79,11 @@
         height: 10rem;
         background: #000;
     }
-
     .navbar.sticky {
         padding: 1rem 4rem;
         background: #000;
         /* border-bottom: 3px solid silver; */
     }
-
     .navbar #logo a {
         position: relative;
         font-size: 2rem;
@@ -102,13 +91,11 @@
         font-weight: bold;
         color: #fff;
     }
-
     .navbar #logo img {
         margin-top: -1rem;
         width: 12rem;
         height: 6rem;
     }
-
     .navbar > .header-info > ul {
         position: relative;
         display: flex;
@@ -117,7 +104,6 @@
         margin-top: -1rem;
         width: 80rem;
     }
-
     .navbar .header-info ul li {
         position: relative;
         list-style: none;
@@ -130,7 +116,6 @@
         font-size: 2rem;
         color: #fff;
     }
-
     .navbar .header-info ul li a::after {
         content: "";
         height: 0.3rem;
@@ -141,23 +126,19 @@
         bottom: -0.5rem;
         transition: 0.5s;
     }
-
     .navbar .header-info ul li a:hover::after {
         width: 100%;
     }
-
     .navbar .header-info .account {
         display: flex;
         margin-top: 1rem;
     }
-
     .navbar .header-info .account img {
         width: 5rem;
         height: 5rem;
         border-radius: 50%;
         margin-top: -1rem;
     }
-
     .navbar .header-info .account ul {
         position: absolute;
         left: 0;
@@ -165,26 +146,20 @@
         padding: 2rem;
         display: none;
     }
-
     .navbar .header-info .account ul li {
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
         padding: 1rem;
     }
-
     .navbar .header-info ul li:hover > ul {
         display: initial;
         margin-top: 2rem;
     }
-
     .navbar.sticky ul li a {
         color: #fff;
     }
-
     .navbar.sticky ul li > ul li a {
         color: #fff;
     }
-
-
     #page-name{
         margin-left: 29.5rem;
         display: flex;
@@ -196,15 +171,12 @@
         padding: 2rem 3.4rem;
         border-radius: 1rem;
     }
-
-
     #user-name{
         padding-bottom: 2rem;
         color: #eee;
         margin-top: 7rem;
         margin-left: 1rem;
     }
-
     .post-list-left{
         width: 20rem;
         position: fixed;
@@ -217,30 +189,25 @@
         transition: width 0.2s linear;
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
     }
-
     .post-list-left ul, li{
         padding-left: 0;
     }
-
     .logo img{
         width: 6rem;
         height: 4rem;
         background-color: rgb(43, 44, 44);
         border-radius: 50%;
     }
-
     .logo{
         /* text-align: center; */
         display: flex;
         transition: all 0.5s ease;
     }
-
     .logo span{
         font-weight: bold;
         font-size: 1rem;
         text-transform: uppercase;
     }
-
     .post-list-left a{
         position: relative;
         color: #000;
@@ -252,12 +219,9 @@
         text-height: 1rem;
         font-weight: bold;
     }
-
     .post-list-left .nav-body li{
         margin-top: 4rem;
     }
-
-
     .post-list-left .fa-solid{
         position: relative;
         width: 5rem;
@@ -266,36 +230,28 @@
         font-size: 2rem;
         text-align: center;
     }
-
     .nav-item{
         position: relative;
         top: 0.2rem;
         margin-left: 1.8rem;
     }
-
     .post-list-left a:hover{
         background: #eee;
         color: black;
     }
-
     nav:hover{
         /* width: 28rem; */
         transition: all 0.5s ease;
     }
-
     nav:hover .logo{
         transform: translateX(20%);
         background-color: rgb(172, 170, 170);
     }
-
     .logout{
         position: absolute;
         top: 90%;
         bottom: 0%;
-
     }
-
-
     .view-app-right {
         margin-bottom: 5rem;
         margin-top: 15rem;
@@ -308,7 +264,6 @@
         padding-right: 5rem;
         /* border: 10px solid; */
     }
-
     .view-app-right::after{
         content: "";
         position: absolute;
@@ -318,41 +273,33 @@
         background-image: linear-gradient(to right top, #2979ff, #1f2123);
         border-radius: inherit;
     }
-
     #applied-list {
         display: flex;
         justify-content: space-between;
     }
-
     #applied-list h1{
         margin-top: 5rem;
         font-weight: bold;
         font-size: 4rem;
     }
-
     .table {
         background-color: white;
         margin-top: 5rem;
         padding-left: 5rem;
-
     }
-
     .table thead > tr {
         border: 1rem solid white;
     }
-
     .table tr th {
         font-size: 2rem;
         font-weight: bold;
     }
-
     .table th,
     td {
         color: black;
         font-size: 1.5rem;
         /*font-weight: bold;*/
     }
-
     .table tbody tr > td > button{
         border-radius: 1rem;
         background: #fff;
@@ -360,51 +307,39 @@
         font-weight: bolder;
         border: 0.4rem solid black;
     }
-
-
     .table tbody tr > td > a{
         text-decoration: none;
         font-weight: bold;
         color: #00a8b4;
         font-size: 1.5rem;
     }
-
     .table .row {
         position: static;
     }
-
     .table .row p {
         width: 3rem !important;
     }
-
     .detail-row {
         border-bottom: 2px solid black;
     }
-
     .table button {
         padding: 1rem 3rem;
         font-size: 1.2rem;
     }
-
     .detail-info a {
         text-decoration: none;
     }
-
     .detail-info ul {
         list-style: none;
     }
-
     .detail-info li {
         font-size: 1.3rem;
     }
-
-
 </style>
 
 <%
     //hien tai chua co trong database
     candidate candidate = (candidate) session.getAttribute("user");
-
 %>
 
 
