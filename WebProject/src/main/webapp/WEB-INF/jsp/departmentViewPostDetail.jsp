@@ -60,11 +60,11 @@
         margin-right: 5px;
     }
 
-      #return-btn{
-        margin: 3rem;  
-        
+    #return-btn{
+        margin: 3rem;
+
     }
-    
+
     #return-btn a{
         color: #000;
         font-size: 2rem;
@@ -126,10 +126,10 @@
         margin-left: 3.5rem;
     }
 
-    
-    
 
-    
+
+
+
 
 
     /* CSS for Job Location */
@@ -262,12 +262,13 @@
             <h2>Công ty phần mềm Monke Tech</h2> 
 
             <p><i class="fa-regular fa-clock"></i>Create Time: <fmt:formatDate value="${jobPosting.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
+            <p style="color: red">Status: ${jobPosting.isApprovedStatus()}</p>
         </div>
     </div>
-        <div id="return-btn">
-            <a href="<c:url value="/department"/>"><i class="fa-solid fa-house"></i></a>
-            
-        </div>
+    <div id="return-btn">
+        <a href="<c:url value="/department"/>"><i class="fa-solid fa-house"></i></a>
+
+    </div>
 
 </div>
 

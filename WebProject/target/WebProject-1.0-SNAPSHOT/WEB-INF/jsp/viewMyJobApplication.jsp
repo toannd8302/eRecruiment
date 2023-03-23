@@ -330,10 +330,6 @@
         font-size: 4rem;
     }
 
-    #applied-list h1:last-child{
-        color:	#009900;
-    }
-
     .table {
         background-color: white;
         margin-top: 5rem;
@@ -491,7 +487,6 @@
     <div class="view-app-right">
         <div id="applied-list">
             <h1>My Applications</h1>
-            <h1>${sessionScope.user.name}</h1>
         </div>
         <table class="table table-striped">
             <thead>

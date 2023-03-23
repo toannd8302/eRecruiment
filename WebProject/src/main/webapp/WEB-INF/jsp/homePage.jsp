@@ -404,10 +404,13 @@
         background-color: white;
         border: 2px solid white;
         border-radius: 0.5rem;
+        display: flex;
+    list-style: none;
     }
 
     .search-result .result-post .post-down p{
         margin-bottom: 0%;
+        margin-right: 0.5rem;
     }
 
     .search-result .result-post .result-post-right{
@@ -649,7 +652,7 @@
                     <a href="<c:url value="/post-detail/save/${item.postId}"/>"><button class="modal-btn" onclick="saveJob()"> <i class="fa-regular fa-bookmark"></i></button></a>
 
                     <!-- <i class="fa-solid fa-bookmark marked" style="color: rgb(243, 243, 79);"></i>     -->
-                    <p>4 hours ago</p>
+                    <p>${item.getExpiredTime()}</p>
                 </div>
             </div>
         </c:forEach>
