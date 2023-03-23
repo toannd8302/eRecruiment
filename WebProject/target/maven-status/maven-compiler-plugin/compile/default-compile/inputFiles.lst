@@ -56,6 +56,7 @@ D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\r
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\service\implement\ReportServiceImp.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\repository\EmployeeRepository.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\repository\implement\CandidateRepositoryImp.java
+D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\controllers\ManagerController.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\configs\WebSecurityConfig.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\repository\implement\EmployeeRepositoryImp.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\service\implement\JobApplicationServiceImp.java
@@ -81,7 +82,7 @@ D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\r
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\service\implement\SendMailServiceImp.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\controllers\AccountController.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\service\JobApplicationScheduleService.java
-D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\controllers\employeeController.java
+D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\controllers\EmployeeController.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\repository\implement\JobPostingRepositoryImp.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\service\ReportService.java
 D:\DOCUMENTATION\SWP\WebProjectRepository\WebProject\src\main\java\com\codeweb\common\CustomOAuth2User.java

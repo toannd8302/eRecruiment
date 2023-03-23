@@ -32,7 +32,7 @@
         
     <c:if test="${report.getReportId() != null}">
         <form:hidden path="reportId" value="${report.getReportId()}"/>
-        <input type="hidden" name="date" value="${report.getCreatedTime()}"/>
+        <input type="hidden" type="date" name="date" value="${report.getCreatedTime()}"/>
         <button name="action" value="update">Update report</button>
         <a href="#">Back</a>
     </c:if>

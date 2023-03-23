@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -91,6 +92,16 @@ public class InterviewerController {
         String scheduleID = report.getSchedule().getScheduleId();
         String userID = report.getEmployee().getId();
         if(action!=null){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = null;
+            try {
+                //Get date
+                date = dateFormat.parse(request.getParameter("date"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if(date!=null)
+                report.setCreatedTime(date);
             this.reportService.addOrUpdateReport(report, action);
         }
         return "redirect:/interviewer/schedules/schedule-detail?scheduleID=" + scheduleID + "&userID=" + userID;

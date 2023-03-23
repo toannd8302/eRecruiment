@@ -211,7 +211,8 @@ INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, 
 	VALUES(N'EM0005', N'Nguyen Thi B', N'Thi B', N'Nguyen', N'NguyenB@gmail.com', 1, N'1992-12-3', N'Q.5', N'0936827812', Null, N'ROLE_EMPLOYEE', 0)
 INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
 	VALUES(N'100608636561630496525', N'le dang khoa', N'le', N'dang khoa', N'ledangkhoa9aa2@gmail.com', 1, null, null, null, N'https://lh3.googleusercontent.com/a/AGNmyxbHpqK1DJed-9OfIXatnXKRSvUznDmwLgIgIcr6=s96-c', N'ROLE_EMPLOYEE', 0)
-
+INSERT Employees(Employee_id, FullName, Given_Name, Family_Name, Email, Gender, DOB, Address, Phone, Avatar, Role, Blocked_status) 
+	VALUES(N'118211662617852395734', N'john blitz', N'john', N'blitz', N'techmonkeycompany.recruitment@gmail.com', 0, null, null, null, N'https://lh3.googleusercontent.com/a/AGNmyxYn2oaqR0SJ3h_jIaPUldI3ZR73iMEfQTNfZ_31=s96-c', N'ROLE_MANAGER', 0)
 
 --Insert Departments
 INSERT Departments(Department_id, DepartmentName, Email, Password, Role)

@@ -115,4 +115,9 @@ public class JobApplicationServiceImp implements JobApplicationService {
         }
         return list.get(0);
     }
+
+    @Override
+    public List<jobApplication> getAllFinishedJobApp() {
+        return this.jobApplicationRepository.getJobApplicationByStatus("Finished");
+    }
 }
