@@ -19,67 +19,180 @@
         <title>JSP Page</title>
 
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;600;800&display=swap');
+            @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=Noto+Sans+Lepcha&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;500;600;800&display=swap");
             html {
                 font-size: 62.5%;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: "Poppins", sans-serif;
             }
+
             * {
                 box-sizing: border-box;
                 margin: 0;
-                list-style: none;
             }
+
+            body {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url('https://media.discordapp.net/attachments/1059668998503026770/1088380001059082271/people-office-background_236854-36902.png?width=782&height=521');
+                background-size: cover;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 84.2%;
+                transition: 0.5s;
+                padding: 2rem 4rem;
+                z-index: 10000;
+                height: 10rem;
+                /*background: linear-gradient(90deg, rgba(10,5,101,0.6940827356333159) 1%, rgba(2,86,103,0.7557073854932598) 52%, rgba(15,157,186,0.685679374288778) 100%);*/
+                 background: linear-gradient(90deg, rgba(10,5,101,0.6940827356333159) 1%, rgba(2,86,103,0.7557073854932598) 52%, rgba(15,157,186,0.685679374288778) 100%);
+            }
+
+            .navbar.sticky {
+                padding: 1rem 4rem;
+                background: #fff;
+                border-bottom: 3px solid silver;
+            }
+
+            .navbar #logo a {
+                position: relative;
+                text-decoration: none;
+                font-size: 2rem;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .navbar #logo img {
+                margin-top: -1rem;
+                width: 12rem;
+                height: 6rem;
+            }
+
+            .navbar .header-info ul li {
+                position: relative;
+                right: 0;
+                list-style: none;
+                margin: 0 1rem;
+                text-align: right;
+            }
+
+            .navbar .header-info ul li a {
+                position: relative;
+                text-decoration: none;
+                margin: 0 2rem;
+                font-size: 3rem;
+                color: #fff;
+                font-family: serif;
+            }
+
+            .navbar .header-info ul li a::after {
+                content: "";
+                height: 0.3rem;
+                width: 100%;
+                background: #009688;
+                position: absolute;
+                left: 0;
+                bottom: -0.5rem;
+                transition: 0.5s;
+            }
+
+            .navbar .header-info ul li a:hover::after {
+                width: 100%;
+            }
+
+            .navbar .header-info .account {
+                display: flex;
+                margin-top: 1rem;
+            }
+
+            .navbar .header-info .account img {
+                width: 5rem;
+                height: 5rem;
+                border-radius: 50%;
+                margin-top: -1rem;
+            }
+
+            .navbar .header-info .account ul {
+                position: absolute;
+                left: 0;
+                width: 27rem;
+                padding: 2rem;
+                display: none;
+            }
+
+            .navbar .header-info .account ul li {
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+                padding: 1rem;
+            }
+
+            .navbar .header-info ul li:hover > ul {
+                display: initial;
+                margin-top: 2rem;
+            }
+
             .post-list-left{
-                width: 8rem;
+                width: 23rem;
                 position: fixed;
                 top: 0;
                 bottom: 0;
                 left: 0;
                 height: 100%;
-                /*background-color: rgb(172, 170, 170);*/
-                background: #5c6664;
+                /*background: radial-gradient(circle, rgba(226,226,226,0.8313376375941002) 0%, rgba(255,255,255,0.850945480731355) 100%);*/
+                /*background: linear-gradient(90deg, rgba(10,5,101,0.6940827356333159) 1%, rgba(2,86,103,0.7557073854932598) 52%, rgba(15,157,186,0.685679374288778) 100%);*/
+                background: #fff;
                 overflow: hidden;
                 transition: witdh 0.2s linear;
                 box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
-                opacity: 0.8;
-            }
-
-            .post-list-left .nav-body{
-                margin-top: 12rem;
-            }
-
-            .post-list-left .nav-body li{
-                margin-top: 2rem;
+                border-top-right-radius: 1rem;
+                border-bottom-right-radius: 1rem;
             }
 
             .post-list-left ul, li{
                 padding-left: 0;
             }
-            .logo img{
-                width: 6rem;
-                height: 6rem;
-                background-color: rgb(43, 44, 44);
-                border-radius: 50%;
+            .nav-body{
+                margin-top: 10rem;
             }
+
+            .nav-body li{
+                margin: 4rem 0;
+            }
+            .logo img{
+                width: 10rem;
+                height: 5rem;
+            }
+
             .logo{
                 display: flex;
-                transition: all 0.5s ease;
+                transition: all 0.5s ease-in-out;
+
             }
+
             .logo span{
                 font-weight: bold;
                 font-size: 2rem;
                 text-transform: uppercase;
             }
+
             .post-list-left a{
                 position: relative;
-                color: white;
-                font-size: 2rem;
+                color: #000;
+                font-size: 1.5rem;
                 display: table;
-                width: 30rem;
+                width: 40rem;
                 text-decoration: none;
                 padding: 1.5rem;
+                transition: 0.5s ease;
+                font-weight: bold;
             }
-            .post-list-left .fa-solid{
+
+
+            .fa-solid{
                 position: relative;
                 width: 5rem;
                 height: 3rem;
@@ -87,43 +200,58 @@
                 font-size: 2rem;
                 text-align: center;
             }
+
             .nav-item{
                 position: relative;
                 top: 0.2rem;
                 margin-left: 1.8rem;
             }
+
             .post-list-left a:hover{
-                background: #eee;
-                color: black;
+                background: #000;
+                color: #fff;
             }
-            nav:hover{
-                width: 28rem;
-                transition: all 0.5s ease;
-            }
-            nav:hover .logo{
-                transform: translateX(30%);
-                background: #5c6664;
-            }
+
+            /*            .post-list-left a:hover li{
+                            color: 
+                        }
+            */
             .logout{
                 position: absolute;
                 top: 90%;
                 bottom: 0%;
             }
+
             .create-job-post-right {
-                position: absolute;
-                width: 80%;
+                position: relative;
+                width: 75%;
                 left: 20%;
                 padding-left: 2rem;
-                top: 20%;
-                /*margin-top: 1rem;*/
+                margin-top: 15rem;
                 background: #fff;
-                border-top-left-radius: 1rem;
+                border-radius: 1rem;
                 padding-bottom: 8rem;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .create-job-post-right .head-title{
+                background: #000;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .create-job-post-right .head-title > h1{
+                font-size: 3rem;
+                color: #fff;
+                text-transform: uppercase;
+                font-family: "Poppins", sans-serif;
+
             }
 
             .create-job-post-right h1 {
                 font-weight: bold;
-                font-size: 3.5rem;
+                font-size: 2.5rem;
 
             }
             .create-job-post-right select {
@@ -140,6 +268,11 @@
                 margin-top: 2rem;
                 border-radius: 0.5rem;
             }
+            
+            .general-info{
+                padding:0 5rem;
+            }
+            
             #job-descript {
                 margin-top: 1.35rem;
             }
@@ -164,8 +297,12 @@
                 font-weight: bold;
                 background-color: rgb(206, 249, 238);
             }
-            #Concak select{
 
+            #Concak{
+                padding-left: 5rem;
+            }
+
+            #Concak select{
                 outline:0;
                 box-shadow:none;
                 background-image: none;
@@ -179,18 +316,17 @@
                 width: 95%;
                 height: 3em;
                 line-height: 3;
-
                 overflow: hidden;
                 border-radius: .25em;
                 font-size: 1.8rem;
                 margin-top: 3rem;
             }
-            
+
             #Concak select:after{
                 content: '&#60';
                 font-size: 5rem;
             }
-            
+
 
             #Concak select::-ms-expand{
                 display: none;
@@ -241,18 +377,13 @@
 
             .create-job-post-right h3{
                 margin-bottom: 2rem;
-                font-size: 2.5rem;
+                font-size: 2rem;
                 font-family: 'Poppins', sans-serif;
             }
 
             .text-info select{
-                -webkit-appearance:none;
-                -moz-appearance:none;
-                -ms-appearance:none;
-                appearance:none;
                 outline:0;
                 box-shadow:none;
-                border:0!important;
                 background-image: none;
                 flex: 1;
                 padding: 0 .5em;
@@ -264,7 +395,6 @@
                 width: 80%;
                 height: 4rem;
                 line-height: 2;
-                background: #bcb88a;
                 overflow: hidden;
                 border-radius: .25em;
                 font-size: 1.8rem;
@@ -277,13 +407,9 @@
 
 
             #location-list select{
-                -webkit-appearance:none;
-                -moz-appearance:none;
-                -ms-appearance:none;
-                appearance:none;
                 outline:0;
                 box-shadow:none;
-                border:0!important;
+
                 background-image: none;
                 flex: 1;
                 padding: 0 .5em;
@@ -295,7 +421,7 @@
                 width: 80%;
                 height: 4rem;
                 line-height: 2;
-                background: #bcb88a;
+
                 overflow: hidden;
                 border-radius: .25em;
                 font-size: 1.8rem;
@@ -318,26 +444,25 @@
                 display: flex;
                 justify-content: space-around;
                 color: #CD2626;
-
             }
 
             .post-step{
                 display: flex;
-                margin-top: 4rem;
-
+                margin-top: 2rem;
+                padding:0 5rem;
             }
 
             .post-step h2{
-                font-size: 4rem;
-                color: #008B45;
+                font-size: 2rem;
+                color: #000;
             }
 
             .post-step p{
-                padding: 0.3rem 1.6rem;
+                padding: 0.3rem 1rem;
                 border-radius: 50%;
-                background: #006400;
+                background: #000;
                 color: #fff;
-                font-size: 3rem;
+                font-size: 1.5rem;
                 margin-right: 1rem;
                 font-family: serif;
                 font-weight: bold;
@@ -374,14 +499,14 @@
                 width: 0;
                 border: none;
                 background: #fff;
-                margin-left: 17rem;
+                margin-left: 15rem;
             }
 
             .welfare button i{
                 top: 0;
                 padding: 0.7rem 1rem;
                 border-radius: 50%;
-                background-color: #008B00;
+                background-color: #000;
                 color: #fff;
                 display: inline;
             }
@@ -396,20 +521,19 @@
             }
 
             .foot-btn{
-                /*margin-left: 2rem;*/
+                text-align: center;
             }
 
             .foot-btn button{
                 font-size: 2rem;
-                width: 105rem;
-                background: #C60000;
-                color: #eee;
-                font-weight: bold;
-                border: none;
+                width: 15rem;
+                background: #fff;
+                color: #000;
+                font-weight: bold;                
                 box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
                 transition: 0.3s ease-in-out;
                 padding: 1rem 0;
-                margin-left: 5rem;
+                margin-left: 0;
             }
 
             .foot-btn button:active{
@@ -417,32 +541,43 @@
             }
 
             .foot-btn button:hover{
-                background: #CD0000;
-                background: #fff;
-                color: red;
-                border: 1px solid red;
+                color: #fff;
+                background: #000;
+                border: 1px solid #fff;
             }
+
 
         </style>
 
     </head>
-    <body style="background: #FAF0E6">
+    <body>
+
+        <div class="navbar" style="position: fixed">
+            <div class="header-info">
+                <ul>         
+                    <div class="account">           
+                        <li>
+                            <a href="#">Information Technology Department</a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
 
         <nav class="post-list-left">
             <ul>
                 <li>
-                    <a href="<c:url value="/logout"/>" class="logo">
+                    <a style="font-size: 2rem;" href="<c:url value="/logout"/>" class="logo">
                         <img
                             src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
                             alt="Monke Tech"
-                            />                     
+                            />
+                        MonkeTech
                     </a>
                 </li>
                 <div class="nav-body">
-
-
                     <li>
-                        <a href="<c:url value="/"/>">
+                        <a href="<c:url value="/department"/>">
                             <i class="fa-solid fa-house"></i>
                             <span class="nav-item">Home</span>
                         </a>
@@ -450,13 +585,13 @@
                     <li>
                         <a href="<c:url value="/department" />">
                             <i class="fa-solid fa-list"></i>
-                            <span class="nav-item">Job Posting List</span>
+                            <span class="nav-item">Post List</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="<c:url value="/createjobposting" />">
                             <i class="fa-solid fa-folder-plus"></i>
-                            <span class="nav-item">Create a Job Posting</span>
+                            <span class="nav-item">Create Post</span>
                         </a>
                     </li>
                 </div>
@@ -470,14 +605,11 @@
         </nav>
 
 
-        <div class="create-post-head">
-            <div class="head-content">
-                <h1 style="font-weight: bold; font-size: 6rem; margin-top: 6rem; color:#fff;">Create a Job Posting</h1>
-                <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #FFD39B;" class="nav-item">${sessionScope.department.departmentName} Department</h1>
-            </div>    
-        </div>
 
-        <div class="create-job-post-right">      
+        <div class="create-job-post-right">   
+            <div class="head-title">
+                <h1>Create a Job Posting</h1>
+            </div>
             <div class="post-step">
                 <p>1</p>
                 <!--style="margin: 2rem 0; color: #000; text-align: center;"-->
@@ -498,7 +630,7 @@
                     <h2>General Information</h2>
                 </div>
 
-                <div class="container-fluid mt-3">
+                <div class="container-fluid mt-3 general-info">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="text-info">
@@ -534,7 +666,7 @@
                         </div>
                     </div>
 
-                    <div class="post-step" style="margin-top: 5rem; border-top: 2px solid silver; padding-top: 2rem;">
+                    <div class="post-step" style="margin-top: 5rem; border-top: 2px solid silver; padding-top: 2rem; padding-left: 0;">
                         <p>3</p>
                         <h2>Detail Information</h2>
                     </div>

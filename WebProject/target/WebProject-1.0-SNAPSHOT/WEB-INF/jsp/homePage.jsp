@@ -105,6 +105,7 @@
 
     .intro i{
         font-size: 5rem;
+        transition: 0.3s;
     }
 
     .intro .suitable-job{

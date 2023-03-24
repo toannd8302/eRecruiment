@@ -15,6 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
+     @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Climate+Crisis&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Lepcha&family=Poppins:wght@400;500;600;800&display=swap");
     html {
         font-size: 62.5%;
         font-family: 'Poppins', sans-serif;
@@ -267,7 +268,7 @@
         padding-right: 5rem;
     }
 
-     .view-favour-right::after{
+    .view-favour-right::after{
         content: "";
         position: absolute;
         inset: 0;
@@ -282,8 +283,21 @@
     }
 
     .table{
-        margin-top: 3rem;
+        border-collapse: collapse;
+        margin: 3rem 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
+    }
+
+    .table thead tr{
+        background-color: #009879;
+        color: #fff;
+        text-align: center;
     }
 
     .table thead tr th{
@@ -301,6 +315,19 @@
     .table tbody tr td button a{
         text-decoration: none;
         color: #fff;
+    }
+
+    #favor-list{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #favor-list h1{
+        margin-top: 5rem;
+        font-weight: bold;
+        font-size: 4rem;
+        color: red;
+        font-family: "Poppins", sans-serif; 
     }
 </style>
 
@@ -329,7 +356,7 @@
                             <img
                                 src="<c:url value="${sessionScope.user.getPicture()}"/>"
                                 alt="avatar"/>
-                               <a href="#">${sessionScope.user.name}</a>
+                            <a href="#">${sessionScope.user.name}</a>
                             <ul>
                                 <li><a href="<c:url value="/account"/>">My Profile</a></li>
                                 <li><a href="<c:url value="/job/viewMyJob"/>">My Applications</a></li>
@@ -386,12 +413,15 @@
     <%
         //Get candidate
         Set<jobPosting> wishList = (Set<jobPosting>) session.getAttribute("JobPostings");
-        if (!wishList.isEmpty()) {
+       
             //HANDLE VẤN ĐỀ TRÙNG THÌ DÙNG SET HOẶC IF
     %>
-   
+
 
     <div class="view-favour-right">
+        <div id="favor-list">
+            <h1>Favourite Jobs</h1>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -401,6 +431,8 @@
                     <!--                <th>Department</th>-->
                     <th>Location</th>
                     <th>Salary</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -425,12 +457,7 @@
             </tbody>
         </table>
 
-        <% } else {
-        %>
-        <h1 style="color: red; font-family: serif; float: right; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)">Your WishList is empty</h1>
-        <%
-            }
-        %> 
+        
     </div>
 </body>
 

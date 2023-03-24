@@ -32,7 +32,9 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
     </definition>
     <definition name="post-detail-page" extends="baseLayout">
         <put-attribute name="title" value="Post Detail"/>
+        <put-attribute name="header" value="/WEB-INF/layout/departmentFooter.jsp"/>
         <put-attribute name="content" value="/WEB-INF/jsp/postDetail.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/departmentFooter.jsp"/>
     </definition>
     <definition name="apply-job" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>

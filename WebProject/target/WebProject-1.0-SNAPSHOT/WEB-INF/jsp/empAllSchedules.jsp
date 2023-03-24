@@ -169,13 +169,21 @@
     /* Sidebar */
     .sidebar {
         height: 100vh;
-        width: 200px;
+        width: 50px;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
         font-weight: bold;
+        transition: 0.5s;
+    }
+    .sidebar i{
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
+    .sidebar:hover{
+        width: 230px;
     }
     .sidebar h1 {
         margin-bottom: 30px;
@@ -183,19 +191,30 @@
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
+        position: absolute;
+        width: 50rem;
     }
     .sidebar .action {
         margin-top: 2rem;
     }
     .sidebar li {
         margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
     }
     .sidebar a {
-        display: block;
         color: rgb(69, 69, 69);
         padding-top: 2rem;
         padding-bottom: 2rem;
         text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
+    }
+    .sidebar span{
+        padding-left: 2.5rem;
     }
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
@@ -205,11 +224,12 @@
     }
     /* Account */
     .sidebar img {
-        width: 13.5rem;
-        height: 13.5rem;
-        margin-left: 3rem;
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
         margin-right: 3rem;
         border-radius: 50%;
+        position: relative;
     }
     #account h2,
     li {
@@ -222,10 +242,6 @@
     #account ul {
         padding-left: 0%;
     }
-    #my-account {
-        margin-left: 1.5rem;
-        margin-top: 1.5rem;
-    }
 </style>
 
 <div class="sidebar">
@@ -237,10 +253,10 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
-                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
-                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</span></a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
+                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
@@ -304,17 +320,14 @@
     const gridViewBtn = document.getElementById('grid-view');
     const interviewList = document.querySelector('.interview-list');
     const interviewGrid = document.querySelector('.interview-grid');
-
 // Hide gridview initially
     interviewGrid.style.display = 'none';
-
 // Event listener for listview button
     listViewBtn.addEventListener('click', function () {
         // Show listview, hide gridview
         interviewList.style.display = 'block';
         interviewGrid.style.display = 'none';
     })
-
 // Event listener for gridview button
     gridViewBtn.addEventListener('click', function () {
         // Show gridview, hide listview

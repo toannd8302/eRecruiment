@@ -31,20 +31,29 @@
         }
         .header {
             background-color: rgb(208, 204, 204);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             height: 8.5rem;
             text-align: center;
+            width: 95%;
         }
         /* Sidebar */
         .sidebar {
             height: 100vh;
-            width: 200px;
+            width: 50px;
             position: fixed;
             top: 0;
             left: 0;
             overflow-x: hidden;
             background-color: #baa9a3;
             font-weight: bold;
+            transition: 0.5s;
+        }
+        .sidebar i{
+            padding-left: 0.5rem;
+            font-size: 3rem;
+        }
+        .sidebar:hover{
+            width: 230px;
         }
         .sidebar h1 {
             margin-bottom: 30px;
@@ -52,19 +61,30 @@
         .sidebar ul {
             list-style-type: none;
             padding-left: 0;
+            position: absolute;
+            width: 50rem;
         }
         .sidebar .action {
             margin-top: 2rem;
         }
         .sidebar li {
             margin-bottom: 5px;
+            position: relative;
+            width: 100%;
+            font-size: 2rem;
         }
         .sidebar a {
-            display: block;
             color: rgb(69, 69, 69);
             padding-top: 2rem;
             padding-bottom: 2rem;
             text-decoration: none;
+            position: relative;
+            width: 100%;
+            display: block;
+            display: flex;
+        }
+        .sidebar span{
+            padding-left: 2.5rem;
         }
         .sidebar a:hover {
             background-color: rgb(208, 204, 204);
@@ -74,11 +94,12 @@
         }
         /* Account */
         .sidebar img {
-            width: 13.5rem;
-            height: 13.5rem;
-            margin-left: 3rem;
+            width: 12rem;
+            height: 12rem;
+            margin-left: 6rem;
             margin-right: 3rem;
             border-radius: 50%;
+            position: relative;
         }
         #account h2,
         li {
@@ -103,65 +124,10 @@
             margin-left: 3rem;
             font-size: 2.5rem;
         }
-        #general-info h1 {
-            font-size: 3rem;
-        }
-        #general-info h2 {
-            font-size: 2.5rem;
-        }
-        #general-info p {
-            margin-top: 1rem;
-            font-size: 1.5rem;
-        }
-        #general-info p i {
-            margin-right: 1rem;
-        }
         /* CSS for Job posting */
         #job-detail-head {
             margin-left: 20rem;
-        }
-        #job-detail-head #apply-buton button:first-child:hover {
-            background-color: #e74c3c;
-        }
-        #job-detail-head #apply-buton button:last-child {
-            margin-top: 2rem;
-            padding: 1rem;
-            border-radius: 1rem;
-            background-color: #ffffff;
-            border: 0.2rem solid #00b14f;
-            margin-right: 1rem;
-            color: #00b14f;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        #job-detail-head #apply-buton button:last-child:hover {
-            background-color: #e74c3c;
-        }
-        #job-detail-head #apply-buton button a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
-        }
-        #job-detail-head #apply-buton button i:first-child {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-right: 1rem;
-        }
-        #job-detail-head #apply-buton button i:last-child {
-            font-size: 2rem;
-            color: #00b14f;
-            margin-right: 1rem;
-        }
-        .general-info-list a {
-            text-decoration: none;
-            color: rgb(244, 131, 131);
-        }
-        .application-info-list a {
-            text-decoration: none;
-            color: rgb(244, 131, 131);
-        }
-        #general-info .apply-time {
-            font-size: 2.5rem;
+            width: 85%;
         }
         input[type=text],
         textarea {
@@ -190,7 +156,11 @@
         .send-report{
             margin-top: 0px;
             text-align: center;
-            padding-top: 2rem;
+            transition: 0.5s;
+            border-radius: 1rem;
+        }
+        .send-report:hover{
+            background-color: rgb(208, 204, 204)
         }
     </style>
 
@@ -203,8 +173,8 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/interviewer/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/interviewer/schedules"/>"><i class="fa-solid fa-list"></i><span></span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </div>
@@ -218,7 +188,7 @@
         <div class="row">
             <div class="col-sm-2">
                 <div id="job-logo">
-                    <img src="https://www.pngitem.com/pimgs/m/208-2088629_employee-png-free-employees-icon-png-transparent-png.png"
+                    <img src="${candidate.getPicture()}"
                          alt="Back-end">
                 </div>
             </div>
@@ -242,7 +212,7 @@
                             <h2><i class="fa-solid fa-comment"></i> Report</h2>
                             <form:textarea path="content" name="impression" rows="5" required="true" value="${report.getContent()}"/>
                             <c:if test="${report.getReportId() == null}">
-                                <button name="action" value="create">Create report</button>
+                                <button class="send-report" name="action" value="create">Create report</button>
                             </c:if>
                             <c:if test="${report.getReportId() != null}">
                                 <button name="action" value="update">Update report</button>
@@ -250,7 +220,6 @@
                                 <input type="hidden" type="date" name="date" value="${report.getCreatedTime()}"/>
                             </c:if>
                         </div>
-
                         <form:hidden path="employee.id" value="${report.getEmployee().id}"/>
                         <form:hidden path="jobApplication.applicationId" value="${report.getJobApplication().applicationId}"/>
                         <form:hidden path="schedule.scheduleId" value="${report.getSchedule().scheduleId}"/>
@@ -259,4 +228,4 @@
             </div>
         </div>
     </div>
-</htm
+</html>

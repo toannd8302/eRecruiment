@@ -13,7 +13,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <style>
-     body {
+    body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
         width: 100%;
@@ -105,7 +105,7 @@
         margin-bottom: 20px;
     }
     .box {
-        width: 600px;
+        width: auto;
         height: 220px;
         background-color: lightgray;
         border: 2px solid black;
@@ -218,13 +218,21 @@
     /* Sidebar */
     .sidebar {
         height: 100vh;
-        width: 200px;
+        width: 50px;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
         font-weight: bold;
+        transition: 0.5s;
+    }
+    .sidebar i{
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
+    .sidebar:hover{
+        width: 230px;
     }
     .sidebar h1 {
         margin-bottom: 30px;
@@ -232,19 +240,30 @@
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
+        position: absolute;
+        width: 50rem;
     }
     .sidebar .action {
         margin-top: 2rem;
     }
     .sidebar li {
         margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
     }
     .sidebar a {
-        display: block;
         color: rgb(69, 69, 69);
         padding-top: 2rem;
         padding-bottom: 2rem;
         text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
+    }
+    .sidebar span{
+        padding-left: 2.5rem;
     }
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
@@ -254,11 +273,12 @@
     }
     /* Account */
     .sidebar img {
-        width: 13.5rem;
-        height: 13.5rem;
-        margin-left: 3rem;
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
         margin-right: 3rem;
         border-radius: 50%;
+        position: relative;
     }
     #account h2,
     li {
@@ -271,10 +291,6 @@
     #account ul {
         padding-left: 0%;
     }
-    #my-account {
-        margin-left: 1.5rem;
-        margin-top: 1.5rem;
-    }
     /*
     PHẦN SCHEDULE DETAIL CỦA ON GOING
     */
@@ -284,6 +300,7 @@
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         margin: 40px auto;
+        margin-left: 5rem;
         width: 80%;
         display: flex;
         flex-wrap: wrap;
@@ -401,7 +418,7 @@
         margin-bottom: 20px;
         width: 60%;
         align-items: center;
-        margin-left: 280px;
+        margin-left: 240px;
     }
     .interview-table1 th {
         text-align: left;
@@ -418,8 +435,7 @@
         text-decoration: none;
     }
     .body-pending{
-        position: absolute;
-        left: 14%;
+        margin-left: 23rem;
         width: 80%;
     }
 </style>
@@ -435,10 +451,10 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
-                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
-                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
+                <li><a class="active" href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
@@ -669,5 +685,3 @@
         </table>
     </div>
 </c:if>
-
-

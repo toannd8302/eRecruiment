@@ -20,7 +20,7 @@
     #job-detail-head {
         background-color: white;
         width: auto;
-        margin-left: 20rem;
+        margin-left: 23rem;
         padding: 2rem;
         background-color: rgb(208, 204, 204);
     }
@@ -87,10 +87,13 @@
     /* CSS for recruit detail  */
     #job-detail-body {
         background-color: white;
-        width: 85%;
-        margin-left: 14%;
-        padding: 2rem;
+        width: 84.95%;
+        margin-left: 22rem;
+        padding-left: 1rem;
         margin-top: 1.5rem;
+    }
+    #job-detail-body #recrui-detail .job-detail-recruit{
+        font-weight: bold;
     }
     #job-detail-body #job-general-info {
         margin-top: 2rem;
@@ -166,15 +169,24 @@
         margin-right: 1rem;
     }
     /* Sidebar */
+    /* Sidebar */
     .sidebar {
         height: 100vh;
-        width: 200px;
+        width: 50px;
         position: fixed;
         top: 0;
         left: 0;
         overflow-x: hidden;
         background-color: #baa9a3;
         font-weight: bold;
+        transition: 0.5s;
+    }
+    .sidebar i {
+        padding-left: 0.5rem;
+        font-size: 3rem;
+    }
+    .sidebar:hover {
+        width: 230px;
     }
     .sidebar h1 {
         margin-bottom: 30px;
@@ -182,19 +194,30 @@
     .sidebar ul {
         list-style-type: none;
         padding-left: 0;
+        position: absolute;
+        width: 50rem;
     }
     .sidebar .action {
         margin-top: 2rem;
     }
     .sidebar li {
         margin-bottom: 5px;
+        position: relative;
+        width: 100%;
+        font-size: 2rem;
     }
     .sidebar a {
-        display: block;
         color: rgb(69, 69, 69);
         padding-top: 2rem;
         padding-bottom: 2rem;
         text-decoration: none;
+        position: relative;
+        width: 100%;
+        display: block;
+        display: flex;
+    }
+    .sidebar span {
+        padding-left: 2.5rem;
     }
     .sidebar a:hover {
         background-color: rgb(208, 204, 204);
@@ -204,11 +227,12 @@
     }
     /* Account */
     .sidebar img {
-        width: 13.5rem;
-        height: 13.5rem;
-        margin-left: 3rem;
+        width: 12rem;
+        height: 12rem;
+        margin-left: 6rem;
         margin-right: 3rem;
         border-radius: 50%;
+        position: relative;
     }
     #account h2,
     li {
@@ -220,10 +244,6 @@
     }
     #account ul {
         padding-left: 0%;
-    }
-    #my-account {
-        margin-left: 1.5rem;
-        margin-top: 1.5rem;
     }
     .hot-job-button{
         width: 3rem;
@@ -241,10 +261,10 @@
         </div>
         <div class="action">
             <ul>
-                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i> Applications List</a></li>
-                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i> Job Postings List</a></li>
-                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i> Schedule List</a></li>
-                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+                <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</span></a></li>
+                <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
+                <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
+                <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
             </ul>
         </div>
     </sec:authorize>
@@ -266,7 +286,7 @@
                         <h2>Software company Monke Tech</h2>
                         <p>Created date: <fmt:formatDate value="${jobPosting.getCreatedTime()}" pattern="dd/MM/yyyy"/></p>
                         <p><i class="fa-regular fa-clock"></i>Expired date: <input type="date" name="expiredDate" id="expiredDate" value=""/></p>
-                        <p>Hot Job <input class="hot-job-button" type="checkbox" name="isHotJob" checked="true" value="0"/></p>
+                        <p><i class="fa-solid fa-fire"></i>Hot Job <input class="hot-job-button" type="checkbox" name="isHotJob" checked="true" value="0"/></p>
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -322,19 +342,18 @@
                             href="#">Approve</a></button>-->
 <div id="job-detail-body">
     <div id="recrui-detail">
-        <h1>Recruitment information</h1>
+        <h1 class="job-detail-recruit">Recruitment information</h1>
         <div id="job-general-info">
             <h1>General information</h1>
             <ul class="general-info-list">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 general-info-left">
                         <li><i class="fa-solid fa-money-bill"></i>
                             Salary
                             <p>${jobPosting.getSalary()}</p>
                         </li>
 
-                        <li><i class="fa-sharp fa-solid fa-suitcase"></i>Type of work
-                            <p>
+                        <li><i class="fa-sharp fa-solid fa-suitcase"></i>Type of work<p>
                                 <c:if test="${jobPosting.isTypeOfWork() == true}">
                                     At Office
                                 </c:if>
@@ -343,18 +362,13 @@
                                 </c:if>
                             </p>
                         </li>
-
-                        <!--                        <li><br><i class="fa-solid fa-venus-mars"></i>Giới tính<p>Nam</p>
-                                                </li>-->
                     </div>
-                    <div class="col-sm-6">
-                        <li><i class="fa-sharp fa-solid fa-people-group"></i>number of recruitments<p>No</p>
+                    <div class="col-sm-6 general-info-right">
+
+                        <li><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.getLevel()}</p>
                         </li>
 
-                        <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.getLevel()}</p>
-                        </li>
-
-                        <li><br><i class="fa-brands fa-black-tie"></i>Year Experience<p>${jobPosting.getExprienceRequirement()}</p>
+                        <li><i class="fa-brands fa-black-tie"></i>Year Experience<p>${jobPosting.getExprienceRequirement()}</p>
                         </li>
                     </div>
                 </div>
@@ -381,13 +395,13 @@
     </div>
 
     <div id="job-require">
-        <h1>Requirements</h1>
+        <h1>Required Skills</h1>
         <ul class="info-list">
-            <!--Thêm phần kinh nghiệm-->
-            <li>Yêu cầu tối thiểu 6 tháng kinh nghiệm lập trình trên .NET</li>
-            <li>Kỹ năng lập trình</li>
-            <li>Chịu áp lực công việc cao</li>
-            <li>Tiếng anh trình độ A</li>
+            <c:forEach var="skill" items="${jobPosting.jobPosition.skills}">
+                <li>
+                    ${skill.skillName}
+                </li> 
+            </c:forEach>
         </ul>
     </div>
 

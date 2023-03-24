@@ -61,6 +61,7 @@
         position: relative;
         width: 100%;
         display: flex;
+        display: block;
     }
     .sidebar span {
         padding-left: 2.5rem;
@@ -177,8 +178,8 @@
     /* CSS for recruit detail  */
     #job-detail-body {
         background-color: white;
-        width: 85%;
-        margin-left: 25rem;
+        width: 86.975%;
+        margin-left: 21rem;
         padding: 2rem;
     }
     #job-detail-body #job-general-info {
@@ -318,12 +319,12 @@
 <div class="sidebar">
     <div class="row">
         <div>
-            <img src="https://pbs.twimg.com/media/FpvBfcyacAIaM64?format=jpg&name=large" />
+            <img src="<c:url value="${sessionScope.user.getPicture()}"/>" />
         </div>
     </div>
     <div class="action">
         <ul>
-            <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Job Applications List</span></a></li>
+            <li><a href="<c:url value="/jobApps"/>"><i class="fa-solid fa-list"></i><span>Applications List</span></a></li>
             <li><a href="<c:url value="/jobPostings"/>"><i class="fa-solid fa-list"></i><span>Job Postings List</span></a></li>
             <li><a href="<c:url value="/schedules"/>"><i class="fa-solid fa-list"></i><span>Schedule List</span></a></li>
             <li><a href="<c:url value="/logout"/>"><i class="fa-solid fa-right-from-bracket"></i><span>Log out</span></a></li>
@@ -354,7 +355,7 @@
                             <th>Number</th>
                             <th>Job Name</th>
                             <th>Round</th>
-                            <th>Type of Interviewer</th>
+                            <th>Type of Interview</th>
                             <th>Number of Candidates</th>
                             <th>Number of Interviewers</th>
                             <th>Status</th>

@@ -43,12 +43,13 @@
         position: fixed;
         top: 0;
         right: 0;
-        width: 84.4%;
+        width: 84.2%;
         transition: 0.5s;
         padding: 2rem 4rem;
         z-index: 10000;
         height: 10rem;
         background: linear-gradient(90deg, rgba(10,5,101,0.6940827356333159) 1%, rgba(2,86,103,0.7557073854932598) 52%, rgba(15,157,186,0.685679374288778) 100%);
+        /*background: #000;*/
     }
 
     .navbar.sticky {
@@ -140,7 +141,9 @@
         bottom: 0;
         left: 0;
         height: 100%;
-        background: radial-gradient(circle, rgba(226,226,226,0.8313376375941002) 0%, rgba(255,255,255,0.850945480731355) 100%);
+        /*background: radial-gradient(circle, rgba(226,226,226,0.8313376375941002) 0%, rgba(255,255,255,0.850945480731355) 100%);*/
+        /*background: linear-gradient(90deg, rgba(10,5,101,0.6940827356333159) 1%, rgba(2,86,103,0.7557073854932598) 52%, rgba(15,157,186,0.685679374288778) 100%);*/
+        background: #fff;
         overflow: hidden;
         transition: witdh 0.2s linear;
         box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
@@ -178,11 +181,13 @@
     .post-list-left a{
         position: relative;
         color: #000;
-        font-size: 2rem;
+        font-size: 1.5rem;
         display: table;
         width: 40rem;
         text-decoration: none;
         padding: 1.5rem;
+        transition: 0.5s ease;
+        font-weight: bold;
     }
 
 
@@ -202,14 +207,20 @@
     }
 
     .post-list-left a:hover{
-        background: #eee;
+        background: #000;
+        color: #fff;
     }
 
+    /*            .post-list-left a:hover li{
+                    color: 
+                }
+    */
     .logout{
         position: absolute;
         top: 90%;
         bottom: 0%;
     }
+
 
     .post-list-right{
         width: 79%;
@@ -253,7 +264,7 @@
 
     .styled-table thead tr {
         background-color: #009879;
-        color: #ffffff;
+        color: #fff;
         text-align: left;
     }
 
@@ -314,7 +325,7 @@
             <ul>         
                 <div class="account">           
                     <li>
-                        <a href="#">Information Technology Department</a>
+                        <a href="#" style="text-transform: uppercase;"><%= department.getDepartmentName()%> Department</a>
                     </li>
                 </div>
             </ul>
@@ -324,7 +335,7 @@
     <nav class="post-list-left">
         <ul>
             <li>
-                <a href="<c:url value="/logout"/>" class="logo">
+                <a style="font-size: 2rem;" href="<c:url value="/logout"/>" class="logo">
                     <img
                         src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
                         alt="Monke Tech"
@@ -394,15 +405,15 @@
                         <td><%= typeOfWork%></td>
                         <td><%= jobposting.isApprovedStatus()%></td>
                         <td><a href="http://localhost:8080/WebProject/view-post-detail/<%= jobposting.getPostId()%>" style="text-decoration: none">View Detail</a></td>
-                        <td >
+                        <td>
                             <%
                                 if (jobposting.isApprovedStatus().equals("Pending")) {
                             %>
 
                             <a id="delete-post" onclick="deletePost(event)" 
-                               href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>"/>
-                            <i class="fa-solid fa-trash trash-bin"></i></a>
-                            <!--                            <br>-->
+                               href="http://localhost:8080/WebProject/deletejobposting/<%= jobposting.getPostId()%>">
+                                <i class="fa-solid fa-trash trash-bin"></i></a>
+
                             <%
                                 }
                             %>

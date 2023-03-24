@@ -281,18 +281,28 @@
         margin-top: 5rem;
         font-weight: bold;
         font-size: 4rem;
+        color: red
     }
     .table {
-        background-color: white;
-        margin-top: 5rem;
-        padding-left: 5rem;
+        border-collapse: collapse;
+        margin: 3rem 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
-    .table thead > tr {
-        border: 1rem solid white;
+    
+    .table thead tr{
+       background-color: #009879;
+      
     }
+    
     .table tr th {
         font-size: 2rem;
         font-weight: bold;
+        color: #fff;
     }
     .table th,
     td {
@@ -335,6 +345,31 @@
     .detail-info li {
         font-size: 1.3rem;
     }
+
+    #acpt-btn{
+        border-radius: 0.5rem;
+        font-weight: bold;
+        background: #009933;
+        color: #fff;
+        border: none;
+    }
+
+    #acpt-btn:hover{
+        background: #006633;
+    }
+
+    #rej-btn{
+        border-radius: 0.5rem;
+        font-weight: bold;
+        background: #CC0000;
+        color: #fff;
+        border: none;
+    }
+    
+    #rej-btn:hover{
+        background: #660000;
+    }
+    
 </style>
 
 <%
@@ -487,8 +522,8 @@
                                                         <form method="post" action="<c:url value="/job/viewMyJob/schedule-decision"/>">
                                                             <input type="hidden" name="applicationId" value="${jobAppSchedule.getApplicationId()}"/>
                                                             <input type="hidden" name="scheduleId" value="${jobAppSchedule.getScheduleId()}"/>
-                                                            <button name="action" value="accept">Accept</button>
-                                                            <button name="action" value="reject">Reject</button>
+                                                            <button id="acpt-btn" name="action" value="accept">Accept</button>
+                                                            <button id="rej-btn" name="action" value="reject">Reject</button>
                                                         </form>
                                                     </c:if>
                                                     <c:if test="${jobAppSchedule.getStatus() eq 'Approved'}">
@@ -499,6 +534,7 @@
                                                     </c:if>
                                                 </ul>
                                             </li>
+                                            <hr>
                                         </c:if>
                                         <c:if test="${jobAppSchedule.getApplicationSchedule().getStatus() eq 'Pending'}">
                                             <c:set var = "counter" value="${counter - 1}"/>

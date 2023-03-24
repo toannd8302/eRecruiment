@@ -10,7 +10,12 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
+<script type="text/javascript">
+    window.addEventListener("scroll", function () {
+        var navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
 <style>
     html {
         font-size: 62.5%;
@@ -23,17 +28,134 @@
     }
 
     body {
-        background-color: #ddd;
+        background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
     }
+
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.5s;
+        padding: 3rem 5rem;
+        z-index: 10000;
+        height: 10rem;
+        background: #000;
+    }
+
+    .navbar.sticky {
+        padding: 3rem 3rem;
+        background: #fff;
+        border-bottom: 3px solid silver;
+    }
+
+    .navbar #logo a {
+        position: relative;
+        text-decoration: none;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .navbar #logo img {
+        margin-top: -1rem;
+        width: 12rem;
+        height: 6rem;
+    }
+
+    .navbar > .header-info > ul {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -1rem;
+        width: 80rem;
+    }
+
+    .navbar .header-info ul li {
+        position: relative;
+        list-style: none;
+        margin: 0 1rem;
+    }
+    .navbar .header-info ul li a {
+        position: relative;
+        text-decoration: none;
+        margin: 0 2rem;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    .navbar .header-info ul li a::after {
+        content: "";
+        height: 0.3rem;
+        width: 0;
+        background: #009688;
+        position: absolute;
+        left: 0;
+        bottom: -0.5rem;
+        transition: 0.5s;
+    }
+
+    .navbar .header-info ul li a:hover::after {
+        width: 100%;
+    }
+
+    .navbar .header-info .account {
+        display: flex;
+        margin-top: 1rem;
+    }
+
+    .navbar .header-info .account img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        margin-top: -1rem;
+    }
+
+    .navbar .header-info .account ul {
+        position: absolute;
+        left: 0;
+        width: 27rem;
+        padding: 2rem;
+        display: none;
+    }
+
+    .navbar .header-info .account ul li {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        padding: 1rem;
+    }
+
+    .navbar .header-info ul li:hover > ul {
+        display: initial;
+        margin-top: 2rem;
+    }
+
+    .navbar.sticky ul li a {
+        color: #000;
+    }
+
+    .navbar.sticky ul li > ul li a {
+        color: #fff;
+    }
+
+    .navbar.sticky #logo > a{
+        color: #000;
+    }
+
 
     #job-detail-head {
         background-color: white;
         width: 85%;
         margin-left: 10%;
         padding: 2rem;
-        margin-top: 3%;
+        margin-top: 10%;
         display: flex;
         justify-content: space-between;
+        border-radius: 1rem;
     }
 
     #job-head #job-logo img {
@@ -130,6 +252,8 @@
         margin-left: 10%;
         padding: 2rem;
         margin-top: 3%;
+        border-radius: 1rem;
+        margin-bottom: 5rem;
     }
 
     #job-detail-body #job-general-info {
@@ -288,11 +412,53 @@
         text-decoration: none;
         color: #00b14f;
     }
+    
+    #job-detail-body #job-rounds{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
 </style>
 
 <%
     candidate candidate = (candidate) session.getAttribute("user");
 %>
+
+<!-- Header here -->
+<div class="navbar" style="position: fixed">
+    <div id="logo">
+        <a href="<c:url value="/"/>"
+           ><img
+                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
+                alt="MonkeTech"
+                />MonkeTech</a>
+    </div>
+    <div class="header-info">
+        <ul>
+            <li><a href="<c:url value="/"/>">Home</a></li>
+            <li><a href="#service">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <div class="account">
+
+                <sec:authorize access="isAuthenticated()">
+                    <li>
+                        <img
+                            src="<c:url value="${sessionScope.user.getPicture()}"/>"
+                            alt="avatar"/>
+                        <a href="#">${sessionScope.user.name}</a>                            
+                        <ul>
+                            <li><a href="<c:url value="/account"/>">My Profile</a></li>
+                            <li><a href="<c:url value="/job/viewMyJob"/>">My Applications</a></li>
+                            <li><a href="<c:url value="/logout"/>">Logout</a></li>
+                        </ul>
+                    </li>
+                </sec:authorize>    
+            </div>
+
+        </ul>
+    </div>
+</div>
+
 
 <div id="job-detail-head">
     <div id="job-head">
@@ -370,7 +536,16 @@
                 </c:forTokens>
         </ul>
     </div>
-
+    <div id="job-rounds">
+        <h1>Round</h1>
+        <ul class="info-list">
+            <c:forEach var="round" items="${jobPosting.rounds}">
+                <li>
+                    ${round.roundNumber} - ${round.content}
+                </li> 
+            </c:forEach>
+        </ul>
+    </div>
     <div id="job-require">
         <h1>Requirement</h1>
         <ul class="info-list">
