@@ -1,6 +1,6 @@
 # eRecruiment
 # This project include:
-* Maven-build tool
+* Maven is a build tool
 * Front-end: HTML/CSS/JavaScript
 * Back-end: Spring mvc, Hibernate framework 
 * SQL Server(Database)
