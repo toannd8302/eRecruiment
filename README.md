@@ -1,4 +1,4 @@
-# eRecruiment
+# eRecruiment - Java Web-based Project
 # Name of members:
 * Lê Đăng Khoa
 * Nguyễn Đức Toàn
