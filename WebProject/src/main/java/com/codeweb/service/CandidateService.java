@@ -5,6 +5,7 @@
  */
 package com.codeweb.service;
 
+import com.codeweb.common.CustomOAuth2User;
 import com.codeweb.pojos.candidate;
 import java.util.List;
 
@@ -13,7 +14,10 @@ import java.util.List;
  * @author KHOA
  */
 public interface CandidateService {
-    candidate getCandidateByCode(String code);
     boolean addOrUpdate(candidate candidate);
+    boolean update(candidate candidate);
     List<candidate> getAll();
+    candidate findCandidateByID(String id);
+    candidate findCandidateByEmail(String email);
+    candidate processOAuthPostLogin(CustomOAuth2User oauthUser);
 }

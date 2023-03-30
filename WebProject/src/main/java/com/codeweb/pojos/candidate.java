@@ -7,7 +7,10 @@ package com.codeweb.pojos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -72,11 +76,30 @@ public class candidate implements Serializable{
     @ManyToMany(mappedBy = "candidates", fetch = FetchType.EAGER)
     private Set<skill>skills;
     
-    @OneToMany(mappedBy = "candidate")
+    @OneToMany(mappedBy = "candidate",fetch = FetchType.EAGER)
     private Set<jobApplication> jobApplications;
 
+    @ManyToMany(mappedBy = "listCandidates", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<jobPosting>jobPostings = new HashSet<jobPosting>();
     
+    @Transient
+    private Set<String> skillList;
+
+    public Set<String> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(Set<String> skillList) {
+        this.skillList = skillList;
+    }
     
+    public Set<jobPosting> getJobPostings() {
+        return jobPostings;
+    }
+
+    public void setJobPostings(Set<jobPosting> jobPostings) {
+        this.jobPostings = jobPostings;
+    }
     
     public Date getDob() {
         return dob;
@@ -202,6 +225,19 @@ public class candidate implements Serializable{
 
     @Override
     public String toString() {
-        return "candidate{" + "id=" + id + ", name=" + name + ", email=" + email + ", picture=" + picture + ", role=" + role + '}';
+        return "candidate{" + "id=" + id + ", name=" + name + ", given_name=" + given_name + ", family_name=" + family_name + ", email=" + email + ", dob=" + dob + ", phone=" + phone + ", address=" + address + ", picture=" + picture + ", role=" + role + ", jobName=" + jobName + ", experience=" + experience + ", status=" + status + ", skills=" + skills + ", jobApplications=" + jobApplications + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof candidate)) return false;
+        candidate that = (candidate) o;
+        return Objects.equals(id, that.id);
     }
 }

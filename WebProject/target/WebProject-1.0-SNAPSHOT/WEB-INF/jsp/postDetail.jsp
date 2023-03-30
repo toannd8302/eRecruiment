@@ -4,11 +4,18 @@
     Author     : KHOA
 --%>
 
+<%@page import="com.codeweb.pojos.candidate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<script type="text/javascript">
+    window.addEventListener("scroll", function () {
+        var navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
 <style>
     html {
         font-size: 62.5%;
@@ -21,17 +28,134 @@
     }
 
     body {
-        background-color: #343747;
+        background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
     }
+
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.5s;
+        padding: 3rem 5rem;
+        z-index: 10000;
+        height: 10rem;
+        background: #000;
+    }
+
+    .navbar.sticky {
+        padding: 3rem 3rem;
+        background: #fff;
+        border-bottom: 3px solid silver;
+    }
+
+    .navbar #logo a {
+        position: relative;
+        text-decoration: none;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .navbar #logo img {
+        margin-top: -1rem;
+        width: 12rem;
+        height: 6rem;
+    }
+
+    .navbar > .header-info > ul {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -1rem;
+        width: 80rem;
+    }
+
+    .navbar .header-info ul li {
+        position: relative;
+        list-style: none;
+        margin: 0 1rem;
+    }
+    .navbar .header-info ul li a {
+        position: relative;
+        text-decoration: none;
+        margin: 0 2rem;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    .navbar .header-info ul li a::after {
+        content: "";
+        height: 0.3rem;
+        width: 0;
+        background: #009688;
+        position: absolute;
+        left: 0;
+        bottom: -0.5rem;
+        transition: 0.5s;
+    }
+
+    .navbar .header-info ul li a:hover::after {
+        width: 100%;
+    }
+
+    .navbar .header-info .account {
+        display: flex;
+        margin-top: 1rem;
+    }
+
+    .navbar .header-info .account img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        margin-top: -1rem;
+    }
+
+    .navbar .header-info .account ul {
+        position: absolute;
+        left: 0;
+        width: 27rem;
+        padding: 2rem;
+        display: none;
+    }
+
+    .navbar .header-info .account ul li {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        padding: 1rem;
+    }
+
+    .navbar .header-info ul li:hover > ul {
+        display: initial;
+        margin-top: 2rem;
+    }
+
+    .navbar.sticky ul li a {
+        color: #000;
+    }
+
+    .navbar.sticky ul li > ul li a {
+        color: #fff;
+    }
+
+    .navbar.sticky #logo > a{
+        color: #000;
+    }
+
 
     #job-detail-head {
         background-color: white;
         width: 85%;
         margin-left: 10%;
         padding: 2rem;
-        margin-top: 3%;
+        margin-top: 10%;
         display: flex;
         justify-content: space-between;
+        border-radius: 1rem;
     }
 
     #job-head #job-logo img {
@@ -85,9 +209,22 @@
 
     }
 
-    #job-detail-head #apply-buton button a {
+    #job-detail-head #apply-buton button{
+        text-transform: uppercase;
+    }
+
+    #job-detail-head #apply-buton .apply-buton button a {
         text-decoration: none;
         color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+
+    }
+
+
+    #job-detail-head #save-job-button button a{
+        text-decoration: none;
+        color: #00b14f !important;
         font-weight: bold;
         font-size: 1.5rem;
     }
@@ -115,6 +252,8 @@
         margin-left: 10%;
         padding: 2rem;
         margin-top: 3%;
+        border-radius: 1rem;
+        margin-bottom: 5rem;
     }
 
     #job-detail-body #job-general-info {
@@ -201,6 +340,8 @@
 
     #job-detail-body .info-list li {
         margin: 1rem;
+        font-size: 1.8rem;
+        font-weight: normal;
     }
 
     #job-detail-body .info-list li::before {
@@ -225,15 +366,6 @@
         text-decoration: none;
         color: #00b14f;
     }
-
-    /* #job-detail-body #job-apply button{
-        padding: 9px 25px;
-        background-color: #00b14f;
-        color: white;
-        border-radius: 3px;
-        border: 1px solid #00b14f;
-        font-weight: bold;
-    } */
 
     #job-detail-body #job-apply p,
     button {
@@ -270,7 +402,72 @@
         text-align: center;
     }
 
+
+    #apply-link{
+        text-decoration: none;
+        color: white;
+    }
+
+    #save-job-link{
+        text-decoration: none;
+        color: #00b14f;
+    }
+
+    #job-detail-body #job-rounds{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
+     #job-detail-body #job-skills{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
 </style>
+
+<%
+    candidate candidate = (candidate) session.getAttribute("user");
+%>
+
+<!-- Header here -->
+<div class="navbar" style="position: fixed">
+    <div id="logo">
+        <a href="<c:url value="/"/>"
+           ><img
+                src="https://github.com/Toannd832/eRecruiment/blob/Thang/Header/img/Remove_bg_logo.png?raw=true"
+                alt="MonkeTech"
+                />MonkeTech</a>
+    </div>
+    <div class="header-info">
+        <ul>
+            <li><a href="<c:url value="/"/>">Home</a></li>
+            <li><a href="#service">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            <div class="account">
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="<c:url value="/login"/>">For Department</a></li>
+                    <li><a href="<c:url value="/loginPage"/>">Login</a></li>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                    <li>
+                        <img
+                            src="<c:url value="${sessionScope.user.getPicture()}"/>"
+                            alt="avatar"/>
+                        <a href="#">${sessionScope.user.name}</a>                            
+                        <ul>
+                            <li><a href="<c:url value="/account"/>">My Profile</a></li>
+                            <li><a href="<c:url value="/job/viewMyJob"/>">My Applications</a></li>
+                            <li><a href="<c:url value="/logout"/>">Logout</a></li>
+                        </ul>
+                    </li>
+                </sec:authorize>    
+            </div>
+
+        </ul>
+    </div>
+</div>
+
 
 <div id="job-detail-head">
     <div id="job-head">
@@ -286,8 +483,19 @@
     </div>
 
     <div id="apply-buton">
-        <button class="apply-button"><i class="fa-regular fa-paper-plane"></i><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
-        <button class="save-job-button"><i class="fa-regular fa-heart"></i>save job</button>
+        <%
+            if (candidate == null) {
+        %>
+        <p style="color: red">You must Login to apply or save job</p>
+        <%
+        } else {
+        %>
+        <button><i class="fa-regular fa-paper-plane"></i><a id="apply-link" href="<c:url value="/job/application?data=${jobPosting.postId}"/>">apply now</a></button>
+        <button style ="background-color: #00b14f"><a style="color: white" id="save-job-link" href="<c:url value="/post-detail/save/${jobPosting.postId}"/>">SAVE JOB</a></button>
+        <%
+            }
+        %>
+
     </div>
 </div>
 
@@ -295,7 +503,7 @@
     <div id="recrui-detail">
         <h1>Recruitment Details</h1>
         <div id="job-general-info">
-            <h1>general information</h1>
+            <h1>General information</h1>
             <ul class="general-info-list">
                 <li><i class="fa-solid fa-money-bill"></i>
                     Salary
@@ -305,29 +513,25 @@
                 <li><i class="fa-sharp fa-solid fa-suitcase"></i>Type of works
                     <c:if test="${jobPosting.typeOfWork == true}"><p>At Office</p></c:if>
                     <c:if test="${jobPosting.typeOfWork == false}"><p>Hybrid</p></c:if>
-                </li>
+                    </li>
 
-                <li><br><i class="fa-solid fa-venus-mars"></i>Gender<p>No</p>
-                </li>
+                    </li>
 
-                <li><br><i class="fa-sharp fa-solid fa-people-group"></i>Number of recruits<p>No</p>
-                </li>
-
-                <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.level}</p>
+                    <li><br><i class="fa-solid fa-ranking-star"></i>Level<p>${jobPosting.level}</p>
                 </li>
 
                 <li><br><i class="fa-brands fa-black-tie"></i>Experience
                     <c:if test="${jobPosting.exprienceRequirement == 0}"><p>none</p></c:if>
                     <c:if test="${jobPosting.exprienceRequirement != 0}"><p>${jobPosting.exprienceRequirement}</p></c:if>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div id="job-location">
-        <h1>Work Location</h1>
-        <ul class="info-list">
-            <li>
+        <div id="job-location">
+            <h1>Work Location</h1>
+            <ul class="info-list">
+                <li>
                 ${jobPosting.locations}
             </li>
         </ul>
@@ -338,62 +542,56 @@
         <ul class="info-list">
             <c:forTokens var="description" items="${jobPosting.descriptions}" delims=";">
                 <li>${description}</li>
-            </c:forTokens>
+                </c:forTokens>
+        </ul>
+    </div>
+    <div id="job-rounds">
+        <h1>Round</h1>
+        <ul class="info-list">
+            <c:forEach var="round" items="${jobPosting.rounds}">
+                <li>
+                    ${round.roundNumber} - ${round.content}
+                </li> 
+            </c:forEach>
+        </ul>
+    </div>
+   <div id="job-skills">
+            <h1>Skills requirement</h1>
+            <ul class="info-list">
+
+            <c:forEach var="skill" items="${jobPosting.jobPosition.skills}">
+                <li>
+                    ${skill.skillName}
+                </li> 
+            </c:forEach>
         </ul>
     </div>
 
-    <div id="job-require">
-        <h1>Requirement</h1>
-        <ul class="info-list">
-            <c:forTokens var="requirement" items="" delims=";">
-                <li>${requirement}</li>
-            </c:forTokens>
-        </ul>
-    </div>
 
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
-            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=";">
+            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=",">
                 <li>${welfare}</li>
-            </c:forTokens>
+                </c:forTokens>
         </ul>
     </div>
 
     <div id="job-apply">
         <h1>How to apply</h1>
+        <%
+            if (candidate == null) {
+        %>
+        <p style="color: red">You must Login to apply or save job</p>
+        <%
+        } else {
+        %>
         <p>Candidates apply online by clicking <a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">Apply now</a> below</p>
         <button class="apply-button"><a href="<c:url value="/job/application?data=${jobPosting.postId}"/>">APPLY NOW</a></button>
-        <button class="save-job-button">SAVE JOB</button>
+        <button style ="background-color: #00b14f" class="save-job-button"><a href="<c:url value="/post-detail/save/${jobPosting.postId}"/>" style="color: whitesmoke">SAVE JOB</a></button>
         <P>Submission deadline: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></P>
+            <%
+                }
+            %>
     </div>
 </div>
-
-<%--
-<h1>Post Detail</h1>
-
-<c:url value="/job/application" var="action"/>
-
-<form:form method="get" action="${action}" modelAttribute="jobPosting">
-    Job Name: ${jobPosting.jobPosition.jobName}
-    Loaction: ${jobPosting.locations}
-    Description: ${jobPosting.descriptions}
-    Requirement: ${jobPosting.exprienceRequirement} Year
-    Salary: ${jobPosting.salary}
-    Welfare: ${jobPosting.welfare}
-    Round: 
-    <ul>
-        <c:forEach var="round" items="${jobPosting.getRounds()}">
-            ${round.roundNumber} - ${round.content}
-        </c:forEach>
-    </ul>
-    Skill:
-    <ul>
-        <c:forEach var="skill" items="${jobPosting.jobPosition.getSkills()}">
-            ${skill.skillName}
-        </c:forEach>
-    </ul>
-    <input type="submit" value="Apply Job"/>
-</form:form>
-
---%>

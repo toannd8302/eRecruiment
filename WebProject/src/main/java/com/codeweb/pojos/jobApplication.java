@@ -5,13 +5,17 @@
  */
 package com.codeweb.pojos;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Entity
 @Table(name = "Job_Applications")
-public class jobApplication {
+public class jobApplication implements Serializable{
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
@@ -39,14 +43,14 @@ public class jobApplication {
     @Column(name = "CV")
     private String cv;
     
-    @Column(name = "CV_status")
-    private String cvStatus;
-    
-    @Column(nullable=true, name = "Round_number")
+    @Column(nullable=true, name = "Round_number", updatable = true)
     private Integer roundNumber;
     
-    @Column(name = "Application_status")
+    @Column(name = "Application_status", updatable = true)
     private String applicationStatus;
+    
+    @Column(name = "CV_status")
+    private String cvStatus;
     
     @Column(name = "Introduction")
     private String introduction;
@@ -59,8 +63,30 @@ public class jobApplication {
     @JoinColumn(name = "Post_id")
     private jobPosting jobPosting;
 
+    @OneToMany(mappedBy = "jobApplication",fetch = FetchType.EAGER)
+    private Set<report> reports;
+    
     @Transient
     private MultipartFile file;
+    
+    @OneToMany(mappedBy = "jobApplication", fetch = FetchType.EAGER)
+    private Set<jobApplicationSchedule>jobApSche;
+
+    public Set<report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<report> reports) {
+        this.reports = reports;
+    }
+
+    public Set<jobApplicationSchedule> getJobApSche() {
+        return jobApSche;
+    }
+
+    public void setJobApSche(Set<jobApplicationSchedule> jobApSche) {
+        this.jobApSche = jobApSche;
+    }
     
     public String getApplicationId() {
         return applicationId;
@@ -142,12 +168,5 @@ public class jobApplication {
 
     public void setFile(MultipartFile file) {
         this.file = file;
-    }
-
-    @Override
-    public String toString() {
-        return "jobApplication{" + "applicationId=" + applicationId + ", createdTime=" + createdTime + ", cv=" + cv + ", cvStatus=" + cvStatus + ", roundNumber=" + roundNumber + ", applicationStatus=" + applicationStatus + ", introduction=" + introduction + ", file=" + file + '}';
-    }
-    
-    
+    }   
 }

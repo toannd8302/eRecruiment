@@ -37,16 +37,16 @@ public class HibernateConfig {
     public DataSource dataSource() {
         DriverManagerDataSource d = new DriverManagerDataSource();
         d.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        d.setUrl("jdbc:sqlserver://localhost:1433;databaseName=helloooo");
+        d.setUrl("jdbc:sqlserver://localhost:1433;databaseName=HRManagement_March_31");
         d.setUsername("sa");
-        d.setPassword("12345");
+        d.setPassword("123456");
         return d;
     }
 
     public Properties hibernateProperties() {
         Properties pros = new Properties();
-        pros.setProperty(org.hibernate.cfg.Environment.SHOW_SQL, "true");
-        pros.setProperty(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.SQLServer2008Dialect");
+        pros.setProperty(org.hibernate.cfg.Environment.SHOW_SQL, "false");
+        pros.setProperty(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         return pros;
     }
 

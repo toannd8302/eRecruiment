@@ -5,18 +5,12 @@
  */
 package com.codeweb.controllers;
 
-import com.codeweb.pojos.candidate;
-import com.codeweb.service.CandidateService;
 import com.codeweb.service.JobPostingService;
 import java.util.Map;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,16 +23,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
     
     @Autowired
-    private CandidateService candidateService;
-    
-    @Autowired
     private JobPostingService jobPostingService;
     
     @RequestMapping("/")
     public String index(Model model,
-            @RequestParam(required = false) Map<String,String> params,
-            HttpSession session){
-        model.addAttribute("list", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
+            @RequestParam(required = false) Map<String,String> params){
+        model.addAttribute("listOfJobPosting", this.jobPostingService.getPostByKeyword(params.getOrDefault("keyword", "")));
+        model.addAttribute("listOfHotJob", this.jobPostingService.getAllHotJob());
         return "homePage";
     }
 }
