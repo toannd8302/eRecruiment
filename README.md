@@ -1,4 +1,4 @@
-# eRecruiment - Java Web-based Project
+# E-Recruiment - Java Web-based Project
 # Name of members:
 * Lê Đăng Khoa  - <a href="https://github.com/khoaLe12">GitHub</a>
 * Nguyễn Đức Toàn - <a href="https://github.com/Toannd832">GitHub</a>
