@@ -38,7 +38,9 @@ Software Foundation//DTD Tiles Configuration 2.0//EN"
     </definition>
     <definition name="apply-job" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>
+        <put-attribute name="header" value="/WEB-INF/layout/departmentFooter.jsp"/>
         <put-attribute name="content" value="/WEB-INF/jsp/jobApplication.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/departmentFooter.jsp"/>
     </definition>
     <definition name="account-information" extends="baseLayout">
         <put-attribute name="title" value="Job Application"/>

@@ -230,7 +230,7 @@
                             <th>Department</th>
                             <th>Email</th>
                             <th>View Details</th>
-                            <th>Cancel</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -242,7 +242,7 @@
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
                                 <td><input type="submit" value="View Details"/></td>
-                                <td><a href="#">Cancel</a></td>
+                              
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
                         </form>
@@ -258,7 +258,7 @@
                             <th>NO</th>
                             <th>Job Title</th>
                             <th>Department</th>
-                            <th>Phone</th>
+                           
                             <th>Email</th>
                             <th>View Details</th>
                         </tr>
@@ -272,7 +272,7 @@
                                 <td>${item.jobPosition.getDepartment().getDepartmentName()}</td>
                                 <td>${item.jobPosition.getDepartment().getEmail()}</td>
                                 <td><input type="submit" value="View Details"/></td>
-                                <td><a href="#">Cancel</a></td>
+                               
                             <input type="hidden" name="postID" value="${item.getPostId()}">
                             </tr>
                         </form>

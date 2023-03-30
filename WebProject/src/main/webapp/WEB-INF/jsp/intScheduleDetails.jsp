@@ -234,7 +234,7 @@
                             <tr>
                                 <th>Job Name</th>
                                 <th>Type of Interview</th>
-                                <th>Round 1</th>
+                                <th>Round</th>
                                 <th>Schedule Date</th>
                                 <th>Time</th>
                                 <th>Location</th>

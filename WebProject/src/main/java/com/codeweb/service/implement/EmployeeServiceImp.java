@@ -101,6 +101,8 @@ public class EmployeeServiceImp implements EmployeeService {
 
             //GET EXISTED SCHEDULE OR CREATE NEW SCHEDULE, IT CAN BR NULL
             schedule schedule = this.scheduleService.chooseSuitableSchedule(postID, roundNumber);
+            if(schedule == null)
+                return "No schedule created == May be no round found";
 
             //CREATE A NEW JOB_APPLICATION_SCHEDULE, SET VALUES FOR ALL FIELDS
             jobApplicationSchedule jobApplicationSchedule = new jobApplicationSchedule();

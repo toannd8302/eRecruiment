@@ -19,5 +19,5 @@ public interface ScheduleRepository {
     List<schedule> getScheduleByStatusAndID(String interviewerID, String scheduleStatus, String interviewScheduleStatus);
     List<schedule> getScheduleByID(String scheduleID);
     List<Object[]> getScheduleByStatus(String status);
-    List<schedule> getSuitableSchedule(String postID, int roundNumber);
+List<schedule> getSuitableSchedule(String postID, int roundNumber, String status);
 }

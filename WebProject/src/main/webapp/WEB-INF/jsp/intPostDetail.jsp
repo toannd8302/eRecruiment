@@ -167,7 +167,7 @@
         </div>
         <div id="general-info">
             <h1>${jobPosting.jobPosition.jobName}</h1>
-            <h2>Công ty phần mềm Monke Tech</h2> 
+            <h2>MonkeTech Company</h2> 
             <p><i class="fa-regular fa-clock"></i>Expired time: <fmt:formatDate value="${jobPosting.getExpiredTime()}" pattern="dd/MM/yyyy"/></p>
         </div>
     </div>

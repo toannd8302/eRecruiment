@@ -245,7 +245,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>View Details</th>
-                            <th>Cancel</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
@@ -266,7 +266,7 @@
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-                            <td><a href="#">Cancel</a></td>
+                           
                             </tr>
                         </form>
                     </c:forEach>
@@ -285,7 +285,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>View Details</th>
-                            <th>Cancel</th>
+                    
                         </tr>
                     </thead>
                     <tbody>
@@ -306,7 +306,7 @@
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-                            <td><a href="#">Cancel</a></td>
+                            
                             </tr>
                         </form>
                     </c:forEach>
@@ -325,7 +325,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>View Details</th>
-                            <th>Cancel</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -346,7 +346,7 @@
                                 <td>${jobApplication.getCandidate().getEmail()}</td>
                                 <td><input type="submit" value="View Details"/></td>
                             <input type="hidden" name="jobAppID" value="${jobApplication.getApplicationId()}">
-                            <td><a href="#">Cancel</a></td>
+                            
                             </tr>
                         </form>
                     </c:forEach>

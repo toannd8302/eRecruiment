@@ -419,7 +419,7 @@
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
-            <c:forTokens var="welfare" items="${jobPosting.getWelfare()}" delims=";">
+            <c:forTokens var="welfare" items="${jobPosting.getWelfare()}" delims=",">
                 <li>${welfare}</li>
                 </c:forTokens>
             <!--            <li>Thưởng lễ, tết, sinh nhật, lương tháng 13, phép năm</li>
@@ -428,7 +428,7 @@
                         <li>Yoga miễn phí</li>-->
         </ul>
     </div>
-
+</div>
     <script>
         function validateForm(event) {
             var expiredDate = document.getElementById("expiredDate");

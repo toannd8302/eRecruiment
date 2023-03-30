@@ -239,6 +239,7 @@
                 background: #000;
                 text-align: center;
                 padding: 1rem 0;
+                background-color: #00AE72;
             }
 
             .create-job-post-right .head-title > h1{
@@ -716,7 +717,7 @@
 
 
                                 <label style="margin-bottom: 3rem;">Number of Rounds:</label>
-                                <input style=" text-align: center; font-size: 2rem;" type="number" name="numRounds" min ="0" onchange="createRounds(this.value)"/><br/>
+                                <input style=" text-align: center; font-size: 2rem;" type="number" name="numRounds" min ="0" max="4" onchange="createRounds(this.value)"/><br/>
                                 <div id="rounds"></div>
                             </div>
                         </div>
@@ -725,7 +726,7 @@
                 <div class="foot-btn">
 
 
-                    <button id="confirm-post" onclick="confirmPost(event)">Post</button>
+                    <button id="confirm-post" onclick="confirmPost(event)">Create Job Posting</button>
                 </div>
             </form:form>
         </div>

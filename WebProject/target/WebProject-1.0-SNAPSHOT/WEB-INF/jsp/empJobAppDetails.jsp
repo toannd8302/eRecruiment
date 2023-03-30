@@ -405,6 +405,9 @@
                     </li>
                 </div>
             </div>
+                    <div>
+                        Round: ${jobApplication.getRoundNumber()}
+                    </div>
             <h2>
                 <a href="<c:url value="/jobPostings/job-posting-details?postID=${jobApplication.getJobPosting().getPostId()}"/>">Link Post</a>
             </h2>

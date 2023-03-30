@@ -133,8 +133,8 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
         return q.getResultList();
     }
 
-    @Override
-    public List<schedule> getSuitableSchedule(String postID, int roundNumber) {
+ @Override
+    public List<schedule> getSuitableSchedule(String postID, int roundNumber, String status) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<schedule> query = builder.createQuery(schedule.class);
@@ -145,7 +145,12 @@ public class ScheduleRepositoryImp implements ScheduleRepository {
 
         Predicate p1 = builder.equal(roundSchedule.get("roundNumber").as(Integer.class), roundNumber);
         Predicate p2 = builder.like(roundJobPosting.get("postId").as(String.class), postID);
-        query = query.where(builder.and(p1, p2));
+
+        if(status != null){
+            Predicate p3 = builder.like(root.get("status").as(String.class), status);
+            query = query.where(builder.and(p1, p2, p3));
+        }
+        else query = query.where(builder.and(p1, p2));
 
         Query q = session.createQuery(query);
         return q.getResultList();

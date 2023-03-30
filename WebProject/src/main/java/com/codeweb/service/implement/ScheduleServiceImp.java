@@ -120,14 +120,15 @@ public class ScheduleServiceImp implements ScheduleService {
         return schedules.get(0);
     }
 
-    @Override
+    
+@Override
     public List<schedule> getSuitableListOfSchedule(String postID, int roundNumber) {
-        return this.scheduleRepository.getSuitableSchedule(postID, roundNumber);
+        return this.scheduleRepository.getSuitableSchedule(postID, roundNumber, null);
     }
 
     @Override
     public schedule getSuitableSchedule(String postID, int roundNumber) {
-        List<schedule> schedules = this.scheduleRepository.getSuitableSchedule(postID, roundNumber);
+        List<schedule> schedules = this.scheduleRepository.getSuitableSchedule(postID, roundNumber, "Pending");
         for (schedule schedule : schedules) {
             if (schedule.getjAS().size() < 10) {
                 return schedule;

@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <script type="text/javascript">
     window.addEventListener("scroll", function () {
         var navbar = document.querySelector(".navbar");
@@ -412,7 +412,7 @@
         text-decoration: none;
         color: #00b14f;
     }
-    
+
     #job-detail-body #job-rounds{
         background-color: #d4f2e1;
         margin-top: 1rem;
@@ -438,9 +438,13 @@
             <li><a href="<c:url value="/"/>">Home</a></li>
             <li><a href="#service">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <div class="account">
 
-                <sec:authorize access="isAuthenticated()">
+            <div class="account">
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="<c:url value="/login"/>">For Department</a></li>
+                    <li><a href="<c:url value="/loginPage"/>">Login</a></li>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
                     <li>
                         <img
                             src="<c:url value="${sessionScope.user.getPicture()}"/>"
@@ -558,7 +562,7 @@
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
-            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=";">
+            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=",">
                 <li>${welfare}</li>
                 </c:forTokens>
         </ul>

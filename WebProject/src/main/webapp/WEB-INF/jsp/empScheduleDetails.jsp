@@ -295,6 +295,7 @@
     PHẦN SCHEDULE DETAIL CỦA ON GOING
     */
     .schedule-detail {
+        position: relative;
         background-color: #f7f7f7;
         padding: 20px;
         border-radius: 10px;
@@ -306,6 +307,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        left: 13%;
     }
     .schedule-detail h2 {
         font-size: 30px;
@@ -351,6 +353,7 @@
         text-align: center;
         font-weight: bold;
         font-size: 20px;
+        margin-bottom: 2rem;
     }
     .info-container {
         display: flex;

@@ -26,7 +26,7 @@
         position: relative;
         top: 10rem;
         height: 100%;
-        width: 80%;   
+        width: 80%;
         left: 10%;
         border-radius: 1rem;
         overflow: hidden;
@@ -193,11 +193,11 @@
         border: none;
         font-weight: bold;
     }
-    
+
     #acpt-btn:hover{
         background: #006400;
     }
-    
+
     #rej-btn{
         border-radius: 0.5rem;
         background: #C60000;
@@ -206,11 +206,94 @@
         border: none;
         font-weight: bold;
     }
-    
+
     #rej-btn:hover{
         background: #8B0000;
     }
-
+    /* CSS for recruit detail  */
+    #job-detail-body {
+        background-color: white;
+        width: 84.95%;
+        margin-left: 13rem;
+        padding-left: 1rem;
+        margin-top: 1.5rem;
+    }
+    #job-detail-body #recrui-detail .job-detail-recruit{
+        font-weight: bold;
+    }
+    #job-detail-body #job-general-info {
+        margin-top: 2rem;
+        background-color: #d4f2e1;
+        padding: 2rem;
+    }
+    #job-detail-body #job-general-info h1 {
+        margin-bottom: 1rem;
+    }
+    #job-detail-body #job-general-info .general-info-list {
+        list-style: none;
+    }
+    #job-detail-body #job-general-info .general-info-list li {
+        font-weight: bold;
+        font-size: 2rem;
+        color: rgb(244, 131, 131);
+    }
+    #job-detail-body #job-general-info .general-info-list li p {
+        color: initial;
+        font-weight: normal;
+        font-size: 2rem;
+    }
+    #job-detail-body #job-general-info .general-info-list i {
+        margin-right: 1rem;
+        font-size: 2rem;
+        margin-top: 2rem;
+        display: inline-block;
+    }
+    #job-detail-body #job-general-info .general-info-list p {
+        margin-left: 3.5rem;
+    }
+    /* CSS for Job Location */
+    #job-detail-body #job-location {
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
+    /* CSS for Job Describe */
+    #job-detail-body #job-describe {
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
+    /* CSS for round*/
+    #job-detail-body #job-rounds{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
+    /* CSS for Job Require */
+    #job-detail-body #job-require {
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
+    /* CSS for Job Welfare */
+    #job-detail-body #job-welfare {
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
+    #job-detail-body .info-list {
+        list-style-type: none;
+        padding: 0%;
+        font-size: 2rem;
+    }
+    #job-detail-body .info-list li {
+        margin: 1rem;
+    }
+    #job-detail-body .info-list li::before {
+        content: "\2013";
+        /* Unicode character for an en dash */
+        margin-right: 1rem;
+    }
 </style>
 
 <div class="hr-modal ">
@@ -224,7 +307,7 @@
             <div class="tabs">
                 <div class="tab-item active">Introduction</div>
                 <div class="tab-item">Post Detail</div>
-                <div class="tab-item">Schedule List</div>
+                <div class="tab-item">Report List</div>
                 <div class="line"></div>
             </div>
 
@@ -234,15 +317,105 @@
                     <div class="modal-body report">
                         <h3>Candidate's Introduction:</h3>
                         <p>${jobAppDetail.getIntroduction()}</p>
-                        <a href="${jobAppDetail.getCv()}"> Link CV</a>
+                        <!--<a href="${jobAppDetail.getCv()}"> Link CV</a>-->
+                        <img src="${jobAppDetail.getCv()}" width="200px" height="200px">
                     </div>
                 </div>
                 <div class="tab-pane">
-                    <div class="modal-body report">
-                        <h3>Job Name:</h3>
-                        <p>${jobAppDetail.getJobPosting().getJobPosition().jobName}</p>
-                        <a href="<c:url value="/manager/post-detail/${jobAppDetail.getJobPosting().getPostId()}"/>">Link Post</a>
+                    <!--                    <div class="modal-body report">
+                                            <h3>Job Name:</h3>
+                                            <p>${jobAppDetail.getJobPosting().getJobPosition().jobName}</p>
+                                            <a href="<c:url value="/manager/post-detail/${jobAppDetail.getJobPosting().getPostId()}"/>">Link Post</a>
+                    
+                                        </div>-->
+                    <div id="job-detail-body">
+                        <div id="recrui-detail">
+                            <h1 class="job-detail-recruit">Recruitment information</h1>
+                            <div id="job-general-info">
+                                <h1>General information</h1>
+                                <ul class="general-info-list">
+                                    <div class="row">
+                                        <div class="col-sm-6 general-info-left">
+                                            <li><i class="fa-solid fa-money-bill"></i>
+                                                Salary
+                                                <p>${jobAppDetail.jobPosting.getSalary()}</p>
+                                            </li>
 
+                                            <li><i class="fa-sharp fa-solid fa-suitcase"></i>Type of work<p>
+                                                    <c:if test="${jobAppDetail.jobPosting.isTypeOfWork() == true}">
+                                                        At Office
+                                                    </c:if>
+                                                    <c:if test="${jobAppDetail.jobPosting.isTypeOfWork() == false}">
+                                                        Hybrid
+                                                    </c:if>
+                                                </p>
+                                            </li>
+                                        </div>
+                                        <div class="col-sm-6 general-info-right">
+
+                                            <li><i class="fa-solid fa-ranking-star"></i>Level<p>${jobAppDetail.jobPosting.getLevel()}</p>
+                                            </li>
+
+                                            <li><i class="fa-brands fa-black-tie"></i>Year Experience<p>${jobAppDetail.jobPosting.getExprienceRequirement()}</p>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="job-location">
+                            <h1>Work location</h1>
+                            <ul class="info-list">
+                                <li>
+                                    ${jobAppDetail.jobPosting.getLocations()}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="job-describe">
+                            <h1>Job description</h1>
+                            <ul class="info-list">
+                                <c:forTokens var="description" items="${jobAppDetail.jobPosting.getDescriptions()}" delims=";">
+                                    <li>${description}</li>
+                                    </c:forTokens>
+                            </ul>
+                        </div>
+
+                        <div id="job-require">
+                            <h1>Required Skills</h1>
+                            <ul class="info-list">
+                                <c:forEach var="skill" items="${jobAppDetail.jobPosting.jobPosition.skills}">
+                                    <li>
+                                        ${skill.skillName}
+                                    </li> 
+                                </c:forEach>
+                            </ul>
+                        </div>
+
+                        <div id="job-rounds">
+                            <h1>Interview Round</h1>
+                            <ul class="info-list">
+                                <c:forEach var="round" items="${jobAppDetail.jobPosting.rounds}">
+                                    <li>
+                                        ${round.roundNumber} - ${round.content}
+                                    </li> 
+                                </c:forEach>
+                            </ul>
+                        </div>
+
+                        <div id="job-welfare">
+                            <h1>Welfare</h1>
+                            <ul class="info-list">
+                                <c:forTokens var="welfare" items="${jobAppDetail.jobPosting.getWelfare()}" delims=";">
+                                    <li>${welfare}</li>
+                                    </c:forTokens>
+                                <!--            <li>Thưởng lễ, tết, sinh nhật, lương tháng 13, phép năm</li>
+                                            <li>Tham gia các hoạt động teambuilding, du lịch, tất niên</li>
+                                            <li>Xét tăng lương định kỳ 1 lần/năm</li>
+                                            <li>Yoga miễn phí</li>-->
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane">
@@ -251,10 +424,12 @@
                             <h3>Round Number: ${item.getApplicationSchedule().getRound().roundNumber} - ${item.getApplicationSchedule().getRound().getContent()}</h3>
                             <c:forEach var="report" items="${item.getApplicationSchedule().getReports()}">
                                 <c:if test="${jobAppDetail.getReports().contains(report)}">
+                                    <h3>Interviewer: ${report.getEmployee().getName()}</h3>
                                     <h4>Evaluate:</h4>
                                     <p>${report.content} </p>
                                     <h4>Point:</h4>
                                     <p> ${report.point}</p>
+                                 
                                 </c:if>
                             </c:forEach>
                         </c:forEach>
