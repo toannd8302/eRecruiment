@@ -1,10 +1,10 @@
 # eRecruiment - Java Web-based Project
 # Name of members:
-* Lê Đăng Khoa
-* Nguyễn Đức Toàn
-* Lồ Quang Thắng
-* Trần Võ Hoàng Trọng Ân
-* Lê Quang Phú
+* Lê Đăng Khoa  - <a href="https://github.com/khoaLe12">GitHub</a>
+* Nguyễn Đức Toàn - <a href="https://github.com/Toannd832/Toannd832">GitHub</a>
+* Lồ Quang Thắng  - <a href="https://github.com/Quang-Thang">GitHub</a>
+* Trần Võ Hoàng Trọng Ân  - <a href="https://github.com/JTRerer">GitHub</a>
+* Lê Quang Phú 
 # This project include:
 * Maven is a build tool
 * Front-end: HTML/CSS/JavaScript
