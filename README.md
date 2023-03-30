@@ -5,3 +5,5 @@
 * Back-end: Spring mvc, Hibernate framework 
 * SQL Server(Database)
 * Ojective: Help HR Employees manage recruitment process 
+# About Home Page of this project:
+![alt](homepage.png)
