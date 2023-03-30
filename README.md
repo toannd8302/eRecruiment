@@ -1,8 +1,7 @@
 # eRecruiment
 # This project include:
-* Maven
-* JavaScript
-* Spring mvc 
-* Hibernate 
+* Maven-build tool
+* Front-end: HTML/CSS/JavaScript
+* Back-end: Spring mvc, Hibernate framework 
 * SQL Server(Database)
-* Ojective: Manage recruitment process 
+* Ojective: Help HR Employees manage recruitment process 
