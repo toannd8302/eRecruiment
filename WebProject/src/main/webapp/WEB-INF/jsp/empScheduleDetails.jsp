@@ -670,7 +670,7 @@
                     <th>Number</th>
                     <th>Full Name</th>
                     <th>Email</th>
-                    <th>Information</th>
+
                     <th>Status</th>
                 </tr>
             </thead>
@@ -680,7 +680,7 @@
                         <td>${counter.count}</td>
                         <td>${item.getEmployee().getName()}</td>
                         <td>${item.getEmployee().getEmail()}</td>
-                        <td><a href="#">view</a></td>
+
                         <td>${item.getStatus()}</td>
                     </tr>
                 </c:forEach>

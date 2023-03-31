@@ -418,6 +418,11 @@
         margin-top: 1rem;
         padding: 2rem;
     }
+     #job-detail-body #job-skills{
+        background-color: #d4f2e1;
+        margin-top: 1rem;
+        padding: 2rem;
+    }
 </style>
 
 <%
@@ -550,14 +555,18 @@
             </c:forEach>
         </ul>
     </div>
-    <div id="job-require">
-        <h1>Requirement</h1>
-        <ul class="info-list">
-            <c:forTokens var="requirement" items="" delims=";">
-                <li>${requirement}</li>
-                </c:forTokens>
+   <div id="job-skills">
+            <h1>Skills requirement</h1>
+            <ul class="info-list">
+
+            <c:forEach var="skill" items="${jobPosting.jobPosition.skills}">
+                <li>
+                    ${skill.skillName}
+                </li> 
+            </c:forEach>
         </ul>
     </div>
+
 
     <div id="job-welfare">
         <h1>Welfare</h1>

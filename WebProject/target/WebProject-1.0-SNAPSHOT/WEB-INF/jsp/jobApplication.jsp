@@ -282,7 +282,7 @@
                     <div class="col-sm-5">
                         <div id="general-info">
                             <h1 style="font-weight: bold; color: #fc4646;">${jobPost.getJobPosition().getJobName()}</h1>
-                            <h2 style="font-style: italic;">Công ty phần mềm Monke Tech</h2>
+                            <h2 style="font-style: italic;">Monke Tech Company</h2>
                         </div>
                     </div>
                 </div>
@@ -308,7 +308,7 @@
                         </div>
                         <div id="submit-btn" class="col-sm-8">
                             <form:input type="file" path="file"/>
-                            <p class="mute-text">We accept doc, docx, pdf files, no password protected, up to 3MB</p>
+                            <p class="mute-text">We just accept img file CV up to 3MB </p>
                         </div>
                     </div>
                 </div>

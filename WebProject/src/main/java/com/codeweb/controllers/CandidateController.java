@@ -7,14 +7,11 @@ package com.codeweb.controllers;
 
 import com.codeweb.pojos.candidate;
 import com.codeweb.pojos.jobApplication;
-import com.codeweb.pojos.jobApplicationSchedule;
 import com.codeweb.service.CandidateService;
 import com.codeweb.service.JobApplicationScheduleService;
 import com.codeweb.service.JobApplicationService;
 import com.codeweb.service.JobPostingService;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

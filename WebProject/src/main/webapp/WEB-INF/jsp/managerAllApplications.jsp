@@ -42,7 +42,7 @@
         padding: 2rem 4rem;
         z-index: 10000;
         height: 10rem;
-        background: #000;
+        background: black;
     }
     .navbar #logo a {
         position: relative;
@@ -171,7 +171,7 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
     .styled-table thead tr {
-        background-color: #000;
+        background-color:  #009688;
         color: #ffffff;
         text-align: left;
     }
@@ -450,113 +450,4 @@
 
 
 
-    <div class="hr-modal hr-hide">
-        <div class="modal-inner">
-            <div class="modal-header">
-                <h1>Grading Candiate Report</h1>
-                <i class="fa-solid fa-xmark close-modal"></i>
-            </div>
-            <div>
-                <!-- Tab items -->
-                <div class="tabs">
-                    <div class="tab-item active">Introduction</div>
-                    <div class="tab-item">Post Detail</div>
-                    <div class="tab-item">Schedule List</div>
-                    <div class="line"></div>
-                </div>
-
-                <!-- Tab content -->
-                <div class="tab-content">
-                    <div class="tab-pane active">
-                        <div class="modal-body report">
-                            <h3>Candidate's Introduction:</h3>
-                            <p>${jobAppDetail.getIntroduction()}</p>
-                            <a href="${jobAppDetail.getCv()}"> Link CV</a>
-                        </div>
-                    </div>
-                    <div class="tab-pane">
-                        <div class="modal-body report">
-                            <h3>Job Name:</h3>
-                            <p>${jobAppDetail.getJobPosting().getJobPosition().jobName}</p>
-                            <a href="<c:url value="/manager/post-detail/${jobAppDetail.getJobPosting().getPostId()}"/>">Link Post</a>
-
-                        </div>
-                    </div>
-                    <div class="tab-pane">
-                        <div class="modal-body report">
-                            <c:forEach var="item" varStatus="counter" items="${jobAppDetail.getJobApSche()}">
-                                <h3>Round Number: ${item.getApplicationSchedule().getRound().roundNumber} - ${item.getApplicationSchedule().getRound().getContent()}</h3>
-                                <c:forEach var="report" items="${item.getApplicationSchedule().getReports()}">
-                                    <c:if test="${jobAppDetail.getReports().contains(report)}">
-                                        <h4>Evaluate:</h4>
-                                        <p>${report.content} </p>
-                                        <h4>Point:</h4>
-                                        <p> ${report.point}</p>
-                                    </c:if>
-                                </c:forEach>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button class="close-modal">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const $ = document.querySelector.bind(document);
-        const $$ = document.querySelectorAll.bind(document);
-
-        const tabs = $$(".tab-item");
-        const panes = $$(".tab-pane");
-
-        const tabActive = $(".tab-item.active");
-        const line = $(".tabs .line");
-
-        // SonDN fixed - Active size wrong size on first load.
-        // Original post: https://www.facebook.com/groups/649972919142215/?multi_permalinks=1175881616551340
-        requestIdleCallback(function () {
-            line.style.left = tabActive.offsetLeft + "px";
-            line.style.width = tabActive.offsetWidth + "px";
-        });
-
-        tabs.forEach((tab, index) => {
-            const pane = panes[index];
-
-            tab.onclick = function () {
-                $(".tab-item.active").classList.remove("active");
-                $(".tab-pane.active").classList.remove("active");
-
-                line.style.left = this.offsetLeft + "px";
-                line.style.width = this.offsetWidth + "px";
-
-                this.classList.add("active");
-                pane.classList.add("active");
-            };
-        });
-
-        function viewReport() {
-            const modal = document.querySelector(".hr-modal");
-            const closeModalBtns = document.querySelectorAll(".close-modal");
-
-            modal.style.display = "block";
-
-            // Hide the modal when the icon or the close button is clicked
-            closeModalBtns.forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    modal.style.display = "none";
-                });
-            });
-
-            // Hide the modal when clicking outside of it
-            window.addEventListener("click", (event) => {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            });
-        }
-    </script>
 </body>

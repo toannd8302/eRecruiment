@@ -151,7 +151,7 @@ public class JobApplicationServiceImp implements JobApplicationService {
     public boolean applyJob(jobApplication jobApplication) {
         if (this.add(jobApplication)) {
             String title = "We have received your application for the job " + jobApplication.getJobPosting().getJobPosition().getJobName();
-            String content = "We will sned you the result of CV review soon.";
+            String content = "We will send you the result of CV review soon.";
             this.sendMailService.sendEmail(jobApplication.getCandidate().getEmail(), title, content);
             return true;
         }

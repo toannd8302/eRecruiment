@@ -251,7 +251,7 @@
         color: rgb(244, 131, 131);
     }
     #general-info .apply-time {
-        margin-left: 48rem;
+
         font-size: 2rem;
     }
     #footer {
@@ -293,7 +293,7 @@
                 <h2><i class="fa-solid fa-envelope"></i> ${jobApplication.getCandidate().getEmail()}</h2>
                 <h2><i class="fa-solid fa-phone"></i> ${jobApplication.getCandidate().getPhone()}</h2>
                 <h2><i class="fa-solid fa-business-time"></i> ${jobApplication.getCandidate().getExperience()}</h2>
-                <h2 class="apply-time">Apply time: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></h2>
+                <h2 class="apply-time"><i class="fa-regular fa-clock"></i> Apply time: <fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></h2>
             </div>
         </div>
         <div class="col-sm-2">
@@ -405,7 +405,7 @@
                     </li>
                 </div>
             </div>
-                    <div>
+                    <div style="font-size: 3rem; font-weight: bold;">
                         Round: ${jobApplication.getRoundNumber()}
                     </div>
             <h2>

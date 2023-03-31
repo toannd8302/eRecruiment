@@ -355,6 +355,7 @@
 
             .text-info textarea{
                 width: 100%;
+                font-size: 1.5rem;  
             }
             .welfare-list h1 {
                 font-weight: bold;

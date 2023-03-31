@@ -247,7 +247,7 @@
     <div id="job-welfare">
         <h1>Welfare</h1>
         <ul class="info-list">
-            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=";">
+            <c:forTokens var="welfare" items="${jobPosting.welfare}" delims=",">
                 <li>${welfare}</li>
                 </c:forTokens>
         </ul>

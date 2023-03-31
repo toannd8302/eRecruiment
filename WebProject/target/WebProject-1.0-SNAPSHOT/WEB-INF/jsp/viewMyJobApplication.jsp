@@ -30,15 +30,7 @@
                 expandableRow.classList.add("expandable-row");
                 // Create a new table cell to hold the expanded content
                 const cell = document.createElement("td");
-                cell.setAttribute("colspan", "6");
-                // Create the expanded content
-                const content = `
-        <h4>Details for ${row.cells[0].textContent}</h4>
-        <p>Age: ${row.cells[1].textContent}</p>
-        <p>Job Title: ${row.cells[2].textContent}</p>
-      `;
-                // Set the innerHTML of the cell to the expanded content
-                cell.innerHTML = content;
+                cell.setAttribute("colspan", "6");              
                 // Append the cell to the expandable row
                 expandableRow.appendChild(cell);
                 // Insert the expandable row below the clicked row
@@ -475,7 +467,7 @@
                     <tr>
                         <td>${counter.count}</td>
                         <td>${jobApplication.getJobPosting().getJobPosition().jobName}</td> 
-                        <td>${jobApplication.getJobPosting().salary}</td> 
+                        <td>${jobApplication.getJobPosting().salary}$</td> 
                         <td>${jobApplication.getJobPosting().locations}</td> 
                         <td><fmt:formatDate value="${jobApplication.getCreatedTime()}" pattern="dd/MM/yyyy"/></td>
                         <td><button class="detail-toggle">View Detail</button></td>
@@ -487,19 +479,20 @@
                                 <p><strong><a href="<c:url value="/post-detail/${jobApplication.getJobPosting().getPostId()}"/>">Link to Job Posting</a></strong></p>
                                 <p><strong>Job Application Status  </strong> 
                                     <c:if test="${jobApplication.getApplicationStatus() eq 'Fail'}">
-                                        Fail
+                                    <strong style="color: red;">Failed</strong>                                       
                                     </c:if>
-                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Review'}">                                       
                                         Waiting for review
                                     </c:if>
-                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">
+                                    <c:if test="${jobApplication.getApplicationStatus() eq 'Scheduling'}">  
                                         Waiting for scheduling
                                     </c:if>
                                     <c:if test="${jobApplication.getApplicationStatus() eq 'On Going'}">
                                         Waiting for interviewing
                                     </c:if>
                                     <c:if test="${jobApplication.getApplicationStatus() eq 'Pass'}">
-                                        Pass
+                                        <strong style="color: green;">Passed</strong>
+                                        
                                     </c:if>
                                     <c:if test="${jobApplication.getApplicationStatus() eq 'Finished'}">
                                         Waiting for final evaluate

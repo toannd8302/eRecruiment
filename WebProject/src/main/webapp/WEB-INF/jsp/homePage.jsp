@@ -317,7 +317,7 @@
         outline: none;
         padding: 1.5rem 1.5rem;
         font-size: 2rem;
-        color: #fff;
+        color: #000;
     }
 
     ::placeholder{
@@ -588,19 +588,19 @@
 
 
     <!-- Hot job here -->
-    <h1 id="job-post-title">Today Hotjobs</h1>
+<!--    <h1 id="job-post-title">Today Hotjobs</h1>
     <div class="product-area-list">
         <c:forEach var="item" items="${listOfHotJob}">
             <div class="product">
                 <i class="fa-solid fa-chevron-down"></i>
                 <h1><a href="<c:url value="/post-detail/${item.postId}"/>">${item.jobPosition.jobName}</a></h1>
                 <p>${item.salary} $</p>
-                <!--<p>Assurance, Oversea traveling, Team building, Professional workplace welfare</p>-->
+                <p>Assurance, Oversea traveling, Team building, Professional workplace welfare</p>
                 <p class="welfare">${item.welfare}</p>
                 <a href="<c:url value="/post-detail/${item.postId}"/>">See more<i class="fa-solid fa-chevron-right"></i></a>
             </div>
         </c:forEach>
-    </div>    
+    </div>    -->
 
 
     <h1 id="seek-job">You are seeking a Job?</h1>

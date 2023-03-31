@@ -24,7 +24,7 @@
     .hr-modal{
         background: #fff;
         position: relative;
-        top: 10rem;
+        margin: 5rem 0;
         height: 100%;
         width: 80%;
         left: 10%;
@@ -214,8 +214,8 @@
     #job-detail-body {
         background-color: white;
         width: 84.95%;
-        margin-left: 13rem;
-        padding-left: 1rem;
+        margin-left: 12rem;
+        padding: 3rem;
         margin-top: 1.5rem;
     }
     #job-detail-body #recrui-detail .job-detail-recruit{
@@ -300,7 +300,6 @@
     <div class="modal-inner">
         <div class="modal-header">
             <h1>Grading Candiate Report</h1>
-            <i class="fa-solid fa-xmark close-modal"></i>
         </div>
         <div>
             <!-- Tab items -->
@@ -318,16 +317,10 @@
                         <h3>Candidate's Introduction:</h3>
                         <p>${jobAppDetail.getIntroduction()}</p>
                         <!--<a href="${jobAppDetail.getCv()}"> Link CV</a>-->
-                        <img src="${jobAppDetail.getCv()}" width="200px" height="200px">
+                        <img src="${jobAppDetail.getCv()}" width="500px" height="auto">
                     </div>
                 </div>
-                <div class="tab-pane">
-                    <!--                    <div class="modal-body report">
-                                            <h3>Job Name:</h3>
-                                            <p>${jobAppDetail.getJobPosting().getJobPosition().jobName}</p>
-                                            <a href="<c:url value="/manager/post-detail/${jobAppDetail.getJobPosting().getPostId()}"/>">Link Post</a>
-                    
-                                        </div>-->
+                    <div class="tab-pane" style="padding-left: 0;">
                     <div id="job-detail-body">
                         <div id="recrui-detail">
                             <h1 class="job-detail-recruit">Recruitment information</h1>
@@ -410,10 +403,6 @@
                                 <c:forTokens var="welfare" items="${jobAppDetail.jobPosting.getWelfare()}" delims=";">
                                     <li>${welfare}</li>
                                     </c:forTokens>
-                                <!--            <li>Thưởng lễ, tết, sinh nhật, lương tháng 13, phép năm</li>
-                                            <li>Tham gia các hoạt động teambuilding, du lịch, tất niên</li>
-                                            <li>Xét tăng lương định kỳ 1 lần/năm</li>
-                                            <li>Yoga miễn phí</li>-->
                             </ul>
                         </div>
                     </div>
@@ -443,9 +432,7 @@
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button class="close-modal">Close</button>
-        </div>
+     
     </div>
 </div>
 
@@ -503,32 +490,3 @@
     }
 </script>
 
-<%--
-<h1>Job Application Detail</h1>
-<h2>Introduction</h2><p>${jobAppDetail.getIntroduction()}</p>
-<a href="${jobAppDetail.getCv()}"> Link CV</a>
-
-<h2>Post Detail</h2>
-<p>Job Name: ${jobAppDetail.getJobPosting().getJobPosition().jobName}</p>
-<a href="<c:url value="/manager/post-detail/${jobAppDetail.getJobPosting().getPostId()}"/>">Link Post</a>
-
-<h1>Schedule List</h1>
-
-<c:forEach var="item" varStatus="counter" items="${jobAppDetail.getJobApSche()}">
-    ==============================
-    <h5>Round Number: ${item.getApplicationSchedule().getRound().roundNumber} - ${item.getApplicationSchedule().getRound().getContent()}</h5>
-    <c:forEach var="report" items="${item.getApplicationSchedule().getReports()}">
-        <c:if test="${jobAppDetail.getReports().contains(report)}">
-            <h5>Report</h5>
-            <p>Content ${report.content} ----- Point: ${report.point}</p>
-        </c:if>
-    </c:forEach>
-</c:forEach>
-
-<form method="post" action="<c:url value="/manager/decision"/>">
-    <button name="action" value="accept">Accept</button>
-    <button name="action" value="reject">Accept</button>
-    <input type="hidden" name="jobAppID" value="${jobAppDetail.applicationId}"/>
-</form>
-
---%>
